@@ -1,0 +1,18 @@
+body{
+    background: rgb(21,15,130);
+    background: linear-gradient(90deg, rgba(21,15,130,1) 0%, rgba(72,203,219,1) 50%, rgba(92,204,171,1) 100%);
+}
+
+.mision{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(83,161,196,1) 35%, rgba(5,39,142,1) 100%);
+}
+
+.justificar{
+    text-align: justify;
+    justify-content: center;
+}
+
+#misionImg{
+    height: 500px; /* Ajusta la altura automáticamente para mantener la proporción */
+}
