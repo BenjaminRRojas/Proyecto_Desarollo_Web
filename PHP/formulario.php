@@ -9,9 +9,37 @@
 </head>
 <body>
 
-    <button type="button" class="btn btn-primary text-dark fw-bold mx-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Login
-    </button>
+    <!--navbar-->
+    <nav class="navbar navbar-expand-lg bg-dark">
+        <div class="container-fluid bg-dark">
+            <a class="navbar-brand text-bg-dark" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active text-bg-dark" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-bg-dark" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-bg-dark" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled text-bg-dark" aria-disabled="true">Disabled</a>
+                    </li>
+                    <li class="nav-item d-flex align-items-center">
+                        <a class="nav-link disabled text-bg-dark me-2" aria-disabled="true"></a>
+                        <button type="button" class="btn btn-primary fw-bold" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Login
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <!--Formulario -->
     <div class="container my-5">
