@@ -45,10 +45,10 @@
     <div class="container my-5">
         <div class="bg-white p-5 rounded-3 shadow-lg">
             <h2 class="text-center text-success fw-bold mb-4">Formulario de Registro</h2>
-            <form action="" method="POST">
+            <form action="" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="NOMBRES" class="form-label">Nombres</label>
-                    <input type="text" class="form-control"  id="NOMBRES" name="NOMBRES" required>
+                    <input type="text" class="form-control" id="NOMBRES" name="NOMBRES" required>
                 </div>
 
                 <div class="mb-3">
@@ -94,10 +94,31 @@
                     </div>
                 </div>
 
+                <!-- Campo de selección de archivos -->
+                <div class="mb-3 d-none" id="archivo-docente">
+                    <label for="ARCHIVOS" class="form-label">Seleccione los archivos</label>
+                    <input type="file" class="form-control" id="ARCHIVOS" name="ARCHIVOS[]" multiple>
+                </div>
+
                 <button type="submit" class="btn btn-success w-100">Registrar</button>
             </form>
         </div>
     </div>
+
+    <script>
+    // Mostrar/Ocultar campo de archivo dependiendo del tipo de usuario
+    document.querySelectorAll('input[name="TIPO_USUARIO"]').forEach((radio) => {
+            radio.addEventListener('change', function () {//Activa la funcion 
+                const archivoDocente = document.getElementById('archivo-docente');
+                if (this.value === 'DOCENTE') {
+                    archivoDocente.classList.remove('d-none');
+                } else {
+                    archivoDocente.classList.add('d-none');
+                }
+            });
+        });
+
+    </script>
 
     <!-- Login Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -122,14 +143,6 @@
                                 </div>
                                 <button type="submit" class="btn btn-success w-100">Iniciar Sesión</button>
                             </form>
-                            <?php if (isset($_SESSION['error'])): ?>
-                                <div class="alert alert-danger">
-                                    <?php 
-                                    echo htmlspecialchars($_SESSION['error']); 
-                                    unset($_SESSION['error']); 
-                                    ?>
-                                </div>
-                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
