@@ -13,6 +13,52 @@
             Login
         </button>
 
+        <!--navbar-->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+
+                <a class="navbar-brand ms-3" href="index.html">
+                    <img src="../imagenes/logo.svg" alt="logo" height="125">
+                </a>
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+
+                <div class="d-none d-lg-block text-center ms-5">
+                    <h1 class="navbar-title">Aprende a programar desde cero hasta el infinito</h1>
+                </div>
+
+
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Cursos</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Perfil</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Iniciar Sesión</a><button type="button" class="btn btn-primary fw-bold" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                            Login
+                                        </button></li>
+                                <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
         <!-- Formulario -->
         <div class="container my-5 p-5 rounded-3 shadow-lg">
             <h2 class="text-center fw-bold mb-4">Formulario de Registro</h2>
