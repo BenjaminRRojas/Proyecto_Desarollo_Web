@@ -19,24 +19,6 @@ body>video {
 /*----------------------------------NAV--------------------------------*/
 
 
-/* 
-nav .navbar-brand img {
-    height: 175px;
-} */
-/* 
-.container>h1 {
-
-    font-size: 50px;
-    font-family: 'VT323', monospace;
-    color: rgb(17, 221, 215);
-    text-shadow:
-        0 0 4px rgba(255, 255, 255, 0.5),
-        0 0 8px rgba(173, 216, 230, 0.4);
-} */
-
-
-
-
 .navbar-title {
 
     font-size: 50px;
@@ -56,13 +38,6 @@ nav .navbar-brand img {
     }
 }
 
-
-
-/* 
-.navbar-brand img {
-    width: 20%;
-    height: 130px;
-} */
 
 
 :root {
