@@ -17,21 +17,13 @@ body>video {
 
 
 /*----------------------------------NAV--------------------------------*/
+
+
 /* 
-nav {
-    width: 100%;
-    height: 25vh;
-    background: linear-gradient(90deg, rgba(3, 94, 185, 0.496) 0%, rgba(10, 92, 147, 0.428) 50%, rgba(3, 95, 185, 1) 100%);
-    margin-block: 10px;
-    border-radius: 10px;
-} */
-
-
-
 nav .navbar-brand img {
     height: 175px;
-}
-
+} */
+/* 
 .container>h1 {
 
     font-size: 50px;
@@ -40,7 +32,38 @@ nav .navbar-brand img {
     text-shadow:
         0 0 4px rgba(255, 255, 255, 0.5),
         0 0 8px rgba(173, 216, 230, 0.4);
+} */
+
+
+
+
+.navbar-title {
+
+    font-size: 50px;
+    font-family: 'VT323', monospace;
+    color: rgb(17, 221, 215);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
+        0 0 8px rgba(173, 216, 230, 0.4);
+
 }
+
+/* Título para pantallas pequeñas */
+@media (max-width: 768px) {
+    .navbar-title {
+        font-size: 1.5rem;
+        margin-top: 10px;
+        text-wrap: wrap;
+    }
+}
+
+
+
+/* 
+.navbar-brand img {
+    width: 20%;
+    height: 130px;
+} */
+
 
 :root {
     --navbar-bg: #4a4de986;
@@ -69,7 +92,7 @@ nav .navbar-brand img {
 .navbar {
     background-color: var(--navbar-bg) !important;
     width: 100%;
-    height: 25vh;
+    height: 30vh;
     margin-block: 15px;
     border-radius: 10px;
     background: rgb(3, 185, 165);
@@ -84,7 +107,7 @@ nav .navbar-brand img {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 40px;
+    margin-right: 60px;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 20px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -127,6 +150,7 @@ nav .navbar-brand img {
 /* Enlaces dentro del dropdown */
 .dropdown-item {
     color: var(--dropdown-item-color) !important;
+    font-family: 'IBM Plex Mono', monospace;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
