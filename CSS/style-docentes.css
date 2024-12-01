@@ -17,10 +17,7 @@ body>video {
 
 
 /*----------------------------------NAV--------------------------------*/
-<<<<<<< HEAD
 
-=======
->>>>>>> master
 
 
 .navbar-title {
@@ -38,7 +35,6 @@ body>video {
     .navbar-title {
         font-size: 1.5rem;
         margin-top: 10px;
-        text-wrap: wrap;
     }
 }
 
