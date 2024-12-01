@@ -1,11 +1,30 @@
-body{
-    background: rgb(21,15,130);
-    background: linear-gradient(90deg, rgba(21,15,130,1) 0%, rgba(72,203,219,1) 50%, rgba(92,204,171,1) 100%);
+/*----------------------------FONDO ANIMADO---------------------------------*/
+body>video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+
+    position: fixed;
+    top: 50%;
+    transform: translateX(-15%) translateY(-50%);
+
+    z-index: -100;
+
+    background-size: cover;
 }
 
+/*----------------------------Container Misión y Visión.---------------------------------*/
 .mision{
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(83,161,196,1) 35%, rgba(5,39,142,1) 100%);
+    background: rgb(3,4,94);
+    background: linear-gradient(90deg, rgba(3,4,94,1) 0%, rgba(0,119,182,1) 50%, rgba(0,180,216,1) 100%);
+    height: auto;
+}
+
+/*----------------------------Container Equipo---------------------------------*/
+.equipo{
+    background: rgb(0,180,216);
+    background: linear-gradient(90deg, rgba(0,180,216,1) 0%, rgba(0,119,182,1) 50%, rgba(3,4,94,1) 100%);
 }
 
 .justificar{
@@ -14,5 +33,40 @@ body{
 }
 
 #misionImg{
-    height: 500px; /* Ajusta la altura automáticamente para mantener la proporción */
+    height: auto;
+    border: 5px solid black;
+    border-radius: 50%;
+}
+
+.titulo{
+    color: rgb(21,15,130);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/*----------------------------Border Radius de las Imagenes---------------------------------*/
+.borderRadius{
+    border-radius: 6px;
+}
+
+/*----------------------------Parámetros Linea de Tiempo---------------------------------*/
+.marginLinea{
+    margin-bottom: 10%;
+}
+
+.marginLinea2{
+    margin-top: 10%;
+}
+
+.flexlinea{
+    display: grid;
+    grid-template-columns: 49% 1% 49%;
+}
+
+.blue{
+    color: rgba(0,119,182,1);
+    background-color: rgba(0,119,182,1);
+}
+
+.heightLinea{
+    height: 5%;
 }
