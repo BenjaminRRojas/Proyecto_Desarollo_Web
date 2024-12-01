@@ -14,12 +14,14 @@ body>video {
     background-size: cover;
 }
 
+/*----------------------------Container Misión y Visión.---------------------------------*/
 .mision{
     background: rgb(3,4,94);
     background: linear-gradient(90deg, rgba(3,4,94,1) 0%, rgba(0,119,182,1) 50%, rgba(0,180,216,1) 100%);
     height: auto;
 }
 
+/*----------------------------Container Equipo---------------------------------*/
 .equipo{
     background: rgb(0,180,216);
     background: linear-gradient(90deg, rgba(0,180,216,1) 0%, rgba(0,119,182,1) 50%, rgba(3,4,94,1) 100%);
@@ -41,15 +43,12 @@ body>video {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.noMargin{
-    margin: 0px;
-    width: 100%;
-}
-
+/*----------------------------Border Radius de las Imagenes---------------------------------*/
 .borderRadius{
     border-radius: 6px;
 }
 
+/*----------------------------Parámetros Linea de Tiempo---------------------------------*/
 .marginLinea{
     margin-bottom: 10%;
 }

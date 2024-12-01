@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
 <body>
+    <!--Navbar-->
     <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>
     <div class="container-fluid">
         <nav class="navbar mt-3 navbar-expand-lg bg-primary">
@@ -34,7 +35,9 @@
                 </div>
             </div>
         </nav>
-        <div class="container-fluid noMargin">
+    
+        <div class="container-fluid">
+            <!--Container Misión y Visión-->
             <div class="d-flex mt-5 justify-content-around noMargin">
                 <div class="col-7 text-left h2 mision border borderRadius">
                     <div class="mt-4 ms-4 fs-1 text-light titulo">
@@ -47,6 +50,7 @@
                 </div>
                 <img class="col-4 mb-2 ms-2 me-2 img-fluid border" src="../imagenes/Estudiante.jpg" alt="Sonrisa" id="misionImg"> 
             </div>
+            <!--Container Equipo-->
             <div class="d-flex mt-5 justify-content-around mt-3">
                 <img class="col-4 mb-2 ms-2 me-2 img-fluid border" src="../imagenes/Sonrisa.png" alt="Sonrisa" id="misionImg"> 
                 <div class="col-7 text-end h2 equipo border borderRadius">
@@ -60,6 +64,7 @@
                 </div>
             </div>
         </div>
+    <!--Container Linea de Tiempo-->
     <div class="container-fluid marginLinea2">
         <div class="flexlinea heightLinea">
             <div></div>
@@ -150,6 +155,7 @@
             <div></div>
         </div>
     </div>
+    <!--Container Linea de Tiempo-->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Selecciona todos los elementos que tienen el atributo `data-bs-toggle="popover"`
