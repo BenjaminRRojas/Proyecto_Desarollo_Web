@@ -1,1 +1,0 @@
-#Este archivo es para que suban las imagenes , el primero que lea esto tiene que eliminarlo y subir una imageen aca,
