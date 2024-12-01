@@ -1,0 +1,103 @@
+/*FONDO ANIMADO*/
+body>video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+
+    position: fixed;
+    top: 50%;
+    transform: translateX(-15%) translateY(-50%);
+
+    z-index: -100;
+
+    background-size: cover;
+}
+
+/* Paleta de colores */
+:root {
+    --dark-blue: rgba(3, 4, 94, 1); 
+    --blue: rgba(0, 79, 137, 1);
+    --light-blue: rgba(0, 121, 159, 1); 
+    --lighter-blue: rgba(53, 59, 128, 1);
+    --lightest-blue: rgba(72, 88, 160, 1); 
+}
+
+
+/* Estilo general */
+body {
+    background-color: var(--dark-blue);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    background-color: var(--lightest-blue);
+    border-radius: 15px;
+}
+
+p, label, h2, h5 {
+    margin: 0;
+}
+
+/* Botones */
+.btn-primary {
+    background-color: var(--dark-blue);
+    border: none;
+    border-radius: 10px;
+    color: var(--lightest-blue);
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: var(--blue);
+}
+
+.btn-success {
+    background-color: var(--blue);
+    border-color: var(--blue);
+}
+
+.btn-success:hover {
+    background-color: var(--light-blue);
+    border-color: var(--light-blue);
+}
+
+/* Formulario */
+h2 {
+    color: var(--dark-blue);
+}
+
+.form-control {
+    border: 1px solid var(--light-blue);
+    border-radius: 10px;
+}
+
+.shadow-lg {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal */
+.modal-content {
+    background-color: var(--lighter-blue);
+    border: 1px solid var(--blue);
+    border-radius: 15px;
+}
+
+.modal-title {
+    color: var(--dark-blue);
+}
+
+.modal-footer .btn-primary {
+    background-color: var(--blue);
+    border-color: var(--blue);
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: var(--light-blue);
+    border-color: var(--light-blue);
+}
