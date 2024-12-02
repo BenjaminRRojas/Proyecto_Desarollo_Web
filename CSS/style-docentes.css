@@ -39,7 +39,6 @@ body>video {
 }
 
 
-
 :root {
     --navbar-bg: #4a4de986;
     /* Fondo de la navbar */
@@ -135,3 +134,5 @@ body>video {
     color: var(--dropdown-item-hover-color) !important;
 
 }
+
+/*--------------------------Container de contenido-----------------------*/
