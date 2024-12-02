@@ -9,9 +9,6 @@
 </head>
 <body>
     <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>    
-        <button type="button" class="btn btn-primary fw-bold" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Login
-        </button>
 
         <!--navbar-->
         <nav class="navbar navbar-expand-lg">
@@ -47,9 +44,7 @@
                             <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">Perfil</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Iniciar Sesión</a><button type="button" class="btn btn-primary fw-bold" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                            Login
-                                        </button></li>
+                                <li><a class="dropdown-item" href="#"><button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Iniciar Sesión</button></a></li>
                                 <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
                             </ul>
                         </li>
