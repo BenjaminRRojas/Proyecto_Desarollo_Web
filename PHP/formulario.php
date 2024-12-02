@@ -43,10 +43,16 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">Perfil</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#"><button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Iniciar Sesión</button></a></li>
-                                <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
-                            </ul>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button type="button" class="dropdown-item btn btn-primary w-100 text-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                            Iniciar Sesión
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="formulario.php">Registrarse</a>
+                                    </li>
+                                </ul>
                         </li>
                     </ul>
 
@@ -56,7 +62,7 @@
 
         <!-- Formulario -->
         <div class="container my-5 p-5 rounded-3 shadow-lg">
-            <h2 class="text-center fw-bold mb-4">Formulario de Registro</h2>
+            <h2 class="text-center fw-bold mb-4">Registro</h2>
             <form action="" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="NOMBRES" class="form-label">Nombres</label>
@@ -131,7 +137,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="bg-white p-4 rounded-3 shadow">
+                        <div class=" p-4 rounded-3 shadow">
                             <form action="login.php" method="POST">
                                 <div class="mb-3">
                                     <label for="EMAIL" class="form-label">Email</label>

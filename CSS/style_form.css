@@ -183,18 +183,16 @@ body>video {
     box-shadow: 0 0 15px rgba(3, 185, 165, 0.8);
 }
 
-/* Login Modal */
+/*----------------------------------Modal--------------------------------*/
 .modal-content {
-    background: rgba(15, 15, 15, 0.95); /* Fondo más oscuro */
+    background: rgba(20, 20, 20, 0.9); /* Fondo oscuro translúcido */
     border-radius: 15px;
     color: #e0e0e0; /* Texto claro */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Sombra más fuerte */
     font-family: 'IBM Plex Mono', monospace;
 }
 
-.modal-header {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-
+/* Título del modal */
 .modal-title {
     font-family: 'VT323', monospace;
     font-size: 28px;
@@ -202,21 +200,22 @@ body>video {
     text-shadow: 0 0 8px rgba(17, 221, 215, 0.8);
 }
 
+/* Cuerpo del modal */
 .modal-body {
-    background: rgba(30, 30, 30, 1); /* Fondo oscuro */
+    background: rgba(30, 30, 30, 1); /* Fondo más oscuro */
     border-radius: 10px;
     padding: 20px;
 }
 
 .modal-body .form-label {
-    color: #a0a0a0; /* Texto gris claro */
+    color: #a0a0a0;
     font-weight: bold;
 }
 
 .modal-body .form-control {
-    background: rgba(40, 40, 40, 1); /* Fondo oscuro */
-    border: 1px solid rgba(60, 180, 180, 0.5); /* Bordes suaves */
-    color: #ffffff; /* Texto claro */
+    background: rgba(40, 40, 40, 1);
+    border: 1px solid rgba(60, 180, 180, 0.5); 
+    color: #0f0b0b; 
     border-radius: 10px;
     font-family: 'IBM Plex Mono', monospace;
 }
@@ -226,8 +225,11 @@ body>video {
     box-shadow: 0 0 12px rgba(17, 221, 215, 0.6);
 }
 
+/* Footer del modal */
 .modal-footer {
+    background: rgba(20, 20, 20, 1); 
     border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0 0 15px 15px;
 }
 
 .modal-footer .btn {
