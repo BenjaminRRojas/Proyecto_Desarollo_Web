@@ -44,7 +44,7 @@ body>video {
 }
 
 .stat-box {
-    background: rgba(20, 20, 20, 0.8); /* Fondo oscuro */
+    background: rgba(20, 20, 20, 0.8); 
     padding: 20px;
     margin: 10px;
     border-radius: 10px;
@@ -160,10 +160,10 @@ table td {
 /*----------------------------------Formulario--------------------------------*/
 
 .container {
-    background: rgba(20, 20, 20, 0.9); /* Fondo oscuro translúcido */
+    background: rgba(20, 20, 20, 0.9); 
     border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Sombra más fuerte */
-    color: #e0e0e0; /* Texto claro */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); 
+    color: #e0e0e0; 
 }
 
 .container h2 {
@@ -175,15 +175,15 @@ table td {
 .container .form-label {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: bold;
-    color: #a0a0a0; /* Texto gris claro */
+    color: #a0a0a0; 
     margin-bottom: 5px;
 }
 
 .container .form-control {
-    background: rgba(40, 40, 40, 1); /* Fondo oscuro */
-    border: 1px solid rgba(60, 180, 180, 0.5); /* Bordes con color suave */
+    background: rgba(40, 40, 40, 1); 
+    border: 1px solid rgba(60, 180, 180, 0.5); 
     border-radius: 8px;
-    color: #ffffff; /* Texto claro */
+    color: #ffffff; 
     font-family: 'IBM Plex Mono', monospace;
     font-size: 16px;
 }
@@ -211,10 +211,10 @@ table td {
 /*----------------------------------Modal--------------------------------*/
 
 .modal-content {
-    background: rgba(20, 20, 20, 0.9); /* Fondo oscuro translúcido */
+    background: rgba(20, 20, 20, 0.9); 
     border-radius: 15px;
-    color: #e0e0e0; /* Texto claro */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Sombra más fuerte */
+    color: #e0e0e0; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); 
     font-family: 'IBM Plex Mono', monospace;
 }
 
@@ -228,20 +228,20 @@ table td {
 
 /* Cuerpo del modal */
 .modal-body {
-    background: rgba(30, 30, 30, 1); /* Fondo más oscuro */
+    background: rgba(30, 30, 30, 1); 
     border-radius: 10px;
     padding: 20px;
 }
 
 .modal-body .form-label {
-    color: #a0a0a0; /* Texto gris claro */
+    color: #a0a0a0; 
 }
 
 .modal-body .form-control {
-    background: rgba(40, 40, 40, 1); /* Fondo oscuro */
-    border: 1px solid rgba(60, 180, 180, 0.5); /* Bordes suaves */
+    background: rgba(40, 40, 40, 1);
+    border: 1px solid rgba(60, 180, 180, 0.5); 
     border-radius: 8px;
-    color: #ffffff; /* Texto claro */
+    color: #ffffff; 
     font-family: 'IBM Plex Mono', monospace;
 }
 
