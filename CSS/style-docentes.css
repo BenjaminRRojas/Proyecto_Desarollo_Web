@@ -166,4 +166,38 @@ body>video {
 }
 
 
-/*--------------------------Container de contenido-----------------------*/
+/*--------------------------Carta con banner Docentes-----------------------*/
+
+
+
+
+.card {
+    margin-block: 50px;
+    border-color: #000000;
+}
+
+
+/* Tarjeta */
+.card-body {
+    background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
+}
+
+
+
+.card .card-title {
+    font-size: 2rem;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+}
+
+
+.card .card-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-family: 'Georgia', serif;
+    text-align: justify;
+}
