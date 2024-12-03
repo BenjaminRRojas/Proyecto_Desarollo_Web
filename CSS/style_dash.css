@@ -1,21 +1,17 @@
-/*----------------------------FONDO ANIMADO---------------------------------*/
-
-body>video {
+/*---------------------------- FONDO ANIMADO ----------------------------*/
+body > video {
     min-width: 100%;
     min-height: 100%;
     width: auto;
     height: auto;
-
     position: fixed;
     top: 50%;
     transform: translateX(-15%) translateY(-50%);
-
     z-index: -100;
-
     background-size: cover;
 }
 
-/*----------------------------------DASHBOARD----------------------------------*/
+/*---------------------------------- DASHBOARD --------------------------*/
 
 /* Contenedor principal del dashboard */
 .dashboard-container {
@@ -44,7 +40,7 @@ body>video {
 }
 
 .stat-box {
-    background: rgba(20, 20, 20, 0.8); 
+    background: rgba(20, 20, 20, 0.8);
     padding: 20px;
     margin: 10px;
     border-radius: 10px;
@@ -88,165 +84,115 @@ table td {
     background-color: rgba(30, 30, 30, 1);
 }
 
-/*----------------------------------ENLACES----------------------------------*/
-
-.navbar-title {
-    font-size: 50px;
-    font-family: 'VT323', monospace;
-    color: rgb(17, 221, 215);
-    text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
-        0 0 8px rgba(173, 216, 230, 0.4);
+table tr:nth-child(even) {
+    background-color: rgba(40, 40, 40, 1);
 }
 
-/* Título para pantallas pequeñas */
-@media (max-width: 768px) {
-    .navbar-title {
-        font-size: 1.5rem;
-        margin-top: 10px;
-    }
-}
-
-:root {
-    --navbar-bg: #4a4de986;
-    --navbar-link-color: white;
-    --navbar-link-hover: #000000;
-    --navbar-toggler-bg: #00B4D8;
-    --navbar-toggler-hover: #0077B6;
-    --dropdown-bg: #0077B6;
-    --dropdown-item-color: #CAF0F8;
-    --dropdown-item-hover-bg: #5aa1cd;
-    --dropdown-item-hover-color: #000000;
-}
-
-/* Cambiar el color de fondo de la navbar */
-.navbar {
-    background-color: var(--navbar-bg) !important;
-    width: 100%;
-    height: 30vh;
-    margin-block: 15px;
-    border-radius: 10px;
-    background: rgb(3, 185, 165);
-    background: linear-gradient(90deg, rgba(3, 185, 165, 0.48503151260504207) 0%, rgba(10, 93, 147, 0.8883928571428571) 50%, rgba(3, 185, 165, 0.47942927170868344) 100%);
-}
-
-/* Cambiar el color de los enlaces */
-.navbar .nav-link {
-    color: var(--navbar-link-color) !important;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 60px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    transition: transform 0.5s ease, color 0.3s ease;
-}
-
-/* Hover en los enlaces */
-.navbar .nav-link:hover {
-    color: var(--navbar-link-hover) !important;
-    border: 1px solid white;
-    border-radius: 25px;
-    box-shadow:
-        0 0 30px rgba(16, 226, 253, 0.8),
-        0 0 60px rgba(183, 0, 255, 0.7),
-        15px 15px 35px rgba(16, 226, 253, 0.5),
-        -15px -15px 35px rgba(183, 0, 255, 0.5);
-    background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
-    transform: scale(1.2);
-}
-
-/*----------------------------------Formulario--------------------------------*/
-
-.container {
-    background: rgba(20, 20, 20, 0.9); 
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); 
-    color: #e0e0e0; 
-}
-
-.container h2 {
-    font-family: 'VT323', monospace;
-    color: rgb(17, 221, 215);
-    text-shadow: 0 0 8px rgba(17, 221, 215, 0.8);
-}
-
-.container .form-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: bold;
-    color: #a0a0a0; 
-    margin-bottom: 5px;
-}
-
-.container .form-control {
-    background: rgba(40, 40, 40, 1); 
-    border: 1px solid rgba(60, 180, 180, 0.5); 
-    border-radius: 8px;
-    color: #ffffff; 
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 16px;
-}
-
-.container .form-control:focus {
-    border-color: rgb(17, 221, 215);
-    box-shadow: 0 0 12px rgba(17, 221, 215, 0.6);
-}
-
-.container .btn-success {
-    background: linear-gradient(90deg, #0acffe 0%, #495aff 100%);
-    border: none;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 18px;
-    text-transform: uppercase;
+/*------------------------ MENÚ LATERAL ----------------------------*/
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #2c3e50;
+    padding-top: 20px;
     color: white;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.container .btn-success:hover {
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #34495e;
+}
+
+/* Contenedor del dashboard */
+.dashboard-container {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+/* Estilo para las cajas de estadísticas */
+.stat-box {
+    background-color: #ecf0f1;
+    border: 1px solid #bdc3c7;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-box:hover {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(3, 185, 165, 0.8);
 }
 
-/*----------------------------------Modal--------------------------------*/
+/*---------------------------- MEDIA QUERIES PARA RESPONSIVIDAD ----------------------------*/
+@media (max-width: 768px) {
+    /* Ajustes para pantallas pequeñas */
+    .sidebar {
+        width: 200px;
+    }
 
-.modal-content {
-    background: rgba(20, 20, 20, 0.9); 
-    border-radius: 15px;
-    color: #e0e0e0; 
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); 
-    font-family: 'IBM Plex Mono', monospace;
+    .dashboard-container {
+        margin-left: 200px;
+    }
+
+    .stat-box {
+        width: 100%; 
+    }
+
+    table {
+        width: 100%;
+    }
+
+    /* Menu lateral en pantallas pequeñas */
+    .sidebar ul li a {
+        padding: 12px;
+        font-size: 16px;
+    }
 }
 
-/* Título del modal */
-.modal-title {
-    font-family: 'VT323', monospace;
-    font-size: 28px;
-    color: rgb(17, 221, 215);
-    text-shadow: 0 0 8px rgba(17, 221, 215, 0.8);
-}
+@media (max-width: 480px) {
+    .sidebar {
+        width: 180px;
+    }
 
-/* Cuerpo del modal */
-.modal-body {
-    background: rgba(30, 30, 30, 1); 
-    border-radius: 10px;
-    padding: 20px;
-}
+    .dashboard-container {
+        margin-left: 180px;
+    }
 
-.modal-body .form-label {
-    color: #a0a0a0; 
-}
+    .stat-box {
+        padding: 15px;
+        font-size: 0.9em;
+    }
 
-.modal-body .form-control {
-    background: rgba(40, 40, 40, 1);
-    border: 1px solid rgba(60, 180, 180, 0.5); 
-    border-radius: 8px;
-    color: #ffffff; 
-    font-family: 'IBM Plex Mono', monospace;
-}
+    table {
+        width: 100%;
+    }
 
-/* Botón del modal */
-.modal-footer .btn-success {
-    background: linear-gradient(90deg, #0acffe 0%, #495aff 100%);
+    .sidebar ul li a {
+        font-size: 14px;
+    }
 }
-
