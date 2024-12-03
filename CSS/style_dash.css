@@ -1,0 +1,198 @@
+/*---------------------------- FONDO ANIMADO ----------------------------*/
+body > video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: fixed;
+    top: 50%;
+    transform: translateX(-15%) translateY(-50%);
+    z-index: -100;
+    background-size: cover;
+}
+
+/*---------------------------------- DASHBOARD --------------------------*/
+
+/* Contenedor principal del dashboard */
+.dashboard-container {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: white;
+    padding: 30px;
+}
+
+/* Título principal */
+.dashboard-container h1 {
+    font-family: 'VT323', monospace;
+    color: rgb(17, 221, 215);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
+        0 0 8px rgba(173, 216, 230, 0.4);
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+/* Estadísticas */
+.stats {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.stat-box {
+    background: rgba(20, 20, 20, 0.8);
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.stat-box h3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.3em;
+    color: rgb(17, 221, 215);
+}
+
+.stat-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(3, 185, 165, 0.8);
+}
+
+/* Tabla de cursos populares */
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    color: rgb(17, 221, 215);
+}
+
+table th {
+    background-color: rgba(10, 93, 147, 0.8);
+    text-align: left;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1.1em;
+}
+
+table td {
+    background-color: rgba(30, 30, 30, 1);
+}
+
+table tr:nth-child(even) {
+    background-color: rgba(40, 40, 40, 1);
+}
+
+/*------------------------ MENÚ LATERAL ----------------------------*/
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #2c3e50;
+    padding-top: 20px;
+    color: white;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+}
+
+.sidebar ul li a:hover {
+    background-color: #34495e;
+}
+
+/* Contenedor del dashboard */
+.dashboard-container {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+/* Estilo para las cajas de estadísticas */
+.stat-box {
+    background-color: #ecf0f1;
+    border: 1px solid #bdc3c7;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(3, 185, 165, 0.8);
+}
+
+/*---------------------------- MEDIA QUERIES PARA RESPONSIVIDAD ----------------------------*/
+@media (max-width: 768px) {
+    /* Ajustes para pantallas pequeñas */
+    .sidebar {
+        width: 200px;
+    }
+
+    .dashboard-container {
+        margin-left: 200px;
+    }
+
+    .stat-box {
+        width: 100%; 
+    }
+
+    table {
+        width: 100%;
+    }
+
+    /* Menu lateral en pantallas pequeñas */
+    .sidebar ul li a {
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 180px;
+    }
+
+    .dashboard-container {
+        margin-left: 180px;
+    }
+
+    .stat-box {
+        padding: 15px;
+        font-size: 0.9em;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    .sidebar ul li a {
+        font-size: 14px;
+    }
+}
