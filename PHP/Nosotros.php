@@ -20,10 +20,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active text-bg-primary" aria-current="page" href="#">Home</a>
+                            <a class="nav-link active text-bg-primary" aria-current="page" href="#hola">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-bg-primary" href="#">Features</a>
+                            <a class="nav-link text-bg-primary" href="#hola2">Features</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-bg-primary" href="#">Pricing</a>
@@ -51,7 +51,7 @@
                 <img class="col-4 mb-2 ms-2 me-2 img-fluid border" src="../imagenes/Estudiante.jpg" alt="Sonrisa" id="misionImg"> 
             </div>
             <!--Container Equipo-->
-            <div class="d-flex mt-5 justify-content-around mt-3">
+            <div class="d-flex mt-5 mb-5 justify-content-around mt-3">
                 <img class="col-4 mb-2 ms-2 me-2 img-fluid border" src="../imagenes/Sonrisa.png" alt="Sonrisa" id="misionImg"> 
                 <div class="col-7 text-end h2 equipo border borderRadius">
                     <div class="mt-4 me-4 fs-1 text-light titulo">
@@ -64,109 +64,30 @@
                 </div>
             </div>
         </div>
-    <!--Container Linea de Tiempo-->
-    <div class="container-fluid marginLinea2">
-        <div class="flexlinea heightLinea">
-            <div></div>
-            <div class="blue mx-3"><hr></div>
-            <div></div>
+    <!--Container Historia del Desarrollo-->
+    <a href="#hola"><button>Nigga</button></a>
+    <div class="row container-fluid" style="height: 100px;">
+        <div class="col-4 overflow-y-scroll mb-5" style="background-color: blue; height: 300px;">
+            <h1>Hola Mundo</h1>
+            <p>ASDASDFADSDFAD SFADSFASFSADDSFAS FDASFSFASFASDFASDFASFADSFFSDADFA DSFASFSFAS FSSDFADS aadsafsdfasf aefadsafsdfads  </p>
+            <h1>Hola Mundo</h1>
+            <p>ASDASDFADSDFAD SFADSFASFSADDSFAS FDASFSFASFASDFASDFASFADSFFSDADFA DSFASFSFAS FSSDFADS aadsafsdfasf aefadsafsdfads  </p>
+            <h1>Hola Mundo</h1>
+            <p>ASDASDFADSDFAD SFADSFASFSADDSFAS FDASFSFASFASDFASDFASFADSFFSDADFA DSFASFSFAS FSSDFADS aadsafsdfasf aefadsafsdfads  </p>
+            <h1>Hola Mundo</h1>
+            <p>ASDASDFADSDFAD SFADSFASFSADDSFAS FDASFSFASFASDFASDFASFADSFFSDADFA DSFASFSFAS FSSDFADS aadsafsdfasf aefadsafsdfads  </p>
+            <h1 id="hola">Hola Mundo</h1>
+            <p>ASDASDFADSDFAD SFADSFASFSADDSFAS FDASFSFASFASDFASDFASFADSFFSDADFA DSFASFSFAS FSSDFADS aadsafsdfasf aefadsafsdfads  </p>
         </div>
-        <div class="flexlinea">
-            <div></div>
-            <div class="blue mx-3"></div>
-            <div class="text-start ms-2">
-                <button type="button" class="btn btn-primary" 
-                        data-bs-toggle="popover" 
-                        data-bs-placement="right" 
-                        data-bs-content="La historia de nuestra plataforma de cursos online comenzó con la visión de un grupo de entusiastas de la educación y la tecnología, comprometidos con transformar el acceso al conocimiento.">
-                        Semana 1    
-                </button>
-            </div>
+        <div class="col-4">
+
         </div>
-        <div class="flexlinea heightLinea">
-            <div></div>
-            <div class="blue mx-3"><hr></div>
-            <div></div>
-        </div>
-        <div class="flexlinea heightLinea">
-            <div></div>
-            <div class="blue mx-3"><hr></div>
-            <div></div>
-        </div>
-        <div class="flexlinea">
-            <div class="text-end">
-                <button type="button" class="btn btn-primary" 
-                        data-bs-toggle="popover" 
-                        data-bs-placement="left" 
-                        data-bs-content="Desde sus inicios, este proyecto fue concebido como una respuesta a las barreras económicas, geográficas y culturales que muchas personas enfrentan al buscar formación de calidad.">
-                        Semana 2   
-                </button>
-            </div>
-            <div class="blue mx-3"></div>
-            <div></div>
-        </div>
-        <div class="flexlinea heightLinea">
-            <div></div>
-            <div class="blue mx-3"><hr></div>
-            <div></div>
-        </div>
-        <div class="flexlinea heightLinea">
-            <div></div>
-            <div class="blue mx-3"><hr></div>
-            <div></div>
-        </div>
-        <div class="flexlinea heightLinea">
-            <div></div>
-            <div class="blue mx-3"></div>
-            <div class="text-start ms-2">
-                <button type="button" class="btn btn-primary" 
-                        data-bs-toggle="popover" 
-                        data-bs-placement="right" 
-                        data-bs-content="A lo largo de los años, hemos evolucionado desde ofrecer cursos básicos hasta consolidarnos como una comunidad de aprendizaje que integra herramientas tecnológicas avanzadas y un enfoque personalizado para cada usuario.">
-                        Semana 3
-                </button>
-            </div>
-        </div>
-        <div class="flexlinea heightLinea">
-            <div></div>
-            <div class="blue mx-3"><hr></div>
-            <div></div>
-        </div>
-        <div class="flexlinea heightLinea">
-            <div></div>
-            <div class="blue mx-3"><hr></div>
-            <div></div>
-        </div>
-        <div class="flexlinea heightLinea">
-            <div class="text-end">
-                <button type="button" class="btn btn-primary" 
-                        data-bs-toggle="popover" 
-                        data-bs-placement="left" 
-                        data-bs-content="Nuestros valores fundamentales son la inclusión, la innovación y el empoderamiento, pilares que guían cada decisión y nos inspiran a seguir construyendo un entorno donde cada estudiante pueda alcanzar su máximo potencial, independientemente de sus circunstancias.">
-                        Semana 4
-                </button>
-            </div>
-            <div class="blue mx-3"></div>
-            <div></div>
-        </div>
-        <div class="flexlinea heightLinea marginLinea">
-            <div></div>
-            <div class="blue mx-3"><hr></div>
-            <div></div>
+        <div class="col-4">
+
         </div>
     </div>
-    <!--Container Linea de Tiempo-->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Selecciona todos los elementos que tienen el atributo `data-bs-toggle="popover"`
-            const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
-
-            // Inicializa Bootstrap Popover para cada elemento encontrado
-            popoverTriggerList.forEach(function (popoverTriggerEl) {
-                new bootstrap.Popover(popoverTriggerEl);
-            });
-        });
-    </script>
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
 </body>

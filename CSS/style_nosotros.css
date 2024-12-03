@@ -45,7 +45,7 @@ body>video {
 
 /*----------------------------Border Radius de las Imagenes---------------------------------*/
 .borderRadius{
-    border-radius: 6px;
+    border-radius: 20px;
 }
 
 /*----------------------------Parámetros Linea de Tiempo---------------------------------*/
@@ -59,7 +59,8 @@ body>video {
 
 .flexlinea{
     display: grid;
-    grid-template-columns: 49% 1% 49%;
+    grid-template-columns: 49% 2% 49%;
+    height: 200px;
 }
 
 .blue{
