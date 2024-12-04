@@ -40,25 +40,18 @@ body>video {
 }
 
 
+
+
 :root {
     --navbar-bg: #4a4de986;
-    /* Fondo de la navbar */
     --navbar-link-color: white;
-    /* Color de los enlaces */
     --navbar-link-hover: #000000;
-    /* Color de los enlaces al pasar el mouse */
     --navbar-toggler-bg: #00B4D8;
-    /* Fondo del botón hamburguesa */
     --navbar-toggler-hover: #0077B6;
-    /* Fondo del botón hamburguesa al pasar el mouse */
     --dropdown-bg: #0077B6;
-    /* Fondo del dropdown */
     --dropdown-item-color: #CAF0F8;
-    /* Color de los enlaces del dropdown */
     --dropdown-item-hover-bg: #5aa1cd;
-    /* Fondo del dropdown al pasar el mouse */
     --dropdown-item-hover-color: #000000;
-    /* Color del texto del dropdown al pasar el mouse */
 }
 
 
@@ -166,4 +159,84 @@ body>video {
 }
 
 
-/*--------------------------Container de contenido-----------------------*/
+/*--------------------------Carta con banner Docentes-----------------------*/
+
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+
+@media (min-width: 1024px) {
+    .card-img-top {
+        height: 380px;
+    }
+}
+
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .card-img-top {
+        height: 300px;
+    }
+}
+
+
+@media (max-width: 767px) {
+    .card-img-top {
+        height: 200px;
+        object-fit: contain;
+    }
+}
+
+
+
+.card-infor {
+    margin-block: 70px;
+
+}
+
+
+.card-infor:hover {
+    border: 3px solid skyblue;
+    box-shadow: 10px -10px 25px 0 rgba(16, 226, 253, 0.5), -10px 10px 25px 0 rgba(183, 0, 255, 0.794);
+}
+
+
+.body-infor {
+    background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
+
+}
+
+
+
+.card .card-title {
+    font-size: 2rem;
+    font-family: 'IBM Plex Mono', monospace;
+    color: silver;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+
+}
+
+
+.card .card-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: white;
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.2),
+        0 4px 8px rgba(0, 0, 0, 0.15),
+        0 6px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'IBM Plex Mono', monospace;
+    text-align: justify;
+
+}
+
+/*---------------------Cards con Informacion Docente-------------------*/
+
+
+.card {
+    background-image: linear-gradient(to right, #3ab5b0 0%, #3d99be 31%, #56317a 100%);
+}
