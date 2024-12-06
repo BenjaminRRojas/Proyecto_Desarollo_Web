@@ -1,5 +1,6 @@
 /*----------------------------FONDO ANIMADO---------------------------------*/
 
+
 body>video {
     min-width: 100%;
     min-height: 100%;
@@ -16,6 +17,24 @@ body>video {
 }
 
 
+@media (max-width: 1024px) {
+    body>video {
+        min-width: 120%;
+        min-height: 100%;
+        transform: translateX(-20%) translateY(-50%);
+    }
+}
+
+
+@media (max-width: 767px) {
+    body>video {
+        min-width: 150%;
+        min-height: 100%;
+        transform: translateX(-25%) translateY(-50%);
+    }
+}
+
+
 /*----------------------------------NAV--------------------------------*/
 
 
@@ -28,7 +47,6 @@ body>video {
     text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
         0 0 8px rgba(173, 216, 230, 0.166);
 
-
 }
 
 
@@ -40,25 +58,18 @@ body>video {
 }
 
 
+
+
 :root {
     --navbar-bg: #4a4de986;
-    /* Fondo de la navbar */
     --navbar-link-color: white;
-    /* Color de los enlaces */
     --navbar-link-hover: #000000;
-    /* Color de los enlaces al pasar el mouse */
     --navbar-toggler-bg: #00B4D8;
-    /* Fondo del botón hamburguesa */
     --navbar-toggler-hover: #0077B6;
-    /* Fondo del botón hamburguesa al pasar el mouse */
     --dropdown-bg: #0077B6;
-    /* Fondo del dropdown */
     --dropdown-item-color: #CAF0F8;
-    /* Color de los enlaces del dropdown */
     --dropdown-item-hover-bg: #5aa1cd;
-    /* Fondo del dropdown al pasar el mouse */
     --dropdown-item-hover-color: #000000;
-    /* Color del texto del dropdown al pasar el mouse */
 }
 
 
@@ -166,4 +177,393 @@ body>video {
 }
 
 
-/*--------------------------Container de contenido-----------------------*/
+/*--------------------------Carta con banner Docentes-----------------------*/
+
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+
+@media (min-width: 1024px) {
+    .card-img-top {
+        height: 380px;
+    }
+}
+
+
+@media (max-width: 1023px) and (min-width: 768px) {
+    .card-img-top {
+        height: 300px;
+    }
+}
+
+
+@media (max-width: 767px) {
+    .card-img-top {
+        height: 200px;
+        object-fit: contain;
+    }
+}
+
+
+
+.card-infor {
+    margin-block: 70px;
+    /* margin-bottom: 250px; */
+
+}
+
+
+
+.card-infor:hover {
+    border: 3px solid skyblue;
+    box-shadow: 10px -10px 25px 0 rgba(16, 226, 253, 0.5), -10px 10px 25px 0 rgba(183, 0, 255, 0.794);
+}
+
+
+.body-infor {
+    background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
+
+}
+
+
+
+.card .card-title {
+    font-size: 2rem;
+    font-family: 'IBM Plex Mono', monospace;
+    color: silver;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 15px;
+
+}
+
+
+.card .card-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: white;
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.2),
+        0 4px 8px rgba(0, 0, 0, 0.15),
+        0 6px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'IBM Plex Mono', monospace;
+    text-align: justify;
+
+}
+
+.card {
+    background-image: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%);
+}
+
+/*---------------------Cards con Informacion Docente-------------------*/
+
+
+.info-docentes {
+    width: 100%;
+    height: 140vh;
+    /* margin-block: 190px; */
+    /* padding: 10px; */
+    border-radius: 20px;
+    /* background-image: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%); */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150vh;
+    background-color: #0000009e;
+    border-radius: 25px;
+}
+
+.card__container {
+    padding: 5rem;
+    height: 135vh;
+    border-radius: 25px;
+}
+
+.card__content {
+    height: 130vh;
+    margin-inline: 1.75rem;
+    border-radius: 1.25rem;
+
+}
+
+.card__article {
+    width: 300px;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    background-image: linear-gradient(-225deg, #473B7B 0%, #3584A7 51%, #30D2BE 100%);
+}
+
+
+.card__image {
+    width: 150%;
+    height: 70vh;
+    position: relative;
+    /* border-radius: 40px; */
+    /* background-color: var(--first-color-light) !important; */
+    /* background-image: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%); */
+    margin-bottom: -4.75rem;
+}
+
+.card__data {
+    height: 150vh;
+    background-color: var(--container-color) !important;
+    padding: 1.5rem 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    justify-items: center;
+
+}
+
+
+
+.card__img {
+    width: 355px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+    .card__img {
+        width: 300px;
+    }
+}
+
+
+@media (max-width: 767px) {
+    .card__img {
+        width: 250px;
+        z-index: 10;
+        margin: 0 10px;
+    }
+}
+
+
+.card__shadow {
+    width: 400px;
+    height: 400px;
+    background-color: var(--first-color-alt);
+    border-radius: 50%;
+    position: absolute;
+    top: 3.75rem;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    filter: blur(45px);
+}
+
+.card__name {
+    font-size: var(--h2-font-size);
+    color: var(--second-color);
+    margin-bottom: .75rem;
+    color: white;
+    margin-top: 20px;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+
+.card__description {
+    margin-top: 40px;
+    font-weight: 500;
+    margin-bottom: 1.75rem;
+    color: white;
+    text-align: justify;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+
+/*--SWIPER CLASS--*/
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    content: '';
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    width: initial;
+    height: initial;
+    font-size: 3rem;
+    color: var(--second-color);
+    margin-inline: -11px;
+}
+
+.swiper-button-prev {
+    left: 0;
+}
+
+.swiper-button-next {
+    right: 0;
+}
+
+.swiper-pagination-bullet {
+    background-color: hsl(212, 32%, 40%);
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: var(--second-color);
+}
+
+/*--BREAKPOINTS--*/
+@media screen and (max-width: 320px) {
+    .card__data {
+        padding: 1rem;
+
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card__content {
+        margin-inline: 3rem;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 1120px) {
+    .card__container {
+        max-width: 1120px;
+
+    }
+
+    .swiper-button-next {
+        right: -1rem;
+    }
+
+    .swiper-button-prev {
+        left: -1rem;
+    }
+}
+
+
+/*------------------Footer Docentes------------------*/
+
+/* .footer-docentes {
+    width: 100%;
+    height: 60vh;
+    margin-block: 15px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgba(3, 185, 165, 0.48503151260504207) 0%, rgba(10, 93, 147, 0.8883928571428571) 50%, rgba(3, 185, 165, 0.47942927170868344) 100%);
+} */
+
+
+footer {
+    background: linear-gradient(90deg, rgba(3, 185, 165, 0.48503151260504207) 0%, rgba(10, 93, 147, 0.8883928571428571) 50%, rgba(3, 185, 165, 0.47942927170868344) 100%);
+    border-radius: 15px;
+    margin-block: 20px;
+}
+
+
+footer h3,
+footer h4 {
+    font-size: 35px;
+    font-family: 'VT323', monospace;
+    color: rgb(17, 221, 215);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
+        0 0 8px rgba(173, 216, 230, 0.166);
+}
+
+#docentes-p {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    font-size: 17px;
+    font-family: 'IBM Plex Mono', monospace;
+
+}
+
+
+.col-md-4 a {
+    color: #d1d1d1;
+    text-decoration: none;
+
+}
+
+
+
+footer .col-md-4>a:hover {
+    color: red;
+    border-radius: 10px;
+    box-shadow: 10px -10px 25px 0 rgba(255, 0, 0, 0.5), -10px 10px 25px 0 rgba(255, 0, 0, 0.8);
+    text-decoration: underline;
+
+}
+
+
+.bi:hover {
+
+    transform: scale(1.1);
+
+}
+
+
+.negro {
+    margin-right: 60px;
+}
+
+.negro>a {
+    font-size: 35px;
+    color: white;
+    text-decoration: none;
+    font-family: 'IBM Plex Mono', monospace;
+
+}
+
+.d-flex,
+.negro>a:hover {
+    transition: .5s;
+    color: black;
+    text-decoration: none;
+
+}
+
+
+.rosado>a {
+    font-size: 35px;
+    color: white;
+    text-decoration: none;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.d-flex,
+.rosado>a:hover {
+    transition: .5s;
+    color: rgb(237, 7, 122);
+    text-decoration: none;
+}
+
+
+.morado {
+    margin-left: 60px;
+}
+
+.morado>a {
+    font-size: 35px;
+    color: white;
+    text-decoration: none;
+
+}
+
+.d-flex,
+.morado>a:hover {
+    transition: .5s;
+    color: purple;
+    text-decoration: none;
+}
+
+
+
+.text-center {
+    font-size: 20px;
+    margin-top: 20px;
+    color: #d1d1d1;
+    font-family: 'IBM Plex Mono', monospace;
+}
