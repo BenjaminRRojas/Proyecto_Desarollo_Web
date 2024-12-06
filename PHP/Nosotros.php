@@ -10,30 +10,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!--Navbar-->
     <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>
-    <div class="container-fluid">
-        <nav class="navbar mt-3 navbar-expand-lg bg-primary">
-            <div class="container-fluid bg-primary">
-                <a class="navbar-brand text-bg-primary" href="#">Navbar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+
+                <a class="navbar-brand ms-3" href="index.html">
+                    <img src="../imagenes/logo.svg" alt="logo" height="125">
+                </a>
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active text-bg-primary" aria-current="page" href="#hola">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-bg-primary" href="#hola2">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-bg-primary" href="#">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled text-bg-primary" aria-disabled="true">Disabled</a>
-                        </li>
-                    </ul>
+
+                <div class="d-none d-lg-block text-center ms-5">
+                    <h1 class="navbar-title">Aprende a programar desde cero hasta el infinito</h1>
+                </div>
+
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
+                        <button type="button" class="btn-close bg-light" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                        <hr>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Cursos</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle active" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Perfil</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
+                                    <li><a class="dropdown-item" href="#">Registrarse</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </nav>
