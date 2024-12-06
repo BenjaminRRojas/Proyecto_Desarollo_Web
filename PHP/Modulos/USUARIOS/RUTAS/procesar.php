@@ -15,3 +15,4 @@ if ($accion == 'agregar') {
 
 header('Location: ../VISTAS/ListaUsuarios.php');
 exit();
+?>

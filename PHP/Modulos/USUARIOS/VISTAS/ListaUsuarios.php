@@ -25,8 +25,8 @@ $usuarios = $controlador->listarUsuarios();
             <td><?= $usuario['tipo_usuario'] ?></td>
             <td><?= $usuario['fecha_registro'] ?></td>
             <td>
-                <a href="formulario.php?accion=editar&id=<?= $usuario['id_usuario'] ?>">Editar</a>
-                <a href="eliminar.php?id=<?= $usuario['id_usuario'] ?>">Eliminar</a>
+                <a href="../RUTAS/modificar.php?id=<?= $usuario['id_usuario'] ?>">Editar</a>
+                <a href="../RUTAS/eliminar.php?id=<?= $usuario['id_usuario'] ?>">Eliminar</a>
             </td>
         </tr>
     <?php endforeach; ?>
