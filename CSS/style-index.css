@@ -213,18 +213,26 @@ p{
 
 /*----------------C A R R U S E L----------------*/
 
-.carousel{
-    height: 200px; 
-    margin: 20px;
-}
-
-.carousel-item{
+.carousel {
+    height: 300px; 
+    margin-bottom: 20px; 
+    overflow: hidden; 
+  }
+  
+  .carousel-item {
     height: 100%; 
-}
-
-.carousel-item img{
-    height: 200px
-}
+  }
+  
+  .carousel-item img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+  }
+  
+  .container-xxl {
+    clear: both; 
+  }
+  
 
 
 /*-------------------C A R D S-------------------*/
