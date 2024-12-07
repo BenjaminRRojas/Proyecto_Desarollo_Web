@@ -176,14 +176,39 @@ body>video {
     transform: scale(1.2);
 }
 
+/*-----------------B A N N E R--------------------*/
+
+.banner {
+    width: 100%;
+    overflow: hidden; 
+}
+
+.banner img {
+    width: 100%;
+    height: auto; 
+}
+
+.banner {
+    width: 100%;
+    height: 50vh; 
+    overflow: hidden;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  
+}
+
+
 /*------------------T E X T O--------------------*/
 
 p{
-    color: #ffff;
+    color: #ffffffc8;
 }
 
 .container-texto{
-    margin: 50px;
+    margin: 30px;
 }
 
 /*----------------C A R R U S E L----------------*/
@@ -203,6 +228,10 @@ p{
 
 
 /*-------------------C A R D S-------------------*/
+
+h4{
+    font-family: 'VT323', monospace;
+}
 
 /*------------------F O O T E R------------------*/
 
