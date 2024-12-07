@@ -175,18 +175,39 @@ body>video {
     --fondo-list-group: rgba(0, 0, 0, 0.667);
     --fondo-color-letra-list-group: white;
 }
+/*------------------------Grid Misión, Visión y Equipo------------------------*/
+
+.flexMisionVision, .flexEquipo{
+    display: grid;
+    align-items: stretch;
+    gap: 1%;
+}
+
+.flexMisionVision{
+    grid-template-columns: 60% 30%;
+}
+
+.flexEquipo{
+    grid-template-columns: 30% 60%;
+}
+
 
 /*----------------------------Container Misión y Visión.---------------------------------*/
 .mision{
     background: rgb(3,4,94);
     background: linear-gradient(90deg, rgba(3,4,94,1) 0%, rgba(0,119,182,1) 50%, rgba(0,180,216,1) 100%);
     height: auto;
+    border-radius: 20px;
+    border: 2px solid white;
 }
 
 /*----------------------------Container Equipo---------------------------------*/
 .equipo{
     background: rgb(0,180,216);
     background: linear-gradient(90deg, rgba(0,180,216,1) 0%, rgba(0,119,182,1) 50%, rgba(3,4,94,1) 100%);
+    height: auto;
+    border-radius: 20px;
+    border: 2px solid white;
 }
 
 .justificar{
@@ -205,11 +226,12 @@ h1, h2{
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-/*---Border Radius de los Containers---*/
-
+/*---Border Radius de los Containers---
+    IMPORTANTE BORRAR.
 .borderRadius{
     border-radius: 20px;
-}
+    border: 3px solid white;
+}*/
 
 /*----------------------------Parámetros Historia del Desarrollo---------------------------------*/
 
@@ -246,4 +268,52 @@ h1, h2{
 
 p, li{
     font-family: 'IBM Plex Mono', monospace;
+}
+
+
+
+
+
+
+/*---------------------Breakpoints---------------------*/
+@media screen and (min-width: 0px) and (max-width: 920px) {
+    
+    .flexMisionVision, .flexEquipo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2%;
+    }
+
+    .flexMisionVision{
+        margin-bottom: 20%;
+    }
+
+    .mision{
+        margin-bottom: 10%;
+    }
+    
+    .misionImg{
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+        border: 2px solid white;
+    }
+
+    .justificar{
+        text-align: left;
+        justify-content: left;
+    }
+
+    .titulo{
+        font-size: 55px;
+    }
+
+    .titulo2{
+        font-size: 55px;
+    }
+
+    p, li{
+        font-size: 32px;
+    }
 }
