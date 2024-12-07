@@ -1,1 +1,177 @@
-/*Aca va el style del inicio*/
+/*----------------------------FONDO ANIMADO---------------------------------*/
+
+
+body>video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+
+    position: fixed;
+    top: 50%;
+    transform: translateX(-15%) translateY(-50%);
+
+    z-index: -100;
+
+    background-size: cover;
+}
+
+
+@media (max-width: 1024px) {
+    body>video {
+        min-width: 120%;
+        min-height: 100%;
+        transform: translateX(-20%) translateY(-50%);
+    }
+}
+
+
+@media (max-width: 767px) {
+    body>video {
+        min-width: 150%;
+        min-height: 100%;
+        transform: translateX(-25%) translateY(-50%);
+    }
+}
+
+
+/*----------------------------------NAV--------------------------------*/
+
+
+
+.navbar-title {
+
+    font-size: 50px;
+    font-family: 'VT323', monospace;
+    color: rgb(17, 221, 215);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
+        0 0 8px rgba(173, 216, 230, 0.166);
+
+}
+
+
+@media (max-width: 768px) {
+    .navbar-title {
+        font-size: 1.5rem;
+        margin-top: 10px;
+    }
+}
+
+
+
+
+:root {
+    --navbar-bg: #4a4de986;
+    --navbar-link-color: white;
+    --navbar-link-hover: #000000;
+    --navbar-toggler-bg: #00B4D8;
+    --navbar-toggler-hover: #0077B6;
+    --dropdown-bg: #0077B6;
+    --dropdown-item-color: #CAF0F8;
+    --dropdown-item-hover-bg: #5aa1cd;
+    --dropdown-item-hover-color: #000000;
+}
+
+
+
+
+.navbar {
+    background-color: var(--navbar-bg) !important;
+    width: 100%;
+    height: 30vh;
+    margin-block: 15px;
+    border-radius: 10px;
+    background: rgb(3, 185, 165);
+    background: linear-gradient(90deg, rgba(3, 185, 165, 0.48503151260504207) 0%, rgba(10, 93, 147, 0.8883928571428571) 50%, rgba(3, 185, 165, 0.47942927170868344) 100%);
+}
+
+
+
+.navbar .nav-link {
+    color: var(--navbar-link-color) !important;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 60px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: transform 0.5s ease, color 0.3s ease;
+
+}
+
+
+.navbar .nav-link:hover {
+    color: var(--navbar-link-hover) !important;
+    border: 1px solid white;
+    border-radius: 25px;
+    box-shadow:
+        0 0 30px rgba(16, 226, 253, 0.8),
+        0 0 60px rgba(183, 0, 255, 0.7),
+        15px 15px 35px rgba(16, 226, 253, 0.5),
+        -15px -15px 35px rgba(183, 0, 255, 0.5);
+    background-image: linear-gradient(to right, #0acffe 0%, #495aff 100%);
+    transform: scale(1.2);
+}
+
+
+.navbar-toggler {
+    background-color: var(--navbar-toggler-bg) !important;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+
+.navbar-toggler:hover {
+    background-color: var(--navbar-toggler-hover) !important;
+    background-color: #0000009d;
+}
+
+
+.dropdown-menu {
+    background-color: var(--dropdown-bg) !important;
+    border: none;
+}
+
+
+.dropdown-item {
+    color: var(--dropdown-item-color) !important;
+    font-family: 'IBM Plex Mono', monospace;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+
+.dropdown-item:hover {
+    background-color: var(--dropdown-item-hover-bg) !important;
+    color: var(--dropdown-item-hover-color) !important;
+
+}
+
+
+
+
+
+.offcanvas.offcanvas-end {
+    width: var(--offcanvas-width);
+    transform: translateX(100%);
+    background-color: #000000a2;
+    color: white;
+}
+
+
+
+
+.offcanvas-header .btn-close {
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+
+}
+
+
+.offcanvas-header .btn-close:hover {
+    transform: scale(1.2);
+}
