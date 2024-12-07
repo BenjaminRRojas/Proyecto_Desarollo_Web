@@ -35,7 +35,7 @@ body>video {
 }
 
 
-/*----------------------------------NAV--------------------------------*/
+/*----------------------------------N A V--------------------------------*/
 
 
 
@@ -176,17 +176,35 @@ body>video {
     transform: scale(1.2);
 }
 
+/*------------------T E X T O--------------------*/
+
+p{
+    color: #ffff;
+}
+
+.container-texto{
+    margin: 50px;
+}
+
+/*----------------C A R R U S E L----------------*/
+
+.carousel{
+    height: 200px; 
+    margin: 20px;
+}
+
+.carousel-item{
+    height: 100%; 
+}
+
+.carousel-item img{
+    height: 200px
+}
 
 
-/*------------------Footer Docentes------------------*/
+/*-------------------C A R D S-------------------*/
 
-/* .footer-docentes {
-    width: 100%;
-    height: 60vh;
-    margin-block: 15px;
-    border-radius: 10px;
-    background: linear-gradient(90deg, rgba(3, 185, 165, 0.48503151260504207) 0%, rgba(10, 93, 147, 0.8883928571428571) 50%, rgba(3, 185, 165, 0.47942927170868344) 100%);
-} */
+/*------------------F O O T E R------------------*/
 
 
 footer {
