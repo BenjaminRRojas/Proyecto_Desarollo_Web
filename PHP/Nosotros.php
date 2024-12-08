@@ -11,8 +11,9 @@
 </head>
 <body>
     <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <!--Navbar-->
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
 
                 <a class="navbar-brand ms-3" href="index.html">
@@ -60,11 +61,11 @@
             </div>
         </nav>
 
-        <div class="container-fluid">
+        
             <!--Container Misión y Visión-->
-            <div class="flexMisionVision mt-5 justify-content-around">
-                <div class="text-left mision" id="id123">
-                    <div class="mt-4 ms-4 text-light">
+            <div class="flexMisionVision justify-content-around">
+                <div class="mision">
+                    <div class="mt-4 ms-4 text-light titulo">
                         <h1 class="titulo">Misión y Visión</h1>
                     </div>
                     <div class="mt-4 mb-5 ms-5 me-5 fs-5 lh-lg text-light justificar">
@@ -72,7 +73,7 @@
                         <li class="mt-3">Visualizamos un mundo donde el aprendizaje sea accesible, personalizado y continuo, promoviendo el crecimiento individual y contribuyendo al progreso global a través de la formación de comunidades de aprendizaje inclusivas y colaborativas.</li>
                     </div>
                 </div>
-                <img class="mb-2 img-fluid misionImg" src="../imagenes/Estudiante.webp" alt="Estudiante">
+                <img class="img-fluid misionImg" src="../imagenes/Estudiante.webp" alt="Estudiante">
             </div>
             <!--Container Equipo-->
             <div class="flexEquipo mt-5 mb-5 justify-content-around">
@@ -100,7 +101,7 @@
             </div>
         </div>
         <!--Container Historia del Desarrollo-->
-        <div class="col-9 overflow-y-scroll mt-3 mb-3 historia border borderRadius" id="scrollContainer">
+        <div class="col-9 overflow-y-scroll mt-3 mb-3 historia border" id="scrollContainer">
             <h1 class="mt-4 ms-2 text-light titulo" id="titulo_1">Historia De Nuestra Plataforma: De una Idea a un Movimiento Educativo</h1>
             <p class="mt-3 mb-4 ms-4 me-5 lh-lg text-light justificar fuente">La idea de nuestra plataforma nació de una necesidad urgente: hacer que la programación sea accesible para todos, sin importar su ubicación o recursos económicos. Comenzamos como un pequeño equipo de desarrolladores apasionados, unidos por un objetivo común: democratizar el conocimiento tecnológico. Con el tiempo, nuestra plataforma evolucionó, integrando no solo cursos técnicos sino también una comunidad vibrante de estudiantes y mentores de todo el mundo. Hoy, nos enorgullece ser una puerta de entrada al mundo de la programación para miles de personas que aspiran a transformar sus vidas.</p>
             <h1 class="mt-4 ms-2 text-light titulo" id="titulo_2">Innovación Constante: El Motor de Nuestra Evolución</h1>
@@ -147,7 +148,7 @@
 
 
     </div>
-    </div>
+</div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     
