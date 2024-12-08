@@ -11,55 +11,55 @@
 </head>
 <body>
     <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>
-    <!--Navbar-->
     <div class="container-fluid">
+        <!--Navbar-->
         <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
+            <div class="container-fluid">
 
-                    <a class="navbar-brand ms-3" href="index.html">
-                        <img src="../imagenes/logo.svg" alt="logo" height="125">
-                    </a>
+                <a class="navbar-brand ms-3" href="index.html">
+                    <img src="../imagenes/logo.svg" alt="logo" height="125">
+                </a>
 
 
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <div class="d-none d-lg-block text-center ms-5">
-                        <h1 class="navbar-title">Aprende a programar desde cero hasta el infinito</h1>
+                <div class="d-none d-lg-block text-center ms-5">
+                    <h1 class="navbar-title">Aprende a programar desde cero hasta el infinito</h1>
+                </div>
+
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
+                        <button type="button" class="btn-close bg-light" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                        <hr>
                     </div>
-
-
-                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                        aria-labelledby="offcanvasNavbarLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
-                            <button type="button" class="btn-close bg-light" data-bs-dismiss="offcanvas"
-                                aria-label="Close"></button>
-                            <hr>
-                        </div>
-                        <div class="offcanvas-body">
-                            <ul class="navbar-nav justify-content-end">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="#">Cursos</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle active" href="#" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">Perfil</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
-                                        <li><a class="dropdown-item" href="#">Registrarse</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Cursos</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle active" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Perfil</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
+                                    <li><a class="dropdown-item" href="#">Registrarse</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </nav>
+            </div>
+        </nav>
 
         
             <!--Container Misión y Visión-->
@@ -101,7 +101,7 @@
             </div>
         </div>
         <!--Container Historia del Desarrollo-->
-        <div class="col-9 overflow-y-scroll mt-3 mb-3 historia border borderRadius" id="scrollContainer">
+        <div class="col-9 overflow-y-scroll mt-3 mb-3 historia border" id="scrollContainer">
             <h1 class="mt-4 ms-2 text-light titulo" id="titulo_1">Historia De Nuestra Plataforma: De una Idea a un Movimiento Educativo</h1>
             <p class="mt-3 mb-4 ms-4 me-5 lh-lg text-light justificar fuente">La idea de nuestra plataforma nació de una necesidad urgente: hacer que la programación sea accesible para todos, sin importar su ubicación o recursos económicos. Comenzamos como un pequeño equipo de desarrolladores apasionados, unidos por un objetivo común: democratizar el conocimiento tecnológico. Con el tiempo, nuestra plataforma evolucionó, integrando no solo cursos técnicos sino también una comunidad vibrante de estudiantes y mentores de todo el mundo. Hoy, nos enorgullece ser una puerta de entrada al mundo de la programación para miles de personas que aspiran a transformar sus vidas.</p>
             <h1 class="mt-4 ms-2 text-light titulo" id="titulo_2">Innovación Constante: El Motor de Nuestra Evolución</h1>
