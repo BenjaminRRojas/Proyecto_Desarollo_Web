@@ -178,9 +178,6 @@ body>video {
 
 /*----------CARUSEL------------*/
 .carusel{
-    padding: 30px;
-    margin: 30px;
-    background-color: #fafafa;
     border-radius: 10px;
 }
 .carusel img{
@@ -195,28 +192,65 @@ section{
     justify-content: space-evenly;
    
 }
+.bloque {
+    display: none; /* Por defecto, todos los bloques están ocultos */
+}
+
+.bloque.activo {
+    display: block; /* Solo el bloque activo será visible */
+}
+
+.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
 .card-header{
-    background-color: beige;
+    background-color: #34369e86;
 }
 .card-body{
-    background-color: var(--navbar-bg) !important;
-    background: rgb(3, 185, 165);
-    background: linear-gradient(90deg, rgba(3, 185, 165, 0.48503151260504207) 0%, rgba(10, 93, 147, 0.8883928571428571) 50%, rgba(3, 185, 165, 0.47942927170868344) 100%);
-    border-radius: 10px;
+    background-color: beige;
 }
-.card{
-    width: 100%;
+.card-body-interna{
+    background-color: cadetblue;
 }
-.card-cursos img{
-    height: 300px;
-}
-.card-body-cursos{
-    background-color: blueviolet;
+.card-img-top{
+    height: 200px;
 }
 /*--------------CERTIFICADOS------------------*/
 article{
     margin: 30px;
     padding: 30px;
-    background-color: #fafafa;
     border-radius: 10px;
+}
+article h2{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    font-size: 50px;
+    font-family: 'VT323', monospace;
+    color: rgb(17, 221, 215);
+    text-shadow:
+        0 0 4px rgba(255, 255, 255, 0.5),
+        0 0 8px rgba(173, 216, 230, 0.4);
+}
+.img-certificado{
+    width: 200px;
+    border-radius: 50%;
+    transition: transform 0.5s ease;
+}
+
+.img-certificado:hover{
+    transform:scale(1.2);
+    
+}
+/*--------------CORREOS------------------*/
+.correo{
+    border-radius: 10px;
+    background-color: beige;
+    padding: 30px;
+    margin: 30px;
 }
