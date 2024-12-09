@@ -184,6 +184,7 @@ body>video {
     font-family: 'VT323', monospace;
     color: rgb(17, 221, 215);
     text-shadow: 0 0 8px rgba(17, 221, 215, 0.8);
+    font-size: 45px;
 }
 
 .container .form-label {
