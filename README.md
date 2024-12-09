@@ -11,10 +11,11 @@ Este proyecto es una plataforma de cursos online desarrollada utilizando HTML, C
 - Formularios de contacto y registro funcionales.
 - Integración con bases de datos para almacenar información de usuarios y cursos.
 - Seguridad y autenticación de usuarios.
+- Se usara el diseño MVC(Modelo Vista Controlador) para el Backend.
 
 ## Requisitos Previos
 
-- XAMPP para servidro Local.
+- XAMPP para servidor Local.
 - MySQL o cualquier otra base de datos compatible.
 - Git (para controlar las versiones del código).
 - Conocimiento basicos en PHP,HTML,CSS y BOOTSTRAP

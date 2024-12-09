@@ -28,7 +28,7 @@ include("modulos CRUD/conexion.php");
         </ul>
     </div>
 
-    <!-- Contenido principal -->
+    <!--- Contenido principal --->
     <div class="dashboard-container">
         <h1>Dashboard de Cursos Online</h1>
 

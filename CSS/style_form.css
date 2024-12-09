@@ -1,5 +1,6 @@
 /*----------------------------FONDO ANIMADO---------------------------------*/
 
+
 body>video {
     min-width: 100%;
     min-height: 100%;
@@ -16,7 +17,27 @@ body>video {
 }
 
 
+@media (max-width: 1024px) {
+    body>video {
+        min-width: 120%;
+        min-height: 100%;
+        transform: translateX(-20%) translateY(-50%);
+    }
+}
+
+
+@media (max-width: 767px) {
+    body>video {
+        min-width: 150%;
+        min-height: 100%;
+        transform: translateX(-25%) translateY(-50%);
+    }
+}
+
+
 /*----------------------------------NAV--------------------------------*/
+
+
 
 .navbar-title {
 
@@ -24,11 +45,11 @@ body>video {
     font-family: 'VT323', monospace;
     color: rgb(17, 221, 215);
     text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
-        0 0 8px rgba(173, 216, 230, 0.4);
+        0 0 8px rgba(173, 216, 230, 0.166);
 
 }
 
-/* Título para pantallas pequeñas */
+
 @media (max-width: 768px) {
     .navbar-title {
         font-size: 1.5rem;
@@ -38,30 +59,22 @@ body>video {
 
 
 
+
 :root {
     --navbar-bg: #4a4de986;
-    /* Fondo de la navbar */
     --navbar-link-color: white;
-    /* Color de los enlaces */
     --navbar-link-hover: #000000;
-    /* Color de los enlaces al pasar el mouse */
     --navbar-toggler-bg: #00B4D8;
-    /* Fondo del botón hamburguesa */
     --navbar-toggler-hover: #0077B6;
-    /* Fondo del botón hamburguesa al pasar el mouse */
     --dropdown-bg: #0077B6;
-    /* Fondo del dropdown */
     --dropdown-item-color: #CAF0F8;
-    /* Color de los enlaces del dropdown */
     --dropdown-item-hover-bg: #5aa1cd;
-    /* Fondo del dropdown al pasar el mouse */
     --dropdown-item-hover-color: #000000;
-    /* Color del texto del dropdown al pasar el mouse */
 }
 
 
 
-/* Cambiar el color de fondo de la navbar */
+
 .navbar {
     background-color: var(--navbar-bg) !important;
     width: 100%;
@@ -73,7 +86,7 @@ body>video {
 }
 
 
-/* Cambiar el color de los enlaces */
+
 .navbar .nav-link {
     color: var(--navbar-link-color) !important;
     width: 100%;
@@ -88,7 +101,7 @@ body>video {
 
 }
 
-/* Hover en los enlaces */
+
 .navbar .nav-link:hover {
     color: var(--navbar-link-hover) !important;
     border: 1px solid white;
@@ -102,37 +115,63 @@ body>video {
     transform: scale(1.2);
 }
 
-/* Botón hamburguesa */
+
 .navbar-toggler {
     background-color: var(--navbar-toggler-bg) !important;
     border: none;
     transition: background-color 0.3s ease-in-out;
 }
 
-/* Hover en el botón hamburguesa */
+
 .navbar-toggler:hover {
     background-color: var(--navbar-toggler-hover) !important;
+    background-color: #0000009d;
 }
 
-/* Dropdown */
+
 .dropdown-menu {
     background-color: var(--dropdown-bg) !important;
     border: none;
 }
 
-/* Enlaces dentro del dropdown */
+
 .dropdown-item {
     color: var(--dropdown-item-color) !important;
     font-family: 'IBM Plex Mono', monospace;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-/* Hover en los enlaces del dropdown */
+
 .dropdown-item:hover {
     background-color: var(--dropdown-item-hover-bg) !important;
     color: var(--dropdown-item-hover-color) !important;
 
 }
+
+.offcanvas.offcanvas-end {
+    width: var(--offcanvas-width);
+    transform: translateX(100%);
+    background-color: #000000a2;
+    color: white;
+}
+
+
+
+
+.offcanvas-header .btn-close {
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+
+}
+
+
+.offcanvas-header .btn-close:hover {
+    transform: scale(1.2);
+}
+
 /*----------------------------------Formulario--------------------------------*/
 .container {
     background: rgba(20, 20, 20, 0.9); /* Fondo oscuro translúcido */
@@ -185,10 +224,10 @@ body>video {
 
 /*----------------------------------Modal--------------------------------*/
 .modal-content {
-    background: rgba(20, 20, 20, 0.9); /* Fondo oscuro translúcido */
+    background: rgba(20, 20, 20, 0.9) !important; 
     border-radius: 15px;
-    color: #e0e0e0; /* Texto claro */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Sombra más fuerte */
+    color: #e0e0e0; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
     font-family: 'IBM Plex Mono', monospace;
 }
 
@@ -202,7 +241,7 @@ body>video {
 
 /* Cuerpo del modal */
 .modal-body {
-    background: rgba(30, 30, 30, 1); /* Fondo más oscuro */
+    background: rgba(30, 30, 30, 1) !important; 
     border-radius: 10px;
     padding: 20px;
 }
@@ -243,4 +282,183 @@ body>video {
 .modal-footer .btn:hover {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(3, 185, 165, 0.8);
+}
+
+
+/*---------------------------------------Footer Docentes------------------------------------*/
+
+
+footer {
+    background: linear-gradient(90deg, rgba(3, 185, 165, 0.48503151260504207) 0%, rgba(10, 93, 147, 0.8883928571428571) 50%, rgba(3, 185, 165, 0.47942927170868344) 100%);
+    border-radius: 15px;
+    margin-block: 20px;
+}
+
+
+footer h3,
+footer h4 {
+    font-size: 45px;
+    font-family: 'VT323', monospace;
+    color: rgb(17, 221, 215);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
+        0 0 8px rgba(173, 216, 230, 0.166);
+}
+
+#docentes-p {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    font-size: 17px;
+    font-family: 'IBM Plex Mono', monospace;
+
+}
+
+
+.col-md-3 a {
+    color: #d1d1d1;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: 'IBM Plex Mono', monospace;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+
+
+footer .col-md-3>a:hover {
+    color: rgb(29, 234, 6);
+    border-radius: 10px;
+    /* box-shadow: 10px -10px 25px 0 rgba(255, 0, 0, 0.5), -10px 10px 25px 0 rgba(255, 0, 0, 0.8); */
+    box-shadow:
+        0 4px 15px rgba(34, 139, 34, 0.6),
+        /* Verde vibrante */
+        0 8px 30px rgba(50, 205, 50, 0.5),
+        /* Verde claro brillante */
+        0 10px 50px rgba(0, 100, 0, 0.4);
+    text-decoration: underline;
+
+}
+
+
+.bi:hover {
+    transform: scale(1.1);
+}
+
+
+.text-center {
+    font-size: 20px;
+    margin-top: 20px;
+    color: #d1d1d1;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+
+
+/*--Iconos--*/
+.iconos-redes {
+    max-width: fit-content;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    gap: 1rem;
+    backdrop-filter: blur(15px);
+    transition: 0.5s;
+}
+
+
+.iconos-redes ul {
+    padding: 1rem;
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.iconos-redes ul li {
+    cursor: pointer;
+}
+
+.svg {
+    transition: all 0.3s;
+    padding: 1rem;
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    color: rgb(17, 221, 215);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
+        0 0 8px rgba(173, 216, 230, 0.166);
+    fill: currentColor;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3),
+        inset 0 0 5px rgba(255, 255, 255, 0.5), 0 5px 5px rgba(0, 0, 0, 0.164);
+}
+
+.text {
+    opacity: 0;
+    border-radius: 5px;
+    padding: 5px;
+    transition: all 0.3s;
+    color: rgb(6, 6, 6);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
+        0 0 8px rgba(173, 216, 230, 0.166);
+    background-color: rgba(255, 255, 255, 0.3);
+    position: absolute;
+    z-index: 9999;
+    box-shadow: -5px 0 1px rgba(153, 153, 153, 0.2),
+        -10px 0 1px rgba(153, 153, 153, 0.2),
+        inset 0 0 20px rgba(255, 255, 255, 0.3),
+        inset 0 0 5px rgba(255, 255, 255, 0.5), 0 5px 5px rgba(0, 0, 0, 0.082);
+}
+
+/*isometric prooyection*/
+.iso-pro {
+    transition: 0.5s;
+}
+
+.iso-pro:hover a>.svg {
+    transform: translate(15px, -15px);
+    border-radius: 100%;
+}
+
+.iso-pro:hover .text {
+    opacity: 1;
+    transform: translate(25px, -2px) skew(-5deg);
+}
+
+.iso-pro:hover .svg {
+    transform: translate(5px, -5px);
+}
+
+.iso-pro span {
+    opacity: 0;
+    position: absolute;
+    color: #1877f2;
+    border-color: #1877f2;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3),
+        inset 0 0 5px rgba(255, 255, 255, 0.5), 0 5px 5px rgba(0, 0, 0, 0.164);
+    border-radius: 50%;
+    transition: all 0.3s;
+    height: 60px;
+    width: 60px;
+}
+
+.iso-pro:hover span {
+    opacity: 1;
+}
+
+.iso-pro:hover span:nth-child(1) {
+    opacity: 0.2;
+}
+
+.iso-pro:hover span:nth-child(2) {
+    opacity: 0.4;
+    transform: translate(5px, -5px);
+}
+
+.iso-pro:hover span:nth-child(3) {
+    opacity: 0.6;
+    transform: translate(10px, -10px);
 }
