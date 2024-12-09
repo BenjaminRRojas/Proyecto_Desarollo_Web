@@ -45,10 +45,10 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                                <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">Cursos</a>
+                                <a class="nav-link active" href="cursos.html">Cursos</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle active" href="#" role="button"
@@ -59,7 +59,7 @@
                                             Iniciar Sesión
                                         </button>
                                     </li>
-                                    <li><a class="dropdown-item" href="#">Registrarse</a></li>
+                                    <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
                                 </ul>
                             </li>
                         </ul>
