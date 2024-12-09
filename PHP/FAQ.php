@@ -61,6 +61,7 @@
             </div>
         </nav>
         <div class="container-fluid">
+        <!--Accordeon FAQ-->
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
                     <div class="accordion-header">
