@@ -266,11 +266,6 @@ p, li{
     font-family: 'IBM Plex Mono', monospace;
 }
 
-
-
-
-
-
 /*---------------------Breakpoints---------------------*/
 @media screen and (min-width: 0px) and (max-width: 920px) {
     
@@ -317,10 +312,7 @@ p, li{
     }
 }
 
-
-
 /*---------------------------------------Footer Docentes------------------------------------*/
-
 
 footer {
     background: linear-gradient(90deg, rgba(3, 185, 165, 0.48503151260504207) 0%, rgba(10, 93, 147, 0.8883928571428571) 50%, rgba(3, 185, 165, 0.47942927170868344) 100%);
