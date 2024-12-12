@@ -266,11 +266,6 @@ p, li{
     font-family: 'IBM Plex Mono', monospace;
 }
 
-
-
-
-
-
 /*---------------------Breakpoints---------------------*/
 @media screen and (min-width: 0px) and (max-width: 920px) {
     
@@ -314,102 +309,6 @@ p, li{
 
     p, li{
         font-size: 32px;
-    }
-}
-
-/*---------------------------------------Footer Docentes------------------------------------*/
-
-:root {
-    --tabla-bg: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 121, 135, 1) 50%, rgba(0, 212, 255, 1) 100%);
-    --tabla-txt-color: #fcfcfc;
-    --tabla-header-bg: #007bff;
-    --tabla-header-txt: #ffffff;
-    --tabla-row-bg: rgba(0, 0, 0, 0.7);
-    --tabla-row-hover-bg: rgba(5, 246, 226, 0.7);
-    --tabla-num-color: #00ffd9;
-    --tabla-border-radius: 10px;
-    --tabla-box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-}
-
-.tabla-top {
-    background: var(--tabla-bg);
-    border-radius: var(--tabla-border-radius);
-    border: 3px solid rgba(255, 255, 255, 0.601);
-    padding: 20px;
-    margin-block: 70px;
-    box-shadow: var(--tabla-box-shadow);
-    color: var(--tabla-txt-color);
-    text-align: center;
-}
-
-
-.tabla-top h4 {
-    font-size: 2.4rem;
-    margin-bottom: 20px;
-    /* font-family: 'VT323', monospace; */
-    font-family: 'IBM Plex Mono', monospace;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15), 0 6px 12px rgba(0, 0, 0, 0.1);
-}
-
-
-.table {
-    border-collapse: separate;
-    border-spacing: 0 10px;
-    width: 100%;
-    font-family: 'Arial', sans-serif;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15), 0 6px 12px rgba(0, 0, 0, 0.1);
-    /* color: var(--tabla-txt-color); */
-}
-
-
-.table thead th {
-    background-color: var(--tabla-header-bg);
-    color: var(--tabla-header-txt);
-    text-transform: uppercase;
-    padding: 15px;
-    border-radius: var(--tabla-border-radius) var(--tabla-border-radius) 0 0;
-    text-align: center;
-    border-radius: 60px;
-}
-
-
-.table tbody tr {
-    /* background-color: var(--tabla-row-bg); */
-    background-color: #00ffd9;
-    transition: all 0.3s ease;
-}
-
-.table tbody tr:hover {
-    /* background-color: var(--tabla-row-hover-bg); */
-    transform: scale(1.02);
-}
-
-
-.table td,
-.table th {
-    padding: 15px;
-    text-align: center;
-    vertical-align: middle;
-    border: none;
-    background-color: #00ffd9;
-}
-
-
-.num {
-    font-weight: bold;
-    color: var(--tabla-num-color);
-}
-
-
-@media (max-width: 768px) {
-    .tabla-top h4 {
-        font-size: 1.5rem;
-    }
-
-    .table thead th,
-    .table td {
-        font-size: 0.9rem;
-        padding: 10px;
     }
 }
 
