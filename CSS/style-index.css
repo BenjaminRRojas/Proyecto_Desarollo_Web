@@ -213,29 +213,6 @@ p{
 
 /*----------------C A R R U S E L----------------*/
 
-<<<<<<< Updated upstream
-.carousel {
-    height: 300px; 
-    margin-bottom: 20px; 
-    overflow: hidden; 
-  }
-  
-  .carousel-item {
-    height: 100%; 
-  }
-  
-  .carousel-item img {
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-  }
-  
-  .container-xxl {
-    clear: both; 
-  }
-  
-
-=======
 .carousel-item img {
     width: 100%;
     height: 400px; 
@@ -245,7 +222,6 @@ p{
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
     font-size: 1.2rem; 
 }
->>>>>>> Stashed changes
 
 /*-------------------C A R D S-------------------*/
 
