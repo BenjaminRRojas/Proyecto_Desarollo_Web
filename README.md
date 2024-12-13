@@ -15,7 +15,7 @@ Este proyecto es una plataforma de cursos online desarrollada utilizando HTML, C
 
 ## Requisitos Previos
 
-- XAMPP para servidro Local.
+- XAMPP para servidor Local.
 - MySQL o cualquier otra base de datos compatible.
 - Git (para controlar las versiones del código).
 - Conocimiento basicos en PHP,HTML,CSS y BOOTSTRAP
