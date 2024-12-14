@@ -213,33 +213,47 @@ p {
 
 /*----------------C A R R U S E L----------------*/
 
-.carousel {
-    height: 300px;
-    margin-bottom: 20px;
-    overflow: hidden;
-}
-
-.carousel-item {
-    height: 100%;
-}
-
 .carousel-item img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
+    width: 100%;
+    height: 400px; 
 }
 
-.container-xxl {
-    clear: both;
+.carousel-caption {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
 }
-
-
 
 /*-------------------C A R D S-------------------*/
 
 h4 {
     font-family: 'VT323', monospace;
 }
+
+
+.card {
+    background-color: #06112b !important; 
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .card:hover {
+    transform: scale(1.05); 
+    border: 3px solid skyblue;
+    box-shadow: 10px -10px 25px 0 rgba(16, 226, 253, 0.5), -10px 10px 25px 0 rgba(183, 0, 255, 0.794);
+  }
+  
+  .card-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+  }
+  
+  .card-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  
 
 /*------------------F O O T E R------------------*/
 
