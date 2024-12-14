@@ -15,6 +15,8 @@
 <body>
     <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>    
 
+    <div class="container-fluid">
+
         <!------------------------------NAV-------------------------------------->
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
@@ -246,7 +248,7 @@
                 <p>&copy; 2024 INFINITYCODE</p>
             </div>
         </footer>
-
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
