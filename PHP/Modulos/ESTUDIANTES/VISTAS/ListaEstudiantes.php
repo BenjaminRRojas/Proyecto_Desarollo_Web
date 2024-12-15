@@ -5,6 +5,18 @@ $controlador = new UsuariosControlador();
 $usuarios = $controlador->listarUsuarios();
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style_estudiantes.css">
+    <title>LISTA ESTUDIANTES</title>
+</head>
+<body>
+    
+
+
 <h1>Lista de Usuarios</h1>
 <table>
     <tr>
@@ -34,3 +46,7 @@ $usuarios = $controlador->listarUsuarios();
     <?php endforeach; ?>
 </table>
 <a href="formulario.php?accion=agregar">Agregar Usuario</a>
+
+
+</body>
+</html>
