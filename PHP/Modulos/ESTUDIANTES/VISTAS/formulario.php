@@ -30,9 +30,9 @@ $usuario = isset($usuario) ? $usuario : null;
 
     <label for="tipo_usuario">Tipo de Usuario:</label>
     <select name="tipo_usuario" required>
-        <option value="alumno" <?= isset($usuario) && $usuario['tipo_usuario'] == 'alumno' ? 'selected' : '' ?>>Alumno</option>
-        <option value="docente" <?= isset($usuario) && $usuario['tipo_usuario'] == 'docente' ? 'selected' : '' ?>>Docente</option>
-        <option value="admin" <?= isset($usuario) && $usuario['tipo_usuario'] == 'admin' ? 'selected' : '' ?>>Admin</option>
+        <option value="ESTUDIANTE" <?= isset($usuario) && $usuario['tipo_usuario'] == 'ESTUDIANTE' ? 'selected' : '' ?>>Alumno</option>
+        <option value="DOCENTE" <?= isset($usuario) && $usuario['tipo_usuario'] == 'DOCENTE' ? 'selected' : '' ?>>Docente</option>
+        <option value="ADMIN" <?= isset($usuario) && $usuario['tipo_usuario'] == 'ADMIN' ? 'selected' : '' ?>>Admin</option>
     </select>
 
     <button type="submit"><?= ($accion == 'agregar') ? 'Agregar' : 'Actualizar' ?> Usuario</button>

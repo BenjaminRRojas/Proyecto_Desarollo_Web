@@ -13,6 +13,6 @@ if ($accion == 'agregar') {
     $controlador->eliminarUsuario($_GET['id']);
 }
 
-header('Location: ../VISTAS/ListaUsuarios.php');
+header('Location: ../VISTAS/ListaEstudiantes.php');
 exit();
 ?>
