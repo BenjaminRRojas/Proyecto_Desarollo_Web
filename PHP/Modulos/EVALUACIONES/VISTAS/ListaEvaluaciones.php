@@ -26,8 +26,19 @@ $evaluaciones = $controlador->listarEvaluaciones();
         
         <!-- Buscador -->
         <div class="row my-4">
-            <div class="col-md-6 offset-md-3">
+            <div class="col-md-6">
                 <input type="text" id="searchInput" class="form-control" placeholder="Buscar por nombre, correo o ID...">
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text">Buscar por curso</span>
+                    <select class="form-select" aria-label="Default select example">
+                        <option selected>Selecciona un curso</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
             </div>
         </div>
 
@@ -50,7 +61,7 @@ $evaluaciones = $controlador->listarEvaluaciones();
                     <?php foreach ($evaluaciones as $evaluacion): ?>
                         <?php if($usuario['tipo_usuario'] == "ESTUDIANTE") :?>
                             <tr>
-                                <td><?= $usuario['id_usuario'] ?></td>
+                                <td><?= $usuario['id_evaluacion'] ?></td>
                                 <td><?= $usuario['nombres'] ?> <?= $usuario['apellidos'] ?></td>
                                 <td><?= $usuario['correo'] ?></td>
                                 <td><?= $usuario['sexo'] ?></td>
