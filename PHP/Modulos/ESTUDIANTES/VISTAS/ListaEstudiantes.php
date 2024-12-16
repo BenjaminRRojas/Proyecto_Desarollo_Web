@@ -71,7 +71,7 @@ $usuarios = $controlador->listarUsuarios();
         </div>
 
         <div class="text-center mt-4">
-            <a href="formulario.php?accion=agregar" class="btn btn-primary">Agregar Usuario</a>
+            <a href="../../../formulario.php?accion=agregar" class="btn btn-primary">Agregar Usuario</a>
         </div>
     </div>
 
