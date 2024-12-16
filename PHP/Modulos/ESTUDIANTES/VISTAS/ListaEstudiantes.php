@@ -16,7 +16,6 @@ $usuarios = $controlador->listarUsuarios();
 </head>
 
 <body>
-    <!-- Video de fondo -->
     <video autoplay muted loop>
         <source src="../../../../imagenes/fondo.mp4" type="video/mp4">
     </video>
@@ -41,7 +40,6 @@ $usuarios = $controlador->listarUsuarios();
                         <th>Nombre</th>
                         <th>Correo</th>
                         <th>Sexo</th>
-                        <th>Tipo Usuario</th>
                         <th>Fecha Registro</th>
                         <th>Acciones</th>
                     </tr>
@@ -54,11 +52,16 @@ $usuarios = $controlador->listarUsuarios();
                                 <td><?= $usuario['nombres'] ?> <?= $usuario['apellidos'] ?></td>
                                 <td><?= $usuario['correo'] ?></td>
                                 <td><?= $usuario['sexo'] ?></td>
-                                <td><?= $usuario['tipo_usuario'] ?></td>
                                 <td><?= $usuario['fecha_registro'] ?></td>
                                 <td>
                                     <a href="../RUTAS/modificar.php?id=<?= $usuario['id_usuario'] ?>" class="btn btn-warning btn-sm">Editar</a>
-                                    <a href="../RUTAS/eliminar.php?id=<?= $usuario['id_usuario'] ?>" class="btn btn-danger btn-sm">Eliminar</a>
+                                    <button 
+                                        class="btn btn-danger btn-sm" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#deleteModal" 
+                                        data-id="<?= $usuario['id_usuario'] ?>">
+                                        Eliminar
+                                    </button>
                                 </td>
                             </tr>
                         <?php endif; ?>
@@ -67,13 +70,32 @@ $usuarios = $controlador->listarUsuarios();
             </table>
         </div>
 
-        <!-- Botón de agregar usuario -->
         <div class="text-center mt-4">
             <a href="formulario.php?accion=agregar" class="btn btn-primary">Agregar Usuario</a>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
+    <!-- Modal para confirmar eliminación -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content custom-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Estás seguro de que deseas eliminar este usuario?</p>
+                    <p class="fw-bold" id="userIdToDelete"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <a id="confirmDeleteButton" href="#" class="btn btn-danger">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Script para el buscador -->
