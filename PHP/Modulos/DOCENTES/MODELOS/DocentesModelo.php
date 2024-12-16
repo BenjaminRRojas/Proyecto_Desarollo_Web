@@ -1,7 +1,7 @@
 <?php
 require_once '../../CORE/conexion.php';
 
-class docentessModelo {
+class docentesModelo {
     private $db;
 
     public function __construct() {
