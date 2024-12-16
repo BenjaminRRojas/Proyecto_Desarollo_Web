@@ -695,7 +695,6 @@ footer .col-md-3>a:hover {
     align-content: center;
     justify-content: center;
     gap: 1rem;
-    backdrop-filter: blur(15px);
     transition: 0.5s;
 }
 
