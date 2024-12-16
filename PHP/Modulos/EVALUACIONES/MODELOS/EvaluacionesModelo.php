@@ -21,6 +21,13 @@ class EvaluacionesModelo {
         return $query->fetch(PDO::FETCH_ASSOC);
     }
 
+    // Obtener una evaluación por ID de la evaluación
+    public function obtenerPorIdEvaluacion($id_evaluacion) {
+        $query = $this->db->prepare("SELECT * FROM evaluaciones WHERE id_evaluacion = ?");
+        $query->execute([$id_evaluacion]);
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+
     // Obtener una evaluación por ID del curso
     public function obtenerPorIdCurso($id_curso) {
         $query = $this->db->prepare("SELECT * FROM evaluaciones WHERE id_curso = ?");
