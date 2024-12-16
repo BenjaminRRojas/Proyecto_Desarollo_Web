@@ -9,7 +9,7 @@ class EvaluacionesModelo {
     }
 
     // Obtener todas las evaluaciones
-    public function obtenerTodos() {
+    public function obtenerTodos() { 
         $query = $this->db->query("SELECT id_evaluacion, nota1, nota2, nota3, tarea, promedio, id_usuario, id_curso FROM evaluaciones");
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
