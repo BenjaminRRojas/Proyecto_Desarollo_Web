@@ -38,5 +38,7 @@ class UsuariosModelo {
         $query = $this->db->prepare("DELETE FROM usuarios WHERE id_usuario = ?");
         return $query->execute([$id]);
     }
+
+
 }
 ?>
