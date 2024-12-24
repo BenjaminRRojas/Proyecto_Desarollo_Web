@@ -66,7 +66,11 @@
                                 <a class="nav-link dropdown-toggle active" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">Perfil</a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
+                                    <li>
+                                        <button type="button" class="dropdown-item btn btn-primary w-100 text-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                            Iniciar Sesión
+                                        </button>
+                                    </li>
                                     <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
                                 </ul>
                             </li>
@@ -75,6 +79,7 @@
                 </div>
             </div>
         </nav>
+
 
         <!------------------------------------BANNER------------------------------------------------>
 
@@ -282,6 +287,37 @@
                 <p>&copy; 2024 INFINITYCODE</p>
             </div>
         </footer>
+
+        <!-------------------------------------MODAL------------------------------------------------>
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Iniciar Sesión</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class=" p-4 rounded-3 shadow">
+                            <form action="login.php" method="POST">
+                                <div class="mb-3">
+                                    <label for="EMAIL" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="EMAIL" name="EMAIL" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Contraseña</label>
+                                    <input type="password" class="form-control" id="CONTRASENA" name="CONTRASENA" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="cambiar_contrasena.php" class="btn btn-primary">Cambiar Contraseña</a>
+                        <a href="" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</a>
+                        <a href="formulario.php" class="btn btn-primary">Registrarse</a>
+                    </div>
+                </div>
+            </div>
 
 
     </div>
