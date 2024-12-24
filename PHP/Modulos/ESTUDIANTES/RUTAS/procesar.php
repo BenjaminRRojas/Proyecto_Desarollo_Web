@@ -30,5 +30,5 @@ if ($accion == 'agregar') {
 }
 
 // Redirigir de vuelta al formulario principal
-//header('Location: ../../../formulario.php');
+header('Location: ../../../formulario.php');
 exit();
