@@ -1,3 +1,8 @@
+<?php
+$accion = $_GET['accion'] ?? 'agregar';
+$usuario = isset($usuario) ? $usuario : null;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,51 +75,58 @@
             </div>
         </nav>
 
-
-        <!-- Formulario -->
         <div class="container my-5 p-5 rounded-3 shadow-lg">
             <h2 class="text-center fw-bold mb-4">Registro</h2>
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="Modulos/ESTUDIANTES/RUTAS/procesar.php" method="POST" enctype="multipart/form-data">
+                <!-- CSRF Protection -->
+                <input type="hidden" name="csrf_token" value="<?= hash('sha256', session_id()) ?>">
+
+                <input type="hidden" name="accion" value="<?= htmlspecialchars($accion) ?>">
+                <?php if ($accion === 'editar'): ?>
+                    <input type="hidden" name="id" value="<?= htmlspecialchars($usuario['id_usuario'] ?? '') ?>">
+                <?php endif; ?>
+
+                <!-- Campos del formulario -->
                 <div class="mb-3">
-                    <label for="NOMBRES" class="form-label">Nombres</label>
-                    <input type="text" class="form-control" id="NOMBRES" name="NOMBRES" required>
+                    <label for="nombres" class="form-label">Nombres</label>
+                    <input type="text" class="form-control" id="nombres" name="nombres" value="<?= htmlspecialchars($usuario['nombres'] ?? '') ?>" required>
                 </div>
                 <div class="mb-3">
-                    <label for="APELLIDOS" class="form-label">Apellidos</label>
-                    <input type="text" class="form-control" id="APELLIDOS" name="APELLIDOS" required>
+                    <label for="apellidos" class="form-label">Apellidos</label>
+                    <input type="text" class="form-control" id="apellidos" name="apellidos" value="<?= htmlspecialchars($usuario['apellidos'] ?? '') ?>" required>
                 </div>
                 <div class="mb-3">
-                    <label for="EMAIL" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="EMAIL" name="EMAIL" required>
+                    <label for="correo" class="form-label">Correo</label>
+                    <input type="email" class="form-control" id="correo" name="correo" value="<?= htmlspecialchars($usuario['correo'] ?? '') ?>" required>
                 </div>
                 <div class="mb-3">
-                    <label for="CONTRASENA" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="CONTRASENA" required>
+                    <label for="contrasena" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="contrasena" name="contrasena" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Sexo</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="SEXO" id="sexo-hombre" value="Hombre" required>
-                        <label class="form-check-label" for="sexo-hombre">Hombre</label>
+                        <input class="form-check-input" type="radio" name="sexo" value="Hombre" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Hombre') ? 'checked' : '' ?>>
+                        <label class="form-check-label">Hombre</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="SEXO" id="sexo-mujer" value="Mujer">
-                        <label class="form-check-label" for="sexo-mujer">Mujer</label>
+                        <input class="form-check-input" type="radio" name="sexo" value="Mujer" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Mujer') ? 'checked' : '' ?>>
+                        <label class="form-check-label">Mujer</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="SEXO" id="sexo-otro" value="Otro">
-                        <label class="form-check-label" for="sexo-otro">Otro</label>
+                        <input class="form-check-input" type="radio" name="sexo" value="Otro" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Otro') ? 'checked' : '' ?>>
+                        <label class="form-check-label">Otro</label>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tipo de Usuario</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="TIPO_USUARIO" id="ALUMNO" value="Alumno" required>
-                        <label class="form-check-label" for="ALUMNO">Alumno</label>
+                        <input class="form-check-input" type="radio" name="tipo_usuario" value="ESTUDIANTE" <?= (isset($usuario['tipo_usuario']) && $usuario['tipo_usuario'] === 'ESTUDIANTE') ? 'checked' : '' ?>>
+                        <label class="form-check-label">Alumno</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="TIPO_USUARIO" id="DOCENTE" value="DOCENTE">
-                        <label class="form-check-label" for="DOCENTE">Docente</label>
+                        <input class="form-check-input" type="radio" name="tipo_usuario" value="DOCENTE" <?= (isset($usuario['tipo_usuario']) && $usuario['tipo_usuario'] === 'DOCENTE') ? 'checked' : '' ?>>
+                        <label class="form-check-label">Docente</label>
                     </div>
                 </div>
                 <div class="mb-3 d-none" id="archivo-docente">
@@ -123,21 +135,17 @@
                 </div>
                 <button type="submit" class="btn btn-success w-100">Registrar</button>
             </form>
-        </div>
+    </div>
 
-        <script>
-            // Mostrar/Ocultar campo de archivo dependiendo del tipo de usuario
-            document.querySelectorAll('input[name="TIPO_USUARIO"]').forEach((radio) => {
-                radio.addEventListener('change', function () {
-                    const archivoDocente = document.getElementById('archivo-docente');
-                    if (this.value === 'DOCENTE') {
-                        archivoDocente.classList.remove('d-none');
-                    } else {
-                        archivoDocente.classList.add('d-none');
-                    }
-                });
+    <script>
+        // Mostrar/Ocultar campo de archivo según el tipo de usuario
+        document.querySelectorAll('input[name="tipo_usuario"]').forEach((radio) => {
+            radio.addEventListener('change', function () {
+                const archivoDocente = document.getElementById('archivo-docente');
+                archivoDocente.classList.toggle('d-none', this.value !== 'DOCENTE');
             });
-        </script>
+        });
+    </script>
 
         <!-- Login Modal -->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

@@ -43,5 +43,39 @@ class UsuariosControlador {
     public function eliminarUsuario($id) {
         return $this->modelo->eliminar($id);
     }
+
+    //Enviar Correo
+    public function enviarCorreoConfirmacion($correo, $nombres) {
+        require __DIR__ . '/../../../../vendor/autoload.php';
+        $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+    
+        try {
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'codetitans123@gmail.com';
+            $mail->Password = 'cfza spsm geeg vdhg';  
+            $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
+            $mail->Port = 465;
+    
+            $mail->setFrom('codetitans123@gmail.com', 'CodeTitans Titans');
+            $mail->addAddress($correo, $nombres);
+    
+            $mail->isHTML(true);
+            $mail->Subject = 'Gracias por Registrarte!!!';
+            $mail->Body = "
+                <h1>Hola, $nombres</h1>
+                <p>Gracias por registrarte.</p>
+            ";
+            $mail->SMTPDebug = 2; 
+            $mail->send();
+            return true;
+        } catch (Exception $e) {
+            error_log('Error al enviar el correo: ' . $mail->ErrorInfo);
+            return false;
+        }
+    }
+ 
+
 }
 ?>

@@ -1,5 +1,6 @@
 <?php
-include("modulos CRUD/conexion.php");
+require_once "Modulos/CORE/conexion.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -9,7 +10,6 @@ include("modulos CRUD/conexion.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/style_dash.css">
     <title>Dashboard de Cursos Online</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -21,7 +21,7 @@ include("modulos CRUD/conexion.php");
         <ul>
             <li><a href="#">Inicio</a></li>
             <li><a href="#">Cursos</a></li>
-            <li><a href="#">Estudiantes</a></li>
+            <li><a href="Modulos/ESTUDIANTES/VISTAS/ListaEstudiantes.php">Estudiantes</a></li>
             <li><a href="#">Inscripciones</a></li>
             <li><a href="#">Reportes</a></li>
             <li><a href="#">Configuraciones</a></li>
@@ -64,7 +64,3 @@ include("modulos CRUD/conexion.php");
 
 </body>
 </html>
-
-<?php
-$conexion->close();
-?>
