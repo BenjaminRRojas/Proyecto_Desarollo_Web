@@ -1,4 +1,5 @@
 <section>
+    <!-- Iteración de los Foros -->
     <div class="container-fluid">
         <?php foreach($items as $r):
             $id=htmlspecialchars($r->id_foro);
