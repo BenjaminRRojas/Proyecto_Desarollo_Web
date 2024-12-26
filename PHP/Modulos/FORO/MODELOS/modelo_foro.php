@@ -9,6 +9,8 @@ class Foro{
     private $descripcion;
     private $fecha_creacion;
 
+    //Métodos Constructor, Get y Set
+
     public function __CONSTRUCT(){
         $this->pdo = DataBase::getConnection();
     }
@@ -53,6 +55,7 @@ class Foro{
         $this->fecha_creacion=$fec;
     }
 
+    //Método para el Inicio
     public function Listar(){
         try{
             $consulta=$this->pdo->prepare("SELECT * FROM foro");
