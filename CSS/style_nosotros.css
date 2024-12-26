@@ -171,143 +171,148 @@ body>video {
 
 /*-------Root Historia del Desarrollo-------*/
 
-:root{
+:root {
     --fondo-list-group: rgba(0, 0, 0, 0.667);
     --fondo-color-letra-list-group: white;
 }
 
 /*------------------------Grid Misión, Visión y Equipo------------------------*/
 
-.flexMisionVision, .flexEquipo{
+.flexMisionVision,
+.flexEquipo {
     display: grid;
     align-items: stretch;
     gap: 1%;
 }
 
-.flexMisionVision{
+.flexMisionVision {
     grid-template-columns: 60% 30%;
 }
 
-.flexEquipo{
+.flexEquipo {
     grid-template-columns: 30% 60%;
 }
 
 
 /*----------------------------Container Misión y Visión.---------------------------------*/
-.mision{
-    background: rgb(3,4,94);
-    background: linear-gradient(90deg, rgba(3,4,94,1) 0%, rgba(0,119,182,1) 50%, rgba(0,180,216,1) 100%);
+.mision {
+    background: rgb(3, 4, 94);
+    background: linear-gradient(90deg, rgba(3, 4, 94, 1) 0%, rgba(0, 119, 182, 1) 50%, rgba(0, 180, 216, 1) 100%);
     height: auto;
     border-radius: 20px;
     border: 2px solid white;
 }
 
 /*----------------------------Container Equipo---------------------------------*/
-.equipo{
-    background: rgb(0,180,216);
-    background: linear-gradient(90deg, rgba(0,180,216,1) 0%, rgba(0,119,182,1) 50%, rgba(3,4,94,1) 100%);
+.equipo {
+    background: rgb(0, 180, 216);
+    background: linear-gradient(90deg, rgba(0, 180, 216, 1) 0%, rgba(0, 119, 182, 1) 50%, rgba(3, 4, 94, 1) 100%);
     height: auto;
     border-radius: 20px;
     border: 2px solid white;
 }
 
-.justificar{
+.justificar {
     text-align: justify;
     justify-content: center;
 }
 
-.misionImg{
+.misionImg {
     height: auto;
     border-radius: 50%;
     border: 2px solid white;
 }
 
-h1, h2{
-    color: rgb(21,15,130);
+h1,
+h2 {
+    color: rgb(21, 15, 130);
     font-family: 'VT323', monospace;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 /*----------------------------Parámetros Historia del Desarrollo---------------------------------*/
 
-.historia{
-    background: rgb(3,4,94);
-    background: linear-gradient(90deg, rgba(3,4,94,1) 0%, rgba(0,119,182,1) 50%, rgba(0,180,216,1) 100%);
+.historia {
+    background: rgb(3, 4, 94);
+    background: linear-gradient(90deg, rgba(3, 4, 94, 1) 0%, rgba(0, 119, 182, 1) 50%, rgba(0, 180, 216, 1) 100%);
     height: 54vh;
     border-radius: 15px;
 }
 
-.list-group-item{
-    background-color: var(--fondo-list-group) !important; 
-    color: var(--fondo-color-letra-list-group) !important; 
-    border: 1px solid white; 
+.list-group-item {
+    background-color: var(--fondo-list-group) !important;
+    color: var(--fondo-color-letra-list-group) !important;
+    border: 1px solid white;
     transition: 0.5s ease, color 0.3s ease;
     height: 13vh;
 }
 
 .list-group-item:hover {
-    background: linear-gradient(90deg, rgba(3,4,94,1) 0%, rgba(0,119,182,1) 50%, rgba(0,180,216,1) 100%);
-    color: var(--fondo-color-letra-list-group) !important; 
+    background: linear-gradient(90deg, rgba(3, 4, 94, 1) 0%, rgba(0, 119, 182, 1) 50%, rgba(0, 180, 216, 1) 100%);
+    color: var(--fondo-color-letra-list-group) !important;
 }
 
 
 .list-group-item:focus {
     outline: none;
-    background-color: #00bfff; 
-    color: black; 
+    background-color: #00bfff;
+    color: black;
 }
 
 #scrollContainer {
-    overflow-y: scroll; 
-    scrollbar-width: none; 
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 
-p, li{
+p,
+li {
     font-family: 'IBM Plex Mono', monospace;
 }
 
 /*---------------------Breakpoints---------------------*/
 @media screen and (min-width: 0px) and (max-width: 920px) {
-    
-    .flexMisionVision, .flexEquipo{
+
+    .flexMisionVision,
+    .flexEquipo {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 1%;
     }
 
-    .flexMisionVision{
+    .flexMisionVision {
         margin-bottom: 30%;
     }
 
-    .misionImg{
+    .misionImg {
         width: 100%;
         height: auto;
         border-radius: 10%;
     }
 
-    .mision{
+    .mision {
         margin-bottom: 10%;
     }
 
-    .equipo{
+    .equipo {
         margin-top: 10%;
     }
 
-    .justificar{
+    .justificar {
         text-align: left;
         justify-content: left;
     }
 
-    .titulo{
+    .titulo {
         font-size: 55px;
     }
 
-    .titulo2{
+    .titulo2 {
         font-size: 55px;
     }
 
-    p, li{
+    p,
+    li {
         font-size: 32px;
     }
 }
@@ -387,7 +392,6 @@ footer .col-md-3>a:hover {
     align-content: center;
     justify-content: center;
     gap: 1rem;
-    backdrop-filter: blur(15px);
     transition: 0.5s;
 }
 

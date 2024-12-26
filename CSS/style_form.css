@@ -174,10 +174,13 @@ body>video {
 
 /*----------------------------------Formulario--------------------------------*/
 .container {
-    background: rgba(20, 20, 20, 0.9); /* Fondo oscuro translúcido */
+    background: rgba(20, 20, 20, 0.9);
+    /* Fondo oscuro translúcido */
     border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Sombra más fuerte */
-    color: #e0e0e0; /* Texto claro */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+    /* Sombra más fuerte */
+    color: #e0e0e0;
+    /* Texto claro */
 }
 
 .container h2 {
@@ -190,15 +193,19 @@ body>video {
 .container .form-label {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: bold;
-    color: #a0a0a0; /* Texto gris claro */
+    color: #a0a0a0;
+    /* Texto gris claro */
     margin-bottom: 5px;
 }
 
 .container .form-control {
-    background: rgba(40, 40, 40, 1); /* Fondo oscuro */
-    border: 1px solid rgba(60, 180, 180, 0.5); /* Bordes con color suave */
+    background: rgba(40, 40, 40, 1);
+    /* Fondo oscuro */
+    border: 1px solid rgba(60, 180, 180, 0.5);
+    /* Bordes con color suave */
     border-radius: 8px;
-    color: #ffffff; /* Texto claro */
+    color: #ffffff;
+    /* Texto claro */
     font-family: 'IBM Plex Mono', monospace;
     font-size: 16px;
 }
@@ -225,9 +232,9 @@ body>video {
 
 /*----------------------------------Modal--------------------------------*/
 .modal-content {
-    background: rgba(20, 20, 20, 0.9) !important; 
+    background: rgba(20, 20, 20, 0.9) !important;
     border-radius: 15px;
-    color: #e0e0e0; 
+    color: #e0e0e0;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
     font-family: 'IBM Plex Mono', monospace;
 }
@@ -242,7 +249,7 @@ body>video {
 
 /* Cuerpo del modal */
 .modal-body {
-    background: rgba(30, 30, 30, 1) !important; 
+    background: rgba(30, 30, 30, 1) !important;
     border-radius: 10px;
     padding: 20px;
 }
@@ -254,8 +261,8 @@ body>video {
 
 .modal-body .form-control {
     background: rgba(40, 40, 40, 1);
-    border: 1px solid rgba(60, 180, 180, 0.5); 
-    color: #0f0b0b; 
+    border: 1px solid rgba(60, 180, 180, 0.5);
+    color: #0f0b0b;
     border-radius: 10px;
     font-family: 'IBM Plex Mono', monospace;
 }
@@ -267,7 +274,7 @@ body>video {
 
 /* Footer del modal */
 .modal-footer {
-    background: rgba(20, 20, 20, 1); 
+    background: rgba(20, 20, 20, 1);
     border-top: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 0 0 15px 15px;
 }
@@ -362,7 +369,6 @@ footer .col-md-3>a:hover {
     align-content: center;
     justify-content: center;
     gap: 1rem;
-    backdrop-filter: blur(15px);
     transition: 0.5s;
 }
 

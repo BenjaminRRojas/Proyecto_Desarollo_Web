@@ -163,26 +163,29 @@ body>video {
 
 /*----------Accordion-----------*/
 
-.accordion-button{
-    background-color: rgb(0,119,182) !important;
+.accordion-button {
+    background-color: rgb(0, 119, 182) !important;
 }
 
 .accordion-button:not(.collapsed) {
-    background: rgb(3,4,94) !important;
-    background: linear-gradient(90deg, rgba(3,4,94,1) 0%, rgba(0,119,182,1) 50%, rgba(0,180,216,1) 100%) !important;
+    background: rgb(3, 4, 94) !important;
+    background: linear-gradient(90deg, rgba(3, 4, 94, 1) 0%, rgba(0, 119, 182, 1) 50%, rgba(0, 180, 216, 1) 100%) !important;
 }
 
-.accordion-button:link, .accordion-button:visited, .accordion-button:hover, .accordion-button:active{
-    background: rgb(3,4,94) !important;
-    background: linear-gradient(90deg, rgba(3,4,94,1) 0%, rgba(0,119,182,1) 50%, rgba(0,180,216,1) 100%) !important;
+.accordion-button:link,
+.accordion-button:visited,
+.accordion-button:hover,
+.accordion-button:active {
+    background: rgb(3, 4, 94) !important;
+    background: linear-gradient(90deg, rgba(3, 4, 94, 1) 0%, rgba(0, 119, 182, 1) 50%, rgba(0, 180, 216, 1) 100%) !important;
     text-decoration: none !important;
     border-color: #FFF !important;
-    box-shadow: 0px !important;   
+    box-shadow: 0px !important;
     border: 1px solid white !important;
 }
 
-.accordion-button:hover{
-    background-color: rgb(0,119,182) !important;
+.accordion-button:hover {
+    background-color: rgb(0, 119, 182) !important;
     box-shadow: white;
 }
 
@@ -193,19 +196,21 @@ body>video {
     box-shadow: 0 0 0 .0rem #FFF !important;
 }
 
-.accordion-body{
-    background: rgb(3,4,94) !important;
-    background: linear-gradient(90deg, rgba(3,4,94,1) 0%, rgba(0,119,182,1) 50%, rgba(0,180,216,1) 100%) !important;
+.accordion-body {
+    background: rgb(3, 4, 94) !important;
+    background: linear-gradient(90deg, rgba(3, 4, 94, 1) 0%, rgba(0, 119, 182, 1) 50%, rgba(0, 180, 216, 1) 100%) !important;
 }
 
-.accordion-header h1, .accordion-header h2 {
-    font-family: 'VT323', monospace; 
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4); 
+.accordion-header h1,
+.accordion-header h2 {
+    font-family: 'VT323', monospace;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     font-size: 25px;
     color: white;
 }
 
-.accordion-body p, .accordion-body li {
+.accordion-body p,
+.accordion-body li {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 19px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
@@ -287,7 +292,6 @@ footer .col-md-3>a:hover {
     align-content: center;
     justify-content: center;
     gap: 1rem;
-    backdrop-filter: blur(15px);
     transition: 0.5s;
 }
 
