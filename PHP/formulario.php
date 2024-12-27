@@ -163,17 +163,19 @@ $usuario = isset($usuario) ? $usuario : null;
                                     <input type="email" class="form-control" id="EMAIL" name="EMAIL" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="password" class="form-label">Contraseña</label>
+                                    <label for="CONTRASENA" class="form-label">Contraseña</label>
                                     <input type="password" class="form-control" id="CONTRASENA" name="CONTRASENA" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+                                <div>
+                                    <p>¿No tienes una cuenta? <a href="formulario.php">Regístrate</a></p>
+                                </div>
+                                <button type="submit" class="btn w-100">Iniciar sesión</button>
                             </form>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="cambiar_contrasena.php" class="btn btn-primary">Cambiar Contraseña</a>
+                        <a href="cambiar_contrasena.php" class="btn btn-primary">Cambiar contraseña</a>
                         <a href="" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</a>
-                        <a href="formulario.php" class="btn btn-primary">Registrarse</a>
                     </div>
                 </div>
             </div>
@@ -185,15 +187,15 @@ $usuario = isset($usuario) ? $usuario : null;
 
                 <div class="col-md-3">
                     <h4>Educación</h4>
-                    <a href="#">Cursos</a><br>
+                    <a href="cursos.html">Cursos</a><br>
                     <a href="docentes.html">Docentes</a><br>
                     <a href="#"></a>
                 </div>
 
                 <div class="col-md-3">
                     <h4>Comunidad</h4>
-                    <a href="#">Preguntas Frecuentes</a><br>
-                    <a href="#">Foro</a><br>
+                    <a href="FAQ.php">Preguntas Frecuentes</a><br>
+                    <a href="foro.php">Foro</a><br>
                     <a href="#"></a>
                 </div>
 
