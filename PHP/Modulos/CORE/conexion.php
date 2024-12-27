@@ -7,12 +7,13 @@ class Database {
             try {
                 // Configuración de la conexión
                 $host = 'localhost';
+                $port = '3307';
                 $dbname = 'cursos_online';
                 $user = 'root';
                 $password = '';
 
                 // Crear una nueva conexión PDO
-                self::$connection = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
+                self::$connection = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8", $user, $password);
 
                 // Configurar para Mostrar exepciones
                 self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

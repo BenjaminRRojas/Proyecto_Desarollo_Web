@@ -174,10 +174,13 @@ body>video {
 
 /*----------------------------------Formulario--------------------------------*/
 .container {
-    background: rgba(20, 20, 20, 0.9); /* Fondo oscuro translúcido */
+    background: rgba(20, 20, 20, 0.9);
+    /* Fondo oscuro translúcido */
     border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8); /* Sombra más fuerte */
-    color: #e0e0e0; /* Texto claro */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+    /* Sombra más fuerte */
+    color: #e0e0e0;
+    /* Texto claro */
 }
 
 .container h2 {
@@ -190,15 +193,19 @@ body>video {
 .container .form-label {
     font-family: 'IBM Plex Mono', monospace;
     font-weight: bold;
-    color: #a0a0a0; /* Texto gris claro */
+    color: #a0a0a0;
+    /* Texto gris claro */
     margin-bottom: 5px;
 }
 
 .container .form-control {
-    background: rgba(40, 40, 40, 1); /* Fondo oscuro */
-    border: 1px solid rgba(60, 180, 180, 0.5); /* Bordes con color suave */
+    background: rgba(40, 40, 40, 1);
+    /* Fondo oscuro */
+    border: 1px solid rgba(60, 180, 180, 0.5);
+    /* Bordes con color suave */
     border-radius: 8px;
-    color: #ffffff; /* Texto claro */
+    color: #ffffff;
+    /* Texto claro */
     font-family: 'IBM Plex Mono', monospace;
     font-size: 16px;
 }
@@ -227,7 +234,7 @@ body>video {
 .modal-content {
     background: rgba(4, 10, 21, 0.9) !important; 
     border-radius: 15px;
-    color: #e0e0e0; 
+    color: #e0e0e0;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
     font-family: 'IBM Plex Mono', monospace;
 }
@@ -344,17 +351,9 @@ footer h4 {
 
 
 footer .col-md-3>a:hover {
-    color: rgb(29, 234, 6);
+    color: black;
     border-radius: 10px;
-    /* box-shadow: 10px -10px 25px 0 rgba(255, 0, 0, 0.5), -10px 10px 25px 0 rgba(255, 0, 0, 0.8); */
-    box-shadow:
-        0 4px 15px rgba(34, 139, 34, 0.6),
-        /* Verde vibrante */
-        0 8px 30px rgba(50, 205, 50, 0.5),
-        /* Verde claro brillante */
-        0 10px 50px rgba(0, 100, 0, 0.4);
     text-decoration: underline;
-
 }
 
 
@@ -365,7 +364,6 @@ footer .col-md-3>a:hover {
 
 .text-center {
     font-size: 20px;
-    margin-top: 20px;
     color: #d1d1d1;
     font-family: 'IBM Plex Mono', monospace;
 }
@@ -380,21 +378,19 @@ footer .col-md-3>a:hover {
     flex-direction: column;
     align-content: center;
     justify-content: center;
-    gap: 1rem;
-    backdrop-filter: blur(15px);
     transition: 0.5s;
 }
 
 
 .iconos-redes ul {
-    padding: 1rem;
+    /* padding: 1rem; */
     display: flex;
     list-style: none;
     gap: 1rem;
     align-items: center;
     justify-content: center;
     align-content: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     flex-direction: column;
 }
 
@@ -405,8 +401,8 @@ footer .col-md-3>a:hover {
 .svg {
     transition: all 0.3s;
     padding: 1rem;
-    height: 60px;
-    width: 60px;
+    height: 55px;
+    width: 55px;
     border-radius: 100%;
     color: rgb(17, 221, 215);
     text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
@@ -419,7 +415,7 @@ footer .col-md-3>a:hover {
 .text {
     opacity: 0;
     border-radius: 5px;
-    padding: 5px;
+    /* padding: 5px; */
     transition: all 0.3s;
     color: rgb(6, 6, 6);
     text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),

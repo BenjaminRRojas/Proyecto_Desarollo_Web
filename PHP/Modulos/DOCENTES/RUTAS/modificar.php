@@ -12,12 +12,12 @@ if (isset($_GET['id'])) {
     
     // Si el usuario no existe, redirigir a la lista
     if (!$usuario) {
-        header('Location: formulario.php');
+        header('Location: ListaDocente.php');
         exit();
     }
 } else {
     // Si no se proporciona un ID, redirigir a la lista
-    header('Location: formulario.php');
+    header('Location: ListaDocentes.php');
     exit();
 }
 ?>
