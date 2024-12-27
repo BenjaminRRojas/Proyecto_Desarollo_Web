@@ -21,7 +21,7 @@ require_once "Modulos/CORE/conexion.php";
         <ul>
             <li><a href="#">Inicio</a></li>
             <li><a href="#">Cursos</a></li>
-            <li><a href="Modulos/DOCENTES/VISTAS/formulario.php">Docentes</a></li>
+            <li><a href="Modulos/DOCENTES/VISTAS/ListaDocentes.php">Docentes</a></li>
             <li><a href="Modulos/ESTUDIANTES/VISTAS/ListaEstudiantes.php">Estudiantes</a></li>
             <li><a href="#">Inscripciones</a></li>
             <li><a href="#">Reportes</a></li>

@@ -15,7 +15,7 @@ class UsuariosControlador {
 
     // Mostrar el formulario para agregar un nuevo usuario
     public function formularioAgregar() {
-        include '../VISTAS/formulario.php';
+        include '../VISTAS/ListaDocentes.php';
     }
 
     // Agregar un nuevo usuario
@@ -31,7 +31,7 @@ class UsuariosControlador {
     // Mostrar el formulario para editar un usuario
     public function formularioEditar($id) {
         $usuario = $this->modelo->obtenerPorId($id);
-        include '../VISTAS/formulario.php';
+        include '../VISTAS/ListaDocentes.php';
     }
 
     // Actualizar un usuario
