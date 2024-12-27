@@ -12,7 +12,7 @@ $evaluaciones = $controlador->listarEvaluaciones();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Evaluaciones</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../../../CSS/style_estudiantes.css">
+    <link rel="stylesheet" href="../../../../CSS/style-evaluaciones.css">
 </head>
 
 <body>
@@ -27,18 +27,18 @@ $evaluaciones = $controlador->listarEvaluaciones();
         <!-- Buscador -->
         <div class="row my-4">
             <div class="col-md-6">
-                <input type="text" id="searchInput" class="form-control" placeholder="Buscar por nombre, correo o ID...">
-            </div>
-            <div class="col-md-6">
-                <div class="input-group">
+                <div class="input-group" id="selectInput">
                     <span class="input-group-text">Buscar por curso</span>
                     <select class="form-select" aria-label="Default select example">
-                        <option selected>Selecciona un curso</option>
+                        <option selected>Todos los cursos</option>
                         <option value="1">One</option>
                         <option value="2">Two</option>
                         <option value="3">Three</option>
                     </select>
                 </div>
+            </div>
+            <div class="col-md-6">
+                <input type="text" id="searchInput" class="form-control" placeholder="Buscar por nombre, correo o ID...">
             </div>
         </div>
 
@@ -48,13 +48,13 @@ $evaluaciones = $controlador->listarEvaluaciones();
                 <thead>
                     <tr>
                         <th>ID</th>
+                        <th>Curso</th>
                         <th>Nombre</th>
                         <th>Nota 1</th>
                         <th>Nota 2</th>
                         <th>Nota 3</th>
                         <th>Nota Tarea</th>
                         <th>Promedio</th>
-                        <th>Curso</th>
                     </tr>
                 </thead>
                 <tbody id="userTable">
@@ -62,10 +62,13 @@ $evaluaciones = $controlador->listarEvaluaciones();
                         <?php if($usuario['tipo_usuario'] == "ESTUDIANTE") :?>
                             <tr>
                                 <td><?= $usuario['id_evaluacion'] ?></td>
+                                <td><?= $usuario['curso'] ?></td>
                                 <td><?= $usuario['nombres'] ?> <?= $usuario['apellidos'] ?></td>
-                                <td><?= $usuario['correo'] ?></td>
-                                <td><?= $usuario['sexo'] ?></td>
-                                <td><?= $usuario['fecha_registro'] ?></td>
+                                <td><?= $usuario['nota1'] ?></td>
+                                <td><?= $usuario['nota2'] ?></td>
+                                <td><?= $usuario['nota3'] ?></td>
+                                <td><?= $usuario['tarea'] ?></td>
+                                <td><?= $usuario['promedio'] ?></td>
                                 <td>
                                     <a href="../RUTAS/modificar.php?id=<?= $evaluacion['id_evaluacion'] ?>" class="btn btn-warning btn-sm">Editar</a>
                                     <button 
@@ -84,7 +87,7 @@ $evaluaciones = $controlador->listarEvaluaciones();
         </div>
 
         <div class="text-center mt-4">
-            <a href="formulario.php?accion=agregar" class="btn btn-lg btn-primary">Agregar Usuario</a>
+            <a href="formulario.php?accion=agregar" class="btn btn-lg btn-primary">Agregar Evaluaciones</a>
         </div>
     </div>
 
@@ -97,7 +100,7 @@ $evaluaciones = $controlador->listarEvaluaciones();
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>¿Estás seguro de que deseas eliminar este usuario?</p>
+                    <p>¿Estás seguro de que deseas eliminar estas evaluaciones?</p>
                     <p class="fw-bold" id="userIdToDelete"></p>
                 </div>
                 <div class="modal-footer">
