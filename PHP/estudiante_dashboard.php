@@ -120,7 +120,6 @@ try {
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID Curso</th>
                     <th>Título del Curso</th>
                     <th>Categoría</th>
                     <th>Duración (horas)</th>
@@ -132,7 +131,6 @@ try {
                 <?php if (count($cursos_inscritos) > 0): ?>
                     <?php foreach ($cursos_inscritos as $curso): ?>
                         <tr>
-                            <td><?= htmlspecialchars($curso['id_curso']) ?></td>
                             <td><?= htmlspecialchars($curso['titulo']) ?></td>
                             <td><?= htmlspecialchars($curso['categoria']) ?></td>
                             <td><?= htmlspecialchars($curso['duracion']) ?></td>
