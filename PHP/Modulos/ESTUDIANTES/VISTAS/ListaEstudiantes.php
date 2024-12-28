@@ -95,25 +95,7 @@ $usuarios = $controlador->listarUsuarios();
         </div>
     </div>
 
-    <!-- Modal para confirmar eliminación -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content custom-modal">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>¿Estás seguro de que deseas eliminar este estudiante?</p>
-                    <p class="fw-bold">ID del Estudiante: <span id="userIdToDelete"></span></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button id="confirmDeleteButton" class="btn btn-danger">Eliminar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <script>
         // Script para manejar el modal de eliminación
