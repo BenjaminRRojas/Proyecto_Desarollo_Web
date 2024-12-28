@@ -76,7 +76,7 @@ $usuario = isset($usuario) ? $usuario : null;
             </div>
         </nav>
 
-        <div class="container my-5 p-5 rounded-3 shadow-lg">
+        <div class="container my-5 w-50 p-5 rounded-3 shadow-lg">
             <h2 class="text-center fw-bold mb-4">Registro</h2>
             <form action="Modulos/ESTUDIANTES/RUTAS/procesar.php" method="POST" enctype="multipart/form-data">
                 <!-- CSRF Protection -->
