@@ -19,8 +19,8 @@ class EvaluacionesControlador{
     }
 
     // Agregar una nueva evaluación
-    public function agregarEvaluacion($nota1, $nota2, $nota3, $tarea, $promedio, $id_usuario, $id_curso) {
-        return $this->modelo->insertar($nota1, $nota2, $nota3, $tarea, $promedio, $id_usuario, $id_curso);
+    public function agregarEvaluacion($titulo, $descripcion, $fecha_creacion, $fecha_limite, $id_curso) {
+        return $this->modelo->insertar($titulo, $descripcion, $fecha_creacion, $fecha_limite, $id_curso);
     }
 
     // Mostrar los detalles de la evaluación
@@ -30,16 +30,16 @@ class EvaluacionesControlador{
 
     // Mostrar el formulario para editar una evaluación
     public function formularioEditar($id_evaluacion) {
-        $usuario = $this->modelo->obtenerPorIdEvaluacion($id_evaluacion);
-        include '../VISTAS/formulario.php';
+        $evaluacion = $this->modelo->obtenerPorIdEvaluacion($id_evaluacion);
+        include '../../../formulario.php';
     }
 
     // Actualizar una evaluación
-    public function actualizarEvaluacion($id_evaluacion, $nota1, $nota2, $nota3, $tarea, $promedio, $id_usuario, $id_curso) {
-        return $this->modelo->actualizar($id_evaluacion, $nota1, $nota2, $nota3, $tarea, $promedio, $id_usuario, $id_curso);
+    public function actualizarEvaluacion($id_evaluacion, $titulo, $descripcion, $fecha_creacion, $fecha_limite, $id_curso) {
+        return $this->modelo->actualizar($id_evaluacion, $titulo, $descripcion, $fecha_creacion, $fecha_limite, $id_curso);
     }
 
-    // Eliminar un usuario
+    // Eliminar una evaluación 
     public function eliminarEvaluacion($id_evaluacion) {
         return $this->modelo->eliminar($id_evaluacion);
     }
