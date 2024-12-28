@@ -44,6 +44,19 @@ class UsuariosControlador {
         return $this->modelo->eliminar($id);
     }
 
+
+
+
+    public function guardarArchivoEnMedia($nombreArchivo, $ubicacionArchivo, $tipoArchivo) {
+        $conexion = $this->obtenerConexion();
+        $sql = "INSERT INTO media (nombre_archivo, ubicacion_archivo, tipo_archivo) VALUES (?, ?, ?)";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bind_param('sss', $nombreArchivo, $ubicacionArchivo, $tipoArchivo);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+
     //Enviar Correo
     public function enviarCorreoConfirmacion($correo, $nombres) {
         require __DIR__ . '/../../../../vendor/autoload.php';

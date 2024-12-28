@@ -1,7 +1,10 @@
 <?php
 $accion = $_GET['accion'] ?? 'agregar';
 $usuario = isset($usuario) ? $usuario : null;
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,7 +78,9 @@ $usuario = isset($usuario) ? $usuario : null;
                 </div>
             </div>
         </nav>
+        
 
+        <!------Formulario------>
         <div class="container my-5 p-5 rounded-3 shadow-lg">
             <h2 class="text-center fw-bold mb-4">Registro</h2>
             <form action="Modulos/DOCENTES/RUTAS/procesar.php" method="POST" enctype="multipart/form-data">
@@ -132,7 +137,7 @@ $usuario = isset($usuario) ? $usuario : null;
                 </div>
                 <div class="mb-3 d-none" id="archivo-docente">
                     <label for="ARCHIVOS" class="form-label">Seleccione los archivos</label>
-                    <input type="file" class="form-control" id="ARCHIVOS" name="ARCHIVOS[]" multiple>
+                    <input type="file" class="form-control" id="ARCHIVOS[]" name="ARCHIVOS[]" multiple>
                 </div>
                 <button type="submit" class="btn btn-success w-100">Registrar</button>
             </form>

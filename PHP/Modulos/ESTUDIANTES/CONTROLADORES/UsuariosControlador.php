@@ -44,6 +44,7 @@ class UsuariosControlador {
         return $this->modelo->eliminar($id);
     }
 
+
     //Enviar Correo
     public function enviarCorreoConfirmacion($correo, $nombres) {
         require __DIR__ . '/../../../../vendor/autoload.php';
