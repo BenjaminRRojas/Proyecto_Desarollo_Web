@@ -15,7 +15,7 @@ if (isset($_GET['id_curso'])) {
     exit();
 } else {
     // Si no se proporciona un ID, redirigir a la lista
-    header('Location: ../VISTAS/ListaCursos.php');
+    header('Location: ../../../cursos.php');
     exit();
 }
 ?>

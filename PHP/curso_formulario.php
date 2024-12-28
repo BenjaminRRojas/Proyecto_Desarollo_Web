@@ -83,7 +83,7 @@ $curso = isset($curso) ? $curso : null;
                 <input type="hidden" name="csrf_token" value="<?= hash('sha256', session_id()) ?>">
 
                 <input type="hidden" name="accion" value="<?= htmlspecialchars($accion) ?>">
-                <?php if ($accion === 'editar'): ?>
+                <?php if ($accion === 'agregar'): ?>
                     <input type="hidden" name="id" value="<?= htmlspecialchars($curso['id_usuario'] ?? '') ?>">
                 <?php endif; ?>
 

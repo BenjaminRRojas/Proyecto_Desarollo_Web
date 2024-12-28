@@ -28,8 +28,9 @@ class CursosModelo {
     }
 
     // Actualizar un curso
-    public function actualizar($id, $titulo, $duracion,$fecha_creacion, $categoria){
-        $query = $this->db->prepare("UPDATE cursos SET titulo = ?,duracion = ?, fecha_creacion = ?, categoria = ? WHERE id_curso = ?");
+    public function actualizar($id, $titulo, $duracion, $fecha_creacion, $categoria) {
+    $query = $this->db->prepare("UPDATE cursos SET titulo = ?, duracion = ?, fecha_creacion = ?, categoria = ? WHERE id_curso = ?");
+    return $query->execute([$titulo, $duracion, $fecha_creacion, $categoria, $id]);
     }
 
     // Eliminar un curso
