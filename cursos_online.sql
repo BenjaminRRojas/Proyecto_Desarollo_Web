@@ -76,12 +76,10 @@ INSERT INTO `cursos` (`id_curso`, `titulo`, `duracion`, `fecha_creacion`, `categ
 
 CREATE TABLE `evaluaciones` (
   `id_evaluacion` int(11) NOT NULL,
-  `nota1` float NOT NULL,
-  `nota2` float NOT NULL,
-  `nota3` float NOT NULL,
-  `tarea` varchar(255) NOT NULL,
-  `promedio` float NOT NULL,
-  `id_usuario` int(11) NOT NULL,
+  `titulo` varchar(255) NOT NULL,
+  `descripcion` TEXT NOT NULL,
+  `fecha_creacion` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `fecha_limite` DATETIME NOT NULL,
   `id_curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -197,7 +195,6 @@ ALTER TABLE `cursos`
 --
 ALTER TABLE `evaluaciones`
   ADD PRIMARY KEY (`id_evaluacion`),
-  ADD KEY `id_usuario` (`id_usuario`),
   ADD KEY `id_curso` (`id_curso`);
 
 --
@@ -296,8 +293,7 @@ ALTER TABLE `cursos`
 -- Filtros para la tabla `evaluaciones`
 --
 ALTER TABLE `evaluaciones`
-  ADD CONSTRAINT `evaluaciones_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE,
-  ADD CONSTRAINT `evaluaciones_ibfk_2` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_curso`) ON DELETE CASCADE;
+  ADD CONSTRAINT `evaluaciones_ibfk_1` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_curso`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `foro`
