@@ -125,7 +125,7 @@ class Comentario{
 
     public function Insertar(Comentario $p){
         try{
-            $consulta="INSERT INTO comentario(id_foro,id_usuario,contenido,fecha_comentario) VALUES (?,?,FROM_UNIXTIME(?),?);";
+            $consulta="INSERT INTO comentario(id_foro,id_usuario,titulo,contenido,fecha_comentario,id_comentario_responde) VALUES (?,?,?,?,FROM_UNIXTIME(?));";
             $this->pdo->prepare($consulta)
                     ->execute(array(
                         $p->getid_foro(),
@@ -133,6 +133,7 @@ class Comentario{
                         $p->gettitulo(),
                         $p->getcontenido(),
                         time(),
+                        $p->getid_responde()
                     ));
         }catch(Exception $e){
             die($e->getMessage());
@@ -142,8 +143,6 @@ class Comentario{
     public function Actualizar(Comentario $p){
         try{
             $consulta="UPDATE comentario SET
-                id_foro=?,
-                id_usuario=?,
                 titulo=?,
                 contenido=?,
                 fecha_comentario=?
@@ -151,8 +150,6 @@ class Comentario{
             ";
             $this->pdo->prepare($consulta)
                     ->execute(array(
-                        $p->getid_foro(),
-                        $p->getid_usuario(),
                         $p->gettitulo(),
                         $p->getcontenido(),
                         $p->getfecha(),

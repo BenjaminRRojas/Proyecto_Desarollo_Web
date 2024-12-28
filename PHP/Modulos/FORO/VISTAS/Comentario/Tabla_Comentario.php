@@ -40,7 +40,7 @@
                                         class="btn btn-danger btn-sm" 
                                         data-bs-toggle="modal" 
                                         data-bs-target="#deleteModal" 
-                                        data-id="<?= $comentario->id_foro ?> <?= $comentario->titulo ?> <?= $comentario->contenido ?>">
+                                        data-id="<?= $comentario->id_foro ?>">
                                         Eliminar
                                     </button>
                                 </td>
@@ -51,7 +51,7 @@
         </div>
 
         <div class="text-center mt-4">
-            <a href="?c=comentario&a=Agregar" class="btn btn-primary">Agregar Usuario</a>
+            <a href="?c=comentario&a=Editar" class="btn btn-primary">Agregar Usuario</a>
         </div>
     </div>
 
@@ -92,7 +92,7 @@
             // Configurar el enlace para confirmar la eliminación
             const confirmDeleteButton = deleteModal.querySelector('#confirmDeleteButton');
             confirmDeleteButton.onclick = function () {
-                window.location.href = `?c=comentario&id=${userIdToDelete}`;
+                window.location.href = `?c=comentario&a=Borrar&id=${userIdToDelete}`;
             };
         });
 

@@ -20,13 +20,11 @@ class ComentarioControlador{
         $css = isset($_GET['css']);
         $this->id_foro = isset($_GET['id']) ? htmlspecialchars($_GET['id']) : null;
 
+        // Si se recibe un ID Foro se va a los comentarios, en cambio se va al panel
         $this->id_foro > 0 ? $comentarios=$this->modelo->Listar($this->id_foro) : $comentarios=$this->modelo->Listar(1);
             if ($this->id_foro) {
                 require_once "VISTAS/Comentario/Comentarios_vista.php";
-            }
-
-            // Si hay un CSS, carga la vista correspondiente
-            else if ($css) {
+            }else if ($css) {
                 require_once "VISTAS/Comentario/Tabla_Comentario.php";
             }
             require_once "VISTAS/pie.php";
@@ -45,10 +43,14 @@ class ComentarioControlador{
     }
 
     public function Editar(){
+        $titulo = "Agregar";
         $css="../../../CSS/style_form.css";
-        if(isset($_GET['id']))
+        $usuario = new Comentario();
+        if(isset($_GET['id'])){
             $usuario = $this->modelo->Obtener($_GET['id']);
-
+            $titulo = "Modificar";
+        }
+        
         require_once "VISTAS/encabezado.php";
         require_once "VISTAS/Editar.php";
         require_once "VISTAS/pie.php";
@@ -57,13 +59,15 @@ class ComentarioControlador{
     public function Guardar(){
         $comentario=new Comentario();
         $comentario->setid_comentario(intval($_POST['id_comentario']));
-        $comentario->setid_foro($_POST['id_foro']);
-        $comentario->setid_usuario($_POST['id_usuario']);
         $comentario->settitulo($_POST['titulo']);
         $comentario->setcontenido($_POST['contenido']);
-        $comentario->setfecha($_POST['fecha']);
         $comentario->getid_comentario() > 0 ? $this->modelo->Actualizar($comentario) : $this->modelo->Insertar($comentario);
 
+        header("location:?c=foro");
+    }
+
+    public function Borrar(){
+        $this->modelo->Eliminar($_GET["id"]);
         header("location:?c=foro");
     }
 }
