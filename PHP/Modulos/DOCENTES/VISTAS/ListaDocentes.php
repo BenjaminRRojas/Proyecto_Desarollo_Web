@@ -12,7 +12,7 @@ $usuarios = $controlador->listarUsuarios();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Docentes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../../../CSS/style-dashdocentes.css">
+    <link rel="stylesheet" href="../../../../CSS/style-listadocentes.css">
 </head>
 
 <body>
@@ -59,7 +59,7 @@ $usuarios = $controlador->listarUsuarios();
                                         class="btn btn-danger btn-sm" 
                                         data-bs-toggle="modal" 
                                         data-bs-target="#deleteModal" 
-                                        data-id="<?= $usuario['id_usuario'] ?>">
+                                        data-id="<?= $usuario['id_usuario'] ?> <?= $usuario['nombres'] ?> <?= $usuario['apellidos'] ?>">
                                         Eliminar
                                     </button>
                                 </td>
@@ -94,6 +94,56 @@ $usuarios = $controlador->listarUsuarios();
             </div>
         </div>
     </div>
+
+        <!-- Modal para confirmar eliminación -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content custom-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Estás seguro de que deseas eliminar este estudiante?</p>
+                    <p class="fw-bold">ID del Estudiante: <span id="userIdToDelete"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="confirmDeleteButton" class="btn btn-danger">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Script para manejar el modal de eliminación
+        const deleteModal = document.getElementById('deleteModal');
+        let userIdToDelete = '';
+
+        // Evento al abrir el modal
+        deleteModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            userIdToDelete = button.getAttribute('data-id');
+
+            // Mostrar el ID del estudiante en el modal
+            const userIdDisplay = deleteModal.querySelector('#userIdToDelete');
+            userIdDisplay.textContent = userIdToDelete;
+
+            // Configurar el enlace para confirmar la eliminación
+            const confirmDeleteButton = deleteModal.querySelector('#confirmDeleteButton');
+            confirmDeleteButton.onclick = function () {
+                window.location.href = `../RUTAS/eliminar.php?id=${userIdToDelete}`;
+            };
+        });
+
+        // Limpiar el ID cuando el modal se cierra
+        deleteModal.addEventListener('hidden.bs.modal', function () {
+            userIdToDelete = '';
+            const userIdDisplay = deleteModal.querySelector('#userIdToDelete');
+            userIdDisplay.textContent = '';
+        });
+    </script>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

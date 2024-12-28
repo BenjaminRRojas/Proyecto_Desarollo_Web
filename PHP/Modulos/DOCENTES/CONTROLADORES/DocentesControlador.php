@@ -8,38 +8,38 @@ class UsuariosControlador {
         $this->modelo = new UsuariosModelo();
     }
 
-    // Mostrar la lista de usuarios
+    // Mostrar la lista de docentes
     public function listarUsuarios() {
         return $this->modelo->obtenerTodos();
     }
 
-    // Mostrar el formulario para agregar un nuevo usuario
+    // Mostrar el formulario para agregar un nuevo docente
     public function formularioAgregar() {
         include '../VISTAS/formulario.php';
     }
 
-    // Agregar un nuevo usuario
+    // Agregar un nuevo docente
     public function agregarUsuario($nombres, $apellidos, $correo, $contrasena, $sexo, $tipo_usuario) {
         return $this->modelo->insertar($nombres, $apellidos, $correo, $contrasena, $sexo, $tipo_usuario);
     }
 
-    // Mostrar los detalles del usuario
+    // Mostrar los detalles del docente
     public function verUsuario($id) {
         return $this->modelo->obtenerPorId($id);
     }
 
-    // Mostrar el formulario para editar un usuario
+    // Mostrar el formulario para editar un docente
     public function formularioEditar($id) {
         $usuario = $this->modelo->obtenerPorId($id);
         include '../VISTAS/formulario.php';
     }
 
-    // Actualizar un usuario
+    // Actualizar un docente
     public function actualizarUsuario($id, $nombres, $apellidos, $correo, $contrasena, $sexo, $tipo_usuario) {
         return $this->modelo->actualizar($id, $nombres, $apellidos, $correo, $contrasena, $sexo, $tipo_usuario);
     }
 
-    // Eliminar un usuario
+    // Eliminar un docente
     public function eliminarUsuario($id) {
         return $this->modelo->eliminar($id);
     }
@@ -75,8 +75,6 @@ class UsuariosControlador {
             return false;
         }
     }
- 
-
 }
 ?>
 
