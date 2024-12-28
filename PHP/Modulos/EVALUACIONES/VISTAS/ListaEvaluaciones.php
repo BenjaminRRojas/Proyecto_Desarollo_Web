@@ -38,7 +38,7 @@ $evaluaciones = $controlador->listarEvaluaciones();
                 </div>
             </div>
             <div class="col-md-6">
-                <input type="text" id="searchInput" class="form-control" placeholder="Buscar por nombre, correo o ID...">
+                <input type="text" id="searchInput" class="form-control" placeholder="Buscar por título, fecha o ID...">
             </div>
         </div>
 
@@ -53,13 +53,14 @@ $evaluaciones = $controlador->listarEvaluaciones();
                         <th>Descripción</th>
                         <th>Fecha de Creación</th>
                         <th>Fecha Límite</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="userTable">
                     <?php foreach ($evaluaciones as $evaluacion): ?>
                         <tr>
                             <td><?= $evaluacion['id_evaluacion'] ?></td>
-                            <td><?= $evaluacion['curso'] ?></td>
+                            <td><?= $evaluacion['id_curso'] ?></td>
                             <td><?= $evaluacion['titulo'] ?></td>
                             <td><?= $evaluacion['descripcion'] ?></td>
                             <td><?= $evaluacion['fecha_creacion'] ?></td>

@@ -12,6 +12,9 @@ if ($accion == 'agregar') {
     $fecha_limite = $_POST['fecha_limite'];
     $id_curso = $_POST['id_curso'];
 
+
+    // Llamar al método para agregar curso
+    $controlador->agregarEvaluacion($titulo, $descripcion, $fecha_limite, $id_curso);
     // Agregar la evaluación
     if ($controlador->agregarEvaluacion($titulo, $descripcion, $fecha_limite, $id_curso)) {
         echo "Evaluación creada.";

@@ -94,9 +94,9 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
                 </div>
                 <div class="mb-5">
                     <label for="curso" class="form-label">Curso</label>
-                    <select class="form-select" id="curso" name="curso" value="<?= htmlspecialchars($evaluacion['id_curso'] ?? '') ?>">
+                    <select class="form-select" id="curso" name="curso">
                         <option value="" disabled selected>Selecciona un curso</option>
-                        <option>2</option>
+                        <option value="2" <?= (isset($evaluacion['id_curso']) && $evaluacion['id_curso'] == 2) ? 'selected' : '' ?>>2</option>
                         <?php/*
                         foreach ($cursos as $curso) {
                             // Verificar si el curso actual es el seleccionado
@@ -118,15 +118,15 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
                     <div class="mb-3">
                         <label class="form-label">Opciones</label>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion1_pregunta1">
+                            <input class="form-check-input" type="radio" name="pregunta1">
                             <input type="text" name="opcion1" class="form-control" placeholder="Opción 1" required>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion2_pregunta1">
+                            <input class="form-check-input" type="radio" name="pregunta1">
                             <input type="text" name="opcion2" class="form-control" placeholder="Opción 2" required>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion3_pregunta1">
+                            <input class="form-check-input" type="radio" name="pregunta1">
                             <input type="text" name="opcion3" class="form-control" placeholder="Opción 3" required>
                         </div>
                     </div>
@@ -140,15 +140,15 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
                     <div class="mb-3">
                         <label class="form-label">Opciones</label>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion1_pregunta2">
+                            <input class="form-check-input" type="radio" name="pregunta2">
                             <input type="text" name="opcion1" class="form-control" placeholder="Opción 1" required>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion2_pregunta2">
+                            <input class="form-check-input" type="radio" name="pregunta2">
                             <input type="text" name="opcion2" class="form-control" placeholder="Opción 2" required>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion3_pregunta2">
+                            <input class="form-check-input" type="radio" name="pregunta2">
                             <input type="text" name="opcion3" class="form-control" placeholder="Opción 3" required>
                         </div>
                     </div>
@@ -161,15 +161,15 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
                     <div class="mb-3">
                         <label class="form-label">Opciones</label>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion1_pregunta3">
+                            <input class="form-check-input" type="radio" name="pregunta3">
                             <input type="text" name="opcion1" class="form-control" placeholder="Opción 1" required>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion2_pregunta3">
+                            <input class="form-check-input" type="radio" name="pregunta3">
                             <input type="text" name="opcion2" class="form-control" placeholder="Opción 2" required>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion3_pregunta3">
+                            <input class="form-check-input" type="radio" name="pregunta3">
                             <input type="text" name="opcion3" class="form-control" placeholder="Opción 3" required>
                         </div>
                     </div>
@@ -182,15 +182,15 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
                     <div class="mb-3">
                         <label class="form-label">Opciones</label>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion1_pregunta4">
+                            <input class="form-check-input" type="radio" name="pregunta4">
                             <input type="text" name="opcion1" class="form-control" placeholder="Opción 1" required>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion2_pregunta4">
+                            <input class="form-check-input" type="radio" name="pregunta4">
                             <input type="text" name="opcion2" class="form-control" placeholder="Opción 2" required>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion3_pregunta4">
+                            <input class="form-check-input" type="radio" name="pregunta4">
                             <input type="text" name="opcion3" class="form-control" placeholder="Opción 3" required>
                         </div>
                     </div>
