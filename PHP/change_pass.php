@@ -49,8 +49,23 @@ try {
     $mail->Body = 'Haz clic en este enlace para restablecer tu contraseña: <a href="' . $resetLink . '">Restablecer Contraseña</a>';
 
     $mail->send();
-    echo 'Correo enviado correctamente';
+    echo '<div id="mensaje" style="background-color:rgb(48, 26, 123); color: white; padding: 10px; text-align: center; border-radius: 5px;">
+    Se ha enviado un correo electronico para la recuperacion.
+  </div>';
+
+    header("index.html");
 } catch (Exception $e) {
     echo "Error al enviar el correo: {$mail->ErrorInfo}";
 }
 ?>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../CSS/style_form.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>    
+</body>
+</html>
