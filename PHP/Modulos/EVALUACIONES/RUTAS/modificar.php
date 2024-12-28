@@ -41,7 +41,7 @@ if (isset($_GET['id_evaluacion'])) {
         <?php
         foreach ($cursos as $curso) {
             $selected = (isset($evaluacion['id_curso']) && $evaluacion['id_curso'] == $curso['id_curso']) ? 'selected' : '';
-            echo "<option value='{$curso['id_curso']}' {$selected}>{$curso['nombre']}</option>";
+            echo "<option value='{$curso['id_curso']}' {$selected}>{$curso['titulo']}</option>";
         }
         ?>
     </select>

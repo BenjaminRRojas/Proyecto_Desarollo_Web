@@ -94,9 +94,9 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
                 </div>
                 <div class="mb-5">
                     <label for="curso" class="form-label">Curso</label>
-                    <select class="form-select" id="curso" name="curso" value="<?= htmlspecialchars($evaluacion['id_curso'] ?? '') ?>">
+                    <select class="form-select" id="curso" name="curso">
                         <option value="" disabled selected>Selecciona un curso</option>
-                        <option>2</option>
+                        <option value="2" <?= (isset($evaluacion['id_curso']) && $evaluacion['id_curso'] == 2) ? 'selected' : '' ?>>2</option>
                         <?php/*
                         foreach ($cursos as $curso) {
                             // Verificar si el curso actual es el seleccionado

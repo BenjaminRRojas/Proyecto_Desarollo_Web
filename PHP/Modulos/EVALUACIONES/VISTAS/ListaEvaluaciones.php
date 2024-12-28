@@ -60,7 +60,7 @@ $evaluaciones = $controlador->listarEvaluaciones();
                     <?php foreach ($evaluaciones as $evaluacion): ?>
                         <tr>
                             <td><?= $evaluacion['id_evaluacion'] ?></td>
-                            <td><?= $evaluacion['curso'] ?></td>
+                            <td><?= $evaluacion['id_curso'] ?></td>
                             <td><?= $evaluacion['titulo'] ?></td>
                             <td><?= $evaluacion['descripcion'] ?></td>
                             <td><?= $evaluacion['fecha_creacion'] ?></td>
