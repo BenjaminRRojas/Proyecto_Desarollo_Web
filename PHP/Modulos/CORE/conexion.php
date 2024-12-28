@@ -7,7 +7,7 @@ class Database {
             try {
                 // Configuración de la conexión
                 $host = 'localhost';
-                $port = '3306';
+                $port = '3307';
                 $dbname = 'cursos_online';
                 $user = 'root';
                 $password = '';

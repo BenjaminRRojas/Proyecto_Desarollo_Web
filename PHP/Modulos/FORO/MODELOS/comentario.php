@@ -73,7 +73,7 @@ class Comentario{
         $this->id_comentario_responde=$res;
     }
 
-    //Método  para el Inicio
+    //Método para el Inicio
     public function Listar($id){
         try{
             $consulta=$this->pdo->prepare("SELECT * FROM comentario WHERE id_foro=?;");
@@ -84,7 +84,7 @@ class Comentario{
         }
     }
 
-    //Método para la Respuesta a un Comentario
+    //Método para ingresar la Respuesta a un Comentario
     public function Agregar_Respuesta(Comentario $usuario){
         try{
             $consulta="INSERT INTO comentario(id_foro,id_usuario,contenido,fecha_comentario,id_comentario_responde) VALUES(?,?,?,FROM_UNIXTIME(?),?);";
@@ -108,15 +108,15 @@ class Comentario{
             $consulta=$this->pdo->prepare("SELECT * FROM comentario WHERE id_comentario=?;");
             $consulta->execute(array($id));
             $r=$consulta->fetch(PDO::FETCH_OBJ);
-            $p=new Producto();
-            $p->setid_comentario($r->id_comentario);
-            $p->setid_foro($r->id_foro);
-            $p->setid_usuario($r->id_usuario);
-            $p->settitulo($r->titulo);
-            $p->setcontenido($r->contenido);
-            $p->setfecha_comentario($r->fecha_comentario);
+            $comentario=new Comentario();
+            $comentario->setid_comentario($r->id_comentario);
+            $comentario->setid_foro($r->id_foro);
+            $comentario->setid_usuario($r->id_usuario);
+            $comentario->settitulo($r->titulo);
+            $comentario->setcontenido($r->contenido);
+            $comentario->setfecha($r->fecha_comentario);
 
-            return $p;
+            return $comentario;
 
         }catch(Exception $e){
             die($e->getMessage());
@@ -125,14 +125,14 @@ class Comentario{
 
     public function Insertar(Comentario $p){
         try{
-            $consulta="INSERT INTO comentario(id_foro,id_usuario,titulo,contenido,fecha_comentario) VALUES (?,?,?,?,?);";
+            $consulta="INSERT INTO comentario(id_foro,id_usuario,contenido,fecha_comentario) VALUES (?,?,FROM_UNIXTIME(?),?);";
             $this->pdo->prepare($consulta)
                     ->execute(array(
                         $p->getid_foro(),
                         $p->getid_usuario(),
                         $p->gettitulo(),
                         $p->getcontenido(),
-                        $p->getfecha_comentario(),
+                        time(),
                     ));
         }catch(Exception $e){
             die($e->getMessage());
@@ -146,7 +146,7 @@ class Comentario{
                 id_usuario=?,
                 titulo=?,
                 contenido=?,
-                fecha_comentario=?,
+                fecha_comentario=?
                 WHERE id_comentario=?;
             ";
             $this->pdo->prepare($consulta)
@@ -155,7 +155,7 @@ class Comentario{
                         $p->getid_usuario(),
                         $p->gettitulo(),
                         $p->getcontenido(),
-                        $p->getfecha_comentario(),
+                        $p->getfecha(),
                         $p->getid_comentario()
                     ));
         }catch(Exception $e){
