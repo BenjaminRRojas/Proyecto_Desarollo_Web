@@ -12,7 +12,7 @@ $cursos = $controlador->listarCursos();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Cursos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../../../CSS/style_estudiantes.css">
+    <link rel="stylesheet" href="../../../../CSS/style_cursos_lista.css">
 </head>
 <body>
     <video autoplay muted loop>
@@ -32,7 +32,7 @@ $cursos = $controlador->listarCursos();
 
         <!-- Tabla de usuario -->
         <div class="table-responsive">
-            <div class="table table-hover">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -52,7 +52,7 @@ $cursos = $controlador->listarCursos();
                             <td><?= $curso['categoria'] ?></td>
                             <td>
                                 <!-- Editar -->
-                                <a href="../RUTAS/modoficar.php?id<?=$curso['id_curso'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="../RUTAS/modificar.php?id=<?= $curso['id_curso'] ?>" class="btn btn-warning btn-sm">Editar</a>
                                 
                                 <!-- Eliminar -->
                                 <button 
@@ -66,18 +66,19 @@ $cursos = $controlador->listarCursos();
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
-            </div>
+            </table>
+        </div>
 
             <div class="text-center mt-4">
-                <a href="../../../formulario.php?accion=agregar" class="btn btn-primary">
+                <a href="../../../curso_formulario.php?accion=agregar" class="btn btn-primary">
                     Agregar Curso
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Modal para confirmar eliminar el curso -->
-     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <!-- Modal para confirmar eliminación -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content custom-modal">
                 <div class="modal-header">
@@ -91,6 +92,26 @@ $cursos = $controlador->listarCursos();
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <a id="confirmDeleteButton" href="#" class="btn btn-danger">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para confirmar eliminación -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content custom-modal">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Estás seguro de que deseas eliminar este curso?</p>
+                    <p class="fw-bold">ID del Curso: <span id="userIdToDelete"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="confirmDeleteButton" class="btn btn-danger">Eliminar</button>
                 </div>
             </div>
         </div>

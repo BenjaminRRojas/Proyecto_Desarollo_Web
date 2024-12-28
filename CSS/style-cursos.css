@@ -203,21 +203,27 @@ section {
     display: block;
     /* Solo el bloque activo será visible */
 }
+.container-fluid{
+    margin-top: 30px;
+}
 
 .card {
     transition: transform 0.3s ease;
 }
-
 .card:hover {
     transform: translateY(-10px);
 }
 
-.card-header {
-    background-color: #34369e86;
+.card-header{
+    background-color: rgb(77, 99, 160);
+    padding-right: 20px;
 }
-
+.card-header a{
+    color: white;
+}
 .card-body {
     background-color: beige;
+    padding: 20px;
 }
 
 .card-body-interna {
@@ -226,6 +232,14 @@ section {
 
 .card-img-top {
     height: 200px;
+}
+.nav-item .ms-auto{
+    margin-left: 10px;
+}
+.form-control{
+    margin-top: 5px;
+    display: grid;
+    justify-content: end;
 }
 
 /*--------------CERTIFICADOS------------------*/
