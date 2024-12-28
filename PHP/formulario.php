@@ -137,7 +137,7 @@ $usuario = isset($usuario) ? $usuario : null;
                 </div>
                 <div class="mb-3 d-none" id="archivo-docente">
                     <label for="ARCHIVOS" class="form-label">Seleccione los archivos</label>
-                    <input type="file" class="form-control" id="ARCHIVOS[]" name="ARCHIVOS[]" multiple>
+                    <input type="file" class="form-control" id="ARCHIVOS[]" name="archivo" accept=".pdf,.doc,.docx,.jpg,.png, .webp" multiple>
                 </div>
                 <button type="submit" class="btn btn-success w-100">Registrar</button>
             </form>
