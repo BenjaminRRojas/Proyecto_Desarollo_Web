@@ -93,7 +93,7 @@ $usuario = isset($usuario) ? $usuario : null;
                 </div>
                 <div class="mb-3">
                     <label for="descripcion" class="form-label">Descripción</label>
-                    <textarea class="form-control" id="descripcion" name="descripcion" value="<?= htmlspecialchars($evaluacion['descripcion'] ?? '') ?>" required></textarea>
+                    <textarea class="form-control" id="descripcion" name="descripcion" required><?= htmlspecialchars($evaluacion['descripcion'] ?? '') ?></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="fecha_limite" class="form-label">Fecha Límite</label>
@@ -103,9 +103,13 @@ $usuario = isset($usuario) ? $usuario : null;
                     <label for="curso" class="form-label">Curso</label>
                     <select class="form-select" id="curso" name="curso" aria-label="Default select example" value="<?= htmlspecialchars($evaluacion['id_curso'] ?? '') ?>" required>
                         <option value="" disabled selected>Selecciona un curso</option>
-                        <option value="1">Python</option>
-                        <option value="2">C++</option>
-                        <option value="3">JavaScript</option>
+                        
+                        <?php
+                        foreach ($cursos as $curso) {
+                            $selected = (isset($evaluacion['id_curso']) && $evaluacion['id_curso'] == $curso['id_curso']) ? 'selected' : '';
+                            echo "<option value='{$curso['id_curso']}' {$selected}>{$curso['nombre']}</option>";
+                        }
+                        ?>
                     </select>
                 </div>
                 <h3 class="text-center">Creación de preguntas y respuestas</h3>
