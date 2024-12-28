@@ -2,7 +2,7 @@
 require_once '../CONTROLADORES/EvaluacionesControlador.php';
 
 $controlador = new EvaluacionesControlador();
-$evaluacion = $controlador->listarEvaluaciones();
+$evaluaciones = $controlador->listarEvaluaciones();
 ?>
 
 <!DOCTYPE html>
@@ -57,26 +57,24 @@ $evaluacion = $controlador->listarEvaluaciones();
                 </thead>
                 <tbody id="userTable">
                     <?php foreach ($evaluaciones as $evaluacion): ?>
-                        <?php if($usuario['tipo_usuario'] == "ESTUDIANTE") :?>
-                            <tr>
-                                <td><?= $usuario['id_evaluacion'] ?></td>
-                                <td><?= $usuario['curso'] ?></td>
-                                <td><?= $usuario['titulo'] ?> <?= $usuario['apellidos'] ?></td>
-                                <td><?= $usuario['descripcion'] ?></td>
-                                <td><?= $usuario['fecha_creacion'] ?></td>
-                                <td><?= $usuario['fecha_limite'] ?></td>
-                                <td>
-                                    <a href="../RUTAS/modificar.php?id=<?= $evaluacion['id_evaluacion'] ?>" class="btn btn-warning btn-sm">Editar</a>
-                                    <button 
-                                        class="btn btn-danger btn-sm" 
-                                        data-bs-toggle="modal" 
-                                        data-bs-target="#deleteModal" 
-                                        data-id="<?= $evaluacion['id_evaluacion'] ?>">
-                                        Eliminar
-                                    </button>
-                                </td>
-                            </tr>
-                        <?php endif; ?>
+                        <tr>
+                            <td><?= $evaluacion['id_evaluacion'] ?></td>
+                            <td><?= $evaluacion['curso'] ?></td>
+                            <td><?= $evaluacion['titulo'] ?></td>
+                            <td><?= $evaluacion['descripcion'] ?></td>
+                            <td><?= $evaluacion['fecha_creacion'] ?></td>
+                            <td><?= $evaluacion['fecha_limite'] ?></td>
+                            <td>
+                                <a href="../RUTAS/modificar.php?id=<?= $evaluacion['id_evaluacion'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                                <button 
+                                    class="btn btn-danger btn-sm" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#deleteModal" 
+                                    data-id="<?= $evaluacion['id_evaluacion'] ?>">
+                                    Eliminar
+                                </button>
+                            </td>
+                        </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>

@@ -29,15 +29,15 @@ class EvaluacionesModelo {
     }
 
     // Insertar una nueva evaluación
-    public function insertar($titulo, $descripcion, $fecha_creacion, $fecha_limite, $id_curso) {
-        $query = $this->db->prepare("INSERT INTO evaluaciones (titulo, descripcion, fecha_creacion, fecha_limite, id_curso) VALUES (?, ?, ?, ?, ?)");
-        return $query->execute([$titulo, $descripcion, $fecha_creacion, $fecha_limite, $id_curso]);
+    public function insertar($titulo, $descripcion, $fecha_limite, $id_curso) {
+        $query = $this->db->prepare("INSERT INTO evaluaciones (titulo, descripcion, fecha_limite, id_curso) VALUES (?, ?, ?, ?)");
+        return $query->execute([$titulo, $descripcion, $fecha_limite, $id_curso]);
     }
 
     // Actualizar una evaluación
-    public function actualizar($id_evaluacion, $titulo, $descripcion, $fecha_creacion, $fecha_limite, $id_curso) {
-        $query = $this->db->prepare("UPDATE evaluaciones SET titulo = ?, descripcion = ?, fecha_creacion = ?, fecha_limite = ?, id_curso = ? WHERE id_evaluacion = ?");
-        return $query->execute([$titulo, $descripcion, $fecha_creacion, $fecha_limite, $id_curso, $id_evaluacion]);
+    public function actualizar($id_evaluacion, $titulo, $descripcion, $fecha_limite, $id_curso) {
+        $query = $this->db->prepare("UPDATE evaluaciones SET titulo = ?, descripcion = ?, fecha_limite = ?, id_curso = ? WHERE id_evaluacion = ?");
+        return $query->execute([$titulo, $descripcion, $fecha_limite, $id_curso, $id_evaluacion]);
     }
 
     // Eliminar una evaluación

@@ -1,6 +1,6 @@
 <?php
 $accion = $_GET['accion'] ?? 'agregar';
-$usuario = isset($usuario) ? $usuario : null;
+$evaluacion = isset($evaluacion) ? $evaluacion : null;
 ?>
 
 <!DOCTYPE html>
@@ -78,13 +78,6 @@ $usuario = isset($usuario) ? $usuario : null;
         <div class="container my-5 w-50 p-5 rounded-3 shadow-lg">
             <h2 class="text-center fw-bold mb-4">Creación de evaluaciones</h2>
             <form action="Modulos/EVALUACIONES/RUTAS/procesar.php" method="POST" enctype="multipart/form-data">
-                <!-- CSRF Protection -->
-                <input type="hidden" name="csrf_token" value="<?= hash('sha256', session_id()) ?>">
-
-                <input type="hidden" name="accion" value="<?= htmlspecialchars($accion) ?>">
-                <?php if ($accion === 'editar'): ?>
-                    <input type="hidden" name="id" value="<?= htmlspecialchars($usuario['id_usuario'] ?? '') ?>">
-                <?php endif; ?>
 
                 <!-- Campos del formulario -->
                 <div class="mb-3">
@@ -101,19 +94,22 @@ $usuario = isset($usuario) ? $usuario : null;
                 </div>
                 <div class="mb-5">
                     <label for="curso" class="form-label">Curso</label>
-                    <select class="form-select" id="curso" name="curso" aria-label="Default select example" value="<?= htmlspecialchars($evaluacion['id_curso'] ?? '') ?>" required>
+                    <select class="form-select" id="curso" name="curso" value="<?= htmlspecialchars($evaluacion['id_curso'] ?? '') ?>">
                         <option value="" disabled selected>Selecciona un curso</option>
-                        
-                        <?php
+                        <option>2</option>
+                        <?php/*
                         foreach ($cursos as $curso) {
+                            // Verificar si el curso actual es el seleccionado
                             $selected = (isset($evaluacion['id_curso']) && $evaluacion['id_curso'] == $curso['id_curso']) ? 'selected' : '';
-                            echo "<option value='{$curso['id_curso']}' {$selected}>{$curso['nombre']}</option>";
-                        }
+                            echo "<option value='{$curso['id_curso']}' {$selected}>{$curso['titulo']}</option>";
+                        }*/
                         ?>
+                        
                     </select>
                 </div>
+
                 <h3 class="text-center">Creación de preguntas y respuestas</h3>
-                <p>Escriba un enunciado para cada pregunta, luego escriba las opciones y seleccione la opción correcta.</p>
+                <p>Formule un enunciado para cada pregunta. Luego, escriba las opciones y seleccione la opción correcta.</p>
                 <div class="mb-3">
                     <h4>Pregunta 1</h4>
                     <label for="pregunta1" class="form-label">Enunciado de la Pregunta</label>
@@ -122,19 +118,20 @@ $usuario = isset($usuario) ? $usuario : null;
                     <div class="mb-3">
                         <label class="form-label">Opciones</label>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion1_pregunta1" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Hombre') ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="opcion1_pregunta1">
                             <input type="text" name="opcion1" class="form-control" placeholder="Opción 1" required>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion2_pregunta1" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Hombre') ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="opcion2_pregunta1">
                             <input type="text" name="opcion2" class="form-control" placeholder="Opción 2" required>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion3_pregunta1" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Hombre') ? 'checked' : '' ?>>
-                            <input type="text" name="opcion2" class="form-control" placeholder="Opción 3" required>
+                            <input class="form-check-input" type="radio" name="opcion3_pregunta1">
+                            <input type="text" name="opcion3" class="form-control" placeholder="Opción 3" required>
                         </div>
                     </div>
                 </div>
+                <!--
                 <div class="mb-3">
                     <h4>Pregunta 2</h4>
                     <label for="pregunta1" class="form-label">Enunciado de la Pregunta</label>
@@ -143,16 +140,16 @@ $usuario = isset($usuario) ? $usuario : null;
                     <div class="mb-3">
                         <label class="form-label">Opciones</label>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion1_pregunta1" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Hombre') ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="opcion1_pregunta2">
                             <input type="text" name="opcion1" class="form-control" placeholder="Opción 1" required>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion2_pregunta1" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Hombre') ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="opcion2_pregunta2">
                             <input type="text" name="opcion2" class="form-control" placeholder="Opción 2" required>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion3_pregunta1" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Hombre') ? 'checked' : '' ?>>
-                            <input type="text" name="opcion2" class="form-control" placeholder="Opción 3" required>
+                            <input class="form-check-input" type="radio" name="opcion3_pregunta2">
+                            <input type="text" name="opcion3" class="form-control" placeholder="Opción 3" required>
                         </div>
                     </div>
                 </div>
@@ -164,16 +161,16 @@ $usuario = isset($usuario) ? $usuario : null;
                     <div class="mb-3">
                         <label class="form-label">Opciones</label>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion1_pregunta1" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Hombre') ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="opcion1_pregunta3">
                             <input type="text" name="opcion1" class="form-control" placeholder="Opción 1" required>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion2_pregunta1" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Hombre') ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="opcion2_pregunta3">
                             <input type="text" name="opcion2" class="form-control" placeholder="Opción 2" required>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion3_pregunta1" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Hombre') ? 'checked' : '' ?>>
-                            <input type="text" name="opcion2" class="form-control" placeholder="Opción 3" required>
+                            <input class="form-check-input" type="radio" name="opcion3_pregunta3">
+                            <input type="text" name="opcion3" class="form-control" placeholder="Opción 3" required>
                         </div>
                     </div>
                 </div>
@@ -185,33 +182,23 @@ $usuario = isset($usuario) ? $usuario : null;
                     <div class="mb-3">
                         <label class="form-label">Opciones</label>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion1_pregunta1" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Hombre') ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="opcion1_pregunta4">
                             <input type="text" name="opcion1" class="form-control" placeholder="Opción 1" required>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion2_pregunta1" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Hombre') ? 'checked' : '' ?>>
+                            <input class="form-check-input" type="radio" name="opcion2_pregunta4">
                             <input type="text" name="opcion2" class="form-control" placeholder="Opción 2" required>
                         </div>
                         <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="opcion3_pregunta1" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Hombre') ? 'checked' : '' ?>>
-                            <input type="text" name="opcion2" class="form-control" placeholder="Opción 3" required>
+                            <input class="form-check-input" type="radio" name="opcion3_pregunta4">
+                            <input type="text" name="opcion3" class="form-control" placeholder="Opción 3" required>
                         </div>
                     </div>
                 </div>
-                
+-->
                 <button type="submit" class="btn btn-success w-100">Crear Evaluación</button>
             </form>
         </div>
-
-    <script>
-        // Mostrar/Ocultar campo de archivo según el tipo de usuario
-        document.querySelectorAll('input[name="tipo_usuario"]').forEach((radio) => {
-            radio.addEventListener('change', function () {
-                const archivoDocente = document.getElementById('archivo-docente');
-                archivoDocente.classList.toggle('d-none', this.value !== 'DOCENTE');
-            });
-        });
-    </script>
 
         <!-- Login Modal -->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
