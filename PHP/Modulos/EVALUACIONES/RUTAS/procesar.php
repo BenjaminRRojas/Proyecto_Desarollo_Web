@@ -13,8 +13,6 @@ if ($accion == 'agregar') {
     $id_curso = $_POST['id_curso'];
 
 
-    // Llamar al método para agregar curso
-    $controlador->agregarEvaluacion($titulo, $descripcion, $fecha_limite, $id_curso);
     // Agregar la evaluación
     if ($controlador->agregarEvaluacion($titulo, $descripcion, $fecha_limite, $id_curso)) {
         echo "Evaluación creada.";
@@ -30,5 +28,5 @@ if ($accion == 'agregar') {
 }
 
 // Redirigir de vuelta al formulario principal
-header('Location: ../../../formulario-evaluaciones.php');
+header('Location:../VISTAS/ListaEvaluaciones.php');
 exit();

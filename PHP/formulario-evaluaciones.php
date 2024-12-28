@@ -78,6 +78,7 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
         <div class="container my-5 w-50 p-5 rounded-3 shadow-lg">
             <h2 class="text-center fw-bold mb-4">Creación de evaluaciones</h2>
             <form action="Modulos/EVALUACIONES/RUTAS/procesar.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="accion" value="agregar">
 
                 <!-- Campos del formulario -->
                 <div class="mb-3">
@@ -94,19 +95,22 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
                 </div>
                 <div class="mb-5">
                     <label for="curso" class="form-label">Curso</label>
-                    <select class="form-select" id="curso" name="curso">
+                    <select class="form-select" id="curso" name="id_curso" required>
                         <option value="" disabled selected>Selecciona un curso</option>
-                        <option value="2" <?= (isset($evaluacion['id_curso']) && $evaluacion['id_curso'] == 2) ? 'selected' : '' ?>>2</option>
-                        <?php/*
+                        <option value="2" <?= (isset($evaluacion['id_curso']) && $evaluacion['id_curso'] == 2) ? 'selected' : '' ?>>Curso 2</option>
+                        <?php
+                        // Descomentar y asegurar que $cursos esté definido
+                        /*
                         foreach ($cursos as $curso) {
                             // Verificar si el curso actual es el seleccionado
                             $selected = (isset($evaluacion['id_curso']) && $evaluacion['id_curso'] == $curso['id_curso']) ? 'selected' : '';
                             echo "<option value='{$curso['id_curso']}' {$selected}>{$curso['titulo']}</option>";
-                        }*/
+                        }
+                        */
                         ?>
-                        
                     </select>
                 </div>
+
 
                 <h3 class="text-center">Creación de preguntas y respuestas</h3>
                 <p>Formule un enunciado para cada pregunta. Luego, escriba las opciones y seleccione la opción correcta.</p>
