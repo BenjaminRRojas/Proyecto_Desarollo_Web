@@ -154,23 +154,28 @@
 
     <!------------------------------CURSOS-------------------------------------->
     <div class="container-fluid">
-        <div class="card text-center">
+        <div class="card1 text-center">
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs">
                     <li class="nav-item">
                         <a class="nav-link active" href="#" data-target="todos">Todos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-target="ciberseguridad">Ciberseguridad</a>
+                        <a class="nav-link" href="#" data-target="ciberseguridad">sql</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-target="desarrollo-web">Desarollo Web</a>
+                        <a class="nav-link" href="#" data-target="desarrollo-web">html</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-target="ciencia-datos">Ciencia de datos</a>
+                        <a class="nav-link" href="#" data-target="ciencia-datos">C#</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-target="ia">Inteligencia artificial</a>
+                        <a class="nav-link" href="#" data-target="ia">python</a>
+                    </li>
+                    <li class="nav-item ms-auto">
+                      <div class="d-flex">
+                        <input type="text" id="searchInput" class="form-control" placeholder="Buscar titulo o id">
+                      </div>
                     </li>
                 </ul>
             </div>
@@ -400,6 +405,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script>
+    <!-- Script para el buscador -->
+    <script>
+        document.getElementById('searchInput').addEventListener('keyup', function () {
+            const filter = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#userTable tr');
+            rows.forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(filter) ? '' : 'none';
+            });
+        });
+    </script>
 </body>
 
 </html>

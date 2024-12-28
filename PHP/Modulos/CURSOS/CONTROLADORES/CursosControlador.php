@@ -15,7 +15,7 @@ class CursosControlador {
 
     // Mostrar el formulario para agregar un nuevo curso
     public function formularioAgregar(){
-        include '../VISTAS/formulario.php';
+        include './../../curso_formulario.php';
     }
 
     // Agregar un nuevo curso
