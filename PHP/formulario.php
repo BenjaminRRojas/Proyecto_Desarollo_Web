@@ -1,4 +1,7 @@
 <?php
+session_start(); // Inicia la sesión
+
+
 $accion = $_GET['accion'] ?? 'agregar';
 $usuario = isset($usuario) ? $usuario : null;
 ?>
@@ -6,7 +9,7 @@ $usuario = isset($usuario) ? $usuario : null;
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/style_form.css">
     <link rel="stylesheet" href="../CSS/style-index.css">
@@ -22,15 +25,13 @@ $usuario = isset($usuario) ? $usuario : null;
     <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>    
 
     <div class="container-fluid">
-
         <!------------------------------NAV-------------------------------------->
+
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-
-                <a class="navbar-brand ms-3" href="index.html">
+                <a class="navbar-brand ms-3" href="index.php">
                     <img src="../imagenes/logo.svg" alt="logo" height="125">
                 </a>
-
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -40,7 +41,6 @@ $usuario = isset($usuario) ? $usuario : null;
                 <div class="d-none d-lg-block text-center ms-5">
                     <h1 class="navbar-title">Aprende a programar desde cero hasta el infinito</h1>
                 </div>
-
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
@@ -53,23 +53,42 @@ $usuario = isset($usuario) ? $usuario : null;
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                                <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="cursos.html">Cursos</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle active" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">Perfil</a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <button type="button" class="dropdown-item btn btn-primary w-100 text-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                            Iniciar Sesión
-                                        </button>
-                                    </li>
-                                    <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
-                                </ul>
-                            </li>
+
+                            <?php if (isset($_SESSION['nombres'])): ?>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Bienvenido, <?= htmlspecialchars($_SESSION['nombres']) ?> 
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
+                                            <li><a class="dropdown-item" href="Modulos/DOCENTES/gestionar_curso.php">Gestionar Cursos</a></li>
+                                        <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
+                                            <li><a class="dropdown-item" href="estudiante_dashboard.php">Cursos Inscritos</a></li>
+                                        <?php endif; ?>
+                                        <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
+                                    </ul>
+                                </li>
+                            <?php else:?>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Perfil
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <button type="button" class="dropdown-item btn btn-primary w-100 text-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                Iniciar Sesión
+                                            </button>
+                                        </li>
+                                        <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
+                                    </ul>
+                                </li>
+                            <?php endif; ?>
+
                         </ul>
                     </div>
                 </div>
@@ -173,7 +192,7 @@ $usuario = isset($usuario) ? $usuario : null;
                     </div>
                     <div class="modal-body">
                         <div class=" p-4 rounded-3 shadow">
-                            <form action="login.php" method="POST">
+                            <form action="Modulos/AUTH/login.php" method="POST">
                                 <div class="mb-3">
                                     <label for="EMAIL" class="form-label">Email</label>
                                     <input type="email" class="form-control" id="EMAIL" name="EMAIL" required>
@@ -182,6 +201,9 @@ $usuario = isset($usuario) ? $usuario : null;
                                     <label for="CONTRASENA" class="form-label">Contraseña</label>
                                     <input type="password" class="form-control" id="CONTRASENA" name="CONTRASENA" required>
                                 </div>
+                                <?php if (!empty($error)): ?>
+                                    <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+                                <?php endif; ?>
                                 <div>
                                     <p>¿No tienes una cuenta? <a href="formulario.php">Regístrate</a></p>
                                 </div>
@@ -196,6 +218,7 @@ $usuario = isset($usuario) ? $usuario : null;
                 </div>
             </div>
         </div>
+
 
         <!-------------------------------------Pie de Pagina------------------------------------------------>
         <footer class="container-fluid footer-docentes py-4">
