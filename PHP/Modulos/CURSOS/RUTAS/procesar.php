@@ -20,5 +20,5 @@ if ($accion == 'agregar'){
 }
 
 // Redirigir de vuelta al formulario principal
-header('Location: ../../../cursos.php');
+header('Location: ../VISTAS/ListaCursos.php');
 exit();
