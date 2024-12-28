@@ -59,7 +59,7 @@ $usuarios = $controlador->listarUsuarios();
                                         class="btn btn-danger btn-sm" 
                                         data-bs-toggle="modal" 
                                         data-bs-target="#deleteModal" 
-                                        data-id="<?= $usuario['id_usuario'] ?>">
+                                        data-id="<?= $usuario['id_usuario'] ?> <?= $usuario['nombres'] ?> <?= $usuario['apellidos'] ?>">
                                         Eliminar
                                     </button>
                                 </td>

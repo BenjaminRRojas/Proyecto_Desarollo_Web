@@ -61,30 +61,30 @@ if (isset($_GET['id'])) {
             <div class="mb-3">
                 <label class="form-label">Sexo</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sexo" value="Hombre" <?= $usuario['sexo'] == 'Hombre' ? 'checked' : '' ?>>
+                    <input class="form-check-input" type="radio" name="sexo" value="Hombre" <?= $usuario['sexo'] == 'HOMBRE' ? 'checked' : '' ?>>
                     <label class="form-check-label">Hombre</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sexo" value="Mujer" <?= $usuario['sexo'] == 'Mujer' ? 'checked' : '' ?>>
+                    <input class="form-check-input" type="radio" name="sexo" value="Mujer" <?= $usuario['sexo'] == 'MUJER' ? 'checked' : '' ?>>
                     <label class="form-check-label">Mujer</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="sexo" value="Otro" <?= $usuario['sexo'] == 'Otro' ? 'checked' : '' ?>>
+                    <input class="form-check-input" type="radio" name="sexo" value="Otro" <?= $usuario['sexo'] == 'OTRO' ? 'checked' : '' ?>>
                     <label class="form-check-label">Otro</label>
                 </div>
             </div>
             <div class="mb-3">
                 <label class="form-label">Tipo de Usuario</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="tipo_usuario" value="alumno" <?= $usuario['tipo_usuario'] == 'alumno' ? 'checked' : '' ?>>
+                    <input class="form-check-input" type="radio" name="tipo_usuario" value="alumno" <?= $usuario['tipo_usuario'] == 'ESTUDIANTE' ? 'checked' : '' ?>>
                     <label class="form-check-label">Alumno</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="tipo_usuario" value="docente" <?= $usuario['tipo_usuario'] == 'docente' ? 'checked' : '' ?>>
+                    <input class="form-check-input" type="radio" name="tipo_usuario" value="docente" <?= $usuario['tipo_usuario'] == 'DOCENTE' ? 'checked' : '' ?>>
                     <label class="form-check-label">Docente</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="tipo_usuario" value="admin" <?= $usuario['tipo_usuario'] == 'admin' ? 'checked' : '' ?>>
+                    <input class="form-check-input" type="radio" name="tipo_usuario" value="admin" <?= $usuario['tipo_usuario'] == 'ADMIN' ? 'checked' : '' ?>>
                     <label class="form-check-label">Administrador</label>
                 </div>
             </div>
