@@ -85,8 +85,8 @@ $cursos = $controlador->listarCursos();
                     <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <p>¿Estás seguro de que deseas eliminar este curso?</p>
+                <div class="modal-body"> 
+                    <p>¿Estás seguro de que deseas eliminar el curso con ID: <span class="fw-bold" id="userIdToDelete">{ID_CURSO}</span>?</p>
                     <p class="fw-bold" id="userIdToDelete"></p>
                 </div>
                 <div class="modal-footer">
@@ -97,25 +97,6 @@ $cursos = $controlador->listarCursos();
         </div>
     </div>
 
-    <!-- Modal para confirmar eliminación -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content custom-modal">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>¿Estás seguro de que deseas eliminar este curso?</p>
-                    <p class="fw-bold">ID del Curso: <span id="userIdToDelete"></span></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button id="confirmDeleteButton" class="btn btn-danger">Eliminar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -130,6 +111,24 @@ $cursos = $controlador->listarCursos();
             });
         });
     </script>
+    <script>
+        // Selecciona el modal y los elementos relacionados
+        const deleteModal = document.getElementById('deleteModal');
+        const userIdToDelete = document.getElementById('userIdToDelete');
+
+        // Escucha el evento "show.bs.modal" cuando se abre el modal
+        deleteModal.addEventListener('show.bs.modal', function (event) {
+            // Botón que activó el modal
+            const button = event.relatedTarget;
+
+            // Obtén el ID del curso del atributo data-id
+            const courseId = button.getAttribute('data-id');
+
+            // Actualiza el contenido del modal con el ID
+            userIdToDelete.textContent = courseId;
+        });
+    </script>
+
 
 </body>
 </html>
