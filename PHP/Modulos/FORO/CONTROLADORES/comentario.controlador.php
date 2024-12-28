@@ -21,7 +21,7 @@ class ComentarioControlador{
         $this->id_foro = isset($_GET['id']) ? htmlspecialchars($_GET['id']) : null;
 
         // Si se recibe un ID Foro se va a los comentarios, en cambio se va al panel
-        $this->id_foro > 0 ? $comentarios=$this->modelo->Listar($this->id_foro) : $comentarios=$this->modelo->Listar(1);
+        $this->id_foro > 0 ? $comentarios=$this->modelo->Listar($this->id_foro, "SELECT * FROM comentario WHERE id_foro=?;") : $comentarios=$this->modelo->Listar(NULL, "SELECT * FROM comentario;");
             if ($this->id_foro) {
                 require_once "VISTAS/Comentario/Comentarios_vista.php";
             }else if ($css) {
@@ -50,7 +50,7 @@ class ComentarioControlador{
             $usuario = $this->modelo->Obtener($_GET['id']);
             $titulo = "Modificar";
         }
-        
+
         require_once "VISTAS/encabezado.php";
         require_once "VISTAS/Editar.php";
         require_once "VISTAS/pie.php";

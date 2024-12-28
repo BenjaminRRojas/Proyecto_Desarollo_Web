@@ -2,11 +2,11 @@
     <!-- Iteración de los Foros -->
     <div class="container-fluid">
         <a href="?c=comentario&css=style-listadocentes.css">Tabla</a>
-        <?php foreach($items as $r):
-            $id=htmlspecialchars($r->id_foro);
-            $titulo=htmlspecialchars($r->titulo);
-            $fecha=htmlspecialchars($r->fecha_creacion);
-            $descripcion=htmlspecialchars($r->descripcion);
+        <?php foreach($foros as $foro):
+            $id=htmlspecialchars($foro->id_foro);
+            $titulo=htmlspecialchars($foro->titulo);
+            $fecha=htmlspecialchars($foro->fecha_creacion);
+            $descripcion=htmlspecialchars($foro->descripcion);
         ?>
             <div class="container-fluid bg-light">
                 <div class="d-flex justify-content-between">

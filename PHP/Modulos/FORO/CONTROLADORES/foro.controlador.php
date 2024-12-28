@@ -12,7 +12,7 @@ class ForoControlador{
 
     //Método para Mostrar todos los Foros
     public function Inicio(){
-        $items=$this->modelo->Listar();
+        $foros=$this->modelo->Listar();
         require_once "VISTAS/encabezado.php";
         require_once "VISTAS/Foro/foro_vista.php";
         require_once "VISTAS/pie.php";
