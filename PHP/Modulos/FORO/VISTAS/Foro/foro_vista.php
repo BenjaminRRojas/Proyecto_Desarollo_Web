@@ -1,6 +1,7 @@
 <section>
     <!-- Iteración de los Foros -->
     <div class="container-fluid">
+        <a href="?c=comentario&css=style-listadocentes.css">Tabla</a>
         <?php foreach($items as $r):
             $id=htmlspecialchars($r->id_foro);
             $titulo=htmlspecialchars($r->titulo);
