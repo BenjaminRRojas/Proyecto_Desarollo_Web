@@ -61,5 +61,5 @@ if ($accion == 'agregar') {
 }
 
 // Redirigir de vuelta al formulario principal
-header('Location: ../VISTAS/ListaDocentes.php');
+header('Location: ../../../formulario.php');
 exit();

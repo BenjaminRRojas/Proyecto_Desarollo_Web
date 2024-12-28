@@ -1,28 +1,6 @@
-<?php
-require_once '../CONTROLADORES/UsuariosControlador.php';
-
-$controlador = new UsuariosControlador();
-$usuarios = $controlador->listarUsuarios();
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Usuarios</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../../../CSS/style_estudiantes.css">
-</head>
-
-<body>
-    <video autoplay muted loop>
-        <source src="../../../../imagenes/fondo.mp4" type="video/mp4">
-    </video>
-
     <!-- Contenedor principal -->
     <div class="container mt-5">
-        <h1 class="text-center">Lista de Estudiantes</h1>
+        <h1 class="text-center">Lista de Foro</h1>
         
         <!-- Buscador -->
         <div class="row my-4">
@@ -36,42 +14,44 @@ $usuarios = $controlador->listarUsuarios();
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Correo</th>
-                        <th>Sexo</th>
-                        <th>Fecha Registro</th>
-                        <th>Acciones</th>
+                        <th>ID Comentario</th>
+                        <th>ID Foro</th>
+                        <th>ID Usuario</th>
+                        <th>ID Comentario Responde</th>
+                        <th>Título</th>
+                        <th>Contenido</th>
+                        <th>Fecha Comentario</th>
+                        <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody id="userTable">
-                    <?php foreach ($usuarios as $usuario): ?>
-                        <?php if($usuario['tipo_usuario'] == "ESTUDIANTE") :?>
+                    <?php foreach ($comentarios as $comentario): ?>
                             <tr>
-                                <td><?= $usuario['id_usuario'] ?></td>
-                                <td><?= $usuario['nombres'] ?> <?= $usuario['apellidos'] ?></td>
-                                <td><?= $usuario['correo'] ?></td>
-                                <td><?= $usuario['sexo'] ?></td>
-                                <td><?= $usuario['fecha_registro'] ?></td>
+                                <td><?= $comentario->id_comentario ?></td>
+                                <td><?= $comentario->id_foro ?></td>
+                                <td><?= $comentario->id_usuario ?></td>
+                                <td><?= $comentario->id_comentario_responde ?></td>
+                                <td><?= $comentario->titulo ?></td>
+                                <td><?= $comentario->contenido ?></td>
+                                <td><?= $comentario->fecha_comentario ?></td>
                                 <td>
-                                    <a href="../RUTAS/modificar.php?id=<?= $usuario['id_usuario'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                                    <a href="?c=comentario&a=Editar&id=<?=$comentario->id_comentario?>" class="btn btn-warning btn-sm">Editar</a>
                                     <button 
                                         class="btn btn-danger btn-sm" 
                                         data-bs-toggle="modal" 
                                         data-bs-target="#deleteModal" 
-                                        data-id="<?= $usuario['id_usuario'] ?> <?= $usuario['nombres'] ?> <?= $usuario['apellidos'] ?>">
+                                        data-id="<?= $comentario->id_foro ?>">
                                         Eliminar
                                     </button>
                                 </td>
                             </tr>
-                        <?php endif; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
 
         <div class="text-center mt-4">
-            <a href="../../../formulario.php?accion=agregar" class="btn btn-primary">Agregar Usuario</a>
+            <a href="?c=comentario&a=Editar" class="btn btn-primary">Agregar Usuario</a>
         </div>
     </div>
 
@@ -95,8 +75,6 @@ $usuarios = $controlador->listarUsuarios();
         </div>
     </div>
 
-
-
     <script>
         // Script para manejar el modal de eliminación
         const deleteModal = document.getElementById('deleteModal');
@@ -114,7 +92,7 @@ $usuarios = $controlador->listarUsuarios();
             // Configurar el enlace para confirmar la eliminación
             const confirmDeleteButton = deleteModal.querySelector('#confirmDeleteButton');
             confirmDeleteButton.onclick = function () {
-                window.location.href = `../RUTAS/eliminar.php?id=${userIdToDelete}`;
+                window.location.href = `?c=comentario&a=Borrar&id=${userIdToDelete}`;
             };
         });
 
@@ -125,10 +103,6 @@ $usuarios = $controlador->listarUsuarios();
             userIdDisplay.textContent = '';
         });
     </script>
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Script para el buscador -->
     <script>
@@ -141,5 +115,3 @@ $usuarios = $controlador->listarUsuarios();
             });
         });
     </script>
-</body>
-</html>
