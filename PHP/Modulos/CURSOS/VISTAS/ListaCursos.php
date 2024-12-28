@@ -85,8 +85,8 @@ $cursos = $controlador->listarCursos();
                     <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body"> 
-                    <p>¿Estás seguro de que deseas eliminar el curso con ID: <span class="fw-bold" id="userIdToDelete">{ID_CURSO}</span>?</p>
+                <div class="modal-body">
+                    <p>¿Estás seguro de que deseas eliminar este curso?</p>
                     <p class="fw-bold" id="userIdToDelete"></p>
                 </div>
                 <div class="modal-footer">
@@ -111,6 +111,31 @@ $cursos = $controlador->listarCursos();
             });
         });
     </script>
+
+    <script>
+        // Script para manejar el modal de eliminación
+        const deleteModal = document.getElementById('deleteModal');
+
+        deleteModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const courseId = button.getAttribute('data-id');
+
+            // Mostrar el ID del curso en el modal
+            const userIdDisplay = deleteModal.querySelector('#userIdToDelete');
+            userIdDisplay.textContent = `ID: ${courseId}`;
+
+            // Configurar el enlace para confirmar la eliminación
+            const confirmDeleteButton = deleteModal.querySelector('#confirmDeleteButton');
+            confirmDeleteButton.href = `../RUTAS/eliminar.php?id_curso=${courseId}`;
+        });
+
+        // Limpiar el ID cuando el modal se cierra
+        deleteModal.addEventListener('hidden.bs.modal', function () {
+            const userIdDisplay = deleteModal.querySelector('#userIdToDelete');
+            userIdDisplay.textContent = '';
+        });
+    </script>
+
     <script>
         // Selecciona el modal y los elementos relacionados
         const deleteModal = document.getElementById('deleteModal');
