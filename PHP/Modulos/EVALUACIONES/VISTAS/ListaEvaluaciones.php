@@ -2,7 +2,7 @@
 require_once '../CONTROLADORES/EvaluacionesControlador.php';
 
 $controlador = new EvaluacionesControlador();
-$evaluaciones = $controlador->listarEvaluaciones();
+$evaluacion = $controlador->listarEvaluaciones();
 ?>
 
 <!DOCTYPE html>
@@ -31,9 +31,9 @@ $evaluaciones = $controlador->listarEvaluaciones();
                     <span class="input-group-text">Buscar por curso</span>
                     <select class="form-select" aria-label="Default select example">
                         <option selected>Todos los cursos</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="1">Python</option>
+                        <option value="2">C++</option>
+                        <option value="3">JavaScript</option>
                     </select>
                 </div>
             </div>
@@ -49,12 +49,10 @@ $evaluaciones = $controlador->listarEvaluaciones();
                     <tr>
                         <th>ID</th>
                         <th>Curso</th>
-                        <th>Nombre</th>
-                        <th>Nota 1</th>
-                        <th>Nota 2</th>
-                        <th>Nota 3</th>
-                        <th>Nota Tarea</th>
-                        <th>Promedio</th>
+                        <th>Título</th>
+                        <th>Descripción</th>
+                        <th>Fecha de Creación</th>
+                        <th>Fecha Límite</th>
                     </tr>
                 </thead>
                 <tbody id="userTable">
@@ -63,12 +61,10 @@ $evaluaciones = $controlador->listarEvaluaciones();
                             <tr>
                                 <td><?= $usuario['id_evaluacion'] ?></td>
                                 <td><?= $usuario['curso'] ?></td>
-                                <td><?= $usuario['nombres'] ?> <?= $usuario['apellidos'] ?></td>
-                                <td><?= $usuario['nota1'] ?></td>
-                                <td><?= $usuario['nota2'] ?></td>
-                                <td><?= $usuario['nota3'] ?></td>
-                                <td><?= $usuario['tarea'] ?></td>
-                                <td><?= $usuario['promedio'] ?></td>
+                                <td><?= $usuario['titulo'] ?> <?= $usuario['apellidos'] ?></td>
+                                <td><?= $usuario['descripcion'] ?></td>
+                                <td><?= $usuario['fecha_creacion'] ?></td>
+                                <td><?= $usuario['fecha_limite'] ?></td>
                                 <td>
                                     <a href="../RUTAS/modificar.php?id=<?= $evaluacion['id_evaluacion'] ?>" class="btn btn-warning btn-sm">Editar</a>
                                     <button 
@@ -87,7 +83,7 @@ $evaluaciones = $controlador->listarEvaluaciones();
         </div>
 
         <div class="text-center mt-4">
-            <a href="formulario.php?accion=agregar" class="btn btn-lg btn-primary">Agregar Evaluaciones</a>
+            <a href="../../../formulario-evaluaciones.php?accion=agregar" class="btn btn-lg btn-primary">Agregar evaluación</a>
         </div>
     </div>
 

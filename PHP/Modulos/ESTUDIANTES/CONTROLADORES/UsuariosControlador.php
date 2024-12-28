@@ -58,7 +58,7 @@ class UsuariosControlador {
             $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_SMTPS;
             $mail->Port = 465;
     
-            $mail->setFrom('codetitans123@gmail.com', 'CodeTitans Titans');
+            $mail->setFrom('codetitans123@gmail.com', 'Code Titans');
             $mail->addAddress($correo, $nombres);
     
             $mail->isHTML(true);
