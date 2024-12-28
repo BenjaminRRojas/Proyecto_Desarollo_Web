@@ -38,6 +38,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare("DELETE FROM password_resets WHERE token = ?");
     $stmt->execute([$token]);
 
-    echo "Contraseña restablecida con éxito.";
+    echo '<div id="mensaje" style="background-color: rgb(48, 26, 123); color: white; padding: 10px; text-align: center; border-radius: 5px; margin-top: 20px;">
+    Se ha restablecido con exito la contraseña.
+    </div>
+    <script>
+        setTimeout(function() {
+            window.location.href = "index.html"; // Redirige a index.html después de 3 segundos
+        }, 3000);
+    </script>';
 }
 ?>
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../CSS/style_form.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reset_password</title>
+</head>
+<body>
+    <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>    
+</body>
+</html>
