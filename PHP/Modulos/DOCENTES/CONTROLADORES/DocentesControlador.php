@@ -82,7 +82,7 @@ class UsuariosControlador {
             $mail->AddAttachment($archivo['tmp_name'], $archivo['name']);
 
 
-            $mail->SMTPDebug = 2; 
+            $mail->SMTPDebug = 0; 
             $mail->send();
             return true;
         } catch (Exception $e) {

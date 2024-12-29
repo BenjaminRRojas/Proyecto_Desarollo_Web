@@ -59,7 +59,7 @@ $usuario = isset($usuario) ? $usuario : null;
                                 <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="cursos.html">Cursos</a>
+                                <a class="nav-link active" href="cursos.php">Cursos</a>
                             </li>
 
                             <?php if (isset($_SESSION['nombres'])): ?>
@@ -69,7 +69,7 @@ $usuario = isset($usuario) ? $usuario : null;
                                     </a>
                                     <ul class="dropdown-menu">
                                         <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
-                                            <li><a class="dropdown-item" href="Modulos/DOCENTES/gestionar_curso.php">Gestionar Cursos</a></li>
+                                            <li><a class="dropdown-item" href="docente_dashboard.php">Gestionar Cursos</a></li>
                                         <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
                                             <li><a class="dropdown-item" href="estudiante_dashboard.php">Cursos Inscritos</a></li>
                                         <?php endif; ?>
@@ -101,7 +101,7 @@ $usuario = isset($usuario) ? $usuario : null;
 
 
         <!------Formulario------>
-        <div class="container my-5 p-5 rounded-3 shadow-lg">
+        <div class="container my-5 w-50 p-5 rounded-3 shadow-lg">
 
             <h2 class="text-center fw-bold mb-4">Registro</h2>
             <form action="" method="POST" enctype="multipart/form-data">
@@ -158,7 +158,7 @@ $usuario = isset($usuario) ? $usuario : null;
                 </div>
                 <div class="mb-3 d-none" id="archivo-docente">
                     <label for="ARCHIVOS" class="form-label">Seleccione los archivos</label>
-                    <input type="file" class="form-control" id="ARCHIVOS[]" name="archivo" accept=".pdf,.doc,.docx,.jpg,.png, .webp" multiple>
+                    <input type="file" class="form-control" id="archivo[]" name="archivo" accept=".pdf,.doc,.docx,.jpg,.png, .webp" multiple>
                 </div>
                 <button type="submit" class="btn btn-success w-100">Registrar</button>
             </form>

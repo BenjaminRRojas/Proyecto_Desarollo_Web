@@ -33,7 +33,7 @@ if ($accion == 'agregar') {
         echo "Error al registrar el usuario.";
     }
 
-
+    
 } elseif ($accion == 'editar') {
     $controlador->actualizarUsuario($_POST['id'], $_POST['nombres'], $_POST['apellidos'], $_POST['correo'], $_POST['contrasena'], $_POST['sexo'], $_POST['tipo_usuario']);
 
@@ -41,6 +41,6 @@ if ($accion == 'agregar') {
     $controlador->eliminarUsuario($_GET['id']);
 }
 
-// Redirigir de vuelta al formulario principal
+
 header('Location: ../../../formulario.php');
 exit();

@@ -98,13 +98,22 @@ $curso = isset($curso) ? $curso : null;
                 </div>
                 <div class="mb-3">
                     <label for="fecha_creacion" class="form-label">Fecha de creacion</label>
-                    <input type="datetime-local" class="form-control" id="fecha_creacion" name="fecha_creacion" value="<?= htmlspecialchars($curso['fecha_creacion'] ?? '') ?>" required>
+                    <input type="date" class="form-control" id="fecha_creacion" name="fecha_creacion" value="<?= htmlspecialchars($curso['fecha_creacion'] ?? '') ?>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="formFileSm" class="form-label">Small file input example</label>
+                    <input class="form-control form-control-sm" id="formFileSm" type="file">
                 </div>
                 <div class="mb-3">
                     <label for="categoria" class="form-label">Categoria</label>
                     <input type="text" class="form-control" id="categoria" name="categoria" required>
                 </div>
-            
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">Descripción</label>
+                    <input type="text" class="form-control" id="descripcion" name="descripcion" required>
+                </div>
+
+               
                 <button type="submit" class="btn btn-success w-100">Registrar</button>
             </form>
     </div>

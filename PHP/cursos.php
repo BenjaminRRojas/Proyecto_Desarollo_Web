@@ -1,5 +1,5 @@
 <?php
-require_once 'Modulos/CURSOS2/CONTROLADORES/CursosControlador.php';
+//require_once 'Modulos/CURSOS/CONTROLADORES/CursosControlador.php';
 ?>
 
 <!DOCTYPE html>
@@ -320,13 +320,30 @@ require_once 'Modulos/CURSOS2/CONTROLADORES/CursosControlador.php';
         </div>
       </div>
     </article>
+    
 
-    <div class="container-fluid">
-      <div class="correo">
+    <!-------------------------Enterate de Cursos----------------------------->
+    <div class="container-fluid dinamico">
+
+    <div class="card card-new">
+        <div class="content">
+
+          <div class="h6">Enterate de cursos nuevos</div>
+          <div class="hover_content">
+            <div class="texto-p">
+              <p>¡No te pierdas ninguna actualización! Suscríbete con tu correo y sé el primero en descubrir nuestras nuevas
+              ofertas, cursos exclusivos y contenido que transformará tu aprendizaje. 🚀</p>
+            </div>
+
+          </div>
+        </div>
+    </div>  
+
+      <!-- <div class="correo">
         <h2>Enterate de cursos nuevos</h2>
         <p>"¡No te pierdas ninguna actualización! Suscríbete con tu correo y sé el primero en descubrir nuestras nuevas
           ofertas, cursos exclusivos y contenido que transformará tu aprendizaje. 🚀"</p>
-      </div>
+      </div> -->
     </div>
 
     <!-------------------------------------Pie de Pagina------------------------------------------------>

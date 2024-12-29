@@ -1,5 +1,5 @@
 <?php
-require_once '../../CORE/conexion.php';
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\CORE\conexion.php';
 
 class CursosModelo {
     private $db;
@@ -10,7 +10,7 @@ class CursosModelo {
 
     // Obtener todos los usuarios
     public function obtenerTodos(){
-        $query = $this->db->query("SELECT id_curso, titulo, duracion, fecha_creacion, categoria FROM cursos");
+        $query = $this->db->query("SELECT id_curso, titulo, duracion, fecha_creacion, categoria , descripcion FROM cursos");
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -22,15 +22,15 @@ class CursosModelo {
     }
 
     // Insertar un nuevo curso
-    public function insertar($titulo, $duracion,$fecha_creacion, $categoria){
-        $query = $this->db->prepare("INSERT INTO cursos (titulo,duracion,fecha_creacion,categoria) VALUES (?,?,?,?)");
-        return $query->execute([$titulo, $duracion,$fecha_creacion, $categoria]);
+    public function insertar($titulo, $duracion,$fecha_creacion, $categoria , $descripcion){
+        $query = $this->db->prepare("INSERT INTO cursos (titulo,duracion,fecha_creacion,categoria,descripcion) VALUES (?,?,?,?,?)");
+        return $query->execute([$titulo, $duracion,$fecha_creacion, $categoria , $descripcion]);
     }
 
     // Actualizar un curso
-    public function actualizar($id, $titulo, $duracion, $fecha_creacion, $categoria) {
-    $query = $this->db->prepare("UPDATE cursos SET titulo = ?, duracion = ?, fecha_creacion = ?, categoria = ? WHERE id_curso = ?");
-    return $query->execute([$titulo, $duracion, $fecha_creacion, $categoria, $id]);
+    public function actualizar($id, $titulo, $duracion, $fecha_creacion, $categoria , $descripcion) {
+    $query = $this->db->prepare("UPDATE cursos SET titulo = ?, duracion = ?, fecha_creacion = ?, categoria = ? , descripcion = ? WHERE id_curso = ?");
+    return $query->execute([$titulo, $duracion, $fecha_creacion, $categoria , $descripcion, $id]);
     }
 
     // Eliminar un curso

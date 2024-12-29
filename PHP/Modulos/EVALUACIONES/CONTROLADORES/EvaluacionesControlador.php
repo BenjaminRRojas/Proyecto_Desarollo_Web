@@ -1,5 +1,5 @@
 <?php
-require_once '../MODELOS/EvaluacionesModelo.php';
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\EVALUACIONES\MODELOS\EvaluacionesModelo.php';
 
 class EvaluacionesControlador{
     private $modelo;
