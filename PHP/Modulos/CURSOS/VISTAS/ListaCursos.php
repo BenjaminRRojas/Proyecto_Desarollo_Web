@@ -40,6 +40,7 @@ $cursos = $controlador->listarCursos();
                         <th>Duracion</th>
                         <th>Fecha de Creacion</th>
                         <th>Categoria</th>
+                        <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody id="userTable">
