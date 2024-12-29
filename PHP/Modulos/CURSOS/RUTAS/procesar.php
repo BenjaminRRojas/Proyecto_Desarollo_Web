@@ -11,12 +11,13 @@ if ($accion == 'agregar') {
     $duracion = $_POST['duracion'];
     $fecha_creacion = $_POST['fecha_creacion'];
     $categoria = $_POST['categoria'];
+    $descripcion = $_POST['descripcion'];
 
     // Llamar al método para agregar curso
-    $controlador->agregarCurso($titulo, $duracion, $fecha_creacion, $categoria);
+    $controlador->agregarCurso($titulo, $duracion, $fecha_creacion, $categoria, $descripcion);
 
 }elseif ($accion == 'editar'){
-    $controlador->actualizarCurso($_POST['id'], $_POST['titulo'], $_POST['duracion'], $_POST['fecha_creacion'], $_POST['categoria']);
+    $controlador->actualizarCurso($_POST['id'], $_POST['titulo'], $_POST['duracion'], $_POST['fecha_creacion'], $_POST['categoria'],$_POST['descripcion']);
 
 }elseif ($accion == 'eliminar') {
     $controlador->eliminarCurso($_GET['id']);
