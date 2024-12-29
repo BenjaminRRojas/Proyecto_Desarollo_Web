@@ -36,72 +36,54 @@ $usuario = isset($usuario) ? $usuario : null;
 
     <!------------------------------NAV-------------------------------------->
     <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <a class="navbar-brand ms-3" href="index.php">
-                    <img src="../imagenes/logo.svg" alt="logo" height="125">
-                </a>
+      <div class="container-fluid">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <a class="navbar-brand ms-3" href="#">
+          <img src="../imagenes/logo.svg" alt="logo" height="125">
+        </a>
 
-                <div class="d-none d-lg-block text-center ms-5">
-                    <h1 class="navbar-title">Aprende a programar desde cero hasta el infinito</h1>
-                </div>
 
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                    aria-labelledby="offcanvasNavbarLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
-                        <button type="button" class="btn-close bg-light" data-bs-dismiss="offcanvas"
-                            aria-label="Close"></button>
-                        <hr>
-                    </div>
-                    <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-end">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" href="cursos.php">Cursos</a>
-                            </li>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-                            <?php if (isset($_SESSION['nombres'])): ?>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Bienvenido, <?= htmlspecialchars($_SESSION['nombres']) ?> 
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
-                                            <li><a class="dropdown-item" href="Modulos/DOCENTES/gestionar_curso.php">Gestionar Cursos</a></li>
-                                        <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
-                                            <li><a class="dropdown-item" href="estudiante_dashboard.php">Cursos Inscritos</a></li>
-                                        <?php endif; ?>
-                                        <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
-                                    </ul>
-                                </li>
-                            <?php else:?>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Perfil
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <button type="button" class="dropdown-item btn btn-primary w-100 text-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                Iniciar Sesión
-                                            </button>
-                                        </li>
-                                        <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
-                                    </ul>
-                                </li>
-                            <?php endif; ?>
+        <div class="d-none d-lg-block text-center ms-5">
+          <h1 class="navbar-title">Aprende a programar desde cero hasta el infinito</h1>
+        </div>
 
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
+            <button type="button" class="btn-close bg-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            <hr>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="cursos.html">Cursos</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">Perfil</a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <button type="button" class="dropdown-item btn btn-primary w-100 text-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Iniciar Sesión
+                    </button>
+                </li>
+                  <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
 
       <!----------------------------------------------------MODAL------------------------------------------------------------------>
       <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -125,10 +107,7 @@ $usuario = isset($usuario) ? $usuario : null;
                             <div>
                                 <p>¿No tienes una cuenta? <a href="formulario.php">Regístrate</a></p>
                             </div>
-                            <a type="submit" class="btn w-100" href="cursos.php">Iniciar sesión</a>
-                            <!--
-                            <button type="submit" class="btn w-100" href="cursos.php">Iniciar sesión</button>
-                            -->
+                            <button type="submit" class="btn w-100">Iniciar sesión</button>
                         </form>
                     </div>
                 </div>
@@ -139,37 +118,6 @@ $usuario = isset($usuario) ? $usuario : null;
             </div>
         </div>
     </div>
-
-    <!--MODAL INFORMACION DE CURSOS -->
-    <div class="modal fade" id="tutoliModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="tutoliModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="tutoliModalLabel">Formulario de Tutoli</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                  <div class="p-4 rounded-3 shadow">
-                      <form action="submit_tutoli.php" method="POST">
-                          <div class="mb-3">
-                              <label for="tutoli" class="form-label">Tutoli</label>
-                              <input type="text" class="form-control" id="tutoli" name="tutoli" required>
-                          </div>
-                          <div class="mb-3">
-                              <label for="descripcion" class="form-label">Descripción</label>
-                              <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
-                          </div>
-                          <button type="submit" class="btn btn-primary w-100">Enviar</button>
-                      </form>
-                  </div>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              </div>
-          </div>
-      </div>
-  </div>
-
 
     <!------------------------------CARUSEL-------------------------------------->
     <div class="carusel">
@@ -191,14 +139,14 @@ $usuario = isset($usuario) ? $usuario : null;
             </div>
           </div>
           <div class="carousel-item">
-            <img src="../imagenes/img-2.webp" class="d-block w-100" alt="...">
+            <img src="..." class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
               <h5>Second slide label</h5>
               <p>Some representative placeholder content for the second slide.</p>
             </div>
           </div>
           <div class="carousel-item">
-            <img src="../imagenes/img-3.webp" class="d-block w-100" alt="...">
+            <img src="..." class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
               <h5>Third slide label</h5>
               <p>Some representative placeholder content for the third slide.</p>
@@ -238,18 +186,28 @@ $usuario = isset($usuario) ? $usuario : null;
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-target="ia">python</a>
                     </li>
-                    <li class="nav-item">
-                      <?php if (isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
-                          <a href="modulos/CURSOS/VISTAS/ListaCursos.php" 
-                              id="boton-editar" 
-                              class="btn btn-primary d-flex align-items-center">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-up me-2" viewBox="0 0 16 16">
-                                  <path d="M8.5 11.5a.5.5 0 0 1-1 0V7.707L6.354 8.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 7.707z"/>
-                                  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
-                              </svg>
-                              Editar
-                          </a>
-                      <?php endif; ?>
+                    <li class="nav-item ">
+                      <!-- Botón Editar -->
+                      <a href="modelos/CURSOS/VISTAS/ListaCursos.php" 
+                        id="boton-editar" 
+                        class="btn btn-primary d-flex align-items-center d-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-up me-2" viewBox="0 0 16 16">
+                          <path d="M8.5 11.5a.5.5 0 0 1-1 0V7.707L6.354 8.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 7.707z"/>
+                          <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+                        </svg>
+                        Editar
+                      </a>
+
+                      <!-- Script para mostrar/ocultar el botón -->
+                      <script>
+                          // Lógica para mostrar el botón de "Editar" si el tipo de usuario es "DOCENTE"
+                          document.querySelectorAll('input[name="tipo_usuario"]').forEach((radio) => {
+                              radio.addEventListener('change', function () {
+                                  const botonEditar = document.getElementById('boton-editar');
+                                  botonEditar.classList.toggle('d-none', this.value !== 'DOCENTE');
+                              });
+                          });
+                      </script>
                     </li>
                     <li class="nav-item ms-auto">
                       <div class="d-flex">
@@ -262,130 +220,15 @@ $usuario = isset($usuario) ? $usuario : null;
                 <div class="bloque todos activo">
                     <!-- Tarjetas de todos los cursos -->
                     <div class="row">
-
                         <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
+                            <div class="card" style="width: 18rem;">
                                 <img src="../imagenes/Cursos_card3.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
+                                <div class="card-body-curso">
                                     <h5 class="card-title">Introducción Ciberseguridad</h5>
                                     <p class="card-text">Aprende a identificar, prevenir y mitigar amenazas en el ciberespacio...</p>
                                 </div>
-                                <div class="card-footer">
-                            <!-----------Modal para ver el curso a fondo--------------->
-                                 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card4.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Front-end básico</h5>
-                                    <p class="card-text">Domina las tecnologías modernas para construir sitios web dinámicos...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card5.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ciencia de Datos</h5>
-                                    <p class="card-text">Conviértete en un experto en analizar y visualizar datos...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card6.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Inteligencia artificial</h5>
-                                    <p class="card-text">Sumérgete en el mundo de la IA y aprende a desarrollar modelos inteligentes...</p>
-
-                        <?php foreach($cursos as $row) {?>
-                            <div class="col">
-                                <div class="card" style="width: 18rem;">
-                                    <?php 
-                                    $id = $row['id_curso'];
-                                    ?>
-                                    <img src="../imagenes/Cursos_card3.webp" class="card-img-top" alt="...">
-                                    <div class="card-body-curso">
-                                        <h5 class="card-title"><?php echo $row['titulo']?></h5>
-                                        <p class="card-text">Aprende a identificar, prevenir y mitigar amenazas en el ciberespacio...</p>
-                                    </div>
-                                    <div class="card-footer-curso">
-                                      <!-- Button trigger modal -->
-                                      <!-- Botón para abrir el modal -->
-                                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tutoliModal">
-                                          Abrir Formulario de Tutoli
-                                      </button>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        <?php } ?>
-                    </div>
-
-                              
-                         
- 
-                </div>
-    
-                <!-- Bloques de cursos filtrados -->
-                <div class="bloque ciberseguridad">
-                    <!-- Aquí solo se mostrarán los cursos de Ciberseguridad -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card3.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Introducción Ciberseguridad</h5>
-                                    <p class="card-text">Aprende a identificar, prevenir y mitigar amenazas en el ciberespacio...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bloque desarrollo-web">
-                    <!-- Aquí solo se mostrarán los cursos de Desarrollo Web -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card4.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Front-end básico</h5>
-                                    <p class="card-text">Domina las tecnologías modernas para construir sitios web dinámicos...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bloque ciencia-datos">
-                    <!-- Aquí solo se mostrarán los cursos de Ciencia de Datos -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card5.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ciencia de Datos</h5>
-                                    <p class="card-text">Conviértete en un experto en analizar y visualizar datos...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bloque ia">
-                    <!-- Aquí solo se mostrarán los cursos de Inteligencia Artificial -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card6.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Inteligencia Artificial</h5>
-                                    <p class="card-text">Sumérgete en el mundo de la IA y aprende a desarrollar modelos inteligentes...</p>
+                                <div class="card-footer-curso">
+                                  
                                 </div>
                             </div>
                         </div>
@@ -421,30 +264,12 @@ $usuario = isset($usuario) ? $usuario : null;
       </div>
     </article>
 
-    <div class="container-fluid dinamico">
-
-      <!--
+    <div class="container-fluid">
       <div class="correo">
         <h2>Enterate de cursos nuevos</h2>
         <p>"¡No te pierdas ninguna actualización! Suscríbete con tu correo y sé el primero en descubrir nuestras nuevas
           ofertas, cursos exclusivos y contenido que transformará tu aprendizaje. 🚀"</p>
       </div>
-                        -->
-
-      <div class="card card-new">
-        <div class="content">
-
-          <div class="h6">Enterate de cursos nuevos</div>
-          <div class="hover_content">
-            <div class="texto-p">
-              <p>¡No te pierdas ninguna actualización! Suscríbete con tu correo y sé el primero en descubrir nuestras nuevas
-              ofertas, cursos exclusivos y contenido que transformará tu aprendizaje.🚀 </p>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
     </div>
 
     <!-------------------------------------Pie de Pagina------------------------------------------------>
