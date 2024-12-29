@@ -30,10 +30,6 @@ class ForoControlador{
         if(isset($_GET['id'])){
             $usuario = $this->modelo->Obtener($_GET['id']);
             $titulo = "Modificar";
-        }else{
-            require_once "../CURSOS2/CONTROLADORES/CursosControlador.php";
-            $controlador = new CursoControlador();
-            $cursos = $controlador->listarCursos();
         }
 
         require_once "VISTAS/encabezado.php";
@@ -45,9 +41,9 @@ class ForoControlador{
     public function Guardar(){
         $foro=new Foro();
         $foro->setid_foro(intval($_POST['id_foro']));
-        $foro->setid_curso($_POST['id_curso']);
         $foro->settitulo($_POST['titulo']);
         $foro->setdescripcion($_POST['descripcion']);
+        $foro->setfecha($_POST['fecha_creacion']);
         $foro->getid_foro() > 0 ? $this->modelo->Actualizar($foro) : $this->modelo->Insertar($foro);
 
         header("location:?c=foro&css=style-listadocentes.css");

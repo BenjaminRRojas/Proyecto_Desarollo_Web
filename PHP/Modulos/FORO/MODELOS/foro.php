@@ -105,15 +105,13 @@ class Foro{
     public function Actualizar(Foro $foro){
         try{
             $consulta="UPDATE foro SET
-                id_curso=?,
                 titulo=?,
                 descripcion=?,
-                fecha_comentario=?,
+                fecha_creacion=?
                 WHERE id_foro=?;
             ";
             $this->pdo->prepare($consulta)
                     ->execute(array(
-                        $foro->getid_curso(),
                         $foro->gettitulo(),
                         $foro->getdescripcion(),
                         $foro->getfecha(),
