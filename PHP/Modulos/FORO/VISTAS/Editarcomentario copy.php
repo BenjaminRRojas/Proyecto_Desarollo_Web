@@ -13,15 +13,10 @@
                 <label for="contenido" class="form-label">Contenido</label>
                 <input type="text" class="form-control" id="contenido" name="contenido" value="<?= htmlspecialchars($usuario->getcontenido()) ?>" required>
             </div>
-            <!--<div class="mb-3">
-                <label for="fecha" class="form-label">Fecha Comentario</label>
-                <input type="datetime-local" 
-                    class="form-control" 
-                    id="fecha" 
-                    name="fecha" 
-                    value="<?= htmlspecialchars(date('Y-m-d\TH:i', strtotime($usuario->getfecha()))) ?>" 
-                    required>
-            </div>-->
+            <div class="mb-3">
+                    <label for="fecha_creacion" class="form-label">Fecha de creacion</label>
+                    <input type="datetime-local" class="form-control" id="fecha_creacion" name="fecha_creacion" value="<?= htmlspecialchars($usuario->getfecha() ?? '') ?>" required>
+            </div>
             <button type="submit" class="btn btn-success w-100">Enviar</button>
         </form>
     </div>

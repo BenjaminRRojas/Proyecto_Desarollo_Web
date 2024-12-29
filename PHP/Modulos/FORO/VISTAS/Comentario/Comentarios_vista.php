@@ -23,8 +23,9 @@
                     <!--Collapse Respuesta-->
                     <div class="collapse mt-3" id="collapseRespuesta<?=$id_comentario?>">
                         <form class="card card-body" action="?c=comentario&a=Responder" method="POST">
+                            <p><?=$this->id_foro?></p>
                             <input type="hidden" name="id_comentario" value="<?=$id_comentario?>">
-                            <input type="hidden" name="id_foro" value="<?=$id_foro?>">
+                            <input type="hidden" name="id_foro" value="<?=$this->id_foro?>">
                             
                             <textarea class="form-control mb-3" id="respuesta<?=$id_comentario?>" name="contenido" rows="3" required></textarea>
                             <div>
