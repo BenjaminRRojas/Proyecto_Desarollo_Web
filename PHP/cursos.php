@@ -1,6 +1,7 @@
 <?php
-require_once '/PHP/Modulos/CURSOS2/CONTROLADORES/CursosControlador.php';
+require_once 'Modulos/CURSOS2/CONTROLADORES/CursosControlador.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
