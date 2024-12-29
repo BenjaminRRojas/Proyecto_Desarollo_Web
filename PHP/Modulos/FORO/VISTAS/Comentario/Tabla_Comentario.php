@@ -40,7 +40,7 @@
                                         class="btn btn-danger btn-sm" 
                                         data-bs-toggle="modal" 
                                         data-bs-target="#deleteModal" 
-                                        data-id="<?= $comentario->id_foro ?>">
+                                        data-id="<?= $comentario->id_comentario?>">
                                         Eliminar
                                     </button>
                                 </td>
@@ -51,11 +51,10 @@
         </div>
 
         <div class="text-center mt-4">
-            <a href="?c=comentario&a=Editar" class="btn btn-primary">Agregar Usuario</a>
+            <a href="?c=comentario&a=Editar" class="btn btn-primary">Agregar Comentario</a>
         </div>
     </div>
 
-    <!-- Modal para confirmar eliminación -->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content custom-modal">
@@ -65,7 +64,6 @@
                 </div>
                 <div class="modal-body">
                     <p>¿Estás seguro de que deseas eliminar este usuario?</p>
-                    <p class="fw-bold" id="userIdToDelete"></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -85,10 +83,6 @@
             const button = event.relatedTarget;
             userIdToDelete = button.getAttribute('data-id');
 
-            // Mostrar el ID del estudiante en el modal
-            const userIdDisplay = deleteModal.querySelector('#userIdToDelete');
-            userIdDisplay.textContent = userIdToDelete;
-
             // Configurar el enlace para confirmar la eliminación
             const confirmDeleteButton = deleteModal.querySelector('#confirmDeleteButton');
             confirmDeleteButton.onclick = function () {
@@ -99,8 +93,6 @@
         // Limpiar el ID cuando el modal se cierra
         deleteModal.addEventListener('hidden.bs.modal', function () {
             userIdToDelete = '';
-            const userIdDisplay = deleteModal.querySelector('#userIdToDelete');
-            userIdDisplay.textContent = '';
         });
     </script>
 

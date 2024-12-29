@@ -5,7 +5,7 @@ require_once "MODELOS/comentario.php";
 class ComentarioControlador{
 
     private $modelo;
-    private $id_foro;
+    public $id_foro;
 
     //Método Constructor de el Modelo Comentario
     public function __CONSTRUCT(){
@@ -33,12 +33,13 @@ class ComentarioControlador{
     //Método que recibe los atributos de una respuesta a un comentario y las ingresa
     public function Responder(){
         $usuario=new Comentario();
-        $usuario->setid_foro($_POST['id_foro']);
-        $usuario->setid_usuario(3);
-        $usuario->setcontenido($_POST['contenido']);
-        $usuario->setid_responde($_POST['id_comentario']);
-        $this->modelo->Agregar_Respuesta($usuario);
-
+        if(isset($_POST['id_foro'])){
+            $usuario->setid_foro(intval($_POST['id_foro']));
+            $usuario->setid_usuario(3);
+            $usuario->setcontenido($_POST['contenido']);
+            $usuario->setid_responde($_POST['id_comentario']);
+            $this->modelo->Agregar_Respuesta($usuario);
+        }
         header("Location:?c=foro");
     }
 
@@ -61,13 +62,14 @@ class ComentarioControlador{
         $comentario->setid_comentario(intval($_POST['id_comentario']));
         $comentario->settitulo($_POST['titulo']);
         $comentario->setcontenido($_POST['contenido']);
+        $comentario->setfecha($_POST['fecha_creacion']);
         $comentario->getid_comentario() > 0 ? $this->modelo->Actualizar($comentario) : $this->modelo->Insertar($comentario);
 
-        header("location:?c=foro");
+        header("location:?c=comentario&css=style-listadocentes.css");
     }
 
     public function Borrar(){
         $this->modelo->Eliminar($_GET["id"]);
-        header("location:?c=foro");
+        header("location:?c=comentario&css=style-listadocentes.css");
     }
 }

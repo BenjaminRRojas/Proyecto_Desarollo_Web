@@ -1,6 +1,6 @@
 <?php
 
-require_once "MODELOS/modelo_foro.php";
+require_once "MODELOS/foro.php";
 
 class ForoControlador{
     private $modelo;
@@ -12,6 +12,7 @@ class ForoControlador{
 
     //Método para Mostrar todos los Foros
     public function Inicio(){
+        $foros=new Foro();
         $foros=$this->modelo->Listar();
         require_once "VISTAS/encabezado.php";
         require_once "VISTAS/Foro/foro_vista.php";

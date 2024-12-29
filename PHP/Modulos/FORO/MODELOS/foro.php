@@ -92,9 +92,9 @@ class Foro{
             $consulta="INSERT INTO foro(id_curso,titulo,descripcion,fecha_creacion) VALUES (?,?,?,FROM_UNIXTIME(?));";
             $this->pdo->prepare($consulta)
                     ->execute(array(
-                        $p->getid_curso(),
-                        $p->gettitulo(),
-                        $p->getdescripcion(),
+                        $foro->getid_curso(),
+                        $foro->gettitulo(),
+                        $foro->getdescripcion(),
                         time(),
                     ));
         }catch(Exception $e){
@@ -102,7 +102,7 @@ class Foro{
         }
     }
 
-    public function Actualizar(Comentario $p){
+    public function Actualizar(Foro $foro){
         try{
             $consulta="UPDATE comentario SET
                 id_curso=?,
@@ -113,11 +113,11 @@ class Foro{
             ";
             $this->pdo->prepare($consulta)
                     ->execute(array(
-                        $p->getid_foro(),
-                        $p->getid_usuario(),
-                        $p->getcontenido(),
+                        $foro->getid_foro(),
+                        $foro->getid_usuario(),
+                        $foro->getcontenido(),
                         time(),
-                        $p->getid_comentario()
+                        $foro->getid_comentario()
                     ));
         }catch(Exception $e){
             die($e->getMessage());
