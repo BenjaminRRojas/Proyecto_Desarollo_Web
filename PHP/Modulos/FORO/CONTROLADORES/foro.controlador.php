@@ -22,6 +22,13 @@ class ForoControlador{
         require_once "VISTAS/pie.php";
     }
 
+    public function Tabla(){
+        $foros=new Foro();
+        $foros=$this->modelo->Listar();
+        require_once "VISTAS/encabezadotabla.php";
+        require_once "VISTAS/Foro/Tabla_Foro.php";
+    }
+
     //Método para cambiar la vista si tiene id o no
     public function Editar(){
         $titulo = "Agregar";
@@ -46,12 +53,12 @@ class ForoControlador{
         $foro->setfecha($_POST['fecha_creacion']);
         $foro->getid_foro() > 0 ? $this->modelo->Actualizar($foro) : $this->modelo->Insertar($foro);
 
-        header("location:?c=foro&css=style-listadocentes.css");
+        header("location:?c=foro&a=Tabla");
     }
 
     public function Borrar(){
         $this->modelo->Eliminar($_GET["id"]);
-        header("location:?c=foro&css=style-listadocentes.css");
+        header("location:?c=foro&a=Tabla");
     }
 }
 
