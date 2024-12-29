@@ -40,6 +40,7 @@ $cursos = $controlador->listarCursos();
                         <th>Duracion</th>
                         <th>Fecha de Creacion</th>
                         <th>Categoria</th>
+                        <th>Descripcion</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
@@ -51,6 +52,7 @@ $cursos = $controlador->listarCursos();
                             <td><?= $curso['duracion'] ?></td>
                             <td><?= $curso['fecha_creacion'] ?></td>
                             <td><?= $curso['categoria'] ?></td>
+                            <td><?= $curso['descripcion'] ?></td>
                             <td>
                                 <!-- Editar -->
                                 <a href="../RUTAS/modificar.php?id=<?= $curso['id_curso'] ?>" class="btn btn-warning btn-sm">Editar</a>

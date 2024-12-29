@@ -1,6 +1,4 @@
-<?php
-require_once 'Modulos/CURSOS2/CONTROLADORES/CursosControlador.php';
-?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -13,7 +11,7 @@ require_once 'Modulos/CURSOS2/CONTROLADORES/CursosControlador.php';
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../CSS/style-cursos.css">
+  <link rel="stylesheet" href="/../CSS/style-cursos.css">
 
 </head>
 
@@ -208,12 +206,11 @@ require_once 'Modulos/CURSOS2/CONTROLADORES/CursosControlador.php';
             </div>
             <div class="card-body">
                 <div class="bloque todos activo">
-                    <!-- Tarjetas de todos los cursos 
-                    
+                    <!-- Tarjetas de todos los cursos -->
                     <div class="row">
                         <?php foreach($cursos as $row) {?>
                             <div class="col">
-                                <div class="card" style="width: 18rem;">
+                                <div class="card" style="width: 18rem;" >
                                     <?php 
                                     $id = $row['id_curso'];
                                     ?>
@@ -228,7 +225,6 @@ require_once 'Modulos/CURSOS2/CONTROLADORES/CursosControlador.php';
                         </div>
                         <?php } ?>
                     </div>
-                    -->
                 </div>
     
                 <!-- Bloques de cursos filtrados -->

@@ -104,6 +104,10 @@ $curso = isset($curso) ? $curso : null;
                     <label for="categoria" class="form-label">Categoria</label>
                     <input type="text" class="form-control" id="categoria" name="categoria" required>
                 </div>
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">Categoria</label>
+                    <input type="text" class="form-control" id="descripcion" name="descripcion" required>
+                </div>
             
                 <button type="submit" class="btn btn-success w-100">Registrar</button>
             </form>

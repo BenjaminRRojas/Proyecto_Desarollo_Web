@@ -19,8 +19,8 @@ class CursosControlador {
     }
 
     // Agregar un nuevo curso
-    public function agregarCurso($titulo, $duracion,$fecha_creacion, $categoria){
-        return $this->modelo->insertar($titulo, $duracion,$fecha_creacion, $categoria);
+    public function agregarCurso($titulo, $duracion,$fecha_creacion, $categoria, $descripcion){
+        return $this->modelo->insertar($titulo, $duracion,$fecha_creacion, $categoria, $descripcion);
     }
 
     // Mostrar los detalles del curso
@@ -29,8 +29,8 @@ class CursosControlador {
     }
 
     // Mostrar el formulario para editar un curso
-    public function actualizarCurso($id, $titulo, $duracion,$fecha_creacion, $categoria) {
-        return $this->modelo->actualizar($id, $titulo, $duracion,$fecha_creacion, $categoria);
+    public function actualizarCurso($id, $titulo, $duracion,$fecha_creacion, $categoria, $descripcion) {
+        return $this->modelo->actualizar($id, $titulo, $duracion,$fecha_creacion, $categoria, $descripcion);
     }
 
     // Eliminar un curso
