@@ -63,13 +63,15 @@ if (isset($_GET['id_evaluacion'])) {
             <div class="mb-5">
                 <label for="id_curso" class="form-label">Curso</label>
                 <select name="id_curso" class="form-select" id="curso" required>
-                    <option value="<?= $evaluacion['id_curso'] ?>">2</option>
-                    <?php
-                    foreach ($cursos as $curso) {
-                        $selected = (isset($evaluacion['id_curso']) && $evaluacion['id_curso'] == $curso['id_curso']) ? 'selected' : '';
-                        echo "<option value='{$curso['id_curso']}' {$selected}>{$curso['titulo']}</option>";
-                    }
-                    ?>
+                    <?php foreach ($cursos as $curso): ?>
+                        <option value="<?= $curso['id_curso'] ?>" 
+                            <?php 
+                                // Verifica si el id_curso de la evaluación coincide con el id_curso del curso
+                                echo (isset($evaluacion['id_curso']) && $curso['id_curso'] == $evaluacion['id_curso']) ? 'selected' : ''; 
+                            ?>>
+                            <?= $curso['titulo'] ?>
+                        </option>
+                    <?php endforeach; ?>
                 </select>
             </div>
 
