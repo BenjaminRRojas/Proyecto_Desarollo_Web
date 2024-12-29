@@ -1,5 +1,5 @@
 <?php
-require_once 'Modulos\CURSOS\CONTROLADORES\CursosControlador.php';
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\CURSOS\CONTROLADORES\CursosControlador.php';
 
 $controlador = new CursosControlador();
 $cursos = $controlador->listarCursos();

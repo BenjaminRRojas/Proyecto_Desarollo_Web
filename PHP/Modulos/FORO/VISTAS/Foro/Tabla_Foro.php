@@ -1,6 +1,6 @@
     <!-- Contenedor principal -->
     <div class="container mt-5">
-        <h1 class="text-center">Lista de Comentario</h1>
+        <h1 class="text-center">Lista de Foro</h1>
         
         <!-- Buscador -->
         <div class="row my-4">
@@ -14,33 +14,29 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>ID Comentario</th>
                         <th>ID Foro</th>
-                        <th>ID Usuario</th>
-                        <th>ID Comentario Responde</th>
+                        <th>ID Curso</th>
                         <th>Título</th>
-                        <th>Contenido</th>
-                        <th>Fecha Comentario</th>
+                        <th>Descripción</th>
+                        <th>Fecha Creación</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody id="userTable">
-                    <?php foreach ($comentarios as $comentario): ?>
+                    <?php foreach ($foros as $foro): ?>
                             <tr>
-                                <td><?= $comentario->id_comentario ?></td>
-                                <td><?= $comentario->id_foro ?></td>
-                                <td><?= $comentario->id_usuario ?></td>
-                                <td><?= $comentario->id_comentario_responde ?></td>
-                                <td><?= $comentario->titulo ?></td>
-                                <td><?= $comentario->contenido ?></td>
-                                <td><?= $comentario->fecha_comentario ?></td>
+                                <td><?= $foro->id_foro ?></td>
+                                <td><?= $foro->id_curso ?></td>
+                                <td><?= $foro->titulo ?></td>
+                                <td><?= $foro->descripcion ?></td>
+                                <td><?= $foro->fecha_creacion ?></td>
                                 <td>
-                                    <a href="?c=comentario&a=Editar&id=<?=$comentario->id_comentario?>" class="btn btn-warning btn-sm">Editar</a>
+                                    <a href="?c=foro&a=Editar&id=<?=$foro->id_foro?>" class="btn btn-warning btn-sm">Editar</a>
                                     <button 
                                         class="btn btn-danger btn-sm" 
                                         data-bs-toggle="modal" 
                                         data-bs-target="#deleteModal" 
-                                        data-id="<?= $comentario->id_comentario?>">
+                                        data-id="<?= $foro->id_foro?>">
                                         Eliminar
                                     </button>
                                 </td>
@@ -51,7 +47,7 @@
         </div>
 
         <div class="text-center mt-4">
-            <a href="?c=comentario&a=Editar" class="btn btn-primary">Agregar Comentario</a>
+            <a href="?c=foro&a=Editar" class="btn btn-primary">Agregar Foro</a>
         </div>
     </div>
 
@@ -86,7 +82,7 @@
             // Configurar el enlace para confirmar la eliminación
             const confirmDeleteButton = deleteModal.querySelector('#confirmDeleteButton');
             confirmDeleteButton.onclick = function () {
-                window.location.href = `?c=comentario&a=Borrar&id=${userIdToDelete}`;
+                window.location.href = `?c=foro&a=Borrar&id=${userIdToDelete}`;
             };
         });
 

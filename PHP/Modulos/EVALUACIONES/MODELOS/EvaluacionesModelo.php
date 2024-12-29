@@ -1,5 +1,5 @@
 <?php
-require_once '../../CORE/conexion.php';
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\CORE\conexion.php';
 
 class EvaluacionesModelo {
     private $db;

@@ -1,3 +1,8 @@
+<?php
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\CURSOS\CONTROLADORES\CursosControlador.php';
+$controlador = new CursosControlador();
+$cursos = $controlador->listarCursos();
+?>
 
 
 <!DOCTYPE html>
@@ -11,7 +16,7 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/../CSS/style-cursos.css">
+  <link rel="stylesheet" href="../CSS/style-cursos.css">
 
 </head>
 
@@ -210,7 +215,7 @@
                     <div class="row">
                         <?php foreach($cursos as $row) {?>
                             <div class="col">
-                                <div class="card" style="width: 18rem;" >
+                                <div class="card" style="width: 18rem;">
                                     <?php 
                                     $id = $row['id_curso'];
                                     ?>
@@ -220,71 +225,33 @@
                                         <p class="card-text">Aprende a identificar, prevenir y mitigar amenazas en el ciberespacio...</p>
                                     </div>
                                     <div class="card-footer-curso">
+                                      <!-- Button trigger modal -->
+                                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                        Launch static backdrop modal
+                                      </button>
+
+                                      <!-- Modal -->
+                                      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                              ...
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                              <button type="button" class="btn btn-primary">Understood</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         <?php } ?>
-                    </div>
-                </div>
-    
-                <!-- Bloques de cursos filtrados -->
-                <div class="bloque ciberseguridad">
-                    <!-- Aquí solo se mostrarán los cursos de Ciberseguridad -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="card" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card3.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Introducción Ciberseguridad</h5>
-                                    <p class="card-text">Aprende a identificar, prevenir y mitigar amenazas en el ciberespacio...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bloque desarrollo-web">
-                    <!-- Aquí solo se mostrarán los cursos de Desarrollo Web -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="card" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card4.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Front-end básico</h5>
-                                    <p class="card-text">Domina las tecnologías modernas para construir sitios web dinámicos...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bloque ciencia-datos">
-                    <!-- Aquí solo se mostrarán los cursos de Ciencia de Datos -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="card" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card5.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ciencia de Datos</h5>
-                                    <p class="card-text">Conviértete en un experto en analizar y visualizar datos...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bloque ia">
-                    <!-- Aquí solo se mostrarán los cursos de Inteligencia Artificial -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="card" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card6.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Inteligencia Artificial</h5>
-                                    <p class="card-text">Sumérgete en el mundo de la IA y aprende a desarrollar modelos inteligentes...</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

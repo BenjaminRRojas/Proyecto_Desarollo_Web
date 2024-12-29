@@ -1,8 +1,12 @@
 <?php
-require_once '../CONTROLADORES/EvaluacionesControlador.php';
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\EVALUACIONES\CONTROLADORES\EvaluacionesControlador.php';
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\CURSOS\CONTROLADORES\CursosControlador.php';
 
-$controlador = new EvaluacionesControlador();
-$evaluaciones = $controlador->listarEvaluaciones();
+$controlador1 = new CursosControlador();
+$cursos = $controlador1->listarCursos();
+
+$controlador2 = new EvaluacionesControlador();
+$evaluaciones = $controlador2->listarEvaluaciones();
 ?>
 
 <!DOCTYPE html>
@@ -29,11 +33,15 @@ $evaluaciones = $controlador->listarEvaluaciones();
             <div class="col-md-6">
                 <div class="input-group" id="selectInput">
                     <span class="input-group-text">Buscar por curso</span>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Todos los cursos</option>
-                        <option value="1">Python</option>
-                        <option value="2">C++</option>
-                        <option value="3">JavaScript</option>
+                    <select class="form-select" id="curso" name="id_curso" required>
+                        <option value="" disabled selected>Selecciona un curso</option>
+                        <?php
+                        // Iterar sobre los cursos obtenidos del modelo
+                        foreach ($cursos as $curso) {
+                            $selected = (isset($evaluacion['id_curso']) && $evaluacion['id_curso'] == $curso['id_curso']) ? 'selected' : '';
+                            echo "<option value='{$curso['id_curso']}' {$selected}>{$curso['titulo']}</option>";
+                        }
+                        ?>
                     </select>
                 </div>
             </div>
@@ -82,7 +90,7 @@ $evaluaciones = $controlador->listarEvaluaciones();
         </div>
 
         <div class="text-center mt-4">
-            <a href="../../../formulario-evaluaciones.php?accion=agregar" class="btn btn-lg btn-primary">Agregar evaluación</a>
+            <a href="..\..\..\formulario-evaluaciones.php?accion=agregar" class="btn btn-lg btn-primary">Agregar evaluación</a>
         </div>
     </div>
 

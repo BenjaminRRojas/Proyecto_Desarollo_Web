@@ -1,5 +1,5 @@
 <?php
-require_once '../MODELOS/CursosModelos.php';
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\CURSOS\MODELOS\CursosModelos.php';
 
 class CursosControlador {
     private $modelo;
