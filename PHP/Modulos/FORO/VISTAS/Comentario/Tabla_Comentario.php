@@ -15,9 +15,9 @@
                 <thead>
                     <tr>
                         <th>ID Comentario</th>
-                        <th>ID Foro</th>
-                        <th>ID Usuario</th>
                         <th>ID Comentario Responde</th>
+                        <th>Foro</th>
+                        <th>Usuario</th>
                         <th>Título</th>
                         <th>Contenido</th>
                         <th>Fecha Comentario</th>
@@ -28,9 +28,9 @@
                     <?php foreach ($comentarios as $comentario): ?>
                             <tr>
                                 <td><?= $comentario->id_comentario ?></td>
-                                <td><?= $comentario->id_foro ?></td>
-                                <td><?= $comentario->id_usuario ?></td>
                                 <td><?= $comentario->id_comentario_responde ?></td>
+                                <td><?= $comentario->titulo_foro ?></td>
+                                <td><?= $comentario->nombres ?> <?= $comentario->apellidos ?></td>
                                 <td><?= $comentario->titulo ?></td>
                                 <td><?= $comentario->contenido ?></td>
                                 <td><?= $comentario->fecha_comentario ?></td>

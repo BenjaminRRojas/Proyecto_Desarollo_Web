@@ -15,14 +15,14 @@ class ComentarioControlador{
     //Método donde se muestran los comentarios a partir de la Id Foro
     public function Inicio(){
         $this->id_foro = isset($_GET['id']);
-        $comentarios=$this->modelo->Listar($this->id_foro, "SELECT * FROM comentario WHERE id_foro=?;");  
+        $comentarios=$this->modelo->Listar($this->id_foro);  
         require_once "VISTAS/encabezado.php";
         require_once "VISTAS/Comentario/Comentarios_vista.php";
         require_once "VISTAS/pie.php";
     }
 
     public function Tabla(){
-        $comentarios=$this->modelo->Listar(NULL, "SELECT * FROM comentario");
+        $comentarios=$this->modelo->Listar(NULL);
         require_once "VISTAS/encabezadotabla.php";
         require_once "VISTAS/Comentario/Tabla_Comentario.php";
     }

@@ -15,7 +15,7 @@
                 <thead>
                     <tr>
                         <th>ID Foro</th>
-                        <th>ID Curso</th>
+                        <th>Curso</th>
                         <th>Título</th>
                         <th>Descripción</th>
                         <th>Fecha Creación</th>
@@ -26,8 +26,8 @@
                     <?php foreach ($foros as $foro): ?>
                             <tr>
                                 <td><?= $foro->id_foro ?></td>
-                                <td><?= $foro->id_curso ?></td>
                                 <td><?= $foro->titulo ?></td>
+                                <td><?= $foro->titulo_foro ?></td>
                                 <td><?= $foro->descripcion ?></td>
                                 <td><?= $foro->fecha_creacion ?></td>
                                 <td>
