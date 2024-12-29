@@ -11,7 +11,7 @@ if (!isset($_SESSION['nombres']) || $_SESSION['tipo_usuario'] != 'ESTUDIANTE') {
 $usuario_id = $_SESSION['id_usuario']; 
 
 // Conectar a la base de datos y obtener los cursos del estudiante
-try {
+/*try {
     $pdo = Database::getConnection();
     // Consulta para obtener los cursos inscritos
     $stmt = $pdo->prepare("SELECT c.id_curso, c.titulo, c.duracion, c.categoria, c.descripcion, e.promedio
@@ -23,7 +23,7 @@ try {
     $cursos_inscritos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     die("Error: " . $e->getMessage());
-}
+}*/
 ?>
 
 <!DOCTYPE html>
