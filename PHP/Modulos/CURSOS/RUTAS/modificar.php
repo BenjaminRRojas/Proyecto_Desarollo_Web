@@ -58,6 +58,11 @@ if (isset($_GET['id'])) {
                 <label for="categoria" class="form-label">Categoria</label>
                 <input type="text" class="form-control" id="categoria" name="categoria" value="<?= htmlspecialchars($curso['categoria']) ?>" required>
             </div>
+
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Categoria</label>
+                <input type="text" class="form-control" id="descripcion" name="descripcion" value="<?= htmlspecialchars($curso['descripcion']) ?>" required>
+            </div>
             
             <button type="submit" class="btn btn-success w-100">Actualizar Curso</button>
         </form>
