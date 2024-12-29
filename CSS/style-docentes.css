@@ -348,6 +348,7 @@ body>video {
 .info-docentes {
     width: 100%;
     height: 140vh;
+    padding: 30px;
     /* margin-block: 190px; */
     /* padding: 10px; */
     border-radius: 20px;

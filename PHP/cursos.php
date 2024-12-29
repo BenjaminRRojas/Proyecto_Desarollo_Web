@@ -1,4 +1,5 @@
 <?php
+
 require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\CURSOS\CONTROLADORES\CursosControlador.php';
 $controlador = new CursosControlador();
 $cursos = $controlador->listarCursos();
@@ -7,6 +8,7 @@ $cursos = $controlador->listarCursos();
 session_start(); // Inicia la sesión
 $accion = $_GET['accion'] ?? 'agregar';
 $usuario = isset($usuario) ? $usuario : null;
+
 ?>
 
 
@@ -311,7 +313,6 @@ $usuario = isset($usuario) ? $usuario : null;
                                         <p class="card-text">Aprende a identificar, prevenir y mitigar amenazas en el ciberespacio...</p>
                                     </div>
                                     <div class="card-footer-curso">
-<<<<<<< HEAD
                                       <!-- Button trigger modal -->
                                       <!-- Botón para abrir el modal -->
                                       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tutoliModal">
@@ -319,16 +320,15 @@ $usuario = isset($usuario) ? $usuario : null;
                                       </button>
 
                                     </div>
-=======
 
->>>>>>> 995a38c0d702a849796fafd6a19d5fee9ced2e07
                                 </div>
                             </div>
                         <?php } ?>
                     </div>
-<<<<<<< HEAD
-=======
-                    -->
+
+                              
+                         
+ 
                 </div>
     
                 <!-- Bloques de cursos filtrados -->
@@ -390,7 +390,6 @@ $usuario = isset($usuario) ? $usuario : null;
                             </div>
                         </div>
                     </div>
->>>>>>> 995a38c0d702a849796fafd6a19d5fee9ced2e07
                 </div>
             </div>
         </div>
@@ -423,7 +422,7 @@ $usuario = isset($usuario) ? $usuario : null;
     </article>
 
     <div class="container-fluid dinamico">
-<<<<<<< HEAD
+
       <!--
       <div class="correo">
         <h2>Enterate de cursos nuevos</h2>
@@ -445,29 +444,7 @@ $usuario = isset($usuario) ? $usuario : null;
           </div>
         </div>
       </div>
-=======
-      <div class="card card-new">
-        <div class="content">
-        
-          <div class="h6">Enterate de cursos nuevos</div>
-          <div class="hover_content">
-            <div class="texto-p">
-              <p>¡No te pierdas ninguna actualización! Suscríbete con tu correo y sé el primero en descubrir nuestras nuevas
-              ofertas, cursos exclusivos y contenido que transformará tu aprendizaje. 🚀</p>
-            </div>
 
-          </div>
-        </div>
-      </div>
-
-
-
-      <!-- <div class="correo">
-        <h2>Enterate de cursos nuevos</h2>
-        <p>"¡No te pierdas ninguna actualización! Suscríbete con tu correo y sé el primero en descubrir nuestras nuevas
-          ofertas, cursos exclusivos y contenido que transformará tu aprendizaje. 🚀"</p>
-      </div> -->
->>>>>>> 995a38c0d702a849796fafd6a19d5fee9ced2e07
     </div>
 
     <!-------------------------------------Pie de Pagina------------------------------------------------>
