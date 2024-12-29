@@ -66,7 +66,8 @@ CREATE TABLE `cursos` (
 --
 
 INSERT INTO `cursos` (`id_curso`, `titulo`, `duracion`, `fecha_creacion`, `categoria`, `id_usuario`, `id_media`, `descripcion`) VALUES
-(2, 'HTML', 20, '2024-12-22 17:49:23', 'Desarrollo Web', 2, 2, 'FAFSFDSASFDFS');
+(2, 'HTML', 20, '2024-12-22 17:49:23', 'Desarrollo Web', 2, 2, 'FAFSFDSASFDFS'),
+(3, 'Python', 20, '2024-12-22 17:49:23', 'Programación', 2, 2, 'FAFSFDSASFDFS');
 
 -- --------------------------------------------------------
 
@@ -82,6 +83,55 @@ CREATE TABLE `evaluaciones` (
   `fecha_limite` datetime NOT NULL,
   `id_curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `evaluaciones`
+--
+
+INSERT INTO `evaluaciones` (`id_evaluacion`, `titulo`, `descripcion`, `fecha_creacion`, `fecha_limite`,  `id_curso`) VALUES
+(2, 'Evaluación 1 de HTML', 'abcd', '2024-12-22 17:47:06', '2024-12-22 17:47:06',  2),
+(3, 'Evaluación 1 de Python', 'abcd', '2024-12-22 17:47:06', '2024-12-22 17:47:06',  3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `preguntas`
+--
+
+CREATE TABLE preguntas (
+    `id_pregunta` int(11) NOT NULL,
+    `enunciado` text NOT NULL,
+    `evaluacion_id` int(11) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `respuestas`
+--
+
+CREATE TABLE respuestas (
+    `id_respuesta` int(11) NOT NULL,
+    `texto_respuesta` text NOT NULL,
+    `es_correcta` BOOLEAN NOT NULL,
+    `pregunta_id` int(11) NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `resultados`
+--
+
+CREATE TABLE resultados (
+    `id_resultado` int(11) NOT NULL,
+    `id_estudiante` int(11) NOT NULL,
+    `id_evaluacion` int(11) NOT NULL,
+    `nota` float NOT NULL,
+    `retroalimentacion` text NOT NULL,
+    `fecha_realizacion` datetime DEFAULT CURRENT_TIMESTAMP
+)ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
 
 -- --------------------------------------------------------
 
@@ -198,6 +248,28 @@ ALTER TABLE `evaluaciones`
   ADD KEY `id_curso` (`id_curso`);
 
 --
+-- Indices de la tabla `preguntas`
+--
+ALTER TABLE `preguntas`
+  ADD PRIMARY KEY (`id_pregunta`),
+  ADD KEY `id_evaluacion` (`id_evaluacion`);
+
+--
+-- Indices de la tabla `respuestas`
+--
+ALTER TABLE `respuestas`
+  ADD PRIMARY KEY (`id_respuesta`),
+  ADD KEY `id_pregunta` (`id_pregunta`);
+
+--
+-- Indices de la tabla `resultados`
+--
+ALTER TABLE `respuestas`
+  ADD PRIMARY KEY (`id_resultado`),
+  ADD KEY `id_estudiante` (`id_estudiante`),
+  ADD KEY `id_evaluacion` (`id_evaluacion`);
+
+--
 -- Indices de la tabla `foro`
 --
 ALTER TABLE `foro`
@@ -247,6 +319,24 @@ ALTER TABLE `evaluaciones`
   MODIFY `id_evaluacion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `preguntas`
+--
+ALTER TABLE `preguntas`
+  MODIFY `id_pregunta` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `respuestas`
+--
+ALTER TABLE `respuestas`
+  MODIFY `id_respuesta` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `respuestas`
+--
+ALTER TABLE `resultados`
+  MODIFY `id_resultado` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `foro`
 --
 ALTER TABLE `foro`
@@ -294,6 +384,25 @@ ALTER TABLE `cursos`
 --
 ALTER TABLE `evaluaciones`
   ADD CONSTRAINT `evaluaciones_ibfk_1` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_curso`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `preguntas`
+--
+ALTER TABLE `preguntas`
+  ADD CONSTRAINT `preguntas_ibfk_1` FOREIGN KEY (`id_evaluacion`) REFERENCES `evaluaciones` (`id_evaluacion`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `respuestas`
+--
+ALTER TABLE `respuestas`
+  ADD CONSTRAINT `respuestas_ibfk_1` FOREIGN KEY (`id_pregunta`) REFERENCES `preguntas` (`id_pregunta`) ON DELETE CASCADE;
+
+--
+-- Filtros para la tabla `cursos`
+--
+ALTER TABLE `resultados`
+  ADD CONSTRAINT `resultados_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE,
+  ADD CONSTRAINT `resultados_ibfk_2` FOREIGN KEY (`id_evaluacion`) REFERENCES `evaluaciones` (`id_evaluacion`) ON DELETE SET NULL;
 
 --
 -- Filtros para la tabla `foro`
