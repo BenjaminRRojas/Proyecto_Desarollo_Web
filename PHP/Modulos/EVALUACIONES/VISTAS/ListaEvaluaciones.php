@@ -34,14 +34,10 @@ $evaluaciones = $controlador2->listarEvaluaciones();
                 <div class="input-group" id="selectInput">
                     <span class="input-group-text">Buscar por curso</span>
                     <select class="form-select" id="curso" name="id_curso" required>
-                        <option value="" disabled selected>Selecciona un curso</option>
-                        <?php
-                        // Iterar sobre los cursos obtenidos del modelo
-                        foreach ($cursos as $curso) {
-                            $selected = (isset($evaluacion['id_curso']) && $evaluacion['id_curso'] == $curso['id_curso']) ? 'selected' : '';
-                            echo "<option value='{$curso['id_curso']}' {$selected}>{$curso['titulo']}</option>";
-                        }
-                        ?>
+                        <option value="" selected>Todos los cursos</option>
+                        <?php foreach ($cursos as $curso): ?>
+                            <option value="<?= $curso['id_curso'] ?>"><?= $curso['titulo'] ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
             </div>
@@ -68,7 +64,7 @@ $evaluaciones = $controlador2->listarEvaluaciones();
                     <?php foreach ($evaluaciones as $evaluacion): ?>
                         <tr>
                             <td><?= $evaluacion['id_evaluacion'] ?></td>
-                            <td><?= $evaluacion['id_curso'] ?></td>
+                            <td><?= $evaluacion['curso_titulo'] ?></td>
                             <td><?= $evaluacion['titulo'] ?></td>
                             <td><?= $evaluacion['descripcion'] ?></td>
                             <td><?= $evaluacion['fecha_creacion'] ?></td>
@@ -144,7 +140,6 @@ $evaluaciones = $controlador2->listarEvaluaciones();
         });
     </script>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Script para el buscador -->
@@ -158,5 +153,30 @@ $evaluaciones = $controlador2->listarEvaluaciones();
             });
         });
     </script>
+
+    <!-- Script para el filtro por curso -->
+    <script>
+        document.getElementById('curso').addEventListener('change', function () {
+            const selectedCurso = this.options[this.selectedIndex].text.toLowerCase(); // Obtenemos el texto del curso seleccionado
+            const rows = document.querySelectorAll('#userTable tr');
+
+            // Si se selecciona "Todos los cursos", muestra todas las filas
+            if (selectedCurso === "todos los cursos") {
+                rows.forEach(row => {
+                    row.style.display = ''; // Muestra todas las filas
+                });
+            } else {
+                // Filtrar según el curso seleccionado
+                rows.forEach(row => {
+                    const cursoCell = row.querySelector('td:nth-child(2)'); // Selecciona la celda del curso (segunda columna)
+                    if (cursoCell) {
+                        const cursoValue = cursoCell.textContent.toLowerCase(); // Obtenemos el texto del curso en la tabla
+                        row.style.display = (cursoValue.includes(selectedCurso)) ? '' : 'none'; // Mostrar o ocultar
+                    }
+                });
+            }
+        });
+    </script>
+
 </body>
 </html>
