@@ -53,6 +53,10 @@ class UsuariosControlador {
     }
 
 
+
+    
+
+
     //Enviar Correo
     public function enviarCorreoConfirmacion($correo, $nombres, $archivo) {
         require __DIR__ . '/../../../../vendor/autoload.php';
