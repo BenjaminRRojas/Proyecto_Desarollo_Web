@@ -181,9 +181,9 @@ body>video {
 
 /*----------------------------------Modal--------------------------------*/
 .modal-content {
-    background: rgba(4, 10, 21, 0.9) !important; 
+    background: rgba(4, 10, 21, 0.9) !important;
     border-radius: 15px;
-    color: #e0e0e0; 
+    color: #e0e0e0;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
     font-family: 'IBM Plex Mono', monospace;
 }
@@ -198,7 +198,7 @@ body>video {
 
 /* Cuerpo del modal */
 .modal-body {
-    background: rgb(11, 18, 29) !important; 
+    background: rgb(11, 18, 29) !important;
     border-radius: 10px;
     padding: 20px;
 }
@@ -214,8 +214,8 @@ body>video {
 
 .modal-body .form-control {
     background: rgb(30, 33, 40);
-    border: 1px solid rgba(60, 180, 180, 0.5); 
-    color: #0f0b0b; 
+    border: 1px solid rgba(60, 180, 180, 0.5);
+    color: #0f0b0b;
     border-radius: 10px;
     font-family: 'IBM Plex Mono', monospace;
 }
@@ -241,7 +241,7 @@ body>video {
 
 /* Footer del modal */
 .modal-footer {
-    background: rgba(4, 10, 21, 1); 
+    background: rgba(4, 10, 21, 1);
     border-top: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 0 0 15px 15px;
 }
@@ -536,7 +536,7 @@ body>video {
     }
 }
 
-/*---------------------------------------Footer Docentes------------------------------------*/
+/*---------------------------------------Lista Docentes------------------------------------*/
 
 
 :root {

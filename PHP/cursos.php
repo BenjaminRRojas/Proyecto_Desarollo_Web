@@ -260,6 +260,45 @@ $usuario = isset($usuario) ? $usuario : null;
                 <div class="bloque todos activo">
                     <!-- Tarjetas de todos los cursos -->
                     <div class="row">
+
+                        <div class="col">
+                            <div class="card h-50" style="width: 18rem;">
+                                <img src="../imagenes/Cursos_card3.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Introducción Ciberseguridad</h5>
+                                    <p class="card-text">Aprende a identificar, prevenir y mitigar amenazas en el ciberespacio...</p>
+                                </div>
+                                <div class="card-footer">
+                            <!-----------Modal para ver el curso a fondo--------------->
+                                 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-50" style="width: 18rem;">
+                                <img src="../imagenes/Cursos_card4.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Front-end básico</h5>
+                                    <p class="card-text">Domina las tecnologías modernas para construir sitios web dinámicos...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-50" style="width: 18rem;">
+                                <img src="../imagenes/Cursos_card5.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ciencia de Datos</h5>
+                                    <p class="card-text">Conviértete en un experto en analizar y visualizar datos...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card h-50" style="width: 18rem;">
+                                <img src="../imagenes/Cursos_card6.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Inteligencia artificial</h5>
+                                    <p class="card-text">Sumérgete en el mundo de la IA y aprende a desarrollar modelos inteligentes...</p>
+
                         <?php foreach($cursos as $row) {?>
                             <div class="col">
                                 <div class="card" style="width: 18rem;">
@@ -272,6 +311,7 @@ $usuario = isset($usuario) ? $usuario : null;
                                         <p class="card-text">Aprende a identificar, prevenir y mitigar amenazas en el ciberespacio...</p>
                                     </div>
                                     <div class="card-footer-curso">
+<<<<<<< HEAD
                                       <!-- Button trigger modal -->
                                       <!-- Botón para abrir el modal -->
                                       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tutoliModal">
@@ -279,10 +319,78 @@ $usuario = isset($usuario) ? $usuario : null;
                                       </button>
 
                                     </div>
+=======
+
+>>>>>>> 995a38c0d702a849796fafd6a19d5fee9ced2e07
                                 </div>
                             </div>
                         <?php } ?>
                     </div>
+<<<<<<< HEAD
+=======
+                    -->
+                </div>
+    
+                <!-- Bloques de cursos filtrados -->
+                <div class="bloque ciberseguridad">
+                    <!-- Aquí solo se mostrarán los cursos de Ciberseguridad -->
+                    <div class="row">
+                        <div class="col">
+                            <div class="card h-50" style="width: 18rem;">
+                                <img src="../imagenes/Cursos_card3.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Introducción Ciberseguridad</h5>
+                                    <p class="card-text">Aprende a identificar, prevenir y mitigar amenazas en el ciberespacio...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bloque desarrollo-web">
+                    <!-- Aquí solo se mostrarán los cursos de Desarrollo Web -->
+                    <div class="row">
+                        <div class="col">
+                            <div class="card h-50" style="width: 18rem;">
+                                <img src="../imagenes/Cursos_card4.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Front-end básico</h5>
+                                    <p class="card-text">Domina las tecnologías modernas para construir sitios web dinámicos...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="bloque ciencia-datos">
+                    <!-- Aquí solo se mostrarán los cursos de Ciencia de Datos -->
+                    <div class="row">
+                        <div class="col">
+                            <div class="card h-50" style="width: 18rem;">
+                                <img src="../imagenes/Cursos_card5.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ciencia de Datos</h5>
+                                    <p class="card-text">Conviértete en un experto en analizar y visualizar datos...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="bloque ia">
+                    <!-- Aquí solo se mostrarán los cursos de Inteligencia Artificial -->
+                    <div class="row">
+                        <div class="col">
+                            <div class="card h-50" style="width: 18rem;">
+                                <img src="../imagenes/Cursos_card6.webp" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">Inteligencia Artificial</h5>
+                                    <p class="card-text">Sumérgete en el mundo de la IA y aprende a desarrollar modelos inteligentes...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+>>>>>>> 995a38c0d702a849796fafd6a19d5fee9ced2e07
                 </div>
             </div>
         </div>
@@ -315,6 +423,7 @@ $usuario = isset($usuario) ? $usuario : null;
     </article>
 
     <div class="container-fluid dinamico">
+<<<<<<< HEAD
       <!--
       <div class="correo">
         <h2>Enterate de cursos nuevos</h2>
@@ -336,6 +445,29 @@ $usuario = isset($usuario) ? $usuario : null;
           </div>
         </div>
       </div>
+=======
+      <div class="card card-new">
+        <div class="content">
+        
+          <div class="h6">Enterate de cursos nuevos</div>
+          <div class="hover_content">
+            <div class="texto-p">
+              <p>¡No te pierdas ninguna actualización! Suscríbete con tu correo y sé el primero en descubrir nuestras nuevas
+              ofertas, cursos exclusivos y contenido que transformará tu aprendizaje. 🚀</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- <div class="correo">
+        <h2>Enterate de cursos nuevos</h2>
+        <p>"¡No te pierdas ninguna actualización! Suscríbete con tu correo y sé el primero en descubrir nuestras nuevas
+          ofertas, cursos exclusivos y contenido que transformará tu aprendizaje. 🚀"</p>
+      </div> -->
+>>>>>>> 995a38c0d702a849796fafd6a19d5fee9ced2e07
     </div>
 
     <!-------------------------------------Pie de Pagina------------------------------------------------>

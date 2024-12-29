@@ -10,7 +10,14 @@ class EvaluacionesModelo {
 
     // Obtener todas las evaluaciones
     public function obtenerTodos() { 
-        $query = $this->db->query("SELECT id_evaluacion, titulo, descripcion, fecha_creacion, fecha_limite, id_curso FROM evaluaciones");
+        $query = $this->db->query("SELECT evaluaciones.id_evaluacion, 
+               evaluaciones.titulo, 
+               evaluaciones.descripcion, 
+               evaluaciones.fecha_creacion, 
+               evaluaciones.fecha_limite, 
+               cursos.titulo AS curso_titulo
+        FROM evaluaciones
+        JOIN cursos ON evaluaciones.id_curso = cursos.id_curso");
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 
