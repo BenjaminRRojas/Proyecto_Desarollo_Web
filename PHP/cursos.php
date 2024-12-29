@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -71,7 +72,7 @@
       </div>
     </nav>
 
-      <!----------------------------------------------------MODAL------------------------------------------------------------------->
+      <!----------------------------------------------------MODAL------------------------------------------------------------------>
       <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -154,7 +155,7 @@
 
     <!------------------------------CURSOS-------------------------------------->
     <div class="container-fluid">
-        <div class="card1 text-center">
+        <div class="card text-center">
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs">
                     <li class="nav-item">
@@ -204,49 +205,27 @@
             </div>
             <div class="card-body">
                 <div class="bloque todos activo">
-                    <!-- Tarjetas de todos los cursos -->
+                    <!-- Tarjetas de todos los cursos 
+                    
                     <div class="row">
-                        <div class="col">
-                            <div class="card" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card3.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Introducción Ciberseguridad</h5>
-                                    <p class="card-text">Aprende a identificar, prevenir y mitigar amenazas en el ciberespacio...</p>
-                                </div>
-                                <div class="card-footer">
-                            <!-----------Modal para ver el curso a fondo--------------->
-                                 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card4.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Front-end básico</h5>
-                                    <p class="card-text">Domina las tecnologías modernas para construir sitios web dinámicos...</p>
+                        <?php foreach($cursos as $row) {?>
+                            <div class="col">
+                                <div class="card" style="width: 18rem;">
+                                    <?php 
+                                    $id = $row['id_curso'];
+                                    ?>
+                                    <img src="../imagenes/Cursos_card3.webp" class="card-img-top" alt="...">
+                                    <div class="card-body-curso">
+                                        <h5 class="card-title"><?php echo $row['titulo']?></h5>
+                                        <p class="card-text">Aprende a identificar, prevenir y mitigar amenazas en el ciberespacio...</p>
+                                    </div>
+                                    <div class="card-footer-curso">
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="card" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card5.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ciencia de Datos</h5>
-                                    <p class="card-text">Conviértete en un experto en analizar y visualizar datos...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card6.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Inteligencia artificial</h5>
-                                    <p class="card-text">Sumérgete en el mundo de la IA y aprende a desarrollar modelos inteligentes...</p>
-                                </div>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
+                    -->
                 </div>
     
                 <!-- Bloques de cursos filtrados -->
@@ -309,8 +288,6 @@
                         </div>
                     </div>
                 </div>
-
-    
             </div>
         </div>
     </div>
