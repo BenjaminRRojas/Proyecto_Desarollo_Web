@@ -53,7 +53,7 @@ class ComentarioControlador{
         }
 
         require_once "VISTAS/encabezado.php";
-        require_once "VISTAS/Editar.php";
+        require_once "VISTAS/Editarcomentario.php";
         require_once "VISTAS/pie.php";
     }
 
