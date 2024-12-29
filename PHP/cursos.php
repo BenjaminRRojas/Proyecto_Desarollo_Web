@@ -207,7 +207,7 @@
                     <!-- Tarjetas de todos los cursos -->
                     <div class="row">
                         <div class="col">
-                            <div class="card" style="width: 18rem;">
+                            <div class="card h-50" style="width: 18rem;">
                                 <img src="../imagenes/Cursos_card3.webp" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Introducción Ciberseguridad</h5>
@@ -220,7 +220,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div class="card" style="width: 18rem;">
+                            <div class="card h-50" style="width: 18rem;">
                                 <img src="../imagenes/Cursos_card4.webp" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Front-end básico</h5>
@@ -229,7 +229,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div class="card" style="width: 18rem;">
+                            <div class="card h-50" style="width: 18rem;">
                                 <img src="../imagenes/Cursos_card5.webp" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Ciencia de Datos</h5>
@@ -238,7 +238,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div class="card" style="width: 18rem;">
+                            <div class="card h-50" style="width: 18rem;">
                                 <img src="../imagenes/Cursos_card6.webp" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Inteligencia artificial</h5>
@@ -254,7 +254,7 @@
                     <!-- Aquí solo se mostrarán los cursos de Ciberseguridad -->
                     <div class="row">
                         <div class="col">
-                            <div class="card" style="width: 18rem;">
+                            <div class="card h-50" style="width: 18rem;">
                                 <img src="../imagenes/Cursos_card3.webp" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Introducción Ciberseguridad</h5>
@@ -269,7 +269,7 @@
                     <!-- Aquí solo se mostrarán los cursos de Desarrollo Web -->
                     <div class="row">
                         <div class="col">
-                            <div class="card" style="width: 18rem;">
+                            <div class="card h-50" style="width: 18rem;">
                                 <img src="../imagenes/Cursos_card4.webp" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Front-end básico</h5>
@@ -284,7 +284,7 @@
                     <!-- Aquí solo se mostrarán los cursos de Ciencia de Datos -->
                     <div class="row">
                         <div class="col">
-                            <div class="card" style="width: 18rem;">
+                            <div class="card h-50" style="width: 18rem;">
                                 <img src="../imagenes/Cursos_card5.webp" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Ciencia de Datos</h5>
@@ -299,7 +299,7 @@
                     <!-- Aquí solo se mostrarán los cursos de Inteligencia Artificial -->
                     <div class="row">
                         <div class="col">
-                            <div class="card" style="width: 18rem;">
+                            <div class="card h-50" style="width: 18rem;">
                                 <img src="../imagenes/Cursos_card6.webp" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <h5 class="card-title">Inteligencia Artificial</h5>
@@ -341,12 +341,28 @@
       </div>
     </article>
 
-    <div class="container-fluid">
-      <div class="correo">
+    <div class="container-fluid dinamico">
+      <div class="card card-new">
+        <div class="content">
+        
+          <div class="h6">Enterate de cursos nuevos</div>
+          <div class="hover_content">
+            <div class="texto-p">
+              <p>¡No te pierdas ninguna actualización! Suscríbete con tu correo y sé el primero en descubrir nuestras nuevas
+              ofertas, cursos exclusivos y contenido que transformará tu aprendizaje. 🚀</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- <div class="correo">
         <h2>Enterate de cursos nuevos</h2>
         <p>"¡No te pierdas ninguna actualización! Suscríbete con tu correo y sé el primero en descubrir nuestras nuevas
           ofertas, cursos exclusivos y contenido que transformará tu aprendizaje. 🚀"</p>
-      </div>
+      </div> -->
     </div>
 
     <!-------------------------------------Pie de Pagina------------------------------------------------>
