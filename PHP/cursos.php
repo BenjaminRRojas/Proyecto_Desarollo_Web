@@ -1,5 +1,5 @@
 <?php
-require_once 'Modulos/CURSOS2/CONTROLADORES/CursosControlador.php';
+require_once 'Modulos/CURSOS/CONTROLADORES/CursosControlador.php';
 ?>
 
 <!DOCTYPE html>
