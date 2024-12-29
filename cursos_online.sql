@@ -264,7 +264,7 @@ ALTER TABLE `respuestas`
 --
 -- Indices de la tabla `resultados`
 --
-ALTER TABLE `respuestas`
+ALTER TABLE `resultados`
   ADD PRIMARY KEY (`id_resultado`),
   ADD KEY `id_estudiante` (`id_estudiante`),
   ADD KEY `id_evaluacion` (`id_evaluacion`);
@@ -331,7 +331,7 @@ ALTER TABLE `respuestas`
   MODIFY `id_respuesta` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `respuestas`
+-- AUTO_INCREMENT de la tabla `resultados`
 --
 ALTER TABLE `resultados`
   MODIFY `id_resultado` int(11) NOT NULL AUTO_INCREMENT;
@@ -398,7 +398,7 @@ ALTER TABLE `respuestas`
   ADD CONSTRAINT `respuestas_ibfk_1` FOREIGN KEY (`id_pregunta`) REFERENCES `preguntas` (`id_pregunta`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `cursos`
+-- Filtros para la tabla `resultados`
 --
 ALTER TABLE `resultados`
   ADD CONSTRAINT `resultados_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE,
