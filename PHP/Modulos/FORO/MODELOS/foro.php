@@ -66,7 +66,18 @@ class Foro{
         }
     }
 
-    //Métodos para el Futuro CRUD
+    //Método para los Cursos
+    public function ListarCursos(){
+        try{
+            $consulta=$this->pdo->prepare("SELECT id_curso, titulo from cursos");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $e){
+            die($e->getMessage());
+        }
+    }
+
+    //Métodos CRUD
 
     public function Obtener($id){
         try{
@@ -89,7 +100,7 @@ class Foro{
 
     public function Insertar(Foro $foro){
         try{
-            $consulta="INSERT INTO foro(id_curso,titulo,descripcion,fecha_creacion) VALUES (?,?,?,?);";
+            $consulta="INSERT INTO foro(id_curso,titulo_foro,descripcion,fecha_creacion) VALUES (?,?,?,?);";
             $this->pdo->prepare($consulta)
                     ->execute(array(
                         $foro->getid_curso(),
@@ -105,6 +116,7 @@ class Foro{
     public function Actualizar(Foro $foro){
         try{
             $consulta="UPDATE foro SET
+                id_curso=?,
                 titulo_foro=?,
                 descripcion=?,
                 fecha_creacion=?
@@ -112,6 +124,7 @@ class Foro{
             ";
             $this->pdo->prepare($consulta)
                     ->execute(array(
+                        $foro->getid_curso(),
                         $foro->gettitulo(),
                         $foro->getdescripcion(),
                         $foro->getfecha(),
