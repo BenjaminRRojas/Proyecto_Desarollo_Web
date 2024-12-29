@@ -66,7 +66,7 @@ $evaluaciones = $controlador->listarEvaluaciones();
                             <td><?= $evaluacion['fecha_creacion'] ?></td>
                             <td><?= $evaluacion['fecha_limite'] ?></td>
                             <td>
-                                <a href="../RUTAS/modificar.php?id=<?= $evaluacion['id_evaluacion'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="../RUTAS/modificar.php?id_evaluacion=<?= $evaluacion['id_evaluacion'] ?>" class="btn btn-warning btn-sm">Editar</a>
                                 <button 
                                     class="btn btn-danger btn-sm" 
                                     data-bs-toggle="modal" 
@@ -95,7 +95,7 @@ $evaluaciones = $controlador->listarEvaluaciones();
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>¿Estás seguro de que deseas eliminar estas evaluaciones?</p>
+                    <p>¿Estás seguro de que deseas eliminar esta evaluación?</p>
                     <p class="fw-bold" id="userIdToDelete"></p>
                 </div>
                 <div class="modal-footer">
