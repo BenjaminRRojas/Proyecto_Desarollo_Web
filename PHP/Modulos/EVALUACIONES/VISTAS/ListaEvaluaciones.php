@@ -1,8 +1,12 @@
 <?php
-require_once '../CONTROLADORES/EvaluacionesControlador.php';
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\EVALUACIONES\CONTROLADORES\EvaluacionesControlador.php';
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\CURSOS\CONTROLADORES\CursosControlador.php';
 
-$controlador = new EvaluacionesControlador();
-$evaluaciones = $controlador->listarEvaluaciones();
+$controlador1 = new CursosControlador();
+$cursos = $controlador1->listarCursos();
+
+$controlador2 = new EvaluacionesControlador();
+$evaluaciones = $controlador2->listarEvaluaciones();
 ?>
 
 <!DOCTYPE html>
@@ -29,11 +33,11 @@ $evaluaciones = $controlador->listarEvaluaciones();
             <div class="col-md-6">
                 <div class="input-group" id="selectInput">
                     <span class="input-group-text">Buscar por curso</span>
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Todos los cursos</option>
-                        <option value="1">Python</option>
-                        <option value="2">C++</option>
-                        <option value="3">JavaScript</option>
+                    <select class="form-select" id="curso" name="id_curso" required>
+                        <option value="" selected>Todos los cursos</option>
+                        <?php foreach ($cursos as $curso): ?>
+                            <option value="<?= $curso['id_curso'] ?>"><?= $curso['titulo'] ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
             </div>
@@ -60,13 +64,13 @@ $evaluaciones = $controlador->listarEvaluaciones();
                     <?php foreach ($evaluaciones as $evaluacion): ?>
                         <tr>
                             <td><?= $evaluacion['id_evaluacion'] ?></td>
-                            <td><?= $evaluacion['id_curso'] ?></td>
+                            <td><?= $evaluacion['curso_titulo'] ?></td>
                             <td><?= $evaluacion['titulo'] ?></td>
                             <td><?= $evaluacion['descripcion'] ?></td>
                             <td><?= $evaluacion['fecha_creacion'] ?></td>
                             <td><?= $evaluacion['fecha_limite'] ?></td>
                             <td>
-                                <a href="../RUTAS/modificar.php?id=<?= $evaluacion['id_evaluacion'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="../RUTAS/modificar.php?id_evaluacion=<?= $evaluacion['id_evaluacion'] ?>" class="btn btn-warning btn-sm">Editar</a>
                                 <button 
                                     class="btn btn-danger btn-sm" 
                                     data-bs-toggle="modal" 
@@ -82,7 +86,7 @@ $evaluaciones = $controlador->listarEvaluaciones();
         </div>
 
         <div class="text-center mt-4">
-            <a href="../../../formulario-evaluaciones.php?accion=agregar" class="btn btn-lg btn-primary">Agregar evaluación</a>
+            <a href="..\..\..\formulario-evaluaciones.php?accion=agregar" class="btn btn-lg btn-primary">Agregar evaluación</a>
         </div>
     </div>
 
@@ -95,7 +99,7 @@ $evaluaciones = $controlador->listarEvaluaciones();
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>¿Estás seguro de que deseas eliminar estas evaluaciones?</p>
+                    <p>¿Estás seguro de que deseas eliminar esta evaluación?</p>
                     <p class="fw-bold" id="userIdToDelete"></p>
                 </div>
                 <div class="modal-footer">
@@ -106,6 +110,35 @@ $evaluaciones = $controlador->listarEvaluaciones();
         </div>
     </div>
 
+    
+    <script>
+        // Script para manejar el modal de eliminación
+        const deleteModal = document.getElementById('deleteModal');
+        let userIdToDelete = '';
+
+        // Evento al abrir el modal
+        deleteModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            userIdToDelete = button.getAttribute('data-id');
+
+            // Mostrar el ID de la evaluación en el modal
+            const userIdDisplay = deleteModal.querySelector('#userIdToDelete');
+            userIdDisplay.textContent = userIdToDelete;
+
+            // Configurar el enlace para confirmar la eliminación
+            const confirmDeleteButton = deleteModal.querySelector('#confirmDeleteButton');
+            confirmDeleteButton.onclick = function () {
+                window.location.href = `../RUTAS/eliminar.php?id_evaluacion=${userIdToDelete}`;
+            };
+        });
+
+        // Limpiar el ID cuando el modal se cierra
+        deleteModal.addEventListener('hidden.bs.modal', function () {
+            userIdToDelete = '';
+            const userIdDisplay = deleteModal.querySelector('#userIdToDelete');
+            userIdDisplay.textContent = '';
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -120,5 +153,30 @@ $evaluaciones = $controlador->listarEvaluaciones();
             });
         });
     </script>
+
+    <!-- Script para el filtro por curso -->
+    <script>
+        document.getElementById('curso').addEventListener('change', function () {
+            const selectedCurso = this.options[this.selectedIndex].text.toLowerCase(); // Obtenemos el texto del curso seleccionado
+            const rows = document.querySelectorAll('#userTable tr');
+
+            // Si se selecciona "Todos los cursos", muestra todas las filas
+            if (selectedCurso === "todos los cursos") {
+                rows.forEach(row => {
+                    row.style.display = ''; // Muestra todas las filas
+                });
+            } else {
+                // Filtrar según el curso seleccionado
+                rows.forEach(row => {
+                    const cursoCell = row.querySelector('td:nth-child(2)'); // Selecciona la celda del curso (segunda columna)
+                    if (cursoCell) {
+                        const cursoValue = cursoCell.textContent.toLowerCase(); // Obtenemos el texto del curso en la tabla
+                        row.style.display = (cursoValue.includes(selectedCurso)) ? '' : 'none'; // Mostrar o ocultar
+                    }
+                });
+            }
+        });
+    </script>
+
 </body>
 </html>

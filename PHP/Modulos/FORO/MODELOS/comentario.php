@@ -73,11 +73,12 @@ class Comentario{
         $this->id_comentario_responde=$res;
     }
 
-    //Método para el Inicio
-    public function Listar($id){
+    //Método para el Inicio según un foro.
+    public function Listar($id, $consulta2){
         try{
-            $consulta=$this->pdo->prepare("SELECT * FROM comentario WHERE id_foro=?;");
-            $consulta->execute(array($id));
+            $consulta=$this->pdo->prepare($consulta2);
+            $id > 0 ? $consulta->execute(array($id)): $consulta->execute();
+    
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $e){
             die($e->getMessage());

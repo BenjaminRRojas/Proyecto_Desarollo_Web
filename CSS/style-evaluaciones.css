@@ -68,8 +68,8 @@ h1 {
 }
 
 #searchInput:focus {
-    outline: none;
-    border-color: #0a5d93; 
+    border-color: rgb(17, 221, 215);
+    box-shadow: 0 0 12px rgba(17, 221, 215, 0.6);
 }
 
 /* Selección de cursos */
@@ -95,9 +95,10 @@ h1 {
     padding: 10px;
 }
 
-#selectInput:focus {
-    outline: none;
-    border-color: #0a5d93; 
+
+#selectInput select:focus {
+    border-color: rgb(17, 221, 215);
+    box-shadow: 0 0 12px rgba(17, 221, 215, 0.6);
 }
 
 

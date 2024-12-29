@@ -1,4 +1,9 @@
 <?php
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\CURSOS\CONTROLADORES\CursosControlador.php';
+
+$controlador = new CursosControlador();
+$cursos = $controlador->listarCursos();
+
 $accion = $_GET['accion'] ?? 'agregar';
 $evaluacion = isset($evaluacion) ? $evaluacion : null;
 ?>
@@ -97,16 +102,12 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
                     <label for="curso" class="form-label">Curso</label>
                     <select class="form-select" id="curso" name="id_curso" required>
                         <option value="" disabled selected>Selecciona un curso</option>
-                        <option value="2" <?= (isset($evaluacion['id_curso']) && $evaluacion['id_curso'] == 2) ? 'selected' : '' ?>>Curso 2</option>
                         <?php
-                        // Descomentar y asegurar que $cursos esté definido
-                        /*
+                        // Iterar sobre los cursos obtenidos del modelo
                         foreach ($cursos as $curso) {
-                            // Verificar si el curso actual es el seleccionado
                             $selected = (isset($evaluacion['id_curso']) && $evaluacion['id_curso'] == $curso['id_curso']) ? 'selected' : '';
                             echo "<option value='{$curso['id_curso']}' {$selected}>{$curso['titulo']}</option>";
                         }
-                        */
                         ?>
                     </select>
                 </div>

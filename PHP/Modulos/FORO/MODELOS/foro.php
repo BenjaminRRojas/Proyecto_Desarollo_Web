@@ -47,11 +47,11 @@ class Foro{
         $this->descripcion=$des;
     }
 
-    public function getfecha_creacion() : ?string{
+    public function getfecha() : ?string{
         return $this->fecha_creacion;
     }
 
-    public function setfecha_creacion(string $fec){
+    public function setfecha(string $fec){
         $this->fecha_creacion=$fec;
     }
 
@@ -76,11 +76,11 @@ class Foro{
             $foro=new Foro();
             $foro->setid_foro($fila->id_foro);
             $foro->setid_curso($fila->id_curso);
-            $foro->setid_titulo($fila->titulo);
+            $foro->settitulo($fila->titulo);
             $foro->setdescripcion($fila->descripcion);
-            $foro->setfecha_creacion($fila->fecha_creacion);
+            $foro->setfecha($fila->fecha_creacion);
 
-            return $p;
+            return $foro;
 
         }catch(Exception $e){
             die($e->getMessage());
@@ -89,35 +89,35 @@ class Foro{
 
     public function Insertar(Foro $foro){
         try{
-            $consulta="INSERT INTO foro(id_curso,titulo,descripcion,fecha_creacion) VALUES (?,?,?,FROM_UNIXTIME(?));";
+            $consulta="INSERT INTO foro(id_curso,titulo,descripcion,fecha_creacion) VALUES (?,?,?,?);";
             $this->pdo->prepare($consulta)
                     ->execute(array(
-                        $p->getid_curso(),
-                        $p->gettitulo(),
-                        $p->getdescripcion(),
-                        time(),
+                        $foro->getid_curso(),
+                        $foro->gettitulo(),
+                        $foro->getdescripcion(),
+                        $foro->getfecha(),
                     ));
         }catch(Exception $e){
             die($e->getMessage());
         }
     }
 
-    public function Actualizar(Comentario $p){
+    public function Actualizar(Foro $foro){
         try{
-            $consulta="UPDATE comentario SET
+            $consulta="UPDATE foro SET
                 id_curso=?,
                 titulo=?,
                 descripcion=?,
-                fecha_comentario=FROM_UNIXTIME(?),
-                WHERE id_comentario=?;
+                fecha_comentario=?,
+                WHERE id_foro=?;
             ";
             $this->pdo->prepare($consulta)
                     ->execute(array(
-                        $p->getid_foro(),
-                        $p->getid_usuario(),
-                        $p->getcontenido(),
-                        time(),
-                        $p->getid_comentario()
+                        $foro->getid_curso(),
+                        $foro->gettitulo(),
+                        $foro->getdescripcion(),
+                        $foro->getfecha(),
+                        $foro->getid_foro()
                     ));
         }catch(Exception $e){
             die($e->getMessage());
@@ -126,7 +126,7 @@ class Foro{
 
     public function Eliminar($id){
         try{
-            $consulta="DELETE FROM comentario WHERE id_comentario=?;";
+            $consulta="DELETE FROM foro WHERE id_foro=?;";
             $this->pdo->prepare($consulta)
                     ->execute(array($id));
         }catch(Exception $e){
