@@ -186,144 +186,66 @@ body>video {
 }
 
 /*----------CURSOS------------*/
-/*----------CURSOS------------*/
-:root {
-    --primary-color: #007bff;
-    /* Color primario */
-    --nav-link-color: #ffffff;
-    /* Color de los enlaces de navegación */
-    --nav-link-active-color: #ffffff;
-    /* Color del enlace activo */
-    --nav-link-bg-active: var(--primary-color);
-    /* Color de fondo del enlace activo */
-    --card-bg-color: #ffffffee;
-    /* Color de fondo de la tarjeta */
-    --card-border-radius: 15px;
-    /* Radio del borde de la tarjeta */
-    --card-box-shadow: 0 4px 8px rgba(255, 245, 245, 0.848);
-    /* Sombra de la tarjeta */
-    --card-title-color: #fff2f2;
-    /* Color del título de la tarjeta */
-    --card-text-color: #f5f5f5;
-    /* Color del texto de la tarjeta */
-    --btn-bg-color: var(--primary-color);
-    /* Color de fondo del botón */
-    --btn-text-color: #ffffff;
-    /* Color del texto del botón */
-    --input-bg-color: #f8f9fa;
-    /* Color de fondo del input */
-    --input-text-color: #ffffff;
-    /* Color del texto del input */
+section {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-evenly;
+
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+.bloque {
+    display: none;
+    /* Por defecto, todos los bloques están ocultos */
 }
 
-.card1 {
-    margin-top: 20px;
+.bloque.activo {
+    display: block;
+    /* Solo el bloque activo será visible */
+}
+
+.container-fluid {
+    margin-top: 30px;
+}
+
+.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
 }
 
 .card-header {
-    background-color: var(--primary-color);
-    border-bottom: none;
-    padding: 15px;
-    border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
+    background-color: rgb(77, 99, 160);
+    padding-right: 20px;
 }
 
-.nav-tabs {
-    border-bottom: none;
-}
-
-.nav-tabs .nav-item .nav-link {
-    color: var(--nav-link-color);
-    background-color: transparent;
-    border: none;
-    padding: 10px 15px;
-    font-size: 16px;
-}
-
-.nav-tabs .nav-item .nav-link.active {
-    color: var(--nav-link-active-color);
-    background-color: var(--nav-link-bg-active);
-    border-radius: var(--card-border-radius);
+.card-header a {
+    color: white;
 }
 
 .card-body {
-    background-color: var(--card-bg-color);
+    background-color: beige;
     padding: 20px;
-    border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
-    box-shadow: var(--card-box-shadow);
 }
 
-.card img {
-    width: 100%;
-    height: auto;
+.card-body-interna {
+    background-color: cadetblue;
 }
 
-.card-title {
-    color: var(--card-title-color);
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+.card-img-top {
+    height: 200px;
 }
 
-.card-text {
-    color: var(--card-text-color);
-    font-size: 1rem;
+.nav-item .ms-auto {
+    margin-left: 10px;
 }
 
-.btn-primary {
-    background-color: var(--btn-bg-color);
-    color: var(--btn-text-color);
-    border: none;
-    padding: 10px 15px;
-    border-radius: var(--card-border-radius);
-    cursor: pointer;
-}
-
-.btn-primary:hover {
-    background-color: darken(var(--btn-bg-color), 10%);
-}
-
-input.form-control {
-    background-color: var(--input-bg-color);
-    color: var(--input-text-color);
-    border: 1px solid #ced4da;
-    padding: 10px;
-    border-radius: var(--card-border-radius);
-}
-
-input.form-control::placeholder {
-    color: #6c757d;
-}
-
-.d-none {
-    display: none !important;
-}
-
-/* Media queries para dispositivos móviles */
-@media (max-width: 767px) {
-    .card-body {
-        padding: 15px;
-    }
-
-    .nav-tabs .nav-item .nav-link {
-        font-size: 14px;
-        padding: 8px 10px;
-    }
-
-    .card img {
-        height: auto;
-    }
-
-    .card-title {
-        font-size: 1.25rem;
-    }
-
-    .card-text {
-        font-size: 0.875rem;
-    }
+.form-control {
+    margin-top: 5px;
+    display: grid;
+    justify-content: end;
 }
 
 /*--------------CERTIFICADOS------------------*/
@@ -357,6 +279,16 @@ article h2 {
 }
 
 /*--------------CORREOS------------------*/
+/* .correo {
+    border-radius: 10px;
+    background-color: beige;
+    padding: 30px;
+    margin: 30px;
+} */
+
+
+
+
 .dinamico {
     display: flex;
     justify-content: center;
@@ -515,419 +447,256 @@ article h2 {
 .card-new:hover .hover_content {
     max-height: 20em;
     transform: none;
+}
 
 
-    /* .correo {
+
+
+
+/*---------------------------------------Footer------------------------------------*/
+
+
+footer {
+    background: linear-gradient(90deg, rgba(3, 185, 165, 0.48503151260504207) 0%, rgba(10, 93, 147, 0.8883928571428571) 50%, rgba(3, 185, 165, 0.47942927170868344) 100%);
+    border-radius: 15px;
+    margin-block: 20px;
+}
+
+
+footer h3,
+footer h4 {
+    font-size: 45px;
+    font-family: 'VT323', monospace;
+    color: rgb(17, 221, 215);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
+        0 0 8px rgba(173, 216, 230, 0.166);
+}
+
+#docentes-p {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    font-size: 17px;
+    font-family: 'IBM Plex Mono', monospace;
+
+}
+
+
+.col-md-3 a {
+    color: #d1d1d1;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: 'IBM Plex Mono', monospace;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+
+
+footer .col-md-3>a:hover {
+    color: black;
     border-radius: 10px;
-    background-color: beige;
-    padding: 30px;
-    margin: 30px;
-} */
-    .dinamico {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: 'IBM Plex Mono', monospace;
-        /* height: 100vh; */
-        /* Asegúrate de que el contenedor ocupe toda la altura de la pantalla */
-        text-align: center;
-        /* Centra el texto */
+    text-decoration: underline;
+}
 
-    }
 
-    .card-new {
-        background-color: #fff;
-        border-radius: 10px;
-        font-family: 'IBM Plex Mono', monospace;
-        /* padding: 20px; */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 80%;
-        /* Ajusta el ancho según sea necesario */
-        max-width: 600px;
-        /* Ancho máximo para evitar que sea demasiado grande */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.bi:hover {
+    transform: scale(1.1);
+}
 
-    .content-new {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        font-family: 'IBM Plex Mono', monospace;
-        /* align-items: center; */
-    }
 
-    .texto-p>p {
-        padding: 15px;
-        font-family: 'IBM Plex Mono', monospace;
-    }
+.text-center {
+    font-size: 20px;
+    color: #d1d1d1;
+    font-family: 'IBM Plex Mono', monospace;
+}
 
-    .h6 {
-        font-family: 'IBM Plex Mono', monospace;
-        font-size: 1.5rem;
-        /* margin-bottom: 1rem; */
-        /* display: flex;
-    justify-content: center; */
-        /* align-items: center; */
-    }
 
-    .hover_content p {
-        color: white;
-        font-family: 'IBM Plex Mono', monospace;
-        font-size: 20px;
-        text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
-        /* margin-bottom: 1rem; */
-        /* display: flex;
+
+/*--Iconos--*/
+.iconos-redes {
+    max-width: fit-content;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
     justify-content: center;
-    align-items: center; */
-    }
-
-    .card-new {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        cursor: pointer;
-        /* width: 100%;
-    max-width: 100%; */
-        padding: 10px;
-        background: #00000086;
-        box-shadow: 0 0 6px 0 rgba(32, 32, 36, 0.12);
-        transition: all 0.35s ease;
-    }
-
-    .card-new::before,
-    .card-new::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background: rgb(0, 255, 217);
-        height: 5px;
-    }
-
-    .card-new::before {
-        width: 0;
-        opacity: 0;
-        transition: opacity 0 ease, width 0 ease;
-        transition-delay: 0.5s;
-    }
-
-    .card-new::after {
-        width: 100%;
-        font-family: 'IBM Plex Mono', monospace;
-        background: white;
-        transition: width 0.5s ease;
-    }
-
-    .card-new .content-new {
-        width: 18em;
-        max-width: 100%;
-    }
-
-    .card-new .logo {
-        margin: 0 0 1em;
-        width: 10.625em;
-        transition: all 0.35s ease;
-    }
-
-    .card-new .h6 {
-        color: white;
-        font-family: 'IBM Plex Mono', monospace;
-        font-weight: 600;
-        /* text-transform: uppercase; */
-        /* margin: 0; */
-        letter-spacing: 2px;
-    }
-
-    .card-new .hover_content {
-        overflow: hidden;
-        max-height: 0;
-        transform: translateY(5em);
-        transition: all 0.55s ease;
-    }
-
-    .card-new .hover_content p {
-        margin: 1.5em 0 0;
-        color: white;
-        line-height: 1.4em;
-    }
-
-    .card-new:hover {
-        width: 100%;
-        box-shadow: 0 10px 20px 0 rgba(32, 32, 36, 0.12);
-    }
-
-    .card-new:hover::before {
-        width: 100%;
-        opacity: 1;
-        transition: opacity 0.5s ease, width 0.5s ease;
-        transition-delay: 0;
-    }
-
-    .card-new:hover::after {
-        width: 0;
-        opacity: 0;
-        transition: width 0 ease;
-    }
-
-    .card-new:hover .hover_content {
-        max-height: 20em;
-        transform: none;
-    }
-
-    /*---------------------------------------Footer------------------------------------*/
+    transition: 0.5s;
+}
 
 
-    footer {
-        background: linear-gradient(90deg, rgba(3, 185, 165, 0.48503151260504207) 0%, rgba(10, 93, 147, 0.8883928571428571) 50%, rgba(3, 185, 165, 0.47942927170868344) 100%);
-        border-radius: 15px;
-        margin-block: 20px;
-    }
+.iconos-redes ul {
+    /* padding: 1rem; */
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+}
+
+.iconos-redes ul li {
+    cursor: pointer;
+}
+
+.svg {
+    transition: all 0.3s;
+    padding: 1rem;
+    height: 55px;
+    width: 55px;
+    border-radius: 100%;
+    color: rgb(17, 221, 215);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
+        0 0 8px rgba(173, 216, 230, 0.166);
+    fill: currentColor;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3),
+        inset 0 0 5px rgba(255, 255, 255, 0.5), 0 5px 5px rgba(0, 0, 0, 0.164);
+}
+
+.text {
+    opacity: 0;
+    border-radius: 5px;
+    /* padding: 5px; */
+    transition: all 0.3s;
+    color: rgb(6, 6, 6);
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
+        0 0 8px rgba(173, 216, 230, 0.166);
+    background-color: rgba(255, 255, 255, 0.3);
+    position: absolute;
+    z-index: 9999;
+    box-shadow: -5px 0 1px rgba(153, 153, 153, 0.2),
+        -10px 0 1px rgba(153, 153, 153, 0.2),
+        inset 0 0 20px rgba(255, 255, 255, 0.3),
+        inset 0 0 5px rgba(255, 255, 255, 0.5), 0 5px 5px rgba(0, 0, 0, 0.082);
+}
+
+/*isometric prooyection*/
+.iso-pro {
+    transition: 0.5s;
+}
+
+.iso-pro:hover a>.svg {
+    transform: translate(15px, -15px);
+    border-radius: 100%;
+}
+
+.iso-pro:hover .text {
+    opacity: 1;
+    transform: translate(25px, -2px) skew(-5deg);
+}
+
+.iso-pro:hover .svg {
+    transform: translate(5px, -5px);
+}
+
+.iso-pro span {
+    opacity: 0;
+    position: absolute;
+    color: #1877f2;
+    border-color: #1877f2;
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3),
+        inset 0 0 5px rgba(255, 255, 255, 0.5), 0 5px 5px rgba(0, 0, 0, 0.164);
+    border-radius: 50%;
+    transition: all 0.3s;
+    height: 60px;
+    width: 60px;
+}
+
+.iso-pro:hover span {
+    opacity: 1;
+}
+
+.iso-pro:hover span:nth-child(1) {
+    opacity: 0.2;
+}
+
+.iso-pro:hover span:nth-child(2) {
+    opacity: 0.4;
+    transform: translate(5px, -5px);
+}
+
+.iso-pro:hover span:nth-child(3) {
+    opacity: 0.6;
+    transform: translate(10px, -10px);
+}
 
 
-    footer h3,
-    footer h4 {
-        font-size: 45px;
-        font-family: 'VT323', monospace;
-        color: rgb(17, 221, 215);
-        text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
-            0 0 8px rgba(173, 216, 230, 0.166);
-    }
+/*---------------------------------------------M O D A L--------------------------------*/
+.modal-content {
+    background: rgba(4, 10, 21, 0.9) !important;
+    border-radius: 15px;
+    color: #e0e0e0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+    font-family: 'IBM Plex Mono', monospace;
+}
 
-    #docentes-p {
-        color: white;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-        font-size: 17px;
-        font-family: 'IBM Plex Mono', monospace;
+/* Título del modal */
+.modal-title {
+    font-family: 'VT323', monospace;
+    font-size: 28px;
+    color: rgb(17, 221, 215);
+    text-shadow: 0 0 8px rgba(17, 221, 215, 0.8);
+}
 
-    }
+/* Cuerpo del modal */
+.modal-body {
+    background: rgb(11, 18, 29) !important;
+    border-radius: 10px;
+    padding: 20px;
+}
 
+.modal-body a {
+    color: #17e2f1;
+}
 
-    .col-md-3 a {
-        color: #d1d1d1;
-        text-decoration: none;
-        font-size: 25px;
-        font-family: 'IBM Plex Mono', monospace;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
-    }
+.modal-body .form-label {
+    color: #a0a0a0;
+    font-weight: bold;
+}
 
+.modal-body .form-control {
+    background: rgb(30, 33, 40);
+    border: 1px solid rgba(60, 180, 180, 0.5);
+    color: #0f0b0b;
+    border-radius: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+}
 
-
-    footer .col-md-3>a:hover {
-        color: black;
-        border-radius: 10px;
-        text-decoration: underline;
-    }
-
-
-    .bi:hover {
-        transform: scale(1.1);
-    }
-
-
-    .text-center {
-        font-size: 20px;
-        color: #d1d1d1;
-        font-family: 'IBM Plex Mono', monospace;
-    }
-
-
-
-    /*--Iconos--*/
-    .iconos-redes {
-        max-width: fit-content;
-        border-radius: 15px;
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        justify-content: center;
-        transition: 0.5s;
-    }
+.modal-body .form-control:focus {
+    border-color: rgb(17, 221, 215);
+    box-shadow: 0 0 12px rgba(17, 221, 215, 0.6);
+}
 
 
-    .iconos-redes ul {
-        /* padding: 1rem; */
-        display: flex;
-        list-style: none;
-        gap: 1rem;
-        align-items: center;
-        justify-content: center;
-        align-content: center;
-        /* flex-wrap: wrap; */
-        flex-direction: column;
-    }
+.modal-body .btn {
+    background: linear-gradient(90deg, #0acffe 0%, #0c88a1 100%);
+    border: none;
+    font-family: 'IBM Plex Mono', monospace;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .iconos-redes ul li {
-        cursor: pointer;
-    }
+.modal-body .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(3, 185, 165, 0.8);
+}
 
-    .svg {
-        transition: all 0.3s;
-        padding: 1rem;
-        height: 55px;
-        width: 55px;
-        border-radius: 100%;
-        color: rgb(17, 221, 215);
-        text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
-            0 0 8px rgba(173, 216, 230, 0.166);
-        fill: currentColor;
-        box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3),
-            inset 0 0 5px rgba(255, 255, 255, 0.5), 0 5px 5px rgba(0, 0, 0, 0.164);
-    }
+/* Footer del modal */
+.modal-footer {
+    background: rgba(4, 10, 21, 1);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0 0 15px 15px;
+}
 
-    .text {
-        opacity: 0;
-        border-radius: 5px;
-        /* padding: 5px; */
-        transition: all 0.3s;
-        color: rgb(6, 6, 6);
-        text-shadow: 0 0 4px rgba(255, 255, 255, 0.5),
-            0 0 8px rgba(173, 216, 230, 0.166);
-        background-color: rgba(255, 255, 255, 0.3);
-        position: absolute;
-        z-index: 9999;
-        box-shadow: -5px 0 1px rgba(153, 153, 153, 0.2),
-            -10px 0 1px rgba(153, 153, 153, 0.2),
-            inset 0 0 20px rgba(255, 255, 255, 0.3),
-            inset 0 0 5px rgba(255, 255, 255, 0.5), 0 5px 5px rgba(0, 0, 0, 0.082);
-    }
+.modal-footer .btn {
+    background: linear-gradient(90deg, #0acffe 0%, #0c88a1 100%);
+    border: none;
+    font-family: 'IBM Plex Mono', monospace;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    /*isometric prooyection*/
-    .iso-pro {
-        transition: 0.5s;
-    }
-
-    .iso-pro:hover a>.svg {
-        transform: translate(15px, -15px);
-        border-radius: 100%;
-    }
-
-    .iso-pro:hover .text {
-        opacity: 1;
-        transform: translate(25px, -2px) skew(-5deg);
-    }
-
-    .iso-pro:hover .svg {
-        transform: translate(5px, -5px);
-    }
-
-    .iso-pro span {
-        opacity: 0;
-        position: absolute;
-        color: #1877f2;
-        border-color: #1877f2;
-        box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.3),
-            inset 0 0 5px rgba(255, 255, 255, 0.5), 0 5px 5px rgba(0, 0, 0, 0.164);
-        border-radius: 50%;
-        transition: all 0.3s;
-        height: 60px;
-        width: 60px;
-    }
-
-    .iso-pro:hover span {
-        opacity: 1;
-    }
-
-    .iso-pro:hover span:nth-child(1) {
-        opacity: 0.2;
-    }
-
-    .iso-pro:hover span:nth-child(2) {
-        opacity: 0.4;
-        transform: translate(5px, -5px);
-    }
-
-    .iso-pro:hover span:nth-child(3) {
-        opacity: 0.6;
-        transform: translate(10px, -10px);
-    }
-
-
-    /*---------------------------------------------M O D A L--------------------------------*/
-    .modal-content {
-        background: rgba(4, 10, 21, 0.9) !important;
-        background: rgba(4, 10, 21, 0.9) !important;
-        border-radius: 15px;
-        color: #e0e0e0;
-        color: #e0e0e0;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
-        font-family: 'IBM Plex Mono', monospace;
-    }
-
-    /* Título del modal */
-    .modal-title {
-        font-family: 'VT323', monospace;
-        font-size: 28px;
-        color: rgb(17, 221, 215);
-        text-shadow: 0 0 8px rgba(17, 221, 215, 0.8);
-    }
-
-    /* Cuerpo del modal */
-    .modal-body {
-        background: rgb(11, 18, 29) !important;
-        background: rgb(11, 18, 29) !important;
-        border-radius: 10px;
-        padding: 20px;
-    }
-
-    .modal-body a {
-        color: #17e2f1;
-    }
-
-    .modal-body .form-label {
-        color: #a0a0a0;
-        font-weight: bold;
-    }
-
-    .modal-body .form-control {
-        background: rgb(30, 33, 40);
-        border: 1px solid rgba(60, 180, 180, 0.5);
-        color: #0f0b0b;
-        border: 1px solid rgba(60, 180, 180, 0.5);
-        color: #0f0b0b;
-        border-radius: 10px;
-        font-family: 'IBM Plex Mono', monospace;
-    }
-
-    .modal-body .form-control:focus {
-        border-color: rgb(17, 221, 215);
-        box-shadow: 0 0 12px rgba(17, 221, 215, 0.6);
-    }
-
-
-    .modal-body .btn {
-        background: linear-gradient(90deg, #0acffe 0%, #0c88a1 100%);
-        border: none;
-        font-family: 'IBM Plex Mono', monospace;
-        color: white;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .modal-body .btn:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 15px rgba(3, 185, 165, 0.8);
-    }
-
-    /* Footer del modal */
-    .modal-footer {
-        background: rgba(4, 10, 21, 1);
-        background: rgba(4, 10, 21, 1);
-        border-top: 1px solid rgba(255, 255, 255, 0.3);
-        border-radius: 0 0 15px 15px;
-    }
-
-    .modal-footer .btn {
-        background: linear-gradient(90deg, #0acffe 0%, #0c88a1 100%);
-        border: none;
-        font-family: 'IBM Plex Mono', monospace;
-        color: white;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .modal-footer .btn:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 15px rgba(3, 185, 165, 0.8);
-    }
+.modal-footer .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(3, 185, 165, 0.8);
 }
