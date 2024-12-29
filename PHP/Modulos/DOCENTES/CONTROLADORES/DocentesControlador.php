@@ -54,7 +54,7 @@ class UsuariosControlador {
 
 
     //Enviar Correo
-    public function enviarCorreoConfirmacion($correo, $nombres) {
+    public function enviarCorreoConfirmacion($correo, $nombres, $archivo) {
         require __DIR__ . '/../../../../vendor/autoload.php';
         $mail = new PHPMailer\PHPMailer\PHPMailer(true);
     
@@ -79,7 +79,7 @@ class UsuariosControlador {
                 <p>Gracias por registrarte.</p>";
                 
             
-            // $mail->AddAttachment($archivo['tmp_name'], $archivo['name']);
+            $mail->AddAttachment($archivo['tmp_name'], $archivo['name']);
 
 
             $mail->SMTPDebug = 2; 

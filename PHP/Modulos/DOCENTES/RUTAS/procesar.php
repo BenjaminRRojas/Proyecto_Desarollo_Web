@@ -24,25 +24,6 @@ if ($accion == 'agregar') {
     $fecha= time();
     $fechaFormato = date("j/n/Y", $fecha);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     
     // Agregar el usuario y enviar el correo de confirmación
     if ($controlador->agregarUsuario($nombres, $apellidos, $correo, $contrasena, $sexo, $tipo_usuario)) {
