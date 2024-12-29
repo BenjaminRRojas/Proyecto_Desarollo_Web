@@ -82,7 +82,7 @@ $evaluaciones = $controlador->listarEvaluaciones();
         </div>
 
         <div class="text-center mt-4">
-            <a href="../../../formulario-evaluaciones.php?accion=agregar" class="btn btn-lg btn-primary">Agregar evaluación</a>
+            <a href="../../CURSOS/VISTAS/formulario-evaluaciones.php?accion=agregar" class="btn btn-lg btn-primary">Agregar evaluación</a>
         </div>
     </div>
 
