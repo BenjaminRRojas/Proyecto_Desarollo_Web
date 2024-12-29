@@ -1,5 +1,9 @@
 <?php
 require_once '../CONTROLADORES/EvaluacionesControlador.php';
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\CURSOS\CONTROLADORES\CursosControlador.php';
+
+$controlador = new CursosControlador();
+$cursos = $controlador->listarCursos();
 
 // Verificar si se pasó el ID por GET
 if (isset($_GET['id_evaluacion'])) {

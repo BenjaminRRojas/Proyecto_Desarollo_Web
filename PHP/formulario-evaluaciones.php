@@ -1,5 +1,5 @@
 <?php
-require_once '..\CONTROLADORES\CursosControlador.php';
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\CURSOS\CONTROLADORES\CursosControlador.php';
 
 $controlador = new CursosControlador();
 $cursos = $controlador->listarCursos();
@@ -13,7 +13,7 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../../../CSS/style_form.css">
+    <link rel="stylesheet" href="../CSS/style_form.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -23,7 +23,7 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
     <title>Formulario</title>
 </head>
 <body>
-    <video src="../../../../imagenes/fondo.mp4" autoplay preload muted loop></video>    
+    <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>    
 
     <div class="container-fluid">
 
@@ -32,7 +32,7 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
             <div class="container-fluid">
 
                 <a class="navbar-brand ms-3" href="index.html">
-                    <img src="../../../../imagenes/logo.svg" alt="logo" height="125">
+                    <img src="../imagenes/logo.svg" alt="logo" height="125">
                 </a>
 
 
@@ -82,7 +82,7 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
 
         <div class="container my-5 w-50 p-5 rounded-3 shadow-lg">
             <h2 class="text-center fw-bold mb-4">Creación de evaluaciones</h2>
-            <form action="../../Modulos/EVALUACIONES/RUTAS/procesar.php" method="POST" enctype="multipart/form-data">
+            <form action="Modulos/EVALUACIONES/RUTAS/procesar.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="accion" value="agregar">
 
                 <!-- Campos del formulario -->
