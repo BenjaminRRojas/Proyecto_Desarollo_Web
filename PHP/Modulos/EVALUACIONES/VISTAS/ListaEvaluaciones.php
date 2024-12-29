@@ -66,7 +66,7 @@ $evaluaciones = $controlador->listarEvaluaciones();
                             <td><?= $evaluacion['fecha_creacion'] ?></td>
                             <td><?= $evaluacion['fecha_limite'] ?></td>
                             <td>
-                                <a href="../RUTAS/modificar.php?id=<?= $evaluacion['id_evaluacion'] ?>" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="../RUTAS/modificar.php?id_evaluacion=<?= $evaluacion['id_evaluacion'] ?>" class="btn btn-warning btn-sm">Editar</a>
                                 <button 
                                     class="btn btn-danger btn-sm" 
                                     data-bs-toggle="modal" 
@@ -95,7 +95,7 @@ $evaluaciones = $controlador->listarEvaluaciones();
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>¿Estás seguro de que deseas eliminar estas evaluaciones?</p>
+                    <p>¿Estás seguro de que deseas eliminar esta evaluación?</p>
                     <p class="fw-bold" id="userIdToDelete"></p>
                 </div>
                 <div class="modal-footer">
@@ -105,6 +105,36 @@ $evaluaciones = $controlador->listarEvaluaciones();
             </div>
         </div>
     </div>
+
+    
+    <script>
+        // Script para manejar el modal de eliminación
+        const deleteModal = document.getElementById('deleteModal');
+        let userIdToDelete = '';
+
+        // Evento al abrir el modal
+        deleteModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            userIdToDelete = button.getAttribute('data-id');
+
+            // Mostrar el ID de la evaluación en el modal
+            const userIdDisplay = deleteModal.querySelector('#userIdToDelete');
+            userIdDisplay.textContent = userIdToDelete;
+
+            // Configurar el enlace para confirmar la eliminación
+            const confirmDeleteButton = deleteModal.querySelector('#confirmDeleteButton');
+            confirmDeleteButton.onclick = function () {
+                window.location.href = `../RUTAS/eliminar.php?id_evaluacion=${userIdToDelete}`;
+            };
+        });
+
+        // Limpiar el ID cuando el modal se cierra
+        deleteModal.addEventListener('hidden.bs.modal', function () {
+            userIdToDelete = '';
+            const userIdDisplay = deleteModal.querySelector('#userIdToDelete');
+            userIdDisplay.textContent = '';
+        });
+    </script>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
