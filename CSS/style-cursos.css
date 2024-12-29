@@ -268,154 +268,6 @@ body>video {
 }
 
 /*----------CURSOS------------*/
-
-:root {
-    --primary-color: #007bff;
-    /* Color primario */
-    --nav-link-color: #ffffff;
-    /* Color de los enlaces de navegación */
-    --nav-link-active-color: #ffffff;
-    /* Color del enlace activo */
-    --nav-link-bg-active: var(--primary-color);
-    /* Color de fondo del enlace activo */
-    --card-bg-color: #ffffffee;
-    /* Color de fondo de la tarjeta */
-    --card-border-radius: 15px;
-    /* Radio del borde de la tarjeta */
-    --card-box-shadow: 0 4px 8px rgba(255, 245, 245, 0.848);
-    /* Sombra de la tarjeta */
-    --card-title-color: #fff2f2;
-    /* Color del título de la tarjeta */
-    --card-text-color: #f5f5f5;
-    /* Color del texto de la tarjeta */
-    --btn-bg-color: var(--primary-color);
-    /* Color de fondo del botón */
-    --btn-text-color: #ffffff;
-    /* Color del texto del botón */
-    --input-bg-color: #f8f9fa;
-    /* Color de fondo del input */
-    --input-text-color: #ffffff;
-    /* Color del texto del input */
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-}
-
-.card1 {
-    margin-top: 20px;
-}
-
-.card-header {
-    background-color: var(--primary-color);
-    border-bottom: none;
-    padding: 15px;
-    border-radius: var(--card-border-radius) var(--card-border-radius) 0 0;
-}
-
-.nav-tabs {
-    border-bottom: none;
-}
-
-.nav-tabs .nav-item .nav-link {
-    color: var(--nav-link-color);
-    background-color: transparent;
-    border: none;
-    padding: 10px 15px;
-    font-size: 16px;
-}
-
-.nav-tabs .nav-item .nav-link.active {
-    color: var(--nav-link-active-color);
-    background-color: var(--nav-link-bg-active);
-    border-radius: var(--card-border-radius);
-}
-
-.card-body {
-    background-color: var(--card-bg-color);
-    padding: 20px;
-    border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
-    box-shadow: var(--card-box-shadow);
-}
-
-.card img {
-
-    width: 100%;
-    height: auto;
-}
-
-.card-title {
-    color: var(--card-title-color);
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-}
-
-.card-text {
-    color: var(--card-text-color);
-    font-size: 1rem;
-}
-
-.btn-primary {
-    background-color: var(--btn-bg-color);
-    color: var(--btn-text-color);
-    border: none;
-    padding: 10px 15px;
-    border-radius: var(--card-border-radius);
-    cursor: pointer;
-}
-
-.btn-primary:hover {
-    background-color: darken(var(--btn-bg-color), 10%);
-}
-
-input.form-control {
-    background-color: var(--input-bg-color);
-    color: var(--input-text-color);
-    border: 1px solid #ced4da;
-    padding: 10px;
-    border-radius: var(--card-border-radius);
-}
-
-input.form-control::placeholder {
-    color: #6c757d;
-}
-
-.d-none {
-    display: none !important;
-}
-
-/* Media queries para dispositivos móviles */
-@media (max-width: 767px) {
-    .card-body {
-        padding: 15px;
-    }
-
-    .nav-tabs .nav-item .nav-link {
-        font-size: 14px;
-        padding: 8px 10px;
-    }
-
-    .card img {
-        height: auto;
-    }
-
-    .card-title {
-        font-size: 1.25rem;
-    }
-
-    .card-text {
-        font-size: 0.875rem;
-    }
-}
-
-
-
-
-
-
-
-
 section {
     width: 100%;
     padding: 20px;
@@ -436,13 +288,10 @@ section {
 
 .container-fluid {
     margin-top: 30px;
-    border-radius: 20px;
 }
 
 .card {
     transition: transform 0.3s ease;
-    margin-block: 30px ;
-    padding: 15px;
 }
 
 .card:hover {
@@ -450,7 +299,7 @@ section {
 }
 
 .card-header {
-    background-color: rgba(11, 11, 11, 0.478);
+    background-color: rgb(77, 99, 160);
     padding-right: 20px;
 }
 
@@ -459,12 +308,12 @@ section {
 }
 
 .card-body {
-    background-color: rgba(0, 0, 0, 0.613);
+    background-color: beige;
     padding: 20px;
 }
 
 .card-body-interna {
-    background-color: rgba(218, 207, 207, 0.665);
+    background-color: cadetblue;
 }
 
 .card-img-top {
@@ -512,167 +361,6 @@ article h2 {
 }
 
 /*--------------CORREOS------------------*/
-<<<<<<< HEAD
-
-.dinamico {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'IBM Plex Mono', monospace;
-    /* height: 100vh; */
-    /* Asegúrate de que el contenedor ocupe toda la altura de la pantalla */
-    text-align: center;
-    /* Centra el texto */
-}
-
-.card-new {
-    background-color: #fff;
-    border-radius: 10px;
-    font-family: 'IBM Plex Mono', monospace;
-    /* padding: 20px; */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    /* Ajusta el ancho según sea necesario */
-    max-width: 600px;
-    /* Ancho máximo para evitar que sea demasiado grande */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.content-new {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-family: 'IBM Plex Mono', monospace;
-    /* align-items: center; */
-}
-
-.texto-p>p {
-    padding: 15px;
-    font-family: 'IBM Plex Mono', monospace;
-}
-
-.h6 {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 1.5rem;
-    /* margin-bottom: 1rem; */
-    /* display: flex;
-    justify-content: center; */
-    /* align-items: center; */
-}
-
-.hover_content p {
-    color: white;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 20px;
-    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
-    /* margin-bottom: 1rem; */
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-}
-
-
-
-
-
-.card-new {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-    /* width: 100%;
-    max-width: 100%; */
-    padding: 10px;
-    background: #00000086;
-    box-shadow: 0 0 6px 0 rgba(32, 32, 36, 0.12);
-    transition: all 0.35s ease;
-}
-
-.card-new::before,
-.card-new::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgb(0, 255, 217);
-    height: 5px;
-}
-
-.card-new::before {
-    width: 0;
-    opacity: 0;
-    transition: opacity 0 ease, width 0 ease;
-    transition-delay: 0.5s;
-}
-
-.card-new::after {
-    width: 100%;
-    font-family: 'IBM Plex Mono', monospace;
-    background: white;
-    transition: width 0.5s ease;
-}
-
-.card-new .content-new {
-    width: 18em;
-    max-width: 100%;
-}
-
-.card-new .logo {
-    margin: 0 0 1em;
-    width: 10.625em;
-    transition: all 0.35s ease;
-}
-
-.card-new .h6 {
-    color: white;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 600;
-    /* text-transform: uppercase; */
-    /* margin: 0; */
-    letter-spacing: 2px;
-}
-
-
-
-.card-new .hover_content {
-    overflow: hidden;
-    max-height: 0;
-    transform: translateY(5em);
-    transition: all 0.55s ease;
-}
-
-.card-new .hover_content p {
-    margin: 1.5em 0 0;
-    color: white;
-    line-height: 1.4em;
-}
-
-.card-new:hover {
-    width: 100%;
-    box-shadow: 0 10px 20px 0 rgba(32, 32, 36, 0.12);
-}
-
-.card-new:hover::before {
-    width: 100%;
-    opacity: 1;
-    transition: opacity 0.5s ease, width 0.5s ease;
-    transition-delay: 0;
-}
-
-.card-new:hover::after {
-    width: 0;
-    opacity: 0;
-    transition: width 0 ease;
-}
-
-
-.card-new:hover .hover_content {
-    max-height: 20em;
-    transform: none;
-=======
 /* .correo {
     border-radius: 10px;
     background-color: beige;
@@ -682,6 +370,7 @@ article h2 {
 
 
 
+
 .dinamico {
     display: flex;
     justify-content: center;
@@ -691,7 +380,6 @@ article h2 {
     /* Asegúrate de que el contenedor ocupe toda la altura de la pantalla */
     text-align: center;
     /* Centra el texto */
->>>>>>> 995a38c0d702a849796fafd6a19d5fee9ced2e07
 }
 
 .card-new {
@@ -842,6 +530,9 @@ article h2 {
     max-height: 20em;
     transform: none;
 }
+
+
+
 
 
 /*---------------------------------------Footer------------------------------------*/
