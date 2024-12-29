@@ -20,7 +20,7 @@ require_once "Modulos/CORE/conexion.php";
         <h2>Menu</h2>
         <ul>
             <li><a href="#">Inicio</a></li>
-            <li><a href="#">Cursos</a></li>
+            <li><a href="Modulos/CURSOS/VISTAS/ListaCursos.php">Cursos</a></li>
             <li><a href="Modulos/DOCENTES/VISTAS/ListaDocentes.php">Docentes</a></li>
             <li><a href="Modulos/ESTUDIANTES/VISTAS/ListaEstudiantes.php">Estudiantes</a></li>
             <li><a href="#">Inscripciones</a></li>
