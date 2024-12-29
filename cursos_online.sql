@@ -101,7 +101,7 @@ INSERT INTO `evaluaciones` (`id_evaluacion`, `titulo`, `descripcion`, `fecha_cre
 CREATE TABLE preguntas (
     `id_pregunta` int(11) NOT NULL,
     `enunciado` text NOT NULL,
-    `evaluacion_id` int(11) NOT NULL
+    `id_evaluacion` int(11) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -114,7 +114,7 @@ CREATE TABLE respuestas (
     `id_respuesta` int(11) NOT NULL,
     `texto_respuesta` text NOT NULL,
     `es_correcta` BOOLEAN NOT NULL,
-    `pregunta_id` int(11) NOT NULL
+    `id_pregunta` int(11) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -402,7 +402,7 @@ ALTER TABLE `respuestas`
 --
 ALTER TABLE `resultados`
   ADD CONSTRAINT `resultados_ibfk_1` FOREIGN KEY (`id_estudiante`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE,
-  ADD CONSTRAINT `resultados_ibfk_2` FOREIGN KEY (`id_evaluacion`) REFERENCES `evaluaciones` (`id_evaluacion`) ON DELETE SET NULL;
+  ADD CONSTRAINT `resultados_ibfk_2` FOREIGN KEY (`id_evaluacion`) REFERENCES `evaluaciones` (`id_evaluacion`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `foro`
