@@ -21,6 +21,7 @@ require_once "Modulos/CORE/conexion.php";
         <ul>
             <li><a href="#">Inicio</a></li>
             <li><a href="Modulos/CURSOS/VISTAS/ListaCursos.php">Cursos</a></li>
+            <li><a href="Modulos/EVALUACIONES/VISTAS/ListaEvaluaciones.php">Evaluaciones</a></li>
             <li><a href="Modulos/DOCENTES/VISTAS/ListaDocentes.php">Docentes</a></li>
             <li><a href="Modulos/ESTUDIANTES/VISTAS/ListaEstudiantes.php">Estudiantes</a></li>
             <li><a href="Modulos/FORO/foro.php?c=comentario&css=style_cursos_lista.css">Comentario</a></li>
