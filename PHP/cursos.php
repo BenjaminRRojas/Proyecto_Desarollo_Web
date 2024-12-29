@@ -1,5 +1,4 @@
 <?php
-
 require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\CURSOS\CONTROLADORES\CursosControlador.php';
 $controlador = new CursosControlador();
 $cursos = $controlador->listarCursos();
@@ -8,7 +7,6 @@ $cursos = $controlador->listarCursos();
 session_start(); // Inicia la sesión
 $accion = $_GET['accion'] ?? 'agregar';
 $usuario = isset($usuario) ? $usuario : null;
-
 ?>
 
 
@@ -320,75 +318,9 @@ $usuario = isset($usuario) ? $usuario : null;
                                       </button>
 
                                     </div>
-
                                 </div>
                             </div>
                         <?php } ?>
-                    </div>
-
-                              
-                         
- 
-                </div>
-    
-                <!-- Bloques de cursos filtrados -->
-                <div class="bloque ciberseguridad">
-                    <!-- Aquí solo se mostrarán los cursos de Ciberseguridad -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card3.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Introducción Ciberseguridad</h5>
-                                    <p class="card-text">Aprende a identificar, prevenir y mitigar amenazas en el ciberespacio...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bloque desarrollo-web">
-                    <!-- Aquí solo se mostrarán los cursos de Desarrollo Web -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card4.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Front-end básico</h5>
-                                    <p class="card-text">Domina las tecnologías modernas para construir sitios web dinámicos...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bloque ciencia-datos">
-                    <!-- Aquí solo se mostrarán los cursos de Ciencia de Datos -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card5.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ciencia de Datos</h5>
-                                    <p class="card-text">Conviértete en un experto en analizar y visualizar datos...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bloque ia">
-                    <!-- Aquí solo se mostrarán los cursos de Inteligencia Artificial -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card6.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Inteligencia Artificial</h5>
-                                    <p class="card-text">Sumérgete en el mundo de la IA y aprende a desarrollar modelos inteligentes...</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -422,7 +354,6 @@ $usuario = isset($usuario) ? $usuario : null;
     </article>
 
     <div class="container-fluid dinamico">
-
       <!--
       <div class="correo">
         <h2>Enterate de cursos nuevos</h2>
@@ -444,7 +375,6 @@ $usuario = isset($usuario) ? $usuario : null;
           </div>
         </div>
       </div>
-
     </div>
 
     <!-------------------------------------Pie de Pagina------------------------------------------------>
