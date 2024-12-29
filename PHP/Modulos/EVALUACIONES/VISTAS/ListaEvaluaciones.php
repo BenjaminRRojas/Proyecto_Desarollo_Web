@@ -106,6 +106,36 @@ $evaluaciones = $controlador->listarEvaluaciones();
         </div>
     </div>
 
+    
+    <script>
+        // Script para manejar el modal de eliminación
+        const deleteModal = document.getElementById('deleteModal');
+        let userIdToDelete = '';
+
+        // Evento al abrir el modal
+        deleteModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            userIdToDelete = button.getAttribute('data-id');
+
+            // Mostrar el ID de la evaluación en el modal
+            const userIdDisplay = deleteModal.querySelector('#userIdToDelete');
+            userIdDisplay.textContent = userIdToDelete;
+
+            // Configurar el enlace para confirmar la eliminación
+            const confirmDeleteButton = deleteModal.querySelector('#confirmDeleteButton');
+            confirmDeleteButton.onclick = function () {
+                window.location.href = `../RUTAS/eliminar.php?id_evaluacion=${userIdToDelete}`;
+            };
+        });
+
+        // Limpiar el ID cuando el modal se cierra
+        deleteModal.addEventListener('hidden.bs.modal', function () {
+            userIdToDelete = '';
+            const userIdDisplay = deleteModal.querySelector('#userIdToDelete');
+            userIdDisplay.textContent = '';
+        });
+    </script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 

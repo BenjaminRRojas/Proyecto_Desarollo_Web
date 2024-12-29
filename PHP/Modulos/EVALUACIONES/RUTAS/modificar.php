@@ -42,7 +42,7 @@ if (isset($_GET['id_evaluacion'])) {
         <form method="POST" action="../RUTAS/procesar.php">
             <div class="mb-3">
                 <input type="hidden" name="accion" value="editar">
-                <input type="hidden" name="id" value="<?= $evaluacion['id_evaluacion'] ?>">
+                <input type="hidden" name="id_evaluacion" value="<?= $evaluacion['id_evaluacion'] ?>">
             </div>  
             <div class="mb-3">
                 <label for="titulo" class="form-label">Título</label>
@@ -57,9 +57,9 @@ if (isset($_GET['id_evaluacion'])) {
                 <input type="datetime-local" class="form-control" name="fecha_limite" value="<?= $evaluacion['fecha_limite'] ?>" required>
             </div>
             <div class="mb-5">
-                <label for="curso" class="form-label">Curso</label>
-                <select name="curso" class="form-select" id="curso" required>
-                    <option value="" disabled selected>Selecciona un curso</option>
+                <label for="id_curso" class="form-label">Curso</label>
+                <select name="id_curso" class="form-select" id="curso" required>
+                    <option value="<?= $evaluacion['id_curso'] ?>">2</option>
                     <?php
                     foreach ($cursos as $curso) {
                         $selected = (isset($evaluacion['id_curso']) && $evaluacion['id_curso'] == $curso['id_curso']) ? 'selected' : '';
