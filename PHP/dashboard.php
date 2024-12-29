@@ -21,10 +21,11 @@ require_once "Modulos/CORE/conexion.php";
         <ul>
             <li><a href="#">Inicio</a></li>
             <li><a href="Modulos/CURSOS/VISTAS/ListaCursos.php">Cursos</a></li>
+            <li><a href="Modulos/EVALUACIONES/VISTAS/ListaEvaluaciones.php">Evaluaciones</a></li>
             <li><a href="Modulos/DOCENTES/VISTAS/ListaDocentes.php">Docentes</a></li>
             <li><a href="Modulos/ESTUDIANTES/VISTAS/ListaEstudiantes.php">Estudiantes</a></li>
-            <li><a href="Modulos/FORO/foro.php?c=comentario&css=style_cursos_lista.css">Comentario</a></li>
-            <li><a href="Modulos/FORO/foro.php?c=foro&css=style_cursos_lista.css">Foro</a></li>
+            <li><a href="Modulos/FORO/foro.php?c=comentario&a=Tabla">Comentario</a></li>
+            <li><a href="Modulos/FORO/foro.php?c=foro&a=Tabla">Foro</a></li>
             <li><a href="#">Inscripciones</a></li>
             <li><a href="#">Reportes</a></li>
             <li><a href="#">Configuraciones</a></li>

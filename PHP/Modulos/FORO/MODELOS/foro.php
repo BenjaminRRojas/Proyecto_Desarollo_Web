@@ -58,7 +58,7 @@ class Foro{
     //Método para el Inicio
     public function Listar(){
         try{
-            $consulta=$this->pdo->prepare("SELECT * FROM foro;");
+            $consulta=$this->pdo->prepare("SELECT foro.*, cursos.titulo FROM foro INNER JOIN cursos on foro.id_curso =cursos.id_curso;");
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $e){
@@ -76,7 +76,7 @@ class Foro{
             $foro=new Foro();
             $foro->setid_foro($fila->id_foro);
             $foro->setid_curso($fila->id_curso);
-            $foro->settitulo($fila->titulo);
+            $foro->settitulo($fila->titulo_foro);
             $foro->setdescripcion($fila->descripcion);
             $foro->setfecha($fila->fecha_creacion);
 
@@ -105,15 +105,13 @@ class Foro{
     public function Actualizar(Foro $foro){
         try{
             $consulta="UPDATE foro SET
-                id_curso=?,
-                titulo=?,
+                titulo_foro=?,
                 descripcion=?,
-                fecha_comentario=?,
+                fecha_creacion=?
                 WHERE id_foro=?;
             ";
             $this->pdo->prepare($consulta)
                     ->execute(array(
-                        $foro->getid_curso(),
                         $foro->gettitulo(),
                         $foro->getdescripcion(),
                         $foro->getfecha(),

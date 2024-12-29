@@ -74,10 +74,15 @@ class Comentario{
     }
 
     //Método para el Inicio según un foro.
-    public function Listar($id, $consulta2){
+    public function Listar($id){
         try{
-            $consulta=$this->pdo->prepare($consulta2);
-            $id > 0 ? $consulta->execute(array($id)): $consulta->execute();
+            if ($id > 0){
+                $consulta=$this->pdo->prepare("SELECT comentario.*,foro.titulo_foro, usuarios.nombres, usuarios.apellidos FROM comentario INNER JOIN foro on comentario.id_foro = foro.id_foro INNER JOIN usuarios on comentario.id_usuario = usuarios.id_usuario WHERE id_foro=?;");
+                $consulta->execute($id);
+            }else{
+                $consulta=$this->pdo->prepare("SELECT comentario.*,foro.titulo_foro, usuarios.nombres, usuarios.apellidos FROM comentario INNER JOIN foro on comentario.id_foro = foro.id_foro INNER JOIN usuarios on comentario.id_usuario = usuarios.id_usuario;");
+                $consulta->execute();
+            }
     
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $e){
