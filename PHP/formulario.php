@@ -59,7 +59,7 @@ $usuario = isset($usuario) ? $usuario : null;
                                 <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="cursos.html">Cursos</a>
+                                <a class="nav-link active" href="cursos.php">Cursos</a>
                             </li>
 
                             <?php if (isset($_SESSION['nombres'])): ?>
