@@ -22,6 +22,7 @@ class ForoControlador{
         require_once "VISTAS/pie.php";
     }
 
+    //Método para cambiar la vista si tiene id o no
     public function Editar(){
         $titulo = "Agregar";
         $css="../../../CSS/style_form.css";
@@ -29,6 +30,10 @@ class ForoControlador{
         if(isset($_GET['id'])){
             $usuario = $this->modelo->Obtener($_GET['id']);
             $titulo = "Modificar";
+        }else{
+            require_once "../CURSOS2/CONTROLADORES/CursosControlador.php";
+            $controlador = new CursoControlador();
+            $cursos = $controlador->listarCursos();
         }
 
         require_once "VISTAS/encabezado.php";
@@ -36,6 +41,7 @@ class ForoControlador{
         require_once "VISTAS/pie.php";
     }
 
+    //Método para Agregar o Actualizar un Foro
     public function Guardar(){
         $foro=new Foro();
         $foro->setid_foro(intval($_POST['id_foro']));
@@ -52,3 +58,5 @@ class ForoControlador{
         header("location:?c=foro&css=style-listadocentes.css");
     }
 }
+
+?>

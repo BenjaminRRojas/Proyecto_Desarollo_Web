@@ -44,12 +44,22 @@ class UsuariosControlador {
         return $this->modelo->eliminar($id);
     }
 
+
+    public function guardarArchivoEnMedia($nombreArchivo, $ubicacionArchivo, $tipoArchivo) {
+        $sql = "INSERT INTO media (nombre_archivo, ubicacion_archivo, tipo_archivo) VALUES (?, ?, ?)";
+        $stmt->bind_param('sss', $nombreArchivo, $ubicacionArchivo, $tipoArchivo);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+
     //Enviar Correo
-    public function enviarCorreoConfirmacion($correo, $nombres) {
+    public function enviarCorreoConfirmacion($correo, $nombres, $archivo) {
         require __DIR__ . '/../../../../vendor/autoload.php';
         $mail = new PHPMailer\PHPMailer\PHPMailer(true);
     
         try {
+
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
@@ -60,13 +70,18 @@ class UsuariosControlador {
     
             $mail->setFrom('codetitans123@gmail.com', 'CodeTitans Titans');
             $mail->addAddress($correo, $nombres);
+
     
             $mail->isHTML(true);
             $mail->Subject = 'Gracias por Registrarte!!!';
             $mail->Body = "
                 <h1>Hola, $nombres</h1>
-                <p>Gracias por registrarte.</p>
-            ";
+                <p>Gracias por registrarte.</p>";
+                
+            
+            $mail->AddAttachment($archivo['tmp_name'], $archivo['name']);
+
+
             $mail->SMTPDebug = 2; 
             $mail->send();
             return true;
