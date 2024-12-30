@@ -24,9 +24,6 @@ $nota = 1 + ($puntaje * 1.5);
 // Insertar la nota en la tabla resultados
 $controlador->insertarResultado($id_usuario, $id_evaluacion, $nota);
 
-
-
-
 // Redirigir después de procesar todo
 header('Location:../../../estudiante_dashboard.php');
 exit();
