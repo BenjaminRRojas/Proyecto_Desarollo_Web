@@ -81,36 +81,9 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
         </nav>
 
         <div class="container my-5 w-50 p-5 rounded-3 shadow-lg">
-            <h2 class="text-center fw-bold mb-4">Creación de evaluaciones</h2>
+            <h2 class="text-center fw-bold mb-4">Evaluación</h2>
             <form action="Modulos/EVALUACIONES/RUTAS/procesar.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="accion" value="agregar">
-
-                <!-- Campos del formulario -->
-                <div class="mb-3">
-                    <label for="titulo" class="form-label">Título de la Evaluación</label>
-                    <input type="text" class="form-control" id="titulo" name="titulo" value="<?= htmlspecialchars($evaluacion['titulo'] ?? '') ?>" required>
-                </div>
-                <div class="mb-3">
-                    <label for="descripcion" class="form-label">Descripción</label>
-                    <textarea class="form-control" id="descripcion" name="descripcion" required><?= htmlspecialchars($evaluacion['descripcion'] ?? '') ?></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="fecha_limite" class="form-label">Fecha Límite</label>
-                    <input type="datetime-local" class="form-control" id="fecha_limite" name="fecha_limite" value="<?= htmlspecialchars($evaluacion['fecha_limite'] ?? '') ?>" required>
-                </div>
-                <div class="mb-5">
-                    <label for="curso" class="form-label">Curso</label>
-                    <select class="form-select" id="curso" name="id_curso" required>
-                        <option value="" disabled selected>Selecciona un curso</option>
-                        <?php
-                        // Iterar sobre los cursos obtenidos del modelo
-                        foreach ($cursos as $curso) {
-                            $selected = (isset($evaluacion['id_curso']) && $evaluacion['id_curso'] == $curso['id_curso']) ? 'selected' : '';
-                            echo "<option value='{$curso['id_curso']}' {$selected}>{$curso['titulo']}</option>";
-                        }
-                        ?>
-                    </select>
-                </div>
 
 
                 <h3 class="text-center">Creación de preguntas y respuestas</h3>
