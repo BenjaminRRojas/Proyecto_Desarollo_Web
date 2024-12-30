@@ -8,7 +8,6 @@ $usuario = isset($usuario) ? $usuario : null;
 ?>
 
 
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -23,10 +22,23 @@ $usuario = isset($usuario) ? $usuario : null;
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
     
+    <?php if (isset($_SESSION['logout_success'])): ?> 
+        <script> 
+            Swal.fire({ 
+                title: '¡Hasta pronto!', 
+                text: '<?php echo $_SESSION['logout_success']; ?>', 
+                icon: 'info', 
+                confirmButtonText: 'Aceptar' 
+            }); 
+        </script> 
+        <?php unset($_SESSION['logout_success']);?> 
+    <?php endif; ?>
 
 
     <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>

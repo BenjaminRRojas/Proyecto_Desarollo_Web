@@ -10,9 +10,11 @@ if (!isset($_SESSION['nombres']) || $_SESSION['tipo_usuario'] != 'DOCENTE') {
 
 $usuario_id = $_SESSION['id_usuario']; 
 
+
 // Conectar a la base de datos y obtener los cursos del docente con la cantidad de estudiantes inscritos
 try {
     $pdo = Database::getConnection();
+
     
     $stmt = $pdo->prepare("SELECT 
                                c.id_curso, 
@@ -48,84 +50,114 @@ try {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 </head>
 <body>
- 
-<video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>
+    <?php if (isset($_SESSION['login_success'])): ?> 
+        <script> 
+            Swal.fire({ 
+                title: '¡Bienvenido <?= htmlspecialchars($_SESSION['nombres']) ?>!', 
+                text: '<?php echo $_SESSION['login_success']; ?>', 
+                icon: 'success', 
+                confirmButtonText: 'Aceptar' 
+            }); 
+            <?php unset($_SESSION['login_success']); // Eliminar el mensaje de la sesión ?> 
+        </script> 
+    <?php endif; ?>
+    <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>
+
 
     <!-------------------------Container Principal------------------------------>
     <div class="container-fluid">
 
         <nav class="navbar navbar-expand-lg">
-                    <div class="container-fluid">
-                        <a class="navbar-brand ms-3" href="index.php">
-                            <img src="../imagenes/logo.svg" alt="logo" height="125">
-                        </a>
+            <div class="container-fluid">
+                <a class="navbar-brand ms-3" href="index.php">
+                    <img src="../imagenes/logo.svg" alt="logo" height="125">
+                </a>
 
-                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                        <div class="d-none d-lg-block text-center ms-5">
-                            <h1 class="navbar-title">Aprende a programar desde cero hasta el infinito</h1>
-                        </div>
+                <div class="d-none d-lg-block text-center ms-5">
+                    <h1 class="navbar-title">Aprende a programar desde cero hasta el infinito</h1>
+                </div>
 
-                        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                            aria-labelledby="offcanvasNavbarLabel">
-                            <div class="offcanvas-header">
-                                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
-                                <button type="button" class="btn-close bg-light" data-bs-dismiss="offcanvas"
-                                    aria-label="Close"></button>
-                                <hr>
-                            </div>
-                            <div class="offcanvas-body">
-                                <ul class="navbar-nav justify-content-end">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="cursos.php">Cursos</a>
-                                    </li>
-
-                                    <?php if (isset($_SESSION['nombres'])): ?>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Bienvenido, <?= htmlspecialchars($_SESSION['nombres']) ?> 
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
-                                                    <li><a class="dropdown-item" href="docente_dashboard.php">Gestionar Cursos</a></li>
-                                                <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
-                                                    <li><a class="dropdown-item" href="estudiante_dashboard.php">Cursos Inscritos</a></li>
-                                                <?php endif; ?>
-                                                <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
-                                            </ul>
-                                        </li>
-                                    <?php else:?>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                Perfil
-                                            </a>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <button type="button" class="dropdown-item btn btn-primary w-100 text-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                        Iniciar Sesión
-                                                    </button>
-                                                </li>
-                                                <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
-                                            </ul>
-                                        </li>
-                                    <?php endif; ?>
-
-                                </ul>
-                            </div>
-                        </div>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
+                        <button type="button" class="btn-close bg-light" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                        <hr>
                     </div>
-                </nav>
-        <!-- Contenedor principal -->
-        <div class="container mt-5 dashboard-welcome">
-            <h1 class="dashboard-title">¡Bienvenido al Dashboard <?= htmlspecialchars($_SESSION['nombres']) ?>!</h1>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="cursos.php">Cursos</a>
+                            </li>
+
+                            <?php if (isset($_SESSION['nombres'])): ?>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Bienvenido, <?= htmlspecialchars($_SESSION['nombres']) ?> 
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
+                                            <li><a class="dropdown-item" href="docente_dashboard.php">Gestionar Cursos</a></li>
+                                        <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
+                                            <li><a class="dropdown-item" href="estudiante_dashboard.php">Cursos Inscritos</a></li>
+                                        <?php endif; ?>
+                                        <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
+                                    </ul>
+                                </li>
+                            <?php else:?>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Perfil
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <button type="button" class="dropdown-item btn btn-primary w-100 text-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                Iniciar Sesión
+                                            </button>
+                                        </li>
+                                        <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
+                                    </ul>
+                                </li>
+                            <?php endif; ?>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+            
+            
+
+            <div class="container mt-5 dashboard-welcome">
+                <h1 class="dashboard-title">¡Bienvenido al Dashboard <?= htmlspecialchars($_SESSION['nombres']) ?>!</h1>
+
+
+                <form action="Modulos/DOCENTES/RUTAS/actualizar_descripcion.php?" method="POST">
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Inserta una pequeña descripción personal</label>
+                        <textarea class="form-control w-50" id="exampleFormControlTextarea1" rows="3" name="descripcion"></textarea>
+                        <button type="submit" class="btn btn-success">Enviar</button>
+                    </div>
+                </form>
+            
+
 
             <p class="dashboard-description">A continuación, puedes ver los cursos que has creado:</p>
 
@@ -169,8 +201,8 @@ try {
     </div>    
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
 
 </body>
 </html>

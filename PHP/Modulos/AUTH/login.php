@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['corre'] = $user['correo'];
             $_SESSION['sexo'] = $user['sexo'];
 
-
+            $_SESSION['login_success'] = "¡Inicio de sesión exitoso!";
 
             // Redirige al usuario según su tipo
             if ($user['tipo_usuario'] === 'DOCENTE') {
