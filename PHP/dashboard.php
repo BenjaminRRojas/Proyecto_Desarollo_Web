@@ -1,9 +1,5 @@
 <?php
 session_start();
-require_once "C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\CURSOS\CONTROLADORES\CursosControlador.php";
-require_once "C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\DOCENTES\CONTROLADORES\DocentesControlador.php";
-require_once "C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\ESTUDIANTES\CONTROLADORES\UsuariosControlador.php";
-require_once "C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\EVALUACIONES\CONTROLADORES\EvaluacionesControlador.php";
 
 ?>
 
