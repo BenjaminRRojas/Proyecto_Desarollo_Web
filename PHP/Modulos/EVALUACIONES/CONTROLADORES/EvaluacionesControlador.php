@@ -73,10 +73,7 @@ class EvaluacionesControlador{
         return $this->modelo->eliminar($id_evaluacion);
     }
 
-    // Método para procesar la evaluación
-    public function procesarEvaluacion($id_estudiante, $id_evaluacion, $respuestas) {
-        return $this->modelo->procesarEvaluacion($id_estudiante, $id_evaluacion, $respuestas);
-    }
+
 
 }
 ?>

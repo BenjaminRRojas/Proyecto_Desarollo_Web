@@ -78,8 +78,8 @@ class EvaluacionesModelo {
 
     // Método para obtener las respuestas de una pregunta
     public function obtenerRespuestas($id_pregunta) {
-        $sql = "SELECT * FROM respuestas WHERE id_pregunta = :id_pregunta";
-        $stmt = $this->db->prepare($sql); // Usar la conexión correcta
+        $query = "SELECT * FROM respuestas WHERE id_pregunta = :id_pregunta";
+        $stmt = $this->db->prepare($query); // Usar la conexión correcta
         $stmt->bindParam(':id_pregunta', $id_pregunta, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -103,41 +103,6 @@ class EvaluacionesModelo {
         return $preguntas_respuestas;
     }
 
-    public function procesarEvaluacion($id_estudiante, $id_evaluacion, $respuestas) {
-        $calificacion = 1.0;
-    
-        // Obtener las preguntas y respuestas para la evaluación
-        $preguntas_respuestas = $this->obtenerPreguntasYRespuestas($id_evaluacion);
-    
-        // Calcular la calificación
-        foreach ($preguntas_respuestas as $id_pregunta => $pregunta) {
-            if (isset($respuestas['respuesta_' . $id_pregunta])) {
-                $id_respuesta_seleccionada = $respuestas['respuesta_' . $id_pregunta];
-    
-                // Verificar si la respuesta seleccionada es correcta
-                foreach ($pregunta['respuestas'] as $respuesta) {
-                    if ($respuesta['id_respuesta'] == $id_respuesta_seleccionada) {
-                        if ($respuesta['es_correcta']) {
-                            $calificacion += 1.5;  // Sumar 1.5 puntos por respuesta correcta
-                        } 
-                        break;
-                    }
-                }
-            }
-        }
-    
-        // Insertar los resultados en la base de datos
-        $sql = "INSERT INTO resultados (id_estudiante, id_evaluacion, nota) 
-                VALUES (?, ?, ?)";
-    
-        $stmt = $this->db->prepare($sql);
-        // Vincular los parámetros correctamente
-        $stmt->bindValue(1, $id_estudiante, PDO::PARAM_INT);
-        $stmt->bindValue(2, $id_evaluacion, PDO::PARAM_INT);
-        $stmt->bindValue(3, $calificacion, PDO::PARAM_STR);
-    
-        return $stmt->execute();
-    }
 } 
 
 
