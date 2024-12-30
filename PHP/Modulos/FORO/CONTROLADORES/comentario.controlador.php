@@ -46,6 +46,7 @@ class ComentarioControlador{
         $foros=$this->modelo->ListarForos();
         $usuarios=$this->modelo->ListarUsuarios();
         $comentario = new Comentario();
+        $comentario->setid_responde(0);
         if(isset($_GET['id'])){
             $comentario = $this->modelo->Obtener($_GET['id']);
             $titulo = "Modificar";
@@ -64,7 +65,7 @@ class ComentarioControlador{
         $comentario->settitulo($_POST['titulo']);
         $comentario->setcontenido($_POST['contenido']);
         $comentario->setfecha($_POST['fecha_creacion']);
-        $comentario->setid_respomde($_POST['id_responde']);
+        $comentario->setid_responde($_POST['id_responde']);
         $comentario->getid_comentario() > 0 ? $this->modelo->Actualizar($comentario) : $this->modelo->Insertar($comentario);
 
         header("location:?c=comentario&a=Tabla");

@@ -19,7 +19,7 @@
             </div>
             <label for="foroSeleccionado" class="form-label">Foro</label>
             <select class="form-select mb-3" id="foroSeleccionado" name="id_foro" required>
-                <option value="" disabled <?= empty($comentario->getid_foro()) ? 'selected' : '' ?>>Seleccionar foro</option>
+                <option value="" disabled <?= empty($comentario->getid_foro()) ? 'selected' : '' ?>>Seleccionar Foro</option>
                 <?php foreach ($foros as $foro): ?>
                     <option 
                         value="<?= htmlspecialchars($foro->id_foro) ?>" 
@@ -30,7 +30,7 @@
             </select>
             <label for="usuarioSeleccionado" class="form-label">Usuario</label>
             <select class="form-select mb-3" id="usuarioSeleccionado" name="id_usuario" required>
-                <option value="" disabled <?= empty($comentario->getid_usuario()) ? 'selected' : '' ?>>Seleccionar usuario</option>
+                <option value="" disabled <?= empty($comentario->getid_usuario()) ? 'selected' : '' ?>>Seleccionar Usuario</option>
                 <?php foreach ($usuarios as $usuario): ?>
                     <option 
                         value="<?= htmlspecialchars($usuario->id_usuario) ?>" 
@@ -39,17 +39,19 @@
                     </option>
                 <?php endforeach; ?>
             </select>
-            <label for="usuariorespondeSeleccionado" class="form-label">Usuario a Responder</label>
-            <select class="form-select mb-3" id="usuariorespondeSeleccionado" name="id_responde" required>
-                <option value="" disabled <?= is_null($comentario->getid_responde()) ? 'selected' : '' ?>>Seleccionar usuario</option>
-                <?php foreach ($usuarios as $usuario): ?>
-                    <option 
-                        value="<?= htmlspecialchars($usuario->id_usuario) ?>" 
-                        <?= $usuario->id_usuario == ($comentario->getid_responde() ?? '') ? 'selected' : '' ?>>
-                        <?= htmlspecialchars($usuario->nombres) ?> <?= htmlspecialchars($usuario->apellidos) ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
+            <?php if (!is_null($comentario->getid_responde())): ?>
+                <label for="usuariorespondeSeleccionado" class="form-label">Usuario a Responder</label>
+                <select class="form-select mb-3" id="usuariorespondeSeleccionado" name="id_responde" required>
+                    <option value="" disabled <?= ($comentario->getid_responde() === 0) ? 'selected' : '' ?>>Seleccionar Usuario</option>
+                    <?php foreach ($usuarios as $usuario): ?>
+                        <option 
+                            value="<?= htmlspecialchars($usuario->id_usuario) ?>" 
+                            <?= $usuario->id_usuario == ($comentario->getid_responde() ?? '') ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($usuario->nombres) ?> <?= htmlspecialchars($usuario->apellidos) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            <?php endif; ?>
             <button type="submit" class="btn btn-success w-100">Enviar</button>
         </form>
     </div>

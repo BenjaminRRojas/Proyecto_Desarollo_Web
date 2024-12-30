@@ -65,11 +65,11 @@ class Comentario{
         $this->fecha_comentario=$fec;
     }
 
-    public function getid_responde() : ?string{
+    public function getid_responde(){
         return $this->id_comentario_responde;
     }
 
-    public function setid_responde(string $res){
+    public function setid_responde($res){
         $this->id_comentario_responde=$res;
     }
 
@@ -112,6 +112,17 @@ class Comentario{
         }
     }
 
+    //Método para obtener los nombres y apellidos de el usuario a responder
+    public function BuscarResponde($id){
+        try{
+            $consulta=$this->pdo->prepare("SELECT nombres, apellidos from usuarios WHERE id_usuario=?;");
+            $consulta->execute(array($id));
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $e){
+            die($e->getMessage());
+        }
+    }
+
     //Método para ingresar la Respuesta a un Comentario
     public function Agregar_Respuesta(Comentario $usuario){
         try{
@@ -143,6 +154,7 @@ class Comentario{
             $comentario->settitulo($r->titulo);
             $comentario->setcontenido($r->contenido);
             $comentario->setfecha($r->fecha_comentario);
+            $comentario->setid_responde($r->id_comentario_responde);
 
             return $comentario;
 
@@ -174,7 +186,8 @@ class Comentario{
                 id_usuario=?,
                 titulo=?,
                 contenido=?,
-                fecha_comentario=?
+                fecha_comentario=?,
+                id_comentario_responde=?
                 WHERE id_comentario=?;
             ";
             $this->pdo->prepare($consulta)
@@ -184,6 +197,7 @@ class Comentario{
                         $p->gettitulo(),
                         $p->getcontenido(),
                         $p->getfecha(),
+                        $p->getid_responde(),
                         $p->getid_comentario()
                     ));
         }catch(Exception $e){
