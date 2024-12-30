@@ -14,9 +14,9 @@ $usuario_id = $_SESSION['id_usuario'];
 
 $id_evaluacion = $_GET['id_evaluacion'];
 $controlador = new EvaluacionesControlador();
-$evaluacion = $controlador->obtenerPorIdEvaluacion($id_evaluacion);
+$evaluacion = $controlador->verEvaluacion($id_evaluacion);
 
-
+$preguntas_respuestas = $controlador->obtenerPreguntasYRespuestas($id_evaluacion);
 ?>
 
 <!DOCTYPE html>
@@ -92,36 +92,25 @@ $evaluacion = $controlador->obtenerPorIdEvaluacion($id_evaluacion);
         </nav>
 
         <div class="container my-5 w-50 p-5 rounded-3 shadow-lg">
-            <h2 class="text-center fw-bold mb-4">Evaluación</h2>
-            <form action="Modulos/EVALUACIONES/RUTAS/procesar.php" method="POST" enctype="multipart/form-data">
+            <h2 class="text-center fw-bold mb-4"><?= $evaluacion['titulo'] ?></h2>
+            <form action="Modulos/EVALUACIONES/RUTAS/procesar_nota.php?id_evaluacion=<?php echo $id_evaluacion; ?>" method="POST">
                 <input type="hidden" name="accion" value="agregar">
-
-
-                <h3 class="text-center">Creación de preguntas y respuestas</h3>
-                <p>Escriba un enunciado para cada pregunta. Luego, escriba las respuestas y seleccione la opción correcta.</p>
                 <div class="mb-5">
-                    <!-- Preguntas -->
-                    <?php for ($i = 1; $i <= 4; $i++) : ?>
-                        <h4>Pregunta <?= $i ?></h4>
-                        <textarea id="pregunta<?= $i ?>" name="preguntas[<?= $i ?>][enunciado]" class="form-control mb-3" placeholder="Escriba un enunciado para la pregunta" required><?= htmlspecialchars($evaluacion['preguntas'][$i]['enunciado'] ?? '') ?></textarea>
-
-                        <div class="mb-5">
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="radio" name="preguntas[<?= $i ?>][es_correcta]" value="opcion1" required>
-                                <input type="text" name="preguntas[<?= $i ?>][opcion1]" class="form-control" placeholder="Opción 1" required>
-                            </div>
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="radio" name="preguntas[<?= $i ?>][es_correcta]" value="opcion2" required>
-                                <input type="text" name="preguntas[<?= $i ?>][opcion2]" class="form-control" placeholder="Opción 2" required>
-                            </div>
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="radio" name="preguntas[<?= $i ?>][es_correcta]" value="opcion3" required>
-                                <input type="text" name="preguntas[<?= $i ?>][opcion3]" class="form-control" placeholder="Opción 3" required>
-                            </div>
-                        </div>
-                    <?php endfor; ?>
+                    <!-- Preguntas y respuestas -->
+                    <p>Lea las siguientes preguntas y seleccione una opción.</p>
+                    <?php foreach ($preguntas_respuestas as $id_pregunta => $pregunta): ?>
+                        <fieldset>
+                            <legend><?php echo $pregunta['enunciado']; ?></legend>
+                            <?php foreach ($pregunta['respuestas'] as $respuesta): ?>
+                                <label>
+                                    <input type="radio" name="respuesta_<?php echo $id_pregunta; ?>" value="<?php echo $respuesta['id_respuesta']; ?>" required>
+                                    <?php echo $respuesta['texto_respuesta']; ?>
+                                </label><br>
+                            <?php endforeach; ?>
+                        </fieldset>
+                    <?php endforeach; ?>
                 </div>
-                <button type="submit" class="btn btn-success w-100">Crear Evaluación</button>
+                <button type="submit" class="btn btn-success w-100">Enviar Evaluación</button>
             </form>
         </div>
 

@@ -77,6 +77,43 @@ try {
     die("Error: " . $e->getMessage());
 }
 
+// Conecta a la db
+// Conecta a la base de datos
+try {
+    $pdo = Database::getConnection();
+    // Consulta para obtener las evaluaciones con la nota asociada
+    $stmt = $pdo->prepare("
+        SELECT 
+            ev.id_evaluacion,
+            ev.titulo AS evaluacion_titulo,
+            ev.descripcion AS evaluacion_descripcion,
+            ev.fecha_creacion,
+            ev.fecha_limite,
+            c.titulo AS curso_titulo,
+            r.nota AS nota,
+            r.fecha_realizacion as fecha_realizacion
+        FROM 
+            evaluaciones ev
+        JOIN 
+            cursos c ON ev.id_curso = c.id_curso
+        JOIN 
+            curso_estudiante ce ON c.id_curso = ce.id_curso
+        LEFT JOIN 
+            resultados r ON r.id_evaluacion = ev.id_evaluacion AND r.id_estudiante = ce.id_estudiante
+        WHERE 
+            ce.id_estudiante = :id_usuario
+        ORDER BY 
+            ev.fecha_limite ASC;
+    ");
+    $stmt->bindParam(':id_usuario', $usuario_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $evaluaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Error: " . $e->getMessage());
+}
+
+
+
 ?>
 
 
@@ -191,7 +228,7 @@ try {
             </a>
         </div>
 
-        <h2 class="text-center">Cursos inscritos</h2>
+        <h2 class="text-center">Cursos Inscritos</h2>
         <table class="table table-striped mb-5">
             <thead>
                 <tr>
@@ -233,7 +270,7 @@ try {
                     <th>Fecha de Creación</th>
                     <th>Fecha Límite</th>
                     <th>Nota </th>
-                    <th>Acción</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -244,12 +281,12 @@ try {
                         <td><?= htmlspecialchars($evaluacion['evaluacion_titulo']) ?></td>
                         <td><?= htmlspecialchars($evaluacion['fecha_creacion']) ?></td>
                         <td><?= htmlspecialchars($evaluacion['fecha_limite']) ?></td>
-                        <td><?= htmlspecialchars($curso['foro_titulo'] ?? 'No disponible') ?></td>
+                        <td><?= htmlspecialchars($evaluacion['nota'] ?? 'No disponible') ?></td>
                         <td>
                             <button type="button" class="btn btn-primary btn-sm btn-detalles" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                                 data-titulo="<?= htmlspecialchars($evaluacion['evaluacion_titulo']) ?>"
                                 data-descripcion="<?= htmlspecialchars($evaluacion['evaluacion_descripcion']) ?>"
-                                data-fecha-creacion="<?= htmlspecialchars($evaluacion['fecha_creacion']) ?>"
+                                data-fecha-creacion="<?= htmlspecialchars($evaluacion['fecha_realizacion'] ?? 'No has rendido esta evaluación.') ?>"
                                 data-fecha-limite="<?= htmlspecialchars($evaluacion['fecha_limite']) ?>">
                                 Ver Detalles
                             </button>
@@ -276,7 +313,7 @@ try {
                     <div class="modal-body">
                         <h2 id="modal-titulo"></h2>
                         <p><strong></strong> <span id="modal-descripcion"></span></p>
-                        <p><strong>Retroalimentación (cambiar)</strong> <span id="modal-fecha-creacion"></span></p>
+                        <p><strong>Fecha de Realización:</strong> <span id="modal-fecha-creacion"></span></p>
                     </div>
                     <div class="modal-footer">
                         <a href="" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</a>

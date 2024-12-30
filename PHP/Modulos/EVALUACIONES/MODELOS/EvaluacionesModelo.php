@@ -66,5 +66,84 @@ class EvaluacionesModelo {
         $query = $this->db->prepare("DELETE FROM evaluaciones WHERE id_evaluacion = ?");
         return $query->execute([$id_evaluacion]);
     }
-}
+
+    // Método para obtener las preguntas asociadas a una evaluación
+    public function obtenerPreguntas($id_evaluacion) {
+        $query = "SELECT * FROM preguntas WHERE id_evaluacion = :id_evaluacion";
+        $stmt = $this->db->prepare($query); // Usar la conexión correcta
+        $stmt->bindParam(':id_evaluacion', $id_evaluacion, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Método para obtener las respuestas de una pregunta
+    public function obtenerRespuestas($id_pregunta) {
+        $sql = "SELECT * FROM respuestas WHERE id_pregunta = :id_pregunta";
+        $stmt = $this->db->prepare($sql); // Usar la conexión correcta
+        $stmt->bindParam(':id_pregunta', $id_pregunta, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Método para obtener preguntas y respuestas de una evaluación
+    public function obtenerPreguntasYRespuestas($id_evaluacion) {
+        // Obtener las preguntas
+        $preguntas = $this->obtenerPreguntas($id_evaluacion);
+        
+        $preguntas_respuestas = [];
+        foreach ($preguntas as $pregunta) {
+            // Obtener las respuestas de cada pregunta
+            $respuestas = $this->obtenerRespuestas($pregunta['id_pregunta']);
+            $preguntas_respuestas[$pregunta['id_pregunta']] = [
+                'enunciado' => $pregunta['enunciado'],
+                'respuestas' => $respuestas
+            ];
+        }
+        
+        return $preguntas_respuestas;
+    }
+
+    public function procesarEvaluacion($id_estudiante, $id_evaluacion, $respuestas) {
+        $calificacion = 1.0;
+    
+        // Obtener las preguntas y respuestas para la evaluación
+        $preguntas_respuestas = $this->obtenerPreguntasYRespuestas($id_evaluacion);
+    
+        // Calcular la calificación
+        foreach ($preguntas_respuestas as $id_pregunta => $pregunta) {
+            if (isset($respuestas['respuesta_' . $id_pregunta])) {
+                $id_respuesta_seleccionada = $respuestas['respuesta_' . $id_pregunta];
+    
+                // Verificar si la respuesta seleccionada es correcta
+                foreach ($pregunta['respuestas'] as $respuesta) {
+                    if ($respuesta['id_respuesta'] == $id_respuesta_seleccionada) {
+                        if ($respuesta['es_correcta']) {
+                            $calificacion += 1.5;  // Sumar 1.5 puntos por respuesta correcta
+                        } else {
+                            $calificacion -= 0.5;  // Restar 0.5 puntos por respuesta incorrecta (opcional)
+                        }
+                        break;
+                    }
+                }
+            } else {
+                // Si no se seleccionó ninguna respuesta para esta pregunta, puedes restar o no
+                // $calificacion -= 0.5; // Penalizar por no responder (opcional)
+            }
+        }
+    
+        // Insertar los resultados en la base de datos
+        $sql = "INSERT INTO resultados (id_estudiante, id_evaluacion, nota) 
+                VALUES (?, ?, ?)";
+    
+        $stmt = $this->db->prepare($sql);
+        // Vincular los parámetros correctamente
+        $stmt->bindValue(1, $id_estudiante, PDO::PARAM_INT);
+        $stmt->bindValue(2, $id_evaluacion, PDO::PARAM_INT);
+        $stmt->bindValue(3, $calificacion, PDO::PARAM_STR);
+    
+        return $stmt->execute();
+    }
+} 
+
+
 ?>  
