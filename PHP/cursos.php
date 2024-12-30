@@ -273,7 +273,7 @@ $usuario = isset($usuario) ? $usuario : null;
               </div>
               <div class="modal-footer">
                 <?php if (isset($_SESSION['id_usuario'])): ?>
-                  <button type="submit" class="btn btn-primary">Inscribirse</button>
+                  <a href="cursos.php" type="submit" class="btn btn-primary">Inscribirse</a>
                 <?php endif; ?>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </form>
