@@ -30,7 +30,7 @@
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                <a href="?c=comentario&a=Borrar&id=<?=$id_comentario?>"><button type="button" class="btn btn-primary">Eliminar</button></a>
+                                                <a href="?c=comentario&a=Borrar&id=<?=$id_comentario?>&id_foro=<?=$this->id_foro?>"><button type="button" class="btn btn-primary">Eliminar</button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -70,7 +70,29 @@
                                 <div class="container-fluid bg-light my-3 p-3 border col-11">
                                     <div class="d-flex justify-content-between">
                                         <h2><?=$nombres?> <?= $apellidos?></h2>
-                                        <h6><?=$fecha ?></h6>
+                                        <div class="d-flex">
+                                            <h6><?=$fecha ?></h6>
+                                            <?php if($_SESSION['tipo_usuario'] == "DOCENTE"):?>
+                                                <button type="button" class="btn-close bg-light ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $id_respuesta?>" aria-label="Close"></button>
+                                                <div class="modal fade" id="exampleModal<?= $id_respuesta?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmar Eliminación</h1>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>¿Estás seguro de que deseas eliminar este usuario?</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                                <a href="?c=comentario&a=Borrar&id=<?=$id_respuesta?>&id_foro=<?=$this->id_foro?>"><button type="button" class="btn btn-primary">Eliminar</button></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
                                     </div>
                                     <p><?=$contenido?></p>
                                 </div>

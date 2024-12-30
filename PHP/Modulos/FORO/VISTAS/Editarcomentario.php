@@ -46,7 +46,7 @@
                     <?php foreach ($usuarios as $usuario): ?>
                         <option 
                             value="<?= htmlspecialchars($usuario->id_usuario) ?>" 
-                            <?= $usuario->id_usuario == ($comentario->getid_responde() ?? '') ? 'selected' : '' ?>>
+                            <?= $comentario->getid_responde() == ($comentario->getid_responde() ?? '') ? 'selected' : '' ?>>
                             <?= htmlspecialchars($usuario->nombres) ?> <?= htmlspecialchars($usuario->apellidos) ?>
                         </option>
                     <?php endforeach; ?>

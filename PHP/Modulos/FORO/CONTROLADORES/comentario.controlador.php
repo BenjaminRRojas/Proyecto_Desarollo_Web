@@ -72,7 +72,12 @@ class ComentarioControlador{
     }
 
     public function Borrar(){
+        $id_foro = $_GET["id_foro"];
         $this->modelo->Eliminar($_GET["id"]);
-        header("location:?c=comentario&a=Tabla");
+        if(isset($id_foro)){
+            header("location:?c=comentario&id=$id_foro");
+        }else{
+            header("location:?c=comentario&a=Tabla");
+        }
     }
 }
