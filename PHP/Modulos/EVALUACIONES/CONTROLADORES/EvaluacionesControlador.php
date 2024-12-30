@@ -15,7 +15,7 @@ class EvaluacionesControlador{
 
     // Mostrar formulario para agregar evaluaciones
     public function formularioAgregar() {
-        include '../VISTAS/formulario-evaluaciones.php';
+        include 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\formulario-evaluaciones.php';
     }
 
     // Agregar una nueva evaluación
