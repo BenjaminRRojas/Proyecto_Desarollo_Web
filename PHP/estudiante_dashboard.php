@@ -10,43 +10,68 @@ if (!isset($_SESSION['nombres']) || $_SESSION['tipo_usuario'] != 'ESTUDIANTE') {
 
 $usuario_id = $_SESSION['id_usuario']; 
 
-// Conectar a la base de datos y obtener los cursos del estudiante
-/*try {
+//Conecta a la db
+try {
     $pdo = Database::getConnection();
     // Consulta para obtener los cursos inscritos
-    $stmt = $pdo->prepare("SELECT c.id_curso, c.titulo, c.duracion, c.categoria, c.descripcion, e.promedio
-                           FROM cursos c
-                           INNER JOIN evaluaciones e ON c.id_curso = e.id_curso
-                           WHERE e.id_usuario = :id_usuario");
-    $stmt->bindParam(':id_usuario', $usuario_id);
+    $stmt = $pdo->prepare("
+        SELECT 
+            c.id_curso,
+            c.titulo AS curso_titulo,
+            c.categoria,
+            c.duracion,
+            c.descripcion,
+            f.titulo AS foro_titulo,
+            AVG(r.nota) AS promedio,
+            GROUP_CONCAT(DISTINCT ev.titulo SEPARATOR ', ') AS evaluaciones
+            FROM 
+            cursos c
+            JOIN 
+            curso_estudiante ce ON c.id_curso = ce.id_curso
+            LEFT JOIN 
+            foro f ON c.id_curso = f.id_curso
+            LEFT JOIN 
+            evaluaciones ev ON c.id_curso = ev.id_curso
+            LEFT JOIN 
+            resultados r ON r.id_evaluacion = ev.id_evaluacion AND r.id_estudiante = ce.id_estudiante
+            WHERE 
+            ce.id_estudiante = :id_usuario
+            GROUP BY 
+            c.id_curso
+            ORDER BY 
+            c.titulo ASC");
+    $stmt->bindParam(':id_usuario', $usuario_id, PDO::PARAM_INT);
     $stmt->execute();
     $cursos_inscritos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     die("Error: " . $e->getMessage());
-}*/
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Estudiante</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/style_form.css">
-    <link rel="stylesheet" href="../CSS/style-index.css">
+    <link rel="stylesheet" href="../CSS/style-dashboard.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
+
+<video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>
+    <!-------------------------Container Principal------------------------------>
+    <div class="container-fluid">
+
+        <!------------------NAV--------------------->
+        <nav class="navbar navbar-expand-lg">
+
                 <a class="navbar-brand ms-3" href="index.php">
                     <img src="../imagenes/logo.svg" alt="logo" height="125">
                 </a>
@@ -88,7 +113,7 @@ $usuario_id = $_SESSION['id_usuario'];
                                         <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
                                             <li><a class="dropdown-item" href="Modulos/ESTUDIANTES/cursos_inscritos.php">Cursos Inscritos</a></li>
                                         <?php endif; ?>
-                                        <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> <!-- Opción para cerrar sesión -->
+                                        <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
                                     </ul>
                                 </li>
                             <?php else: // Si el usuario no está logueado ?>
@@ -113,9 +138,25 @@ $usuario_id = $_SESSION['id_usuario'];
             </div>
         </nav>
 
-    <div class="container mt-5">
-        <h1>Bienvenido al Dashboard, <?= htmlspecialchars($_SESSION['nombres']) ?>!</h1>
-        <p>A continuación, puedes ver los cursos en los que estás inscrito:</p>
+
+        <div class="container mt-5 dashboard-welcome">
+            <h1 class="dashboard-title">¡Bienvenido al Dashboard <?= htmlspecialchars($_SESSION['nombres']) ?>!</h1>
+
+        <form action="Modulos/ESTUDIANTES/RUTAS/actualizar_descripcion.php?" method="POST">
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Inserta una pequeña descripción personal</label>
+                    <textarea class="form-control w-50" id="exampleFormControlTextarea1" rows="3" name="descripcion" ></textarea>
+                <button type="submit" class="btn btn-success">Enviar</button>
+            </div>
+        </form>
+
+        <div class="boton-crear">
+            <a href="cursos.php" class="ui-btn-link">
+                <button class="ui-btn">
+                    <span> Buscar Curso </span>
+                </button>
+            </a>
+        </div>
 
         <table class="table table-striped">
             <thead>
@@ -124,6 +165,8 @@ $usuario_id = $_SESSION['id_usuario'];
                     <th>Categoría</th>
                     <th>Duración (horas)</th>
                     <th>Promedio</th>
+                    <th>Foro Asociado</th>
+                    <th>Evaluaciones</th>
                     <th>Descripción</th>
                 </tr>
             </thead>
@@ -131,16 +174,18 @@ $usuario_id = $_SESSION['id_usuario'];
                 <?php if (count($cursos_inscritos) > 0): ?>
                     <?php foreach ($cursos_inscritos as $curso): ?>
                         <tr>
-                            <td><?= htmlspecialchars($curso['titulo']) ?></td>
+                            <td><?= htmlspecialchars($curso['curso_titulo']) ?></td>
                             <td><?= htmlspecialchars($curso['categoria']) ?></td>
                             <td><?= htmlspecialchars($curso['duracion']) ?></td>
-                            <td><?= htmlspecialchars($curso['promedio']) ?></td>
+                            <td><?= htmlspecialchars(round($curso['promedio'], 2) ?? 'N/A') ?></td>
+                            <td><?= htmlspecialchars($curso['foro_titulo'] ?? 'No disponible') ?></td>
+                            <td><?= htmlspecialchars($curso['evaluaciones'] ?? 'Ninguna') ?></td>
                             <td><?= htmlspecialchars($curso['descripcion']) ?></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="6">No tienes cursos inscritos actualmente.</td>
+                        <td colspan="7">No tienes cursos inscritos actualmente.</td>
                     </tr>
                 <?php endif; ?>
             </tbody>

@@ -33,6 +33,12 @@ class UsuariosModelo {
         return $query->execute([$nombres, $apellidos, $correo, password_hash($contrasena, PASSWORD_DEFAULT), $sexo, $tipo_usuario, $id]);
     }
 
+    // Actualizar un usuario
+    public function actualizar_descripcion($id,$descripcion) {
+        $query = $this->db->prepare("UPDATE usuarios SET descripcion = ? WHERE id_usuario = ?");
+        return $query->execute([$descripcion, $id]);
+    }
+
     // Eliminar un usuario
     public function eliminar($id) {
         $query = $this->db->prepare("DELETE FROM usuarios WHERE id_usuario = ?");
