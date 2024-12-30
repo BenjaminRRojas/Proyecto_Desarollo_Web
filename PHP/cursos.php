@@ -147,8 +147,7 @@ $usuario = isset($usuario) ? $usuario : null;
       </div>
     </div>
     <!------------------------------MODAL-------------------------------------->
-        <!-- Login Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -186,11 +185,11 @@ $usuario = isset($usuario) ? $usuario : null;
 
     <!------------------------------CURSOS-------------------------------------->
     <div class="container-fluid">
-      <div id="card-cursos" class="card text-center">
-        <div class="card-header">
+      <div id="card-cursos" class="cardCursos text-center">
+        <div class="cardCursos-header">
           <ul class="nav nav-tabs card-header-tabs">
             <li class="nav-item">
-              <a class="nav-link active" href="#" data-target="todos">Todos</a>
+              <a class="nav-link active" href="#" data-target="todos">Todos los Cursos</a>
             </li>
             <?php if (isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
               <li class="nav-item1">
@@ -204,18 +203,17 @@ $usuario = isset($usuario) ? $usuario : null;
             </li>
           </ul>
         </div>
-        <div class="card-body">
-          <div class="row">
+        <div class="cardCursos-body">
+          <div class="row" id="courseCards"> <!-- Agregar ID al contenedor de todas las tarjetas -->
             <?php foreach ($cursos as $row): ?>
-              <div class="col">
-                <div class="card-info card" style="width: 18rem;">
+              <div class="col-md-3 card-container"> <!-- Agregar clase "card-container" -->
+                <div class="card" style="width: 18rem;">
                   <div class="card-body-curso">
-                    <h5 class="card-title"><?= htmlspecialchars($row['titulo']) ?></h5>
-                    <p class="card-text"><?= htmlspecialchars($row['descripcion']) ?></p>
+                    <h5 class="card-title"><?= htmlspecialchars($row['titulo']) ?></h5> <!-- Mantén la clase "card-title" -->
+                    <p class="card-text"><?= htmlspecialchars($row['categoria']) ?></p>
                   </div>
-                  <div class="card-footer-curso">
-                    <!-- Botón para abrir el modal -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#INFOModal-<?= $row['id_curso'] ?>"> 
+                  <div class="card-footer">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#INFOModal-<?= $row['id_curso'] ?>">
                       Saber más
                     </button>
                   </div>
@@ -247,8 +245,12 @@ $usuario = isset($usuario) ? $usuario : null;
                       <p id="modalCursoDescripcion"><?= htmlspecialchars($row['descripcion']) ?></p>
                     </div>
                     <div class="col-12 mb-3">
-                      <label for="modalCursoDuracion" class="form-label">Duración</label>
+                      <label for="modalCursoDuracion" class="form-label">Duración en Semenas</label>
                       <p id="modalCursoDuracion"><?= htmlspecialchars($row['duracion']) ?></p>
+                    </div>
+                    <div class="col-12 mb-3">
+                      <label for="modalCursoDuracion" class="form-label">Categoria</label>
+                      <p id="modalCursoDuracion"><?= htmlspecialchars($row['categoria']) ?></p>
                     </div>
                   </div>
                 </div>
@@ -261,9 +263,11 @@ $usuario = isset($usuario) ? $usuario : null;
                   </div>
                 <?php else: ?>
                   <!-- Formulario de Inscripción -->
-                  <form method="POST" action="inscripcion.php">
+                  <form method="POST" action="Modulos/CURSOS/RUTAS/inscripcion.php">
                     <input type="hidden" name="id_curso" value="<?= $row['id_curso'] ?>">
-                    <input type="hidden" name="id_usuario" value="<?= $_SESSION['id_usuario'] ?>"> <!-- Usar id_usuario en lugar de id_alumno -->
+                    <input type="hidden" name="id_usuario" value="<?= $_SESSION['id_usuario'] ?>"> 
+                    <input type="hidden" name="fecha_inscripcion" value="<?= date('Y-m-d H:i:s') ?>"> 
+                  
                     <div class="form-group">
                       <label for="confirmarInscripcion" class="form-label">¿Deseas inscribirte en este curso?</label>
                     </div>
@@ -271,7 +275,7 @@ $usuario = isset($usuario) ? $usuario : null;
               </div>
               <div class="modal-footer">
                 <?php if (isset($_SESSION['id_usuario'])): ?>
-                  <button type="submit" class="btn btn-primary">Inscribirse</button>
+                  <a href="cursos.php" type="submit" class="btn btn-primary">Inscribirse</a>
                 <?php endif; ?>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 </form>
@@ -408,6 +412,17 @@ $usuario = isset($usuario) ? $usuario : null;
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script>
+    <script>
+      document.getElementById('searchInput').addEventListener('keyup', function () {
+        const filter = this.value.toLowerCase(); // Convierte el texto del buscador a minúsculas
+        const cards = document.querySelectorAll('#courseCards .card-container'); // Selecciona las tarjetas
+        cards.forEach(card => {
+          const title = card.querySelector('.card-title').textContent.toLowerCase(); // Obtiene el texto del título
+          card.style.display = title.includes(filter) ? '' : 'none'; // Muestra u oculta la tarjeta según el filtro
+        });
+      });
+    </script>
+
   
 </body>
 
