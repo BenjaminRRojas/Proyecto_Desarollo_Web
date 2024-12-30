@@ -4,21 +4,21 @@
 
                     <div class="col-md-3">
                         <h4>Educación</h4>
-                        <a href="#">Cursos</a><br>
-                        <a href="docentes.html">Docentes</a><br>
+                        <a href="../../cursos.php">Cursos</a><br>
+                        <a href="../../docentes.php">Docentes</a><br>
                         <a href="#"></a>
                     </div>
 
                     <div class="col-md-3">
                         <h4>Comunidad</h4>
-                        <a href="FAQ.php">Preguntas Frecuentes</a><br>
-                        <a href="#">Foro</a><br>
+                        <a href="../../FAQ.php">Preguntas Frecuentes</a><br>
+                        <a href="foro.php">Foro</a><br>
                         <a href="#"></a>
                     </div>
 
                     <div class="col-md-3">
                         <h4>Nosotros</h4>
-                        <a href="Nosotros.php">Quiénes somos</a><br>
+                        <a href="../../Nosotros.php">Quiénes somos</a><br>
                         <a href="#"></a><br>
                         <a href="#"></a>
                     </div>

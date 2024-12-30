@@ -75,7 +75,7 @@ session_start(); // Inicia la sesión
                             <?php if (isset($_SESSION['nombres'])): ?>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Bienvenido, <?= htmlspecialchars($_SESSION['nombres']) ?> 
+                                        <?= htmlspecialchars($_SESSION['nombres']) ?> 
                                     </a>
                                     <ul class="dropdown-menu">
                                         <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
@@ -254,15 +254,15 @@ session_start(); // Inicia la sesión
 
                 <div class="col-md-3">
                     <h4>Educación</h4>
-                    <a href="cursos.html">Cursos</a><br>
-                    <a href="docentes.html">Docentes</a><br>
+                    <a href="cursos.php">Cursos</a><br>
+                    <a href="docentes.php">Docentes</a><br>
                     <a href="#"></a>
                 </div>
 
                 <div class="col-md-3">
                     <h4>Comunidad</h4>
                     <a href="FAQ.php">Preguntas Frecuentes</a><br>
-                    <a href="foro.php">Foro</a><br>
+                    <a href="Modulos/FORO/foro.php">Foro</a><br>
                     <a href="#"></a>
                 </div>
 

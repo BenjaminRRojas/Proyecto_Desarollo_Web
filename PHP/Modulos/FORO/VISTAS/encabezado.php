@@ -45,16 +45,16 @@
                         <div class="offcanvas-body">
                             <ul class="navbar-nav justify-content-end">
                                 <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
+                                    <a class="nav-link active" aria-current="page" href="../../index.php">Inicio</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="cursos.php">Cursos</a>
+                                    <a class="nav-link active" href="../../cursos.php">Cursos</a>
                                 </li>
 
                                 <?php if (isset($_SESSION['nombres'])): ?>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Bienvenido, <?= htmlspecialchars($_SESSION['nombres']) ?> 
+                                             <?= htmlspecialchars($_SESSION['nombres']) ?> 
                                         </a>
                                         <ul class="dropdown-menu">
                                             <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>

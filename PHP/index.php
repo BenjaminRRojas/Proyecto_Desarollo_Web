@@ -297,7 +297,7 @@ $usuario = isset($usuario) ? $usuario : null;
                 <div class="col-md-3">
                     <h4>Educación</h4>
                     <a href="cursos.php">Cursos</a><br>
-                    <a href="docentes.html">Docentes</a><br>
+                    <a href="docentes.php">Docentes</a><br>
                     <a href="#"></a>
                 </div>
 
