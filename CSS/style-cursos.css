@@ -272,43 +272,56 @@ body>video {
 
 
 /*----------CURSOS------------*/
-section {
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    justify-content: space-evenly;
 
+.cardCursos-header{
+    background-color:  rgb(40, 76, 134);
+    padding-right: 20px;
+}
+.cardCursos-header .nav-link{
+    background-color: white !important;
+}
+.cardCursos-header a {
+    color: white;
+}
+.cardCursos-body{
+    background: rgb(3, 185, 165);
+    background: linear-gradient(90deg, rgba(3, 185, 165, 0.48503151260504207) 0%, rgba(10, 93, 147, 0.8883928571428571) 50%, rgba(3, 185, 165, 0.47942927170868344) 100%);
+    padding: 30px;
 }
 .nav-item1{
     margin-left: 5px;
 }
-.bloque {
-    display: none;
-    /* Por defecto, todos los bloques están ocultos */
-}
-
-.bloque.activo {
-    display: block;
-    /* Solo el bloque activo será visible */
-}
-
 .container-fluid {
     margin-top: 30px;
 }
-
-.card {
+.col-md-12{
+    margin-right: 210px;
+}
+.card{
+    background: #00000086;
+    box-shadow: 0 0 6px 0 rgba(32, 32, 36, 0.12);
+    padding: 30px;
     transition: transform 0.3s ease;
     padding: 15px;
     margin-block: 30px;
 }
-
+.card-title{
+    color: rgb(17, 221, 215);
+        text-shadow:
+            0 0 4px rgba(255, 255, 255, 0.5),
+            0 0 8px rgba(173, 216, 230, 0.4);
+    font-size: 1.5rem;
+}
+.card-text{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
+    color: #fff;
+}
+.card-footer{
+    padding-top: 20px;
+}
 .card:hover {
     transform: translateY(-10px);
-}
-
-.card-header {
-    background-color: rgb(77, 99, 160);
-    padding-right: 20px;
 }
 
 .card-header a {
@@ -323,7 +336,13 @@ section {
 .card-body-interna {
     background-color: cadetblue;
 }
-
+.alert{
+    background: rgb(11, 18, 29) ;
+    border-color: rgb(11, 18, 29);
+}
+.alert p{
+    color: white;
+}
 .card-img-top {
     height: 200px;
 }
@@ -369,12 +388,7 @@ article h2 {
 }
 
 /*--------------CORREOS------------------*/
-/* .correo {
-    border-radius: 10px;
-    background-color: beige;
-    padding: 30px;
-    margin: 30px;
-} */
+
 .dinamico {
     display: flex;
     justify-content: center;

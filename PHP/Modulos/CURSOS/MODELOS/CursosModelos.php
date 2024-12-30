@@ -38,5 +38,11 @@ class CursosModelo {
         $query = $this->db->prepare("DELETE FROM cursos WHERE id_curso = ?");
         return $query->execute([$id]);
     }
+
+    // Inscripcion alumno a curso
+    public function inscribir($id, $id_usuario, $fecha_inscripcion){	
+        $query = $this->db->prepare("INSERT INTO curso_estudiante (id_curso, id_estudiante, fecha_inscripcion) VALUES (?, ?, ?)");
+        return $query->execute([$id, $id_usuario, $fecha_inscripcion]);
+    }
 }
 ?>
