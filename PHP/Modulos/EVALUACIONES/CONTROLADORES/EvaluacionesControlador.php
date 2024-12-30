@@ -73,7 +73,5 @@ class EvaluacionesControlador{
         return $this->modelo->eliminar($id_evaluacion);
     }
 
-
-
 }
 ?>

@@ -78,8 +78,8 @@ class EvaluacionesModelo {
 
     // Método para obtener las respuestas de una pregunta
     public function obtenerRespuestas($id_pregunta) {
-        $query = "SELECT * FROM respuestas WHERE id_pregunta = :id_pregunta";
-        $stmt = $this->db->prepare($query); // Usar la conexión correcta
+        $sql = "SELECT * FROM respuestas WHERE id_pregunta = :id_pregunta";
+        $stmt = $this->db->prepare($sql); // Usar la conexión correcta
         $stmt->bindParam(':id_pregunta', $id_pregunta, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -103,7 +103,7 @@ class EvaluacionesModelo {
         return $preguntas_respuestas;
     }
 
-} 
+}
 
 
 ?>  
