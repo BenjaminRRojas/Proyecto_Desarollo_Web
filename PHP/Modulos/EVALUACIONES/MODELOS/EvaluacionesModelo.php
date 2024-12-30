@@ -119,15 +119,10 @@ class EvaluacionesModelo {
                     if ($respuesta['id_respuesta'] == $id_respuesta_seleccionada) {
                         if ($respuesta['es_correcta']) {
                             $calificacion += 1.5;  // Sumar 1.5 puntos por respuesta correcta
-                        } else {
-                            $calificacion -= 0.5;  // Restar 0.5 puntos por respuesta incorrecta (opcional)
-                        }
+                        } 
                         break;
                     }
                 }
-            } else {
-                // Si no se seleccionó ninguna respuesta para esta pregunta, puedes restar o no
-                // $calificacion -= 0.5; // Penalizar por no responder (opcional)
             }
         }
     
