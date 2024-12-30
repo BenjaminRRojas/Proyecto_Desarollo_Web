@@ -1,11 +1,22 @@
 <?php
-require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\CURSOS\CONTROLADORES\CursosControlador.php';
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\EVALUACIONES\CONTROLADORES\EvaluacionesControlador.php';
 
-$controlador = new CursosControlador();
-$cursos = $controlador->listarCursos();
+session_start();
+require_once 'Modulos/CORE/conexion.php'; 
 
-$accion = $_GET['accion'] ?? 'agregar';
-$evaluacion = isset($evaluacion) ? $evaluacion : null;
+// Verificar si el usuario está logueado
+if (!isset($_SESSION['nombres']) || $_SESSION['tipo_usuario'] != 'ESTUDIANTE') {
+    header("Location: ../formulario.php"); 
+    exit();
+}
+
+$usuario_id = $_SESSION['id_usuario']; 
+
+$id_evaluacion = $_GET['id_evaluacion'];
+$controlador = new EvaluacionesControlador();
+$evaluacion = $controlador->obtenerPorIdEvaluacion($id_evaluacion);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -112,40 +123,6 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
                 </div>
                 <button type="submit" class="btn btn-success w-100">Crear Evaluación</button>
             </form>
-        </div>
-
-        <!-- Login Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Iniciar Sesión</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class=" p-4 rounded-3 shadow">
-                            <form action="login.php" method="POST">
-                                <div class="mb-3">
-                                    <label for="EMAIL" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="EMAIL" name="EMAIL" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="CONTRASENA" class="form-label">Contraseña</label>
-                                    <input type="password" class="form-control" id="CONTRASENA" name="CONTRASENA" required>
-                                </div>
-                                <div>
-                                    <p>¿No tienes una cuenta? <a href="formulario.php">Regístrate</a></p>
-                                </div>
-                                <button type="submit" class="btn w-100">Iniciar sesión</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="cambiar_contrasena.php" class="btn btn-primary">Cambiar contraseña</a>
-                        <a href="" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</a>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-------------------------------------Pie de Pagina------------------------------------------------>
