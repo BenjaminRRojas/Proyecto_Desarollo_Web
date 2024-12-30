@@ -1,11 +1,22 @@
 <?php
-require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\CURSOS\CONTROLADORES\CursosControlador.php';
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\EVALUACIONES\CONTROLADORES\EvaluacionesControlador.php';
 
-$controlador = new CursosControlador();
-$cursos = $controlador->listarCursos();
+session_start();
+require_once 'Modulos/CORE/conexion.php'; 
 
-$accion = $_GET['accion'] ?? 'agregar';
-$evaluacion = isset($evaluacion) ? $evaluacion : null;
+// Verificar si el usuario está logueado
+if (!isset($_SESSION['nombres']) || $_SESSION['tipo_usuario'] != 'ESTUDIANTE') {
+    header("Location: ../formulario.php"); 
+    exit();
+}
+
+$usuario_id = $_SESSION['id_usuario']; 
+
+$id_evaluacion = $_GET['id_evaluacion'];
+$controlador = new EvaluacionesControlador();
+$evaluacion = $controlador->verEvaluacion($id_evaluacion);
+
+$preguntas_respuestas = $controlador->obtenerPreguntasYRespuestas($id_evaluacion);
 ?>
 
 <!DOCTYPE html>
@@ -81,98 +92,26 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
         </nav>
 
         <div class="container my-5 w-50 p-5 rounded-3 shadow-lg">
-            <h2 class="text-center fw-bold mb-4">Creación de evaluaciones</h2>
-            <form action="Modulos/EVALUACIONES/RUTAS/procesar.php" method="POST" enctype="multipart/form-data">
+            <h2 class="text-center fw-bold mb-4"><?= $evaluacion['titulo'] ?></h2>
+            <form action="Modulos/EVALUACIONES/RUTAS/procesar_nota.php?id_evaluacion=<?php echo $id_evaluacion; ?>" method="POST">
                 <input type="hidden" name="accion" value="agregar">
-
-                <!-- Campos del formulario -->
-                <div class="mb-3">
-                    <label for="titulo" class="form-label">Título de la Evaluación</label>
-                    <input type="text" class="form-control" id="titulo" name="titulo" value="<?= htmlspecialchars($evaluacion['titulo'] ?? '') ?>" required>
-                </div>
-                <div class="mb-3">
-                    <label for="descripcion" class="form-label">Descripción</label>
-                    <textarea class="form-control" id="descripcion" name="descripcion" required><?= htmlspecialchars($evaluacion['descripcion'] ?? '') ?></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="fecha_limite" class="form-label">Fecha Límite</label>
-                    <input type="datetime-local" class="form-control" id="fecha_limite" name="fecha_limite" value="<?= htmlspecialchars($evaluacion['fecha_limite'] ?? '') ?>" required>
-                </div>
                 <div class="mb-5">
-                    <label for="curso" class="form-label">Curso</label>
-                    <select class="form-select" id="curso" name="id_curso" required>
-                        <option value="" disabled selected>Selecciona un curso</option>
-                        <?php
-                        // Iterar sobre los cursos obtenidos del modelo
-                        foreach ($cursos as $curso) {
-                            $selected = (isset($evaluacion['id_curso']) && $evaluacion['id_curso'] == $curso['id_curso']) ? 'selected' : '';
-                            echo "<option value='{$curso['id_curso']}' {$selected}>{$curso['titulo']}</option>";
-                        }
-                        ?>
-                    </select>
+                    <!-- Preguntas y respuestas -->
+                    <p>Lea las siguientes preguntas y seleccione una opción.</p>
+                    <?php foreach ($preguntas_respuestas as $id_pregunta => $pregunta): ?>
+                        <fieldset>
+                            <legend><?php echo $pregunta['enunciado']; ?></legend>
+                            <?php foreach ($pregunta['respuestas'] as $respuesta): ?>
+                                <label>
+                                    <input type="radio" name="respuesta_<?php echo $id_pregunta; ?>" value="<?php echo $respuesta['id_respuesta']; ?>" required>
+                                    <?php echo $respuesta['texto_respuesta']; ?>
+                                </label><br>
+                            <?php endforeach; ?>
+                        </fieldset>
+                    <?php endforeach; ?>
                 </div>
-
-
-                <h3 class="text-center">Creación de preguntas y respuestas</h3>
-                <p>Escriba un enunciado para cada pregunta. Luego, escriba las respuestas y seleccione la opción correcta.</p>
-                <div class="mb-5">
-                    <!-- Preguntas -->
-                    <?php for ($i = 1; $i <= 4; $i++) : ?>
-                        <h4>Pregunta <?= $i ?></h4>
-                        <textarea id="pregunta<?= $i ?>" name="preguntas[<?= $i ?>][enunciado]" class="form-control mb-3" placeholder="Escriba un enunciado para la pregunta" required><?= htmlspecialchars($evaluacion['preguntas'][$i]['enunciado'] ?? '') ?></textarea>
-
-                        <div class="mb-5">
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="radio" name="preguntas[<?= $i ?>][es_correcta]" value="opcion1" required>
-                                <input type="text" name="preguntas[<?= $i ?>][opcion1]" class="form-control" placeholder="Opción 1" required>
-                            </div>
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="radio" name="preguntas[<?= $i ?>][es_correcta]" value="opcion2" required>
-                                <input type="text" name="preguntas[<?= $i ?>][opcion2]" class="form-control" placeholder="Opción 2" required>
-                            </div>
-                            <div class="form-check mb-3">
-                                <input class="form-check-input" type="radio" name="preguntas[<?= $i ?>][es_correcta]" value="opcion3" required>
-                                <input type="text" name="preguntas[<?= $i ?>][opcion3]" class="form-control" placeholder="Opción 3" required>
-                            </div>
-                        </div>
-                    <?php endfor; ?>
-                </div>
-                <button type="submit" class="btn btn-success w-100">Crear Evaluación</button>
+                <button type="submit" class="btn btn-success w-100">Enviar Evaluación</button>
             </form>
-        </div>
-
-        <!-- Login Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Iniciar Sesión</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class=" p-4 rounded-3 shadow">
-                            <form action="login.php" method="POST">
-                                <div class="mb-3">
-                                    <label for="EMAIL" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="EMAIL" name="EMAIL" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="CONTRASENA" class="form-label">Contraseña</label>
-                                    <input type="password" class="form-control" id="CONTRASENA" name="CONTRASENA" required>
-                                </div>
-                                <div>
-                                    <p>¿No tienes una cuenta? <a href="formulario.php">Regístrate</a></p>
-                                </div>
-                                <button type="submit" class="btn w-100">Iniciar sesión</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="cambiar_contrasena.php" class="btn btn-primary">Cambiar contraseña</a>
-                        <a href="" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</a>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-------------------------------------Pie de Pagina------------------------------------------------>
