@@ -29,15 +29,16 @@ class ComentarioControlador{
 
     //Método que recibe los atributos de una respuesta a un comentario y las ingresa
     public function Responder(){
+        $id_foro= $_POST['id_foro'];
         $usuario=new Comentario();
         if(isset($_POST['id_foro'])){
-            $usuario->setid_foro(intval($_POST['id_foro']));
+            $usuario->setid_foro(intval($id_foro));
             $usuario->setid_usuario($_SESSION['id_usuario']);
             $usuario->setcontenido($_POST['contenido']);
             $usuario->setid_responde($_POST['id_comentario']);
             $this->modelo->Agregar_Respuesta($usuario);
         }
-        header("Location:?c=foro");
+        header("Location:?c=comentario&id=$id_foro");
     }
 
     public function Editar(){
