@@ -31,7 +31,7 @@
                                 <td><?= $foro->descripcion ?></td>
                                 <td><?= $foro->fecha_creacion ?></td>
                                 <td>
-                                    <a href="?c=foro&a=Editar&id=<?=$foro->id_foro?>" class="btn btn-warning btn-sm">Editar</a>
+                                    <a href="?c=foro&a=Editar&id_foro=<?=$foro->id_foro?>" class="btn btn-warning btn-sm">Editar</a>
                                     <button 
                                         class="btn btn-danger btn-sm" 
                                         data-bs-toggle="modal" 
