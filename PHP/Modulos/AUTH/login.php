@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Redirige al usuario según su tipo
             if ($user['tipo_usuario'] === 'DOCENTE') {
-                header('Location: docente_dashboard.php');
+                header('Location: ../../docente_dashboard.php');
             } else if ($user['tipo_usuario'] === 'ESTUDIANTE') {
                 header('Location: ../../estudiante_dashboard.php');
             }

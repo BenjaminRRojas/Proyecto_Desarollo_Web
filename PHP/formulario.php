@@ -1,12 +1,12 @@
 <?php
 session_start(); // Inicia la sesión
-
+require_once 'Modulos/CORE/conexion.php';
 
 $accion = $_GET['accion'] ?? 'agregar';
-$usuario = isset($usuario) ? $usuario : null;
+
+$usuario = isset($usuario) ? $usuario : null; 
 
 ?>
-
 
 
 <!DOCTYPE html>

@@ -38,7 +38,21 @@ class EvaluacionesModelo {
     // Insertar una nueva evaluación
     public function insertar($titulo, $descripcion, $fecha_limite, $id_curso) {
         $query = $this->db->prepare("INSERT INTO evaluaciones (titulo, descripcion, fecha_limite, id_curso) VALUES (?, ?, ?, ?)");
-        return $query->execute([$titulo, $descripcion, $fecha_limite, $id_curso]);
+        $query->execute([$titulo, $descripcion, $fecha_limite, $id_curso]);
+        return $this->db->lastInsertId(); // Devuelve el ID de la evaluación insertada
+    }
+
+    // Insertar una pregunta
+    public function insertarPregunta($enunciado, $id_evaluacion) {
+        $query = $this->db->prepare("INSERT INTO preguntas (enunciado, id_evaluacion) VALUES (?, ?)");
+        $query->execute([$enunciado, $id_evaluacion]);
+        return $this->db->lastInsertId(); // Devuelve el ID de la pregunta insertada
+    }
+
+    // Insertar una respuesta
+    public function insertarRespuesta($texto_respuesta, $es_correcta, $id_pregunta) {
+        $query = $this->db->prepare("INSERT INTO respuestas (texto_respuesta, es_correcta, id_pregunta) VALUES (?, ?, ?)");
+        $query->execute([$texto_respuesta, $es_correcta, $id_pregunta]);
     }
 
     // Actualizar una evaluación
