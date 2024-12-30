@@ -1,0 +1,65 @@
+/* General */
+.container-fluid {
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Publicación */
+#collapseExample .card-body {
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+/* Comentarios */
+.comentario-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.comentario-container h4 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.comentario-container h6 {
+    font-size: 14px;
+    color: #888;
+}
+
+.comentario-container p {
+    margin: 10px 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Respuestas */
+.respuesta-container {
+    margin-left: 30px;
+    background-color: #f0f8ff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.respuesta-container h4 {
+    font-size: 16px;
+}

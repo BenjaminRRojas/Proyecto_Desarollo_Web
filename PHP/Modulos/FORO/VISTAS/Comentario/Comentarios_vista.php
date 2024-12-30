@@ -1,5 +1,6 @@
 <section>
     <div class="container-fluid">
+        <?php if(isset($_SESSION['tipo_usuario'])){?>
         <p class="d-inline-flex gap-1">
             <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                 + Agregar Publicación
@@ -18,7 +19,8 @@
                 </form>
             </div>
         </div>
-        <!-- Iteración de los Comentarios -->
+        <?php } ?>
+        <!--<Iteración de los Comentarios -->
          
         <?php foreach ($comentarios as $comentario):?>
             <?php if (!isset($comentario->id_comentario_responde)): ?>
@@ -37,7 +39,8 @@
                         <h4><?=$nombres?> <?= $apellidos?>: <?=$titulo?></h4>                      
                         <div class="d-flex">
                             <h6><?=$fecha?></h6>
-                            <?php if($_SESSION['tipo_usuario'] == "DOCENTE"):?>
+                            <?php if(isset($_SESSION['tipo_usuario'])){
+                             if($_SESSION['tipo_usuario'] == "DOCENTE"):?>
                                 <button type="button" class="btn-close bg-light ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $id_comentario?>" aria-label="Close"></button>
                                 <div class="modal fade" id="exampleModal<?= $id_comentario?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -56,7 +59,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            <?php endif; ?>
+                            <?php endif;}?>
                         </div>
                     </div>
                     
@@ -93,7 +96,8 @@
                                         <h4><?=$nombres?> <?= $apellidos?>:</h4>
                                         <div class="d-flex">
                                             <h6><?=$fecha ?></h6>
-                                            <?php if($_SESSION['tipo_usuario'] == "DOCENTE"):?>
+                                            <?php if(isset($_SESSION['tipo_usuario'])){
+                                            if($_SESSION['tipo_usuario'] == "DOCENTE"):?>
                                                 <button type="button" class="btn-close bg-light ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $id_respuesta?>" aria-label="Close"></button>
                                                 <div class="modal fade" id="exampleModal<?= $id_respuesta?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
@@ -112,7 +116,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            <?php endif; ?>
+                                            <?php endif;} ?>
                                         </div>
                                     </div>
                                     <p><?=$contenido?></p>
