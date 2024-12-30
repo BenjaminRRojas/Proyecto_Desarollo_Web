@@ -165,7 +165,7 @@ class Comentario{
 
     public function Insertar(Comentario $p){
         try{
-            $consulta="INSERT INTO comentario(id_foro,id_usuario,titulo,contenido,fecha_comentario) VALUES (?,?,?,?,?);";
+            $consulta="INSERT INTO comentario(id_foro,id_usuario,titulo,contenido,fecha_comentario,id_comentario_responde) VALUES (?,?,?,?,?,?);";
             $this->pdo->prepare($consulta)
                     ->execute(array(
                         $p->getid_foro(),
@@ -173,6 +173,7 @@ class Comentario{
                         $p->gettitulo(),
                         $p->getcontenido(),
                         $p->getfecha(),
+                        $p->getid_responde()
                     ));
         }catch(Exception $e){
             die($e->getMessage());

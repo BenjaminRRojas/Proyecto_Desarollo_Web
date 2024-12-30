@@ -43,11 +43,11 @@
                 <label for="usuariorespondeSeleccionado" class="form-label">Usuario a Responder</label>
                 <select class="form-select mb-3" id="usuariorespondeSeleccionado" name="id_responde" <?= $comentario->getid_responde() === 0 ? '' : 'required' ?>>
                     <option value="" disabled <?= ($comentario->getid_responde() === 0) ? 'selected' : '' ?>>Seleccionar Usuario</option>
-                    <?php foreach ($usuarios as $usuario): ?>
+                    <?php foreach ($comentarios as $comentario2): ?>
                         <option 
-                            value="<?= htmlspecialchars($usuario->id_usuario) ?>" 
-                            <?= $comentario->getid_responde() == ($comentario->getid_responde() ?? '') ? 'selected' : '' ?>>
-                            <?= htmlspecialchars($usuario->nombres) ?> <?= htmlspecialchars($usuario->apellidos) ?>
+                            value="<?= htmlspecialchars($comentario2->id_comentario) ?>" 
+                            <?= $comentario2->id_usuario == ($comentario->getid_responde() ?? '') ? 'selected' : '' ?>>
+                            <?= htmlspecialchars($comentario2->nombres) ?> <?= htmlspecialchars($comentario2->apellidos) ?>
                         </option>
                     <?php endforeach; ?>
                 </select>

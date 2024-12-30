@@ -44,6 +44,7 @@ class ComentarioControlador{
     public function Editar(){
         $titulo = "Agregar";
         $css="../../../CSS/style_form.css";
+        $comentarios=$this->modelo->Listar(NULL);
         $foros=$this->modelo->ListarForos();
         $usuarios=$this->modelo->ListarUsuarios();
         $comentario = new Comentario();
