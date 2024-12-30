@@ -568,7 +568,7 @@ footer .col-md-3>a:hover {
 .modal-content {
     background: rgba(4, 10, 21, 0.9) !important;
     border-radius: 15px;
-    color: #e0e0e0;
+    color: #e0e0e0 !important;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
     font-family: 'IBM Plex Mono', monospace;
 }
@@ -586,10 +586,15 @@ footer .col-md-3>a:hover {
     background: rgb(11, 18, 29) !important;
     border-radius: 10px;
     padding: 20px;
+    color: #e0e0e0 !important;
 }
 
 .modal-body a {
     color: #17e2f1;
+}
+
+.modal-body p {
+    color: #e0e0e0 !important;
 }
 
 .modal-body .form-label {

@@ -225,6 +225,13 @@ body>video {
     box-shadow: 0 0 12px rgba(17, 221, 215, 0.6);
 }
 
+.modal-body p {
+    color: #e0e0e0;
+}
+
+.modal-body h2 {
+    color: #e0e0e0;
+}
 
 .modal-body .btn {
     background: linear-gradient(90deg, #0acffe 0%, #0c88a1 100%);

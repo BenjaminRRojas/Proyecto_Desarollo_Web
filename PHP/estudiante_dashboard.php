@@ -47,7 +47,7 @@ try {
     die("Error: " . $e->getMessage());
 }
 
-// Conecta a la base de datos
+// Conecta a la db
 try {
     $pdo = Database::getConnection();
     // Consulta para obtener las evaluaciones asociadas a los cursos inscritos
@@ -78,7 +78,6 @@ try {
 }
 
 // Conecta a la db
-// Conecta a la base de datos
 try {
     $pdo = Database::getConnection();
     // Consulta para obtener las evaluaciones con la nota asociada
@@ -130,7 +129,6 @@ try {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
