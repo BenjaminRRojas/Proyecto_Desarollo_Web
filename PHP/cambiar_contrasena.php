@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>    
@@ -25,7 +27,7 @@
 
             <div class="mb-3">
                 <label for="EMAIL" class="form-label">Email</label>
-                <input type="email" class="form-control" name="EMAIL" id="EMAIL" placeholder="EMAIL">
+                <input type="email" class="form-control" name="EMAIL" id="EMAIL" placeholder="EMAIL" required>
             </div>
 
 

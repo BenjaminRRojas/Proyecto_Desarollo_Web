@@ -84,7 +84,7 @@ $usuario = isset($usuario) ? $usuario : null;
                             <?php if (isset($_SESSION['nombres'])): ?>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Bienvenido, <?= htmlspecialchars($_SESSION['nombres']) ?> 
+                                        <?= htmlspecialchars($_SESSION['nombres']) ?> 
                                     </a>
                                     <ul class="dropdown-menu">
                                         <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
