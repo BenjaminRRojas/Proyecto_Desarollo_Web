@@ -24,6 +24,16 @@ if ($accion == 'agregar') {
     $fecha= time();
     $fechaFormato = date("j/n/Y", $fecha);
 
+
+    // Definir la ruta donde se guardará el archivo
+    $rutaDestino = 'C:/xampp/htdocs/Proyecto_Desarollo_Web/media/' . $nameFile;
+
+    // Mover el archivo desde la carpeta temporal a la carpeta media
+    if (move_uploaded_file($tempFile, $rutaDestino)) {
+        echo "Archivo subido exitosamente.";
+    } else {
+        echo "Error al subir el archivo.";
+    }
     
     // Agregar el usuario y enviar el correo de confirmación
     if ($controlador->agregarUsuario($nombres, $apellidos, $correo, $contrasena, $sexo, $tipo_usuario)) {

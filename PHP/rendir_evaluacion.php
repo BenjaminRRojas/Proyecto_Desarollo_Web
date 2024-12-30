@@ -1,9 +1,22 @@
 <?php
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\EVALUACIONES\CONTROLADORES\EvaluacionesControlador.php';
+
 session_start();
+require_once 'Modulos/CORE/conexion.php'; 
 
-$accion = $_GET['accion'] ?? 'agregar';
-$curso = isset($curso) ? $curso : null;
+// Verificar si el usuario está logueado
+if (!isset($_SESSION['nombres']) || $_SESSION['tipo_usuario'] != 'ESTUDIANTE') {
+    header("Location: ../formulario.php"); 
+    exit();
+}
 
+$usuario_id = $_SESSION['id_usuario']; 
+
+$id_evaluacion = $_GET['id_evaluacion'];
+$controlador = new EvaluacionesControlador();
+$evaluacion = $controlador->verEvaluacion($id_evaluacion);
+
+$preguntas_respuestas = $controlador->obtenerPreguntasYRespuestas($id_evaluacion);
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +25,6 @@ $curso = isset($curso) ? $curso : null;
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/style_form.css">
-    <link rel="stylesheet" href="../CSS/style-index.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -29,9 +41,11 @@ $curso = isset($curso) ? $curso : null;
         <!------------------------------NAV-------------------------------------->
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand ms-3" href="index.php">
+
+                <a class="navbar-brand ms-3" href="index.html">
                     <img src="../imagenes/logo.svg" alt="logo" height="125">
                 </a>
+
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -41,6 +55,7 @@ $curso = isset($curso) ? $curso : null;
                 <div class="d-none d-lg-block text-center ms-5">
                     <h1 class="navbar-title">Aprende a programar desde cero hasta el infinito</h1>
                 </div>
+
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
@@ -56,76 +71,48 @@ $curso = isset($curso) ? $curso : null;
                                 <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="cursos.php">Cursos</a>
+                                <a class="nav-link active" href="cursos.html">Cursos</a>
                             </li>
-
-                            <?php if (isset($_SESSION['nombres'])): ?>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Bienvenido, <?= htmlspecialchars($_SESSION['nombres']) ?> 
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
-                                            <li><a class="dropdown-item" href="docente_dashboard.php">Gestionar Cursos</a></li>
-                                        <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
-                                            <li><a class="dropdown-item" href="estudiante_dashboard.php">Cursos Inscritos</a></li>
-                                        <?php endif; ?>
-                                        <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
-                                    </ul>
-                                </li>
-                            <?php else:?>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Perfil
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <button type="button" class="dropdown-item btn btn-primary w-100 text-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                Iniciar Sesión
-                                            </button>
-                                        </li>
-                                        <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
-                                    </ul>
-                                </li>
-                            <?php endif; ?>
-
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle active" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Perfil</a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <button type="button" class="dropdown-item btn btn-primary w-100 text-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                            Iniciar Sesión
+                                        </button>
+                                    </li>
+                                    <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </nav>
 
-        <div class="container my-5 p-5 rounded-3 shadow-lg">
-            <h2 class="text-center fw-bold mb-4">Formulario de Curso</h2>
-            <form action="Modulos/CURSOS/RUTAS/procesar.php?accion=agregar" method="POST" enctype="multipart/form-data">
-                <!-- CSRF Protection -->
-                <input type="hidden" name="csrf_token" value="<?= hash('sha256', session_id()) ?>">
-
-                <input type="hidden" name="id_profesor" value="<?= htmlspecialchars($_SESSION['id_usuario'] ?? '') ?>">
-
-                <!-- Campos del formulario -->
-                <div class="mb-3">
-                    <label for="titulo" class="form-label">Titulo</label>
-                    <input type="text" class="form-control" id="titulo" name="titulo" value="<?= htmlspecialchars($curso['titulo'] ?? '') ?>" required>
+        <div class="container my-5 w-50 p-5 rounded-3 shadow-lg">
+            <h2 class="text-center fw-bold mb-4"><?= $evaluacion['titulo'] ?></h2>
+            <form action="Modulos/EVALUACIONES/RUTAS/procesar_nota.php?id_evaluacion=<?php echo $id_evaluacion; ?>" method="POST">
+                <input type="hidden" name="accion" value="agregar">
+                <div class="mb-5">
+                    <!-- Preguntas y respuestas -->
+                    <p>Lea las siguientes preguntas y seleccione una opción.</p>
+                    <?php foreach ($preguntas_respuestas as $id_pregunta => $pregunta): ?>
+                        <fieldset>
+                            <legend><?php echo $pregunta['enunciado']; ?></legend>
+                            <?php foreach ($pregunta['respuestas'] as $respuesta): ?>
+                                <label>
+                                    <input type="radio" name="respuesta_<?php echo $id_pregunta; ?>" value="<?php echo $respuesta['id_respuesta']; ?>" required>
+                                    <?php echo $respuesta['texto_respuesta']; ?>
+                                </label><br>
+                            <?php endforeach; ?>
+                        </fieldset>
+                    <?php endforeach; ?>
                 </div>
-                <div class="mb-3">
-                    <label for="duracion" class="form-label">Duracion</label>
-                    <input type="text" class="form-control" id="duracion" name="duracion" value="<?= htmlspecialchars($curso['duracion'] ?? '') ?>" required>
-                </div>
-                <div class="mb-3">
-                    <label for="categoria" class="form-label">Categoria</label>
-                    <input type="text" class="form-control" id="categoria" name="categoria" required>
-                </div>
-                <div class="mb-3">
-                    <label for="descripcion" class="form-label">Descripción</label>
-                    <input type="text" class="form-control" id="descripcion" name="descripcion" required>
-                </div>
-
-               
-                <button type="submit" class="btn btn-success w-100">Registrar</button>
+                <button type="submit" class="btn btn-success w-100">Enviar Evaluación</button>
             </form>
-    </div>
-
+        </div>
 
         <!-------------------------------------Pie de Pagina------------------------------------------------>
         <footer class="container-fluid footer-docentes py-4">

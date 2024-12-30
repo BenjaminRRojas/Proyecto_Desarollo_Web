@@ -77,7 +77,7 @@ class Comentario{
     public function Listar($id){
         try{
             if($id > 0){
-                $consulta=$this->pdo->prepare("SELECT * from comentario WHERE id_foro=?");
+                $consulta=$this->pdo->prepare("SELECT comentario.*, usuarios.nombres, usuarios.apellidos from comentario INNER JOIN usuarios on comentario.id_usuario = usuarios.id_usuario WHERE id_foro=?");
                 $consulta->execute(array($id));
             }else{
                 $consulta=$this->pdo->prepare("SELECT comentario.*,foro.titulo_foro, usuarios.nombres, usuarios.apellidos FROM comentario INNER JOIN foro on comentario.id_foro = foro.id_foro INNER JOIN usuarios on comentario.id_usuario = usuarios.id_usuario;");

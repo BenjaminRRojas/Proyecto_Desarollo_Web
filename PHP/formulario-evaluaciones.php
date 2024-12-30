@@ -57,7 +57,7 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                                <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="cursos.html">Cursos</a>

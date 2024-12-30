@@ -46,7 +46,77 @@ try {
 } catch (PDOException $e) {
     die("Error: " . $e->getMessage());
 }
+
+// Conecta a la base de datos
+try {
+    $pdo = Database::getConnection();
+    // Consulta para obtener las evaluaciones asociadas a los cursos inscritos
+    $stmt = $pdo->prepare("
+        SELECT 
+            ev.id_evaluacion,
+            ev.titulo AS evaluacion_titulo,
+            ev.descripcion AS evaluacion_descripcion,
+            ev.fecha_creacion,
+            ev.fecha_limite,
+            c.titulo AS curso_titulo
+        FROM 
+            evaluaciones ev
+        JOIN 
+            cursos c ON ev.id_curso = c.id_curso
+        JOIN 
+            curso_estudiante ce ON c.id_curso = ce.id_curso
+        WHERE 
+            ce.id_estudiante = :id_usuario
+        ORDER BY 
+            ev.fecha_limite ASC;
+    ");
+    $stmt->bindParam(':id_usuario', $usuario_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $evaluaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Error: " . $e->getMessage());
+}
+
+// Conecta a la db
+// Conecta a la base de datos
+try {
+    $pdo = Database::getConnection();
+    // Consulta para obtener las evaluaciones con la nota asociada
+    $stmt = $pdo->prepare("
+        SELECT 
+            ev.id_evaluacion,
+            ev.titulo AS evaluacion_titulo,
+            ev.descripcion AS evaluacion_descripcion,
+            ev.fecha_creacion,
+            ev.fecha_limite,
+            c.titulo AS curso_titulo,
+            r.nota AS nota,
+            r.fecha_realizacion as fecha_realizacion
+        FROM 
+            evaluaciones ev
+        JOIN 
+            cursos c ON ev.id_curso = c.id_curso
+        JOIN 
+            curso_estudiante ce ON c.id_curso = ce.id_curso
+        LEFT JOIN 
+            resultados r ON r.id_evaluacion = ev.id_evaluacion AND r.id_estudiante = ce.id_estudiante
+        WHERE 
+            ce.id_estudiante = :id_usuario
+        ORDER BY 
+            ev.fecha_limite ASC;
+    ");
+    $stmt->bindParam(':id_usuario', $usuario_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $evaluaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Error: " . $e->getMessage());
+}
+
+
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -109,9 +179,9 @@ try {
                                     </a>
                                     <ul class="dropdown-menu">
                                         <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
-                                            <li><a class="dropdown-item" href="Modulos/DOCENTES/gestionar_curso.php">Gestionar Cursos</a></li>
+                                            <li><a class="dropdown-item" href="gestionar_curso.php">Gestionar Cursos</a></li>
                                         <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
-                                            <li><a class="dropdown-item" href="Modulos/ESTUDIANTES/cursos_inscritos.php">Cursos Inscritos</a></li>
+                                            <li><a class="dropdown-item" href="estudiante_dashboard.php">Cursos Inscritos</a></li>
                                         <?php endif; ?>
                                         <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
                                     </ul>
@@ -158,7 +228,8 @@ try {
             </a>
         </div>
 
-        <table class="table table-striped">
+        <h2 class="text-center">Cursos Inscritos</h2>
+        <table class="table table-striped mb-5">
             <thead>
                 <tr>
                     <th>Título del Curso</th>
@@ -190,7 +261,86 @@ try {
                 <?php endif; ?>
             </tbody>
         </table>
-    </div>
+        <h2 class="text-center">Evaluaciones Disponibles</h2>
+        <table class="table table-striped mb-5">
+            <thead>
+                <tr>
+                    <th>Curso</th>
+                    <th>Título de la Evaluación</th>
+                    <th>Fecha de Creación</th>
+                    <th>Fecha Límite</th>
+                    <th>Nota </th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (count($evaluaciones) > 0): ?>
+                    <?php foreach ($evaluaciones as $evaluacion): ?>
+                        <tr>
+                        <td><?= htmlspecialchars($evaluacion['curso_titulo']) ?></td>
+                        <td><?= htmlspecialchars($evaluacion['evaluacion_titulo']) ?></td>
+                        <td><?= htmlspecialchars($evaluacion['fecha_creacion']) ?></td>
+                        <td><?= htmlspecialchars($evaluacion['fecha_limite']) ?></td>
+                        <td><?= htmlspecialchars($evaluacion['nota'] ?? 'No disponible') ?></td>
+                        <td>
+                            <button type="button" class="btn btn-primary btn-sm btn-detalles" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                                data-titulo="<?= htmlspecialchars($evaluacion['evaluacion_titulo']) ?>"
+                                data-descripcion="<?= htmlspecialchars($evaluacion['evaluacion_descripcion']) ?>"
+                                data-fecha-creacion="<?= htmlspecialchars($evaluacion['fecha_realizacion'] ?? 'No has rendido esta evaluación.') ?>"
+                                data-fecha-limite="<?= htmlspecialchars($evaluacion['fecha_limite']) ?>">
+                                Ver Detalles
+                            </button>
+                            <a href="rendir_evaluacion.php?id_evaluacion=<?= $evaluacion['id_evaluacion'] ?>" class="btn btn-warning btn-sm">Rendir Evaluación</a>
+                        </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="7">No tienes cursos inscritos actualmente.</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+
+        <!-- MODAL DETALLES DE LA EVALUACIÓN -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Detalles de la Evaluación</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h2 id="modal-titulo"></h2>
+                        <p><strong></strong> <span id="modal-descripcion"></span></p>
+                        <p><strong>Fecha de Realización:</strong> <span id="modal-fecha-creacion"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const modalTitulo = document.getElementById('modal-titulo');
+        const modalDescripcion = document.getElementById('modal-descripcion');
+        const modalFechaCreacion = document.getElementById('modal-fecha-creacion');
+        const modalFechaLimite = document.getElementById('modal-fecha-limite');
+
+        // Detectar clic en cualquier botón "Ver Detalles"
+        document.querySelectorAll('.btn-detalles').forEach(button => {
+            button.addEventListener('click', function () {
+                modalTitulo.textContent = this.getAttribute('data-titulo');
+                modalDescripcion.textContent = this.getAttribute('data-descripcion');
+                modalFechaCreacion.textContent = this.getAttribute('data-fecha-creacion');
+                modalFechaLimite.textContent = this.getAttribute('data-fecha-limite');
+            });
+        });
+    });
+
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

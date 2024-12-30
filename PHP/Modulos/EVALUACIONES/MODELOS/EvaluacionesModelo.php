@@ -66,5 +66,46 @@ class EvaluacionesModelo {
         $query = $this->db->prepare("DELETE FROM evaluaciones WHERE id_evaluacion = ?");
         return $query->execute([$id_evaluacion]);
     }
-}
+
+    // Método para obtener las preguntas asociadas a una evaluación
+    public function obtenerPreguntas($id_evaluacion) {
+        $query = "SELECT * FROM preguntas WHERE id_evaluacion = :id_evaluacion";
+        $stmt = $this->db->prepare($query); // Usar la conexión correcta
+        $stmt->bindParam(':id_evaluacion', $id_evaluacion, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Método para obtener las respuestas de una pregunta
+    public function obtenerRespuestas($id_pregunta) {
+
+        $query = "SELECT * FROM respuestas WHERE id_pregunta = :id_pregunta";
+        $stmt = $this->db->prepare($query); // Usar la conexión correcta
+
+        $stmt->bindParam(':id_pregunta', $id_pregunta, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Método para obtener preguntas y respuestas de una evaluación
+    public function obtenerPreguntasYRespuestas($id_evaluacion) {
+        // Obtener las preguntas
+        $preguntas = $this->obtenerPreguntas($id_evaluacion);
+        
+        $preguntas_respuestas = [];
+        foreach ($preguntas as $pregunta) {
+            // Obtener las respuestas de cada pregunta
+            $respuestas = $this->obtenerRespuestas($pregunta['id_pregunta']);
+            $preguntas_respuestas[$pregunta['id_pregunta']] = [
+                'enunciado' => $pregunta['enunciado'],
+                'respuestas' => $respuestas
+            ];
+        }
+        
+        return $preguntas_respuestas;
+    }
+
+} 
+
+
 ?>  
