@@ -13,7 +13,6 @@
             echo '<link rel="stylesheet" href="' . htmlspecialchars($css) . '">';
         }else{
             echo '<link rel="stylesheet" href="../../../CSS/style_form.css">';
-            echo '<link rel="stylesheet" href="../../../CSS/style-index.css">';
         }
     ?>
 </head>
