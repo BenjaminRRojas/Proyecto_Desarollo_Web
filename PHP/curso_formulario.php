@@ -1,6 +1,9 @@
 <?php
+session_start();
+
 $accion = $_GET['accion'] ?? 'agregar';
 $curso = isset($curso) ? $curso : null;
+
 ?>
 
 <!DOCTYPE html>
@@ -94,14 +97,11 @@ $curso = isset($curso) ? $curso : null;
 
         <div class="container my-5 p-5 rounded-3 shadow-lg">
             <h2 class="text-center fw-bold mb-4">Formulario de Curso</h2>
-            <form action="Modulos/CURSOS/RUTAS/procesar.php" method="POST" enctype="multipart/form-data">
+            <form action="Modulos/CURSOS/RUTAS/procesar.php?accion=agregar" method="POST" enctype="multipart/form-data">
                 <!-- CSRF Protection -->
                 <input type="hidden" name="csrf_token" value="<?= hash('sha256', session_id()) ?>">
 
-                <input type="hidden" name="accion" value="<?= htmlspecialchars($accion) ?>">
-                <?php if ($accion === 'agregar'): ?>
-                    <input type="hidden" name="id" value="<?= htmlspecialchars($curso['id_usuario'] ?? '') ?>">
-                <?php endif; ?>
+                <input type="hidden" name="id_profesor" value="<?= htmlspecialchars($_SESSION['id_usuario'] ?? '') ?>">
 
                 <!-- Campos del formulario -->
                 <div class="mb-3">
