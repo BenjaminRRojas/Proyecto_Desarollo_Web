@@ -26,6 +26,8 @@ $usuario = isset($usuario) ? $usuario : null;
 </head>
 
 <body>
+    
+
 
     <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>
 
@@ -361,6 +363,7 @@ $usuario = isset($usuario) ? $usuario : null;
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="../JS/docentes.js"></script>
 
+    
 </body>
 
 </html>
