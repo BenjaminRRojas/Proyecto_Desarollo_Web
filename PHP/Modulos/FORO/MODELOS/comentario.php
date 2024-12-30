@@ -163,9 +163,24 @@ class Comentario{
         }
     }
 
+    public function Publicar(Comentario $p){
+        try{
+            $consulta="INSERT INTO comentario(id_foro,id_usuario,titulo,contenido) VALUES (?,?,?,?);";
+            $this->pdo->prepare($consulta)
+                    ->execute(array(
+                        $p->getid_foro(),
+                        $p->getid_usuario(),
+                        $p->gettitulo(),
+                        $p->getcontenido()
+                    ));
+        }catch(Exception $e){
+            die($e->getMessage());
+        }
+    }
+
     public function Insertar(Comentario $p){
         try{
-            $consulta="INSERT INTO comentario(id_foro,id_usuario,titulo,contenido,fecha_comentario) VALUES (?,?,?,?,?);";
+            $consulta="INSERT INTO comentario(id_foro,id_usuario,titulo,contenido,fecha_comentario,id_comentario_responde) VALUES (?,?,?,?,?,?);";
             $this->pdo->prepare($consulta)
                     ->execute(array(
                         $p->getid_foro(),
@@ -173,6 +188,7 @@ class Comentario{
                         $p->gettitulo(),
                         $p->getcontenido(),
                         $p->getfecha(),
+                        $p->getid_responde()
                     ));
         }catch(Exception $e){
             die($e->getMessage());

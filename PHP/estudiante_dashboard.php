@@ -122,7 +122,6 @@ try {
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Estudiante</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/style-dashboard.css">
@@ -132,6 +131,9 @@ try {
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -169,7 +171,7 @@ try {
                                 <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="cursos.html">Cursos</a>
+                                <a class="nav-link active" href="cursos.php">Cursos</a>
                             </li>
 
                             <?php if (isset($_SESSION['nombres'])): // Si el usuario está logueado ?>
@@ -179,9 +181,9 @@ try {
                                     </a>
                                     <ul class="dropdown-menu">
                                         <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
-                                            <li><a class="dropdown-item" href="Modulos/DOCENTES/gestionar_curso.php">Gestionar Cursos</a></li>
+                                            <li><a class="dropdown-item" href="gestionar_curso.php">Gestionar Cursos</a></li>
                                         <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
-                                            <li><a class="dropdown-item" href="Modulos/ESTUDIANTES/cursos_inscritos.php">Cursos Inscritos</a></li>
+                                            <li><a class="dropdown-item" href="estudiante_dashboard.php">Cursos Inscritos</a></li>
                                         <?php endif; ?>
                                         <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
                                     </ul>
@@ -208,25 +210,27 @@ try {
             </div>
         </nav>
 
-
         <div class="container mt-5 dashboard-welcome">
             <h1 class="dashboard-title">¡Bienvenido al Dashboard <?= htmlspecialchars($_SESSION['nombres']) ?>!</h1>
 
-        <form action="Modulos/ESTUDIANTES/RUTAS/actualizar_descripcion.php?" method="POST">
-            <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Inserta una pequeña descripción personal</label>
-                    <textarea class="form-control w-50" id="exampleFormControlTextarea1" rows="3" name="descripcion" ></textarea>
-                <button type="submit" class="btn btn-success">Enviar</button>
-            </div>
-        </form>
+            <form action="Modulos/ESTUDIANTES/RUTAS/actualizar_descripcion.php??" method="POST">
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Inserta una pequeña descripción personal</label>
+                    <textarea class="form-control w-50" id="exampleFormControlTextarea1" rows="3" name="descripcion" required></textarea>
+                    <!-- <button type="submit" class="btn btn-success">Enviar</button> -->
+                    <button type="submit" class="buttonpro">
+                        <span> Confirmar </span>
+                    </button>
+                </div>
+            </form>
 
-        <div class="boton-crear">
-            <a href="cursos.php" class="ui-btn-link">
-                <button class="ui-btn">
-                    <span> Buscar Curso </span>
-                </button>
-            </a>
-        </div>
+            <div class="boton-crear">
+                <a href="cursos.php" class="ui-btn-link">
+                    <button class="ui-btn">
+                        <span> Buscar Curso </span>
+                    </button>
+                </a>
+            </div>
 
         <h2 class="text-center">Cursos Inscritos</h2>
         <table class="table table-striped mb-5">
