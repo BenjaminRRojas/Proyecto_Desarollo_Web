@@ -3,7 +3,6 @@
         <form action="?c=foro&a=Guardar" method="POST" enctype="multipart/form-data">
             
             <input type="hidden" name="id_foro" value="<?= htmlspecialchars($usuario->getid_foro() ?? '') ?>">
-            <input type="hidden" id="id_curso" name="id_curso">
 
             <!-- Campos del formulario -->
             <div class="mb-3">
@@ -18,19 +17,18 @@
                     <label for="fecha_creacion" class="form-label">Fecha de Creación</label>
                     <input type="datetime-local" class="form-control" id="fecha_creacion" name="fecha_creacion" value="<?= htmlspecialchars($usuario->getfecha() ?? '') ?>" required>
             </div>
-            <div class="dropdown mb-3">
+            
             <label for="cursoSeleccionado" class="form-label">Curso</label>
-                <select class="form-select" id="cursoSeleccionado" name="id_curso" required>
-                    <option value="" disabled <?= empty($usuario->getid_curso()) ? 'selected' : '' ?>>Seleccionar curso</option>
-                    <?php foreach ($cursos as $curso): ?>
-                        <option 
-                            value="<?= htmlspecialchars($curso->id_curso) ?>" 
-                            <?= $curso->id_curso == ($usuario->getid_curso() ?? '') ? 'selected' : '' ?>>
-                            <?= htmlspecialchars($curso->titulo) ?>
-                        </option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
+            <select class="form-select mb-3" id="cursoSeleccionado" name="id_curso" required>
+                <option value="" disabled <?= empty($usuario->getid_curso()) ? 'selected' : '' ?>>Seleccionar curso</option>
+                <?php foreach ($cursos as $curso): ?>
+                    <option 
+                        value="<?= htmlspecialchars($curso->id_curso) ?>" 
+                        <?= $curso->id_curso == ($usuario->getid_curso() ?? '') ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($curso->titulo) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
             <button type="submit" class="btn btn-success w-100">Enviar</button>
         </form>
     </div>

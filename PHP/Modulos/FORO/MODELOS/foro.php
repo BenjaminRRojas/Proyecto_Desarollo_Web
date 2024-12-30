@@ -55,7 +55,7 @@ class Foro{
         $this->fecha_creacion=$fec;
     }
 
-    //Método para el Inicio
+    //Método para obtener los foros y derivados
     public function Listar(){
         try{
             $consulta=$this->pdo->prepare("SELECT foro.*, cursos.titulo FROM foro INNER JOIN cursos on foro.id_curso =cursos.id_curso;");
@@ -66,7 +66,7 @@ class Foro{
         }
     }
 
-    //Método para los Cursos
+    //Método para obtener los Cursos
     public function ListarCursos(){
         try{
             $consulta=$this->pdo->prepare("SELECT id_curso, titulo from cursos");

@@ -2,21 +2,54 @@
         <h2 class="text-center fw-bold mb-4"><?=$titulo?> Comentario</h2>
         <form action="?c=comentario&a=Guardar" method="POST" enctype="multipart/form-data">
             
-            <input type="hidden" name="id_comentario" value="<?= htmlspecialchars($usuario->getid_comentario() ?? '') ?>">
+            <input type="hidden" name="id_comentario" value="<?= htmlspecialchars($comentario->getid_comentario() ?? '') ?>">
 
             <!-- Campos del formulario -->
             <div class="mb-3">
                 <label for="titulo" class="form-label">Título</label>
-                <input type="text" class="form-control" id="titulo" name="titulo" value="<?= htmlspecialchars($usuario->gettitulo()) ?>" required>
+                <input type="text" class="form-control" id="titulo" name="titulo" value="<?= htmlspecialchars($comentario->gettitulo()) ?>" required>
             </div>
             <div class="mb-3">
                 <label for="contenido" class="form-label">Contenido</label>
-                <input type="text" class="form-control" id="contenido" name="contenido" value="<?= htmlspecialchars($usuario->getcontenido()) ?>" required>
+                <input type="text" class="form-control" id="contenido" name="contenido" value="<?= htmlspecialchars($comentario->getcontenido()) ?>" required>
             </div>
             <div class="mb-3">
                     <label for="fecha_creacion" class="form-label">Fecha de creacion</label>
-                    <input type="datetime-local" class="form-control" id="fecha_creacion" name="fecha_creacion" value="<?= htmlspecialchars($usuario->getfecha() ?? '') ?>" required>
+                    <input type="datetime-local" class="form-control" id="fecha_creacion" name="fecha_creacion" value="<?= htmlspecialchars($comentario->getfecha() ?? '') ?>" required>
             </div>
+            <label for="foroSeleccionado" class="form-label">Foro</label>
+            <select class="form-select mb-3" id="foroSeleccionado" name="id_foro" required>
+                <option value="" disabled <?= empty($comentario->getid_foro()) ? 'selected' : '' ?>>Seleccionar foro</option>
+                <?php foreach ($foros as $foro): ?>
+                    <option 
+                        value="<?= htmlspecialchars($foro->id_foro) ?>" 
+                        <?= $foro->id_foro == ($comentario->getid_foro() ?? '') ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($foro->titulo_foro) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <label for="usuarioSeleccionado" class="form-label">Usuario</label>
+            <select class="form-select mb-3" id="usuarioSeleccionado" name="id_usuario" required>
+                <option value="" disabled <?= empty($comentario->getid_usuario()) ? 'selected' : '' ?>>Seleccionar usuario</option>
+                <?php foreach ($usuarios as $usuario): ?>
+                    <option 
+                        value="<?= htmlspecialchars($usuario->id_usuario) ?>" 
+                        <?= $usuario->id_usuario == ($comentario->getid_usuario() ?? '') ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($usuario->nombres) ?> <?= htmlspecialchars($usuario->apellidos) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <label for="usuariorespondeSeleccionado" class="form-label">Usuario a Responder</label>
+            <select class="form-select mb-3" id="usuariorespondeSeleccionado" name="id_responde" required>
+                <option value="" disabled <?= is_null($comentario->getid_responde()) ? 'selected' : '' ?>>Seleccionar usuario</option>
+                <?php foreach ($usuarios as $usuario): ?>
+                    <option 
+                        value="<?= htmlspecialchars($usuario->id_usuario) ?>" 
+                        <?= $usuario->id_usuario == ($comentario->getid_responde() ?? '') ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($usuario->nombres) ?> <?= htmlspecialchars($usuario->apellidos) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
             <button type="submit" class="btn btn-success w-100">Enviar</button>
         </form>
     </div>

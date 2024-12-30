@@ -14,7 +14,7 @@ class ComentarioControlador{
 
     //Método donde se muestran los comentarios a partir de la Id Foro
     public function Inicio(){
-        $this->id_foro = isset($_GET['id']);
+        $this->id_foro = $_GET['id'];
         $comentarios=$this->modelo->Listar($this->id_foro);  
         require_once "VISTAS/encabezado.php";
         require_once "VISTAS/Comentario/Comentarios_vista.php";
@@ -43,9 +43,11 @@ class ComentarioControlador{
     public function Editar(){
         $titulo = "Agregar";
         $css="../../../CSS/style_form.css";
-        $usuario = new Comentario();
+        $foros=$this->modelo->ListarForos();
+        $usuarios=$this->modelo->ListarUsuarios();
+        $comentario = new Comentario();
         if(isset($_GET['id'])){
-            $usuario = $this->modelo->Obtener($_GET['id']);
+            $comentario = $this->modelo->Obtener($_GET['id']);
             $titulo = "Modificar";
         }
 
@@ -57,9 +59,12 @@ class ComentarioControlador{
     public function Guardar(){
         $comentario=new Comentario();
         $comentario->setid_comentario(intval($_POST['id_comentario']));
+        $comentario->setid_foro($_POST['id_foro']);
+        $comentario->setid_usuario($_POST['id_usuario']);
         $comentario->settitulo($_POST['titulo']);
         $comentario->setcontenido($_POST['contenido']);
         $comentario->setfecha($_POST['fecha_creacion']);
+        $comentario->setid_respomde($_POST['id_responde']);
         $comentario->getid_comentario() > 0 ? $this->modelo->Actualizar($comentario) : $this->modelo->Insertar($comentario);
 
         header("location:?c=comentario&a=Tabla");
