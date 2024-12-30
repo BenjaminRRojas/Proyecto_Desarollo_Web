@@ -114,93 +114,29 @@ $evaluacion = isset($evaluacion) ? $evaluacion : null;
 
 
                 <h3 class="text-center">Creación de preguntas y respuestas</h3>
-                <p>Formule un enunciado para cada pregunta. Luego, escriba las opciones y seleccione la opción correcta.</p>
-                <div class="mb-3">
-                    <h4>Pregunta 1</h4>
-                    <label for="pregunta1" class="form-label">Enunciado de la Pregunta</label>
-                    <textarea id="pregunta1" name="pregunta1" class="form-control" required></textarea>
-
-                    <div class="mb-3">
-                        <label class="form-label">Opciones</label>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="pregunta1">
-                            <input type="text" name="opcion1" class="form-control" placeholder="Opción 1" required>
-                        </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="pregunta1">
-                            <input type="text" name="opcion2" class="form-control" placeholder="Opción 2" required>
-                        </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="pregunta1">
-                            <input type="text" name="opcion3" class="form-control" placeholder="Opción 3" required>
-                        </div>
-                    </div>
-                </div>
-                <!--
-                <div class="mb-3">
-                    <h4>Pregunta 2</h4>
-                    <label for="pregunta1" class="form-label">Enunciado de la Pregunta</label>
-                    <textarea id="pregunta1" name="pregunta1" class="form-control" required></textarea>
-
-                    <div class="mb-3">
-                        <label class="form-label">Opciones</label>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="pregunta2">
-                            <input type="text" name="opcion1" class="form-control" placeholder="Opción 1" required>
-                        </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="pregunta2">
-                            <input type="text" name="opcion2" class="form-control" placeholder="Opción 2" required>
-                        </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="pregunta2">
-                            <input type="text" name="opcion3" class="form-control" placeholder="Opción 3" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <h4>Pregunta 3</h4>
-                    <label for="pregunta1" class="form-label">Enunciado de la Pregunta</label>
-                    <textarea id="pregunta1" name="pregunta1" class="form-control" required></textarea>
-
-                    <div class="mb-3">
-                        <label class="form-label">Opciones</label>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="pregunta3">
-                            <input type="text" name="opcion1" class="form-control" placeholder="Opción 1" required>
-                        </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="pregunta3">
-                            <input type="text" name="opcion2" class="form-control" placeholder="Opción 2" required>
-                        </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="pregunta3">
-                            <input type="text" name="opcion3" class="form-control" placeholder="Opción 3" required>
-                        </div>
-                    </div>
-                </div>
+                <p>Escriba un enunciado para cada pregunta. Luego, escriba las respuestas y seleccione la opción correcta.</p>
                 <div class="mb-5">
-                    <h4>Pregunta 4</h4>
-                    <label for="pregunta1" class="form-label">Enunciado de la Pregunta</label>
-                    <textarea id="pregunta1" name="pregunta1" class="form-control" required></textarea>
+                    <!-- Preguntas -->
+                    <?php for ($i = 1; $i <= 4; $i++) : ?>
+                        <h4>Pregunta <?= $i ?></h4>
+                        <textarea id="pregunta<?= $i ?>" name="preguntas[<?= $i ?>][enunciado]" class="form-control mb-3" placeholder="Escriba un enunciado para la pregunta" required><?= htmlspecialchars($evaluacion['preguntas'][$i]['enunciado'] ?? '') ?></textarea>
 
-                    <div class="mb-3">
-                        <label class="form-label">Opciones</label>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="pregunta4">
-                            <input type="text" name="opcion1" class="form-control" placeholder="Opción 1" required>
+                        <div class="mb-5">
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="radio" name="preguntas[<?= $i ?>][es_correcta]" value="opcion1" required>
+                                <input type="text" name="preguntas[<?= $i ?>][opcion1]" class="form-control" placeholder="Opción 1" required>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="radio" name="preguntas[<?= $i ?>][es_correcta]" value="opcion2" required>
+                                <input type="text" name="preguntas[<?= $i ?>][opcion2]" class="form-control" placeholder="Opción 2" required>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="radio" name="preguntas[<?= $i ?>][es_correcta]" value="opcion3" required>
+                                <input type="text" name="preguntas[<?= $i ?>][opcion3]" class="form-control" placeholder="Opción 3" required>
+                            </div>
                         </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="pregunta4">
-                            <input type="text" name="opcion2" class="form-control" placeholder="Opción 2" required>
-                        </div>
-                        <div class="form-check mb-3">
-                            <input class="form-check-input" type="radio" name="pregunta4">
-                            <input type="text" name="opcion3" class="form-control" placeholder="Opción 3" required>
-                        </div>
-                    </div>
+                    <?php endfor; ?>
                 </div>
--->
                 <button type="submit" class="btn btn-success w-100">Crear Evaluación</button>
             </form>
         </div>
