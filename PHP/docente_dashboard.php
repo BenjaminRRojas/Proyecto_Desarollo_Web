@@ -10,7 +10,6 @@ if (!isset($_SESSION['nombres']) || $_SESSION['tipo_usuario'] != 'DOCENTE') {
 
 $usuario_id = $_SESSION['id_usuario']; 
 
-
 // Conectar a la base de datos y obtener los cursos del estudiante
 // try {
 //     $pdo = Database::getConnection();
@@ -41,9 +40,22 @@ $usuario_id = $_SESSION['id_usuario'];
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
 </head>
 <body>
+    <?php if (isset($_SESSION['login_success'])): ?> 
+        <script> 
+            Swal.fire({ 
+                title: '¡Bienvenido <?= htmlspecialchars($_SESSION['nombres']) ?>!', 
+                text: '<?php echo $_SESSION['login_success']; ?>', 
+                icon: 'success', 
+                confirmButtonText: 'Aceptar' 
+            }); 
+            <?php unset($_SESSION['login_success']); // Eliminar el mensaje de la sesión ?> 
+        </script> 
+    <?php endif; ?>
     <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>
 
     <!-------------------------Container Principal------------------------------>
@@ -182,7 +194,7 @@ $usuario_id = $_SESSION['id_usuario'];
 
     </div>      
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
 </body>
 </html>
