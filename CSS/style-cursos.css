@@ -275,7 +275,9 @@ section {
     justify-content: space-evenly;
 
 }
-
+.nav-item1{
+    margin-left: 5px;
+}
 .bloque {
     display: none;
     /* Por defecto, todos los bloques están ocultos */
