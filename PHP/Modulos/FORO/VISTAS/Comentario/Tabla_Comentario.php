@@ -27,8 +27,9 @@
                 <tbody id="userTable">
                     <?php foreach ($comentarios as $comentario): ?>
                             <tr>
+                                <?php $responde=empty($comentario->id_comentario_responde) ? "NULL": $comentario->id_comentario_responde ?>
                                 <td><?= $comentario->id_comentario ?></td>
-                                <td><?= $comentario->id_comentario_responde ?></td>
+                                <td><?= $responde?></td>
                                 <td><?= $comentario->titulo_foro ?></td>
                                 <td><?= $comentario->nombres ?> <?= $comentario->apellidos ?></td>
                                 <td><?= $comentario->titulo ?></td>

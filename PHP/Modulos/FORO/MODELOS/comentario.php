@@ -65,25 +65,58 @@ class Comentario{
         $this->fecha_comentario=$fec;
     }
 
-    public function getid_responde() : ?string{
+    public function getid_responde(){
         return $this->id_comentario_responde;
     }
 
-    public function setid_responde(string $res){
+    public function setid_responde($res){
         $this->id_comentario_responde=$res;
     }
 
     //Método para el Inicio según un foro.
     public function Listar($id){
         try{
-            if ($id > 0){
-                $consulta=$this->pdo->prepare("SELECT comentario.*,foro.titulo_foro, usuarios.nombres, usuarios.apellidos FROM comentario INNER JOIN foro on comentario.id_foro = foro.id_foro INNER JOIN usuarios on comentario.id_usuario = usuarios.id_usuario WHERE id_foro=?;");
-                $consulta->execute($id);
+            if($id > 0){
+                $consulta=$this->pdo->prepare("SELECT * from comentario WHERE id_foro=?");
+                $consulta->execute(array($id));
             }else{
                 $consulta=$this->pdo->prepare("SELECT comentario.*,foro.titulo_foro, usuarios.nombres, usuarios.apellidos FROM comentario INNER JOIN foro on comentario.id_foro = foro.id_foro INNER JOIN usuarios on comentario.id_usuario = usuarios.id_usuario;");
                 $consulta->execute();
             }
     
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $e){
+            die($e->getMessage());
+        }
+    }
+
+    //Método para obtener los foros
+    public function ListarForos(){
+        try{
+            $consulta=$this->pdo->prepare("SELECT id_foro, titulo_foro from foro;");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $e){
+            die($e->getMessage());
+        }
+    }
+
+    //Método para obtener los usuarios
+    public function ListarUsuarios(){
+        try{
+            $consulta=$this->pdo->prepare("SELECT id_usuario, nombres, apellidos from usuarios;");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_OBJ);
+        }catch(Exception $e){
+            die($e->getMessage());
+        }
+    }
+
+    //Método para obtener los nombres y apellidos de el usuario a responder
+    public function BuscarResponde($id){
+        try{
+            $consulta=$this->pdo->prepare("SELECT nombres, apellidos from usuarios WHERE id_usuario=?;");
+            $consulta->execute(array($id));
             return $consulta->fetchAll(PDO::FETCH_OBJ);
         }catch(Exception $e){
             die($e->getMessage());
@@ -121,6 +154,7 @@ class Comentario{
             $comentario->settitulo($r->titulo);
             $comentario->setcontenido($r->contenido);
             $comentario->setfecha($r->fecha_comentario);
+            $comentario->setid_responde($r->id_comentario_responde);
 
             return $comentario;
 
@@ -131,15 +165,14 @@ class Comentario{
 
     public function Insertar(Comentario $p){
         try{
-            $consulta="INSERT INTO comentario(id_foro,id_usuario,titulo,contenido,fecha_comentario,id_comentario_responde) VALUES (?,?,?,?,FROM_UNIXTIME(?));";
+            $consulta="INSERT INTO comentario(id_foro,id_usuario,titulo,contenido,fecha_comentario) VALUES (?,?,?,?,?);";
             $this->pdo->prepare($consulta)
                     ->execute(array(
                         $p->getid_foro(),
                         $p->getid_usuario(),
                         $p->gettitulo(),
                         $p->getcontenido(),
-                        time(),
-                        $p->getid_responde()
+                        $p->getfecha(),
                     ));
         }catch(Exception $e){
             die($e->getMessage());
@@ -149,16 +182,22 @@ class Comentario{
     public function Actualizar(Comentario $p){
         try{
             $consulta="UPDATE comentario SET
+                id_foro=?,
+                id_usuario=?,
                 titulo=?,
                 contenido=?,
-                fecha_comentario=?
+                fecha_comentario=?,
+                id_comentario_responde=?
                 WHERE id_comentario=?;
             ";
             $this->pdo->prepare($consulta)
                     ->execute(array(
+                        $p->getid_foro(),
+                        $p->getid_usuario(),
                         $p->gettitulo(),
                         $p->getcontenido(),
                         $p->getfecha(),
+                        $p->getid_responde(),
                         $p->getid_comentario()
                     ));
         }catch(Exception $e){
