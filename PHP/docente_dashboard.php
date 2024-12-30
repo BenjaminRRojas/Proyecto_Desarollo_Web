@@ -10,6 +10,7 @@ if (!isset($_SESSION['nombres']) || $_SESSION['tipo_usuario'] != 'DOCENTE') {
 
 $usuario_id = $_SESSION['id_usuario']; 
 
+
 // Conectar a la base de datos y obtener los cursos del estudiante
 // try {
 //     $pdo = Database::getConnection();
@@ -40,8 +41,7 @@ $usuario_id = $_SESSION['id_usuario'];
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
 </head>
 <body>
     <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>
@@ -127,15 +127,14 @@ $usuario_id = $_SESSION['id_usuario'];
                 <h1 class="dashboard-title">¡Bienvenido al Dashboard <?= htmlspecialchars($_SESSION['nombres']) ?>!</h1>
 
 
-                <form action="">
+                <form action="Modulos/DOCENTES/RUTAS/actualizar_descripcion.php?" method="POST">
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Inserta una pequeña descripción personal</label>
-                        <textarea class="form-control w-50" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control w-50" id="exampleFormControlTextarea1" rows="3" name="descripcion"></textarea>
                         <button type="submit" class="btn btn-success">Enviar</button>
                     </div>
                 </form>
-                
-
+            
 
                 <p class="dashboard-description">A continuación, puedes ver los cursos que has creado:</p>
 
@@ -183,5 +182,7 @@ $usuario_id = $_SESSION['id_usuario'];
 
     </div>      
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    
 </body>
 </html>

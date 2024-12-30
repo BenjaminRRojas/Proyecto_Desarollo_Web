@@ -4,8 +4,6 @@ require_once 'Modulos/CORE/conexion.php';
 
 $accion = $_GET['accion'] ?? 'agregar';
 
-$usuario = isset($usuario) ? $usuario : null; 
-
 ?>
 
 
@@ -110,21 +108,21 @@ $usuario = isset($usuario) ? $usuario : null;
 
                 <input type="hidden" name="accion" value="<?= htmlspecialchars($accion) ?>">
                 <?php if ($accion === 'editar'): ?>
-                    <input type="hidden" name="id" value="<?= htmlspecialchars($usuario['id_usuario'] ?? '') ?>">
+                    <input type="hidden" name="id" >
                 <?php endif; ?>
 
                 <!-- Campos del formulario -->
                 <div class="mb-3">
                     <label for="nombres" class="form-label">Nombres</label>
-                    <input type="text" class="form-control" id="nombres" name="nombres" value="<?= htmlspecialchars($usuario['nombres'] ?? '') ?>" required>
+                    <input type="text" class="form-control" id="nombres" name="nombres"  required>
                 </div>
                 <div class="mb-3">
                     <label for="apellidos" class="form-label">Apellidos</label>
-                    <input type="text" class="form-control" id="apellidos" name="apellidos" value="<?= htmlspecialchars($usuario['apellidos'] ?? '') ?>" required>
+                    <input type="text" class="form-control" id="apellidos" name="apellidos" required>
                 </div>
                 <div class="mb-3">
                     <label for="correo" class="form-label">Correo</label>
-                    <input type="email" class="form-control" id="correo" name="correo" value="<?= htmlspecialchars($usuario['correo'] ?? '') ?>" required>
+                    <input type="email" class="form-control" id="correo" name="correo"  required>
                 </div>
                 <div class="mb-3">
                     <label for="contrasena" class="form-label">Contraseña</label>
@@ -133,26 +131,26 @@ $usuario = isset($usuario) ? $usuario : null;
                 <div class="mb-3">
                     <label class="form-label">Sexo</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sexo" value="Hombre" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Hombre') ? 'checked' : '' ?>>
+                        <input class="form-check-input" type="radio" name="sexo" value="Hombre" >
                         <label class="form-check-label">Hombre</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sexo" value="Mujer" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Mujer') ? 'checked' : '' ?>>
+                        <input class="form-check-input" type="radio" name="sexo" value="Mujer" >
                         <label class="form-check-label">Mujer</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="sexo" value="Otro" <?= (isset($usuario['sexo']) && $usuario['sexo'] === 'Otro') ? 'checked' : '' ?>>
+                        <input class="form-check-input" type="radio" name="sexo" value="Otro" >
                         <label class="form-check-label">Otro</label>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Tipo de Usuario</label>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="tipo_usuario" value="ESTUDIANTE" <?= (isset($usuario['tipo_usuario']) && $usuario['tipo_usuario'] === 'ESTUDIANTE') ? 'checked' : '' ?>>
+                        <input class="form-check-input" type="radio" name="tipo_usuario" value="ESTUDIANTE" >
                         <label class="form-check-label">Alumno</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="tipo_usuario" value="DOCENTE" <?= (isset($usuario['tipo_usuario']) && $usuario['tipo_usuario'] === 'DOCENTE') ? 'checked' : '' ?>>
+                        <input class="form-check-input" type="radio" name="tipo_usuario" value="DOCENTE">
                         <label class="form-check-label">Docente</label>
                     </div>
                 </div>

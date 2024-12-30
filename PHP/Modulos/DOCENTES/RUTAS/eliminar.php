@@ -1,5 +1,5 @@
 <?php
-require_once '../CONTROLADORES/DocentesControlador.php';
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\DOCENTES\CONTROLADORES\DocentesControlador.php';
 
 // Verificar si se pasó el ID por GET
 if (isset($_GET['id'])) {
