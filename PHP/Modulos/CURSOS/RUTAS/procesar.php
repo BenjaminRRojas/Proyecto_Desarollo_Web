@@ -25,5 +25,5 @@ if ($accion == 'agregar') {
 }
 
 // Redirigir de vuelta al formulario principal
-//header('Location: ../VISTAS/ListaCursos.php');
+header('Location: ../../../docente_dashboard.php');
 exit();
