@@ -1,5 +1,5 @@
 <?php
-
+session_start(); // Inicia la sesión
 require_once "MODELOS/foro.php";
 
 class ForoControlador{

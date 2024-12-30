@@ -1,5 +1,5 @@
 <?php
-
+session_start(); // Inicia la sesión
 require_once "MODELOS/comentario.php";
 
 class ComentarioControlador{
@@ -32,7 +32,7 @@ class ComentarioControlador{
         $usuario=new Comentario();
         if(isset($_POST['id_foro'])){
             $usuario->setid_foro(intval($_POST['id_foro']));
-            $usuario->setid_usuario(3);
+            $usuario->setid_usuario($_SESSION['id_usuario']);
             $usuario->setcontenido($_POST['contenido']);
             $usuario->setid_responde($_POST['id_comentario']);
             $this->modelo->Agregar_Respuesta($usuario);

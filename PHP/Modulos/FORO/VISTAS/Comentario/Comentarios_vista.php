@@ -14,8 +14,31 @@
                 <div class="container-fluid bg-light my-3 p-3 border">
                     <div class="d-flex justify-content-between">
                         <h2><?=$titulo?></h2>
-                        <h6><?=$fecha?></h6>
+                        <div class="d-flex">
+                            <h6><?=$fecha?></h6>
+                            <?php if($_SESSION['tipo_usuario'] == "DOCENTE"):?>
+                                <button type="button" class="btn-close bg-light ms-2" data-bs-toggle="modal" data-bs-target="#exampleModal<?= $id_comentario?>" aria-label="Close"></button>
+                                <div class="modal fade" id="exampleModal<?= $id_comentario?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmar Eliminación</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>¿Estás seguro de que deseas eliminar este usuario?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                                <a href="?c=comentario&a=Borrar&id=<?=$id_comentario?>"><button type="button" class="btn btn-primary">Eliminar</button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </div>
                     </div>
+                    
                     <p><?=$contenido?></p>
                     <div class="text-end me-2">
                         <button class="btn btn-primary btn-sm text-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRespuesta<?=$id_comentario?>" aria-expanded="false" aria-controls="collapseRespuesta<?=$id_comentario?>">
@@ -39,13 +62,15 @@
                         <?php if (isset($respuesta->id_comentario_responde) && $comentario->id_comentario == $respuesta->id_comentario_responde): ?>
                                 <?php
                                     $id_respuesta = htmlspecialchars($respuesta->id_comentario);
+                                    $nombres = htmlspecialchars($respuesta->nombres);
+                                    $apellidos = htmlspecialchars($respuesta->apellidos);
                                     $fecha = htmlspecialchars($respuesta->fecha_comentario);
                                     $contenido = htmlspecialchars($respuesta->contenido); 
                                 ?>
                                 <div class="container-fluid bg-light my-3 p-3 border col-11">
                                     <div class="d-flex justify-content-between">
-                                        <h2>Usuario</h2>
-                                        <h6><?=$fecha?></h6>
+                                        <h2><?=$nombres?> <?= $apellidos?></h2>
+                                        <h6><?=$fecha ?></h6>
                                     </div>
                                     <p><?=$contenido?></p>
                                 </div>

@@ -41,7 +41,7 @@
             </select>
             <?php if (!is_null($comentario->getid_responde())): ?>
                 <label for="usuariorespondeSeleccionado" class="form-label">Usuario a Responder</label>
-                <select class="form-select mb-3" id="usuariorespondeSeleccionado" name="id_responde" required>
+                <select class="form-select mb-3" id="usuariorespondeSeleccionado" name="id_responde" <?= $comentario->getid_responde() === 0 ? '' : 'required' ?>>
                     <option value="" disabled <?= ($comentario->getid_responde() === 0) ? 'selected' : '' ?>>Seleccionar Usuario</option>
                     <?php foreach ($usuarios as $usuario): ?>
                         <option 

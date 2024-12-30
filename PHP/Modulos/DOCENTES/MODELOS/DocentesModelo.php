@@ -1,5 +1,5 @@
 <?php
-require_once '../../CORE/conexion.php';
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\CORE\conexion.php';
 
 class UsuariosModelo {
     private $db;
@@ -33,10 +33,25 @@ class UsuariosModelo {
         return $query->execute([$nombres, $apellidos, $correo, password_hash($contrasena, PASSWORD_DEFAULT), $sexo, $tipo_usuario, $id]);
     }
 
+
+    // Actualizar un usuario
+    public function actualizar_descripcion($id,$descripcion) {
+        $query = $this->db->prepare("UPDATE usuarios SET descripcion = ? WHERE id_usuario = ?");
+        return $query->execute([$descripcion, $id]);
+    }
+
+
     // Eliminar un usuario
     public function eliminar($id) {
         $query = $this->db->prepare("DELETE FROM usuarios WHERE id_usuario = ?");
         return $query->execute([$id]);
+    }
+
+
+    public function obtenerInformacion() {
+        $query = $this->db->prepare("SELECT nombres, descripcion,tipo_usuario FROM usuarios");
+        $query->execute(); 
+        return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 }
 ?>

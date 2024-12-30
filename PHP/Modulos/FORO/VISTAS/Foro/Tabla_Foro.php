@@ -1,5 +1,5 @@
     <!-- Contenedor principal -->
-    <div class="container mt-5">
+    <div class="container mt-5 w-50">
         <h1 class="text-center">Lista de Foro</h1>
         
         <!-- Buscador -->

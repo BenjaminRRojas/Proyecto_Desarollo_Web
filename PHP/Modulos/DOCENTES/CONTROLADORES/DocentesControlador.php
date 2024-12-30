@@ -1,5 +1,5 @@
 <?php
-require_once '../MODELOS/DocentesModelo.php';
+require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\DOCENTES\MODELOS\DocentesModelo.php';
 
 class UsuariosControlador {
     private $modelo;
@@ -44,6 +44,15 @@ class UsuariosControlador {
         return $this->modelo->eliminar($id);
     }
 
+    // Actualizar descripcion
+    public function actualizarUsuarioDescripcion($id, $descripcion) {
+        return $this->modelo->actualizar_descripcion($id,$descripcion);
+    }
+
+    // Obtener informacion
+    public function obtenerInformacionDocentes() {
+        return $this->modelo->obtenerInformacion();
+    }
 
     public function guardarArchivoEnMedia($nombreArchivo, $ubicacionArchivo, $tipoArchivo) {
         $sql = "INSERT INTO media (nombre_archivo, ubicacion_archivo, tipo_archivo) VALUES (?, ?, ?)";
@@ -51,9 +60,6 @@ class UsuariosControlador {
         $stmt->execute();
         $stmt->close();
     }
-
-
-
     
 
 

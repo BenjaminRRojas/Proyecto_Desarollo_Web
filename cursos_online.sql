@@ -42,7 +42,11 @@ CREATE TABLE `comentario` (
 --
 
 INSERT INTO `comentario` (`id_comentario`, `id_foro`, `id_usuario`, `titulo`, `contenido`, `fecha_comentario`, `id_comentario_responde`) VALUES
-(3, 2, 3, '¿Por qué no me funciona esta parte?', 'Alguien me puede ayudar con esta parte por favor no entiendo por qué .....', '2024-12-22 18:32:14', NULL);
+(3, 2, 3, '¿Por qué no me funciona esta parte??? ', 'Alguien me puede ayudar con esta parte por favor no entiendo por qué ..... ', '2024-12-22 18:30:14', NULL),
+(4, 2, 2, 'Hola gente ', 'No nada ', '2024-12-28 23:25:40', NULL),
+(5, 2, 3, '', 'hola', '2024-12-30 01:45:06', 3),
+(39, 1, 1, 'adfsafsd', 'afdsafadfs', '2024-12-30 06:04:00', NULL),
+(40, 2, 2, 'aadsffads', 'adfsafsdfad', '2024-12-30 05:07:00', NULL);
 
 -- --------------------------------------------------------
 
@@ -89,10 +93,12 @@ CREATE TABLE `curso_estudiante` (
 
 CREATE TABLE `evaluaciones` (
   `id_evaluacion` int(11) NOT NULL,
-  `titulo` varchar(255) NOT NULL,
-  `descripcion` text NOT NULL,
-  `fecha_creacion` datetime DEFAULT current_timestamp(),
-  `fecha_limite` datetime NOT NULL,
+  `nota1` float NOT NULL,
+  `nota2` float NOT NULL,
+  `nota3` float NOT NULL,
+  `tarea` varchar(255) NOT NULL,
+  `promedio` float NOT NULL,
+  `id_usuario` int(11) NOT NULL,
   `id_curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -148,17 +154,18 @@ CREATE TABLE resultados (
 CREATE TABLE `foro` (
   `id_foro` int(11) NOT NULL,
   `id_curso` int(11) NOT NULL,
-  `titulo` text NOT NULL,
+  `titulo_foro` text NOT NULL,
   `descripcion` text NOT NULL,
-  `fecha_creacion` datetime NOT NULL
+  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Volcado de datos para la tabla `foro`
 --
 
-INSERT INTO `foro` (`id_foro`, `id_curso`, `titulo`, `descripcion`, `fecha_creacion`) VALUES
-(2, 2, 'Hola', 'Mundo ', '2024-12-22 18:52:51');
+INSERT INTO `foro` (`id_foro`, `id_curso`, `titulo_foro`, `descripcion`, `fecha_creacion`) VALUES
+(1, 1, 'PHP', 'Descripción 1', '2024-12-22 21:49:36'),
+(2, 3, 'CSS', 'Descripción 2', '2024-12-22 21:52:51');
 
 -- --------------------------------------------------------
 
@@ -181,19 +188,6 @@ INSERT INTO `media` (`id_media`, `nombre_archivo`, `ubicacion_archivo`, `tipo_ar
 (1, 'fadsadsadfsadsf', 'adfsdfaadfsdfs', 'IMAGEN'),
 (2, 'asdffdaadfsadf', 'adfsadfsadfsadfs', 'DOCUMENTO'),
 (3, 'adsfadfsadfsafds', 'adfsadfsadfsadfs', 'AUDIO');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `password_resets`
---
-
-CREATE TABLE `password_resets` (
-  `id` int(11) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `token` varchar(100) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -262,6 +256,7 @@ ALTER TABLE `curso_estudiante`
 --
 ALTER TABLE `evaluaciones`
   ADD PRIMARY KEY (`id_evaluacion`),
+  ADD KEY `id_usuario` (`id_usuario`),
   ADD KEY `id_curso` (`id_curso`);
 --
 -- Indices de la tabla `preguntas`
@@ -299,13 +294,6 @@ ALTER TABLE `media`
   ADD PRIMARY KEY (`id_media`);
 
 --
--- Indices de la tabla `password_resets`
---
-ALTER TABLE `password_resets`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `email` (`email`);
-
---
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -320,7 +308,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `cursos`
@@ -356,19 +344,13 @@ ALTER TABLE `resultados`
 -- AUTO_INCREMENT de la tabla `foro`
 --
 ALTER TABLE `foro`
-  MODIFY `id_foro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_foro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `media`
 --
 ALTER TABLE `media`
   MODIFY `id_media` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `password_resets`
---
-ALTER TABLE `password_resets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

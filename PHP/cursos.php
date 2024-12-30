@@ -5,12 +5,11 @@ $controlador = new CursosControlador();
 $cursos = $controlador->listarCursos();
 
 session_start(); // Inicia la sesión
-
+require_once 'Modulos/CORE/conexion.php';
 
 $accion = $_GET['accion'] ?? 'agregar';
-$usuario = isset($usuario) ? $usuario : null;
 
-
+$usuario = isset($usuario) ? $usuario : null; 
 ?>
 
 <!DOCTYPE html>
@@ -24,19 +23,22 @@ $usuario = isset($usuario) ? $usuario : null;
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="../CSS/style-cursos.css">
-
 </head>
 
 <body>
-
   <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>
-
 
   <div class="container-fluid">
 
     <!------------------------------NAV-------------------------------------->
-    <nav class="navbar navbar-expand-lg">
+      <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand ms-3" href="index.php">
                     <img src="../imagenes/logo.svg" alt="logo" height="125">
@@ -102,84 +104,7 @@ $usuario = isset($usuario) ? $usuario : null;
                     </div>
                 </div>
             </div>
-      </nav>
-
-      <!----------------------------------------------------MODAL------------------------------------------------------------------>
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <a href="cursos.php" class="modal-title" id="staticBackdropLabel">Iniciar Sesión</a>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class=" p-4 rounded-3 shadow">
-                        <form action="login.php" method="POST">
-                            <div class="mb-3">
-                                <label for="EMAIL" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="EMAIL" name="EMAIL" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="CONTRASENA" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control" id="CONTRASENA" name="CONTRASENA" required>
-                            </div>
-                            <div>
-                                <p>¿No tienes una cuenta? <a href="formulario.php">Regístrate</a></p>
-                            </div>
-                            <button type="submit" class="btn w-100">Iniciar sesión</button>
-                        </form>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <a href="cambiar_contrasena.php" class="btn btn-primary">Cambiar contraseña</a>
-                    <a href="" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="INFOModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="INFOModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="INFOModalLabel">Información del curso</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- Aquí se incluirán los datos dinámicos del curso con PHP -->
-                    <?php
-                        if (isset($_GET['id_curso'])) {
-                            $curso = $_GET['id_curso'];
-                            // Realiza una consulta para obtener el curso con el id especificado
-                            $consulta = "SELECT * FROM cursos WHERE id_curso = ?";
-                            $stmt = $pdo->prepare($consulta);
-                            $stmt->execute([$curso]);
-                            $curso = $stmt->fetch();
-                    ?>
-                        <div class="p-4 rounded-3 shadow">
-                            <div class="row">
-                                <div class="col-12 mb-3">
-                                    <h5 id="modalCursoTitulo"><?= htmlspecialchars($curso['titulo']) ?></h5>
-                                </div>
-                                <div class="col-12 mb-3">
-                                    <label for="modalCursoDescripcion" class="form-label">Descripción</label>
-                                    <p id="modalCursoDescripcion"><?= htmlspecialchars($curso['descripcion']) ?></p>
-                                </div>
-                                <div class="col-12 mb-3">
-                                    <label for="modalCursoDuracion" class="form-label">Duración</label>
-                                    <p id="modalCursoDuracion"><?= htmlspecialchars($curso['duracion']) ?></p>
-                                </div>
-                            </div>
-                        </div>
-                    <?php } ?>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+        </nav>
     <!------------------------------CARUSEL-------------------------------------->
     <div class="carusel">
       <div id="carouselExampleCaptions" class="carousel slide">
@@ -188,14 +113,13 @@ $usuario = isset($usuario) ? $usuario : null;
             aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
             aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-            aria-label="Slide 3"></button>
+          
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="../imagenes/banner.webp" class="d-block w-100" alt="...">
+            <img src="../imagenes/img-3.webp" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
-              <h5>First slide label</h5>
+              <h5>No esperes mas Inscribite</h5>
               <p>Some representative placeholder content for the first slide.</p>
             </div>
           </div>
@@ -206,13 +130,7 @@ $usuario = isset($usuario) ? $usuario : null;
               <p>Some representative placeholder content for the second slide.</p>
             </div>
           </div>
-          <div class="carousel-item">
-            <img src="../imagenes/img-3.webp" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Third slide label</h5>
-              <p>Some representative placeholder content for the third slide.</p>
-            </div>
-          </div>
+      
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
           data-bs-slide="prev">
@@ -226,67 +144,142 @@ $usuario = isset($usuario) ? $usuario : null;
         </button>
       </div>
     </div>
-
-    <!------------------------------CURSOS-------------------------------------->
-    <div class="container-fluid">
-        <div class="card text-center">
-            <div class="card-header">
-                <ul class="nav nav-tabs card-header-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#" data-target="todos">Todos</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="Modulos/CURSOS/VISTAS/ListaCursos.php">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <?php if (isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
-                            <a href="Modulos/CURSOS/VISTAS/ListaCursos.php" 
-                              id="boton-editar" 
-                              class="btn btn-primary d-flex align-items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-up me-2" viewBox="0 0 16 16">
-                                    <path d="M8.5 11.5a.5.5 0 0 1-1 0V7.707L6.354 8.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 7.707z"/>
-                                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
-                                </svg>
-                                Editar
-                            </a>
-                        <?php endif; ?>
-                    </li>
-                    <li class="nav-item ms-auto">
-                      <div class="d-flex">
-                        <input type="text" id="searchInput" class="form-control" placeholder="Buscar titulo o id">
-                      </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="card-body">
-                <div class="bloque todos activo">
-                    <div class="row">
-                      <?php foreach($cursos as $row) {?>
-                            <div class="col">
-                                <div class="card" style="width: 18rem;">
-                                    <?php 
-                                    $id = $row['id_curso'];
-                                    ?>
-                                    <div class="card-body-curso">
-                                        <h5 class="card-title"><?php echo $row['titulo']?></h5>
-                                        <p class="card-text">Aprende a identificar, prevenir y mitigar amenazas en el ciberespacio...</p>
-                                    </div>
-                                    <div class="card-footer-curso">
-                                      <button type="button" class="btn btn-primary" 
-                                              data-bs-toggle="modal" 
-                                              data-bs-target="#INFOModal" 
-                                              data-id="<?= $curso['id_curso'] ?>"> 
-                                          Saber más
-                                      </button>
-                                    </div>
+    <!------------------------------MODAL-------------------------------------->
+        <!-- Login Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Iniciar Sesión</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class=" p-4 rounded-3 shadow">
+                            <form action="Modulos/AUTH/login.php" method="POST">
+                                <div class="mb-3">
+                                    <label for="EMAIL" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="EMAIL" name="EMAIL" required>
                                 </div>
-                            </div>
-                        <?php } ?>
+                                <div class="mb-3">
+                                    <label for="CONTRASENA" class="form-label">Contraseña</label>
+                                    <input type="password" class="form-control" id="CONTRASENA" name="CONTRASENA" required>
+                                </div>
+                                <?php if (!empty($error)): ?>
+                                    <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+                                <?php endif; ?>
+                                <div>
+                                    <p>¿No tienes una cuenta? <a href="formulario.php">Regístrate</a></p>
+                                </div>
+                                <button type="submit" class="btn w-100">Iniciar sesión</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="cambiar_contrasena.php" class="btn btn-primary">Cambiar contraseña</a>
+                        <a href="" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</a>
                     </div>
                 </div>
             </div>
         </div>
+
+    <!------------------------------CURSOS-------------------------------------->
+    <div class="container-fluid">
+      <div id="card-cursos" class="card text-center">
+        <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" href="#" data-target="todos">Todos</a>
+            </li>
+            <?php if (isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
+              <li class="nav-item1">
+                <a href="Modulos/CURSOS/VISTAS/ListaCursos.php" id="boton-editar" class="btn btn-primary">Editar</a>
+              </li>
+            <?php endif; ?>
+            <li class="nav-item ms-auto">
+              <div class="d-flex">
+                <input type="text" id="searchInput" class="form-control" placeholder="Buscar título o ID">
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <?php foreach ($cursos as $row): ?>
+              <div class="col">
+                <div class="card-info card" style="width: 18rem;">
+                  <div class="card-body-curso">
+                    <h5 class="card-title"><?= htmlspecialchars($row['titulo']) ?></h5>
+                    <p class="card-text"><?= htmlspecialchars($row['descripcion']) ?></p>
+                  </div>
+                  <div class="card-footer-curso">
+                    <!-- Botón para abrir el modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#INFOModal-<?= $row['id_curso'] ?>"> 
+                      Saber más
+                    </button>
+                  </div>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modales -->
+      <?php foreach ($cursos as $row): ?>
+        <div class="modal fade" id="INFOModal-<?= $row['id_curso'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ModalLabel-<?= $row['id_curso'] ?>" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel-<?= $row['id_curso'] ?>">Información del curso</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="p-4 rounded-3 shadow">
+                  <div class="row">
+                    <div class="col-12 mb-3">
+                      <label for="modalCursoTitulo" class="form-label">Título</label>
+                      <h5 id="modalCursoTitulo"><?= htmlspecialchars($row['titulo']) ?></h5>
+                    </div>
+                    <div class="col-12 mb-3">
+                      <label for="modalCursoDescripcion" class="form-label">Descripción</label>
+                      <p id="modalCursoDescripcion"><?= htmlspecialchars($row['descripcion']) ?></p>
+                    </div>
+                    <div class="col-12 mb-3">
+                      <label for="modalCursoDuracion" class="form-label">Duración</label>
+                      <p id="modalCursoDuracion"><?= htmlspecialchars($row['duracion']) ?></p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Verificar si la sesión está iniciada -->
+                <?php if (!isset($_SESSION['id_usuario'])): ?>
+                  <div class="alert alert-warning" role="alert">
+                    <p>Debes iniciar sesión para inscribirte en este curso.</p>
+                    <a href="login.php" class="btn btn-warning">Iniciar sesión</a>
+                  </div>
+                <?php else: ?>
+                  <!-- Formulario de Inscripción -->
+                  <form method="POST" action="inscripcion.php">
+                    <input type="hidden" name="id_curso" value="<?= $row['id_curso'] ?>">
+                    <input type="hidden" name="id_usuario" value="<?= $_SESSION['id_usuario'] ?>"> <!-- Usar id_usuario en lugar de id_alumno -->
+                    <div class="form-group">
+                      <label for="confirmarInscripcion" class="form-label">¿Deseas inscribirte en este curso?</label>
+                    </div>
+                <?php endif; ?>
+              </div>
+              <div class="modal-footer">
+                <?php if (isset($_SESSION['id_usuario'])): ?>
+                  <button type="submit" class="btn btn-primary">Inscribirse</button>
+                <?php endif; ?>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      <?php endforeach; ?>
     </div>
+
   
     <!------------------------------CERTIFICADOS-------------------------------------->
     <article>

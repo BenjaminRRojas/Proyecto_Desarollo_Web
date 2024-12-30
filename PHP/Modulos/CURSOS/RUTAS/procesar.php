@@ -11,11 +11,11 @@ if ($accion == 'agregar') {
     $duracion = $_POST['duracion'];
     $fecha_creacion = $_POST['fecha_creacion'];
     $categoria = $_POST['categoria'];
+    $id_profesor = $_POST['id_profesor'];
     $descripcion = $_POST['descripcion'];
     
-
     // Llamar al método para agregar curso
-    $controlador->agregarCurso($titulo, $duracion, $fecha_creacion, $categoria, $descripcion);
+    $controlador->agregarCurso($titulo, $duracion, $fecha_creacion, $categoria,$id_profesor, $descripcion);
 
 }elseif ($accion == 'editar'){
     $controlador->actualizarCurso($_POST['id'], $_POST['titulo'], $_POST['duracion'], $_POST['fecha_creacion'], $_POST['categoria'],$_POST['descripcion']);
@@ -25,5 +25,5 @@ if ($accion == 'agregar') {
 }
 
 // Redirigir de vuelta al formulario principal
-header('Location: ../VISTAS/ListaCursos.php');
+header('Location: ../../../docente_dashboard.php');
 exit();
