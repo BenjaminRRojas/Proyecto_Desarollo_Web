@@ -5,6 +5,8 @@
             <?php if (!isset($comentario->id_comentario_responde)): ?>
                 <?php
                     $id_comentario = htmlspecialchars($comentario->id_comentario);
+                    $nombres = htmlspecialchars($comentario->nombres);
+                    $apellidos = htmlspecialchars($comentario->apellidos);
                     $titulo = htmlspecialchars($comentario->titulo);
                     $fecha = htmlspecialchars($comentario->fecha_comentario);
                     $contenido = htmlspecialchars($comentario->contenido); 
@@ -13,7 +15,7 @@
                 <!-- Se despliega un container por comentario con un collapse para responder-->
                 <div class="container-fluid bg-light my-3 p-3 border">
                     <div class="d-flex justify-content-between">
-                        <h2><?=$titulo?></h2>
+                        <h4><?=$nombres?> <?= $apellidos?>: <?=$titulo?></h4>                      
                         <div class="d-flex">
                             <h6><?=$fecha?></h6>
                             <?php if($_SESSION['tipo_usuario'] == "DOCENTE"):?>
@@ -69,7 +71,7 @@
                                 ?>
                                 <div class="container-fluid bg-light my-3 p-3 border col-11">
                                     <div class="d-flex justify-content-between">
-                                        <h2><?=$nombres?> <?= $apellidos?></h2>
+                                        <h4><?=$nombres?> <?= $apellidos?>:</h4>
                                         <div class="d-flex">
                                             <h6><?=$fecha ?></h6>
                                             <?php if($_SESSION['tipo_usuario'] == "DOCENTE"):?>
