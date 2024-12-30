@@ -75,13 +75,15 @@ session_start(); // Inicia la sesión
                             <?php if (isset($_SESSION['nombres'])): ?>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Bienvenido, <?= htmlspecialchars($_SESSION['nombres']) ?> 
+                                        <?= htmlspecialchars($_SESSION['nombres']) ?> 
                                     </a>
                                     <ul class="dropdown-menu">
                                         <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
                                             <li><a class="dropdown-item" href="docente_dashboard.php">Gestionar Cursos</a></li>
                                         <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
                                             <li><a class="dropdown-item" href="estudiante_dashboard.php">Cursos Inscritos</a></li>
+                                        <?php elseif ($_SESSION['tipo_usuario'] === 'ADMIN'): ?>
+                                            <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
                                         <?php endif; ?>
                                         <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
                                     </ul>
@@ -254,15 +256,15 @@ session_start(); // Inicia la sesión
 
                 <div class="col-md-3">
                     <h4>Educación</h4>
-                    <a href="cursos.html">Cursos</a><br>
-                    <a href="docentes.html">Docentes</a><br>
+                    <a href="cursos.php">Cursos</a><br>
+                    <a href="docentes.php">Docentes</a><br>
                     <a href="#"></a>
                 </div>
 
                 <div class="col-md-3">
                     <h4>Comunidad</h4>
                     <a href="FAQ.php">Preguntas Frecuentes</a><br>
-                    <a href="foro.php">Foro</a><br>
+                    <a href="Modulos/FORO/foro.php">Foro</a><br>
                     <a href="#"></a>
                 </div>
 

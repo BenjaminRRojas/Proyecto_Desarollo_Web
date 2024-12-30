@@ -38,6 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location: ../../docente_dashboard.php');
             } else if ($user['tipo_usuario'] === 'ESTUDIANTE') {
                 header('Location: ../../estudiante_dashboard.php');
+            }else if($user['tipo_usuario'] === 'ADMIN'){
+                header('Location: ../../dashboard.php');
             }
             exit;
         } else {

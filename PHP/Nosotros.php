@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,11 +19,9 @@
         <!--Navbar-->
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-
-                <a class="navbar-brand ms-3" href="index.html">
+                <a class="navbar-brand ms-3" href="index.php">
                     <img src="../imagenes/logo.svg" alt="logo" height="125">
                 </a>
-
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -29,7 +31,6 @@
                 <div class="d-none d-lg-block text-center ms-5">
                     <h1 class="navbar-title">Aprende a programar desde cero hasta el infinito</h1>
                 </div>
-
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
@@ -42,30 +43,49 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                                <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="cursos.html">Cursos</a>
+                                <a class="nav-link active" href="cursos.php">Cursos</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle active" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">Perfil</a>
-                                <ul class="dropdown-menu">
-                                <li>
-                                        <button type="button" class="dropdown-item btn btn-primary w-100 text-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                            Iniciar Sesión
-                                        </button>
-                                    </li>
-                                    <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
-                                </ul>
-                            </li>
+
+                            <?php if (isset($_SESSION['nombres'])): ?>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <?= htmlspecialchars($_SESSION['nombres']) ?> 
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
+                                            <li><a class="dropdown-item" href="docente_dashboard.php">Gestionar Cursos</a></li>
+                                        <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
+                                            <li><a class="dropdown-item" href="estudiante_dashboard.php">Cursos Inscritos</a></li>
+                                        <?php endif; ?>
+                                        <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
+                                    </ul>
+                                </li>
+                            <?php else:?>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Perfil
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <button type="button" class="dropdown-item btn btn-primary w-100 text-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                Iniciar Sesión
+                                            </button>
+                                        </li>
+                                        <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
+                                    </ul>
+                                </li>
+                            <?php endif; ?>
+
                         </ul>
                     </div>
                 </div>
             </div>
         </nav>
 
-        <!----------------------------------------------------MODAL------------------------------------------------------------------->
+        <!-- Login Modal -->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -75,7 +95,7 @@
                     </div>
                     <div class="modal-body">
                         <div class=" p-4 rounded-3 shadow">
-                            <form action="login.php" method="POST">
+                            <form action="Modulos/AUTH/login.php" method="POST">
                                 <div class="mb-3">
                                     <label for="EMAIL" class="form-label">Email</label>
                                     <input type="email" class="form-control" id="EMAIL" name="EMAIL" required>
@@ -84,6 +104,9 @@
                                     <label for="CONTRASENA" class="form-label">Contraseña</label>
                                     <input type="password" class="form-control" id="CONTRASENA" name="CONTRASENA" required>
                                 </div>
+                                <?php if (!empty($error)): ?>
+                                    <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+                                <?php endif; ?>
                                 <div>
                                     <p>¿No tienes una cuenta? <a href="formulario.php">Regístrate</a></p>
                                 </div>
@@ -98,7 +121,6 @@
                 </div>
             </div>
         </div>
-
         
         <!--Container Misión y Visión-->
         <div class="flexMisionVision justify-content-around">
@@ -189,15 +211,15 @@
 
                 <div class="col-md-3">
                     <h4>Educación</h4>
-                    <a href="cursos.html">Cursos</a><br>
-                    <a href="docentes.html">Docentes</a><br>
+                    <a href="cursos.php">Cursos</a><br>
+                    <a href="docentes.php">Docentes</a><br>
                     <a href="#"></a>
                 </div>
 
                 <div class="col-md-3">
                     <h4>Comunidad</h4>
                     <a href="FAQ.php">Preguntas Frecuentes</a><br>
-                    <a href="foro.php">Foro</a><br>
+                    <a href="Modulos/FORO/foro.php">Foro</a><br>
                     <a href="#"></a>
                 </div>
 

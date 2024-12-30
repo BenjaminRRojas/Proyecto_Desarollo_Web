@@ -54,7 +54,7 @@ try {
     </div>
     <script>
         setTimeout(function() {
-            window.location.href = "index.html"; // Redirige a index.html después de 3 segundos
+            window.location.href = "index.php"; // Redirige a index.html después de 3 segundos
         }, 3000);
     </script>';
 
