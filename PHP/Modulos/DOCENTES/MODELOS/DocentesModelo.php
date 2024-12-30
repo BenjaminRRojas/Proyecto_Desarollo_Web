@@ -50,6 +50,7 @@ class UsuariosModelo {
 
     public function obtenerInformacion() {
         $query = $this->db->prepare("SELECT nombres, descripcion FROM usuarios");
+        $query->execute(); 
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 }
