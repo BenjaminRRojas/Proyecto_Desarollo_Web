@@ -179,9 +179,9 @@ try {
                                     </a>
                                     <ul class="dropdown-menu">
                                         <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
-                                            <li><a class="dropdown-item" href="Modulos/DOCENTES/gestionar_curso.php">Gestionar Cursos</a></li>
+                                            <li><a class="dropdown-item" href="gestionar_curso.php">Gestionar Cursos</a></li>
                                         <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
-                                            <li><a class="dropdown-item" href="Modulos/ESTUDIANTES/cursos_inscritos.php">Cursos Inscritos</a></li>
+                                            <li><a class="dropdown-item" href="estudiante_dashboard.php">Cursos Inscritos</a></li>
                                         <?php endif; ?>
                                         <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
                                     </ul>

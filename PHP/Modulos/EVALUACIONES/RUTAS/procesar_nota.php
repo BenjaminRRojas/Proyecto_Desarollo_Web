@@ -15,7 +15,6 @@ $respuestas = $_POST;  // Recoger todas las respuestas del formulario
 // Crear instancia del controlador
 $controlador = new EvaluacionesControlador();
 
-
 // Redirigir de vuelta al dashboard de estudiantes
 header('Location:../../../estudiante_dashboard.php');
 exit();
