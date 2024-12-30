@@ -108,7 +108,7 @@ $usuario = isset($usuario) ? $usuario : null;
                 </div>
                 <div class="modal-body">
                     <div class=" p-4 rounded-3 shadow">
-                        <form action="login.php" method="POST">
+                        <form action="Modulos/AUTH/login.php" method="POST">
                             <div class="mb-3">
                                 <label for="EMAIL" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="EMAIL" name="EMAIL" required>
