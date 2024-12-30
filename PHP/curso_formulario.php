@@ -26,11 +26,9 @@ $curso = isset($curso) ? $curso : null;
         <!------------------------------NAV-------------------------------------->
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-
-                <a class="navbar-brand ms-3" href="index.html">
+                <a class="navbar-brand ms-3" href="index.php">
                     <img src="../imagenes/logo.svg" alt="logo" height="125">
                 </a>
-
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -40,7 +38,6 @@ $curso = isset($curso) ? $curso : null;
                 <div class="d-none d-lg-block text-center ms-5">
                     <h1 class="navbar-title">Aprende a programar desde cero hasta el infinito</h1>
                 </div>
-
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
@@ -53,23 +50,42 @@ $curso = isset($curso) ? $curso : null;
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+                                <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="cursos.html">Cursos</a>
+                                <a class="nav-link active" href="cursos.php">Cursos</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle active" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">Perfil</a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <button type="button" class="dropdown-item btn btn-primary w-100 text-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                            Iniciar Sesión
-                                        </button>
-                                    </li>
-                                    <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
-                                </ul>
-                            </li>
+
+                            <?php if (isset($_SESSION['nombres'])): ?>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Bienvenido, <?= htmlspecialchars($_SESSION['nombres']) ?> 
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
+                                            <li><a class="dropdown-item" href="docente_dashboard.php">Gestionar Cursos</a></li>
+                                        <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
+                                            <li><a class="dropdown-item" href="estudiante_dashboard.php">Cursos Inscritos</a></li>
+                                        <?php endif; ?>
+                                        <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
+                                    </ul>
+                                </li>
+                            <?php else:?>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Perfil
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <button type="button" class="dropdown-item btn btn-primary w-100 text-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                Iniciar Sesión
+                                            </button>
+                                        </li>
+                                        <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
+                                    </ul>
+                                </li>
+                            <?php endif; ?>
+
                         </ul>
                     </div>
                 </div>
@@ -101,7 +117,7 @@ $curso = isset($curso) ? $curso : null;
                     <input type="date" class="form-control" id="fecha_creacion" name="fecha_creacion" value="<?= htmlspecialchars($curso['fecha_creacion'] ?? '') ?>" required>
                 </div>
                 <div class="mb-3">
-                    <label for="formFileSm" class="form-label">Small file input example</label>
+                    <label for="formFileSm" class="form-label">imagen del curso</label>
                     <input class="form-control form-control-sm" id="formFileSm" type="file">
                 </div>
                 <div class="mb-3">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-12-2024 a las 05:41:37
+-- Tiempo de generación: 30-12-2024 a las 02:35:20
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -67,7 +67,19 @@ CREATE TABLE `cursos` (
 
 INSERT INTO `cursos` (`id_curso`, `titulo`, `duracion`, `fecha_creacion`, `categoria`, `id_usuario`, `id_media`, `descripcion`) VALUES
 (2, 'HTML', 20, '2024-12-22 17:49:23', 'Desarrollo Web', 2, 2, 'FAFSFDSASFDFS'),
-(3, 'Python', 20, '2024-12-22 17:49:23', 'Programación', 2, 2, 'FAFSFDSASFDFS');
+(3, 'Java', 3, '2024-12-29 09:41:00', 'Programacion', NULL, NULL, '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `curso_estudiante`
+--
+
+CREATE TABLE `curso_estudiante` (
+  `id_curso` int(11) NOT NULL,
+  `id_estudiante` int(11) NOT NULL,
+  `fecha_inscripcion` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -91,21 +103,19 @@ CREATE TABLE `evaluaciones` (
 INSERT INTO `evaluaciones` (`id_evaluacion`, `titulo`, `descripcion`, `fecha_creacion`, `fecha_limite`,  `id_curso`) VALUES
 (2, 'Evaluación 1 de HTML', 'abcd', '2024-12-22 17:47:06', '2024-12-22 17:47:06',  2),
 (3, 'Evaluación 1 de Python', 'abcd', '2024-12-22 17:47:06', '2024-12-22 17:47:06',  3);
-
 -- --------------------------------------------------------
 
---
+
+
 -- Estructura de tabla para la tabla `preguntas`
---
+
 
 CREATE TABLE preguntas (
     `id_pregunta` int(11) NOT NULL,
     `enunciado` text NOT NULL,
     `id_evaluacion` int(11) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
 -- --------------------------------------------------------
-
 --
 -- Estructura de tabla para la tabla `respuestas`
 --
@@ -116,7 +126,7 @@ CREATE TABLE respuestas (
     `es_correcta` BOOLEAN NOT NULL,
     `id_pregunta` int(11) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
+-- --------------------------------------------------------
 -- --------------------------------------------------------
 
 --
@@ -132,10 +142,6 @@ CREATE TABLE resultados (
     `fecha_realizacion` datetime DEFAULT CURRENT_TIMESTAMP
 )ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `foro`
 --
 
@@ -199,6 +205,7 @@ CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `nombres` varchar(100) NOT NULL,
   `apellidos` varchar(100) NOT NULL,
+  `descripcion` varchar(500) NOT NULL,
   `correo` varchar(100) NOT NULL,
   `contrasena` varchar(255) NOT NULL,
   `sexo` enum('MUJER','HOMBRE','OTRO') NOT NULL,
@@ -210,14 +217,17 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `nombres`, `apellidos`, `correo`, `contrasena`, `sexo`, `fecha_registro`, `tipo_usuario`) VALUES
-(2, 'aefsaafdsdaffdsa', 'adfsdfsfdafad', 'fadsdfdfasdfadfsasafds', 'adfssasfsdfs', 'HOMBRE', '2024-12-22 17:47:06', 'DOCENTE'),
-(3, 'adafsdfadsafs', 'adfsasdadfsadf', 'adfsasdfadfsadfs', 'adfsadfsfadsadf', 'MUJER', '2024-12-22 17:47:23', 'DOCENTE'),
-(4, 'Benjamin', 'Rojas Navea', 'benjaminrojasnavea@gmail.com', '$2y$10$bpMDl8gRkVbInBXyFROA5OZ.FNl/WVVL0HWggfA/HuoFxItNJGIPK', 'HOMBRE', '2024-12-27 06:48:59', ''),
-(6, 'Benjmain', 'Rojas Navea', 'trollmasterdeloshuevos@gmail.com', '$2y$10$wGFoJ9yKyJMVT29e7RtDluBtK9J61ny3qKOxhsvFhN3PBEEEDklU.', 'HOMBRE', '2024-12-27 06:52:02', 'ESTUDIANTE'),
-(7, 'Kin', 'Alvarado', 'kin.alvarado.m@gmail.com', '$2y$10$4lQTcEdo.RVr5bNPx0.qy.xCNd0NaDOF7reDkvkp7d2wRffTbsCgW', 'HOMBRE', '2024-12-27 07:25:12', 'ADMIN'),
-(9, 'Paulina', 'Rojo', 'paulinafernanda04@gmail.com', '$2y$10$tbEyfn2EpaqAwp4VWl9SOuVr6cy1KVrbnX9M7ms5fBoVRY6qUb1qW', 'MUJER', '2024-12-27 07:30:18', 'ESTUDIANTE'),
-(10, 'dsadas', 'dsadsa', 'dsadsadsa@gmail.com', '$2y$10$9EfgJ04VGRej5GZ.mt7ZSeiGDp.67JXuxPsAysgw5pNjjgf/zaEd2', 'HOMBRE', '2024-12-27 23:10:02', 'ESTUDIANTE');
+INSERT INTO `usuarios` (`id_usuario`, `nombres`, `apellidos`, `descripcion`, `correo`, `contrasena`, `sexo`, `fecha_registro`, `tipo_usuario`) VALUES
+(2, 'aefsaafdsdaffdsa', 'adfsdfsfdafad', '', 'fadsdfdfasdfadfsasafds', 'adfssasfsdfs', 'HOMBRE', '2024-12-22 17:47:06', 'DOCENTE'),
+(3, 'adafsdfadsafs', 'adfsasdadfsadf', '', 'adfsasdfadfsadfs', 'adfsadfsfadsadf', 'MUJER', '2024-12-22 17:47:23', 'DOCENTE'),
+(4, 'Benjamin', 'Rojas Navea', '', 'benjaminrojasnavea@gmail.com', '$2y$10$bpMDl8gRkVbInBXyFROA5OZ.FNl/WVVL0HWggfA/HuoFxItNJGIPK', 'HOMBRE', '2024-12-27 06:48:59', ''),
+(6, 'Benjmain', 'Rojas Navea', '', 'trollmasterdeloshuevos@gmail.com', '$2y$10$wGFoJ9yKyJMVT29e7RtDluBtK9J61ny3qKOxhsvFhN3PBEEEDklU.', 'HOMBRE', '2024-12-27 06:52:02', 'ESTUDIANTE'),
+(7, 'Kin', 'Alvarado', '', 'kin.alvarado.m@gmail.com', '$2y$10$4lQTcEdo.RVr5bNPx0.qy.xCNd0NaDOF7reDkvkp7d2wRffTbsCgW', 'HOMBRE', '2024-12-27 07:25:12', 'ADMIN'),
+(9, 'Paulina', 'Rojo', '', 'paulinafernanda04@gmail.com', '$2y$10$tbEyfn2EpaqAwp4VWl9SOuVr6cy1KVrbnX9M7ms5fBoVRY6qUb1qW', 'MUJER', '2024-12-27 07:30:18', 'ESTUDIANTE'),
+(10, 'dsadas', 'dsadsa', '', 'dsadsadsa@gmail.com', '$2y$10$9EfgJ04VGRej5GZ.mt7ZSeiGDp.67JXuxPsAysgw5pNjjgf/zaEd2', 'HOMBRE', '2024-12-27 23:10:02', 'ESTUDIANTE'),
+(14, 'Benja', 'erkerkekeke', '', 'benjacevedo1@gmail.com', '$2y$10$J2rB5pjhAcjsaxPkI1tk8uDbIz48/hDrhpXfUQtROWZU6RkSWRbRy', 'HOMBRE', '2024-12-29 23:54:30', 'DOCENTE'),
+(15, 'Benjamin', 'ROJAS nAVEA', '', 'aa@gmail.com', '$2y$10$g69GwMw2mpRqdc0vzxy3dufg1/VvJbnXZX8zPCBbhh86h39dNrFqW', 'HOMBRE', '2024-12-30 00:24:39', 'ESTUDIANTE'),
+(16, 'Benjamin', 'ROJAS nAVEA', 'Holaaaa', 'k@gmail.com', '$2y$10$//1kzs1/G9U0Rgm3bGgrW.7cXYIVtDDRieme.JEc6clderIhVZk5e', 'HOMBRE', '2024-12-30 00:41:23', 'ESTUDIANTE');
 
 --
 -- Índices para tablas volcadas
@@ -241,12 +251,18 @@ ALTER TABLE `cursos`
   ADD KEY `id_media` (`id_media`);
 
 --
+-- Indices de la tabla `curso_estudiante`
+--
+ALTER TABLE `curso_estudiante`
+  ADD PRIMARY KEY (`id_curso`,`id_estudiante`),
+  ADD KEY `fk_estudiante` (`id_estudiante`);
+
+--
 -- Indices de la tabla `evaluaciones`
 --
 ALTER TABLE `evaluaciones`
   ADD PRIMARY KEY (`id_evaluacion`),
   ADD KEY `id_curso` (`id_curso`);
-
 --
 -- Indices de la tabla `preguntas`
 --
@@ -310,13 +326,13 @@ ALTER TABLE `comentario`
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `evaluaciones`
 --
 ALTER TABLE `evaluaciones`
-  MODIFY `id_evaluacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_evaluacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `preguntas`
@@ -358,7 +374,7 @@ ALTER TABLE `password_resets`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas
@@ -380,11 +396,17 @@ ALTER TABLE `cursos`
   ADD CONSTRAINT `cursos_ibfk_2` FOREIGN KEY (`id_media`) REFERENCES `media` (`id_media`) ON DELETE SET NULL;
 
 --
+-- Filtros para la tabla `curso_estudiante`
+--
+ALTER TABLE `curso_estudiante`
+  ADD CONSTRAINT `fk_curso` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_curso`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_estudiante` FOREIGN KEY (`id_estudiante`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE;
+
+--
 -- Filtros para la tabla `evaluaciones`
 --
 ALTER TABLE `evaluaciones`
   ADD CONSTRAINT `evaluaciones_ibfk_1` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_curso`) ON DELETE CASCADE;
-
 --
 -- Filtros para la tabla `preguntas`
 --

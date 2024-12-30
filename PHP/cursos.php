@@ -1,16 +1,17 @@
 <?php
+require_once 'Modulos/CURSOS/CONTROLADORES/CursosControlador.php';
 
-require_once 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\Modulos\CURSOS\CONTROLADORES\CursosControlador.php';
 $controlador = new CursosControlador();
 $cursos = $controlador->listarCursos();
 
-
 session_start(); // Inicia la sesión
+
+
 $accion = $_GET['accion'] ?? 'agregar';
 $usuario = isset($usuario) ? $usuario : null;
 
-?>
 
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -74,7 +75,7 @@ $usuario = isset($usuario) ? $usuario : null;
                                     </a>
                                     <ul class="dropdown-menu">
                                         <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
-                                            <li><a class="dropdown-item" href="Modulos/DOCENTES/gestionar_curso.php">Gestionar Cursos</a></li>
+                                            <li><a class="dropdown-item" href="docente_dashboard.php">Gestionar Cursos</a></li>
                                         <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
                                             <li><a class="dropdown-item" href="estudiante_dashboard.php">Cursos Inscritos</a></li>
                                         <?php endif; ?>
@@ -101,14 +102,14 @@ $usuario = isset($usuario) ? $usuario : null;
                     </div>
                 </div>
             </div>
-        </nav>
+      </nav>
 
       <!----------------------------------------------------MODAL------------------------------------------------------------------>
       <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Iniciar Sesión</h5>
+                    <a href="cursos.php" class="modal-title" id="staticBackdropLabel">Iniciar Sesión</a>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -125,10 +126,7 @@ $usuario = isset($usuario) ? $usuario : null;
                             <div>
                                 <p>¿No tienes una cuenta? <a href="formulario.php">Regístrate</a></p>
                             </div>
-                            <a type="submit" class="btn w-100" href="cursos.php">Iniciar sesión</a>
-                            <!--
-                            <button type="submit" class="btn w-100" href="cursos.php">Iniciar sesión</button>
-                            -->
+                            <button type="submit" class="btn w-100">Iniciar sesión</button>
                         </form>
                     </div>
                 </div>
@@ -140,36 +138,47 @@ $usuario = isset($usuario) ? $usuario : null;
         </div>
     </div>
 
-    <!--MODAL INFORMACION DE CURSOS -->
-    <div class="modal fade" id="tutoliModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="tutoliModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title" id="tutoliModalLabel">Formulario de Tutoli</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                  <div class="p-4 rounded-3 shadow">
-                      <form action="submit_tutoli.php" method="POST">
-                          <div class="mb-3">
-                              <label for="tutoli" class="form-label">Tutoli</label>
-                              <input type="text" class="form-control" id="tutoli" name="tutoli" required>
-                          </div>
-                          <div class="mb-3">
-                              <label for="descripcion" class="form-label">Descripción</label>
-                              <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
-                          </div>
-                          <button type="submit" class="btn btn-primary w-100">Enviar</button>
-                      </form>
-                  </div>
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              </div>
-          </div>
-      </div>
-  </div>
-
+    <div class="modal fade" id="INFOModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="INFOModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="INFOModalLabel">Información del curso</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Aquí se incluirán los datos dinámicos del curso con PHP -->
+                    <?php
+                        if (isset($_GET['id_curso'])) {
+                            $curso = $_GET['id_curso'];
+                            // Realiza una consulta para obtener el curso con el id especificado
+                            $consulta = "SELECT * FROM cursos WHERE id_curso = ?";
+                            $stmt = $pdo->prepare($consulta);
+                            $stmt->execute([$curso]);
+                            $curso = $stmt->fetch();
+                    ?>
+                        <div class="p-4 rounded-3 shadow">
+                            <div class="row">
+                                <div class="col-12 mb-3">
+                                    <h5 id="modalCursoTitulo"><?= htmlspecialchars($curso['titulo']) ?></h5>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="modalCursoDescripcion" class="form-label">Descripción</label>
+                                    <p id="modalCursoDescripcion"><?= htmlspecialchars($curso['descripcion']) ?></p>
+                                </div>
+                                <div class="col-12 mb-3">
+                                    <label for="modalCursoDuracion" class="form-label">Duración</label>
+                                    <p id="modalCursoDuracion"><?= htmlspecialchars($curso['duracion']) ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!------------------------------CARUSEL-------------------------------------->
     <div class="carusel">
@@ -227,29 +236,20 @@ $usuario = isset($usuario) ? $usuario : null;
                         <a class="nav-link active" href="#" data-target="todos">Todos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-target="ciberseguridad">sql</a>
+                      <a class="nav-link" href="Modulos/CURSOS/VISTAS/ListaCursos.php">Link</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-target="desarrollo-web">html</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-target="ciencia-datos">C#</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-target="ia">python</a>
-                    </li>
-                    <li class="nav-item">
-                      <?php if (isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
-                          <a href="modulos/CURSOS/VISTAS/ListaCursos.php" 
+                        <?php if (isset($_SESSION['tipo_usuario']) && $_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
+                            <a href="Modulos/CURSOS/VISTAS/ListaCursos.php" 
                               id="boton-editar" 
                               class="btn btn-primary d-flex align-items-center">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-up me-2" viewBox="0 0 16 16">
-                                  <path d="M8.5 11.5a.5.5 0 0 1-1 0V7.707L6.354 8.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 7.707z"/>
-                                  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
-                              </svg>
-                              Editar
-                          </a>
-                      <?php endif; ?>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-up me-2" viewBox="0 0 16 16">
+                                    <path d="M8.5 11.5a.5.5 0 0 1-1 0V7.707L6.354 8.854a.5.5 0 1 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 7.707z"/>
+                                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
+                                </svg>
+                                Editar
+                            </a>
+                        <?php endif; ?>
                     </li>
                     <li class="nav-item ms-auto">
                       <div class="d-flex">
@@ -260,135 +260,28 @@ $usuario = isset($usuario) ? $usuario : null;
             </div>
             <div class="card-body">
                 <div class="bloque todos activo">
-                    <!-- Tarjetas de todos los cursos -->
                     <div class="row">
-
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card3.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Introducción Ciberseguridad</h5>
-                                    <p class="card-text">Aprende a identificar, prevenir y mitigar amenazas en el ciberespacio...</p>
-                                </div>
-                                <div class="card-footer">
-                            <!-----------Modal para ver el curso a fondo--------------->
-                                 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card4.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Front-end básico</h5>
-                                    <p class="card-text">Domina las tecnologías modernas para construir sitios web dinámicos...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card5.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ciencia de Datos</h5>
-                                    <p class="card-text">Conviértete en un experto en analizar y visualizar datos...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card6.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Inteligencia artificial</h5>
-                                    <p class="card-text">Sumérgete en el mundo de la IA y aprende a desarrollar modelos inteligentes...</p>
-
-                        <?php foreach($cursos as $row) {?>
+                      <?php foreach($cursos as $row) {?>
                             <div class="col">
                                 <div class="card" style="width: 18rem;">
                                     <?php 
                                     $id = $row['id_curso'];
                                     ?>
-                                    <img src="../imagenes/Cursos_card3.webp" class="card-img-top" alt="...">
                                     <div class="card-body-curso">
                                         <h5 class="card-title"><?php echo $row['titulo']?></h5>
                                         <p class="card-text">Aprende a identificar, prevenir y mitigar amenazas en el ciberespacio...</p>
                                     </div>
                                     <div class="card-footer-curso">
-                                      <!-- Button trigger modal -->
-                                      <!-- Botón para abrir el modal -->
-                                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tutoliModal">
-                                          Abrir Formulario de Tutoli
+                                      <button type="button" class="btn btn-primary" 
+                                              data-bs-toggle="modal" 
+                                              data-bs-target="#INFOModal" 
+                                              data-id="<?= $curso['id_curso'] ?>"> 
+                                          Saber más
                                       </button>
-
                                     </div>
-
                                 </div>
                             </div>
                         <?php } ?>
-                    </div>
-
-                              
-                         
- 
-                </div>
-    
-                <!-- Bloques de cursos filtrados -->
-                <div class="bloque ciberseguridad">
-                    <!-- Aquí solo se mostrarán los cursos de Ciberseguridad -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card3.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Introducción Ciberseguridad</h5>
-                                    <p class="card-text">Aprende a identificar, prevenir y mitigar amenazas en el ciberespacio...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="bloque desarrollo-web">
-                    <!-- Aquí solo se mostrarán los cursos de Desarrollo Web -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card4.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Front-end básico</h5>
-                                    <p class="card-text">Domina las tecnologías modernas para construir sitios web dinámicos...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bloque ciencia-datos">
-                    <!-- Aquí solo se mostrarán los cursos de Ciencia de Datos -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card5.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ciencia de Datos</h5>
-                                    <p class="card-text">Conviértete en un experto en analizar y visualizar datos...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="bloque ia">
-                    <!-- Aquí solo se mostrarán los cursos de Inteligencia Artificial -->
-                    <div class="row">
-                        <div class="col">
-                            <div class="card h-50" style="width: 18rem;">
-                                <img src="../imagenes/Cursos_card6.webp" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title">Inteligencia Artificial</h5>
-                                    <p class="card-text">Sumérgete en el mundo de la IA y aprende a desarrollar modelos inteligentes...</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -422,15 +315,6 @@ $usuario = isset($usuario) ? $usuario : null;
     </article>
 
     <div class="container-fluid dinamico">
-
-      <!--
-      <div class="correo">
-        <h2>Enterate de cursos nuevos</h2>
-        <p>"¡No te pierdas ninguna actualización! Suscríbete con tu correo y sé el primero en descubrir nuestras nuevas
-          ofertas, cursos exclusivos y contenido que transformará tu aprendizaje. 🚀"</p>
-      </div>
-                        -->
-
       <div class="card card-new">
         <div class="content">
 
@@ -438,13 +322,12 @@ $usuario = isset($usuario) ? $usuario : null;
           <div class="hover_content">
             <div class="texto-p">
               <p>¡No te pierdas ninguna actualización! Suscríbete con tu correo y sé el primero en descubrir nuestras nuevas
-              ofertas, cursos exclusivos y contenido que transformará tu aprendizaje.🚀 </p>
+              ofertas, cursos exclusivos y contenido que transformará tu aprendizaje. 🚀</p>
             </div>
 
           </div>
         </div>
       </div>
-
     </div>
 
     <!-------------------------------------Pie de Pagina------------------------------------------------>
@@ -530,17 +413,7 @@ $usuario = isset($usuario) ? $usuario : null;
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"></script>
-    <!-- Script para el buscador -->
-    <script>
-        document.getElementById('searchInput').addEventListener('keyup', function () {
-            const filter = this.value.toLowerCase();
-            const rows = document.querySelectorAll('#userTable tr');
-            rows.forEach(row => {
-                const text = row.textContent.toLowerCase();
-                row.style.display = text.includes(filter) ? '' : 'none';
-            });
-        });
-    </script>
+  
 </body>
 
 </html>

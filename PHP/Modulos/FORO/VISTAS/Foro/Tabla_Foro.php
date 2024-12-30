@@ -15,7 +15,7 @@
                 <thead>
                     <tr>
                         <th>ID Foro</th>
-                        <th>ID Curso</th>
+                        <th>Curso</th>
                         <th>Título</th>
                         <th>Descripción</th>
                         <th>Fecha Creación</th>
@@ -26,8 +26,8 @@
                     <?php foreach ($foros as $foro): ?>
                             <tr>
                                 <td><?= $foro->id_foro ?></td>
-                                <td><?= $foro->id_curso ?></td>
                                 <td><?= $foro->titulo ?></td>
+                                <td><?= $foro->titulo_foro ?></td>
                                 <td><?= $foro->descripcion ?></td>
                                 <td><?= $foro->fecha_creacion ?></td>
                                 <td>
@@ -69,6 +69,8 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
         // Script para manejar el modal de eliminación
         const deleteModal = document.getElementById('deleteModal');
@@ -103,3 +105,4 @@
             });
         });
     </script>
+</div>

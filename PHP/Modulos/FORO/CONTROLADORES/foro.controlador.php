@@ -22,6 +22,13 @@ class ForoControlador{
         require_once "VISTAS/pie.php";
     }
 
+    public function Tabla(){
+        $foros=new Foro();
+        $foros=$this->modelo->Listar();
+        require_once "VISTAS/encabezadotabla.php";
+        require_once "VISTAS/Foro/Tabla_Foro.php";
+    }
+
     //Método para cambiar la vista si tiene id o no
     public function Editar(){
         $titulo = "Agregar";
@@ -30,10 +37,6 @@ class ForoControlador{
         if(isset($_GET['id'])){
             $usuario = $this->modelo->Obtener($_GET['id']);
             $titulo = "Modificar";
-        }else{
-            require_once "../CURSOS2/CONTROLADORES/CursosControlador.php";
-            $controlador = new CursoControlador();
-            $cursos = $controlador->listarCursos();
         }
 
         require_once "VISTAS/encabezado.php";
@@ -45,17 +48,17 @@ class ForoControlador{
     public function Guardar(){
         $foro=new Foro();
         $foro->setid_foro(intval($_POST['id_foro']));
-        $foro->setid_curso($_POST['id_curso']);
         $foro->settitulo($_POST['titulo']);
         $foro->setdescripcion($_POST['descripcion']);
+        $foro->setfecha($_POST['fecha_creacion']);
         $foro->getid_foro() > 0 ? $this->modelo->Actualizar($foro) : $this->modelo->Insertar($foro);
 
-        header("location:?c=foro&css=style-listadocentes.css");
+        header("location:?c=foro&a=Tabla");
     }
 
     public function Borrar(){
         $this->modelo->Eliminar($_GET["id"]);
-        header("location:?c=foro&css=style-listadocentes.css");
+        header("location:?c=foro&a=Tabla");
     }
 }
 

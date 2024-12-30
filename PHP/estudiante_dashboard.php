@@ -29,24 +29,27 @@ $usuario_id = $_SESSION['id_usuario'];
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Estudiante</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/style_form.css">
-    <link rel="stylesheet" href="../CSS/style-index.css">
+    <link rel="stylesheet" href="../CSS/style-dashboard.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
+
+<video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>
+    <!-------------------------Container Principal------------------------------>
+    <div class="container-fluid">
+
+        <!------------------NAV--------------------->
+        <nav class="navbar navbar-expand-lg">
+
                 <a class="navbar-brand ms-3" href="index.php">
                     <img src="../imagenes/logo.svg" alt="logo" height="125">
                 </a>
@@ -88,7 +91,7 @@ $usuario_id = $_SESSION['id_usuario'];
                                         <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
                                             <li><a class="dropdown-item" href="Modulos/ESTUDIANTES/cursos_inscritos.php">Cursos Inscritos</a></li>
                                         <?php endif; ?>
-                                        <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> <!-- Opción para cerrar sesión -->
+                                        <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
                                     </ul>
                                 </li>
                             <?php else: // Si el usuario no está logueado ?>
@@ -113,9 +116,25 @@ $usuario_id = $_SESSION['id_usuario'];
             </div>
         </nav>
 
-    <div class="container mt-5">
-        <h1>Bienvenido al Dashboard, <?= htmlspecialchars($_SESSION['nombres']) ?>!</h1>
-        <p>A continuación, puedes ver los cursos en los que estás inscrito:</p>
+
+        <div class="container mt-5 dashboard-welcome">
+            <h1 class="dashboard-title">¡Bienvenido al Dashboard <?= htmlspecialchars($_SESSION['nombres']) ?>!</h1>
+
+        <form action="Modulos/ESTUDIANTES/RUTAS/actualizar_descripcion.php?" method="POST">
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Inserta una pequeña descripción personal</label>
+                    <textarea class="form-control w-50" id="exampleFormControlTextarea1" rows="3" name="descripcion" ></textarea>
+                <button type="submit" class="btn btn-success">Enviar</button>
+            </div>
+        </form>
+
+        <div class="boton-crear">
+            <a href="cursos.php" class="ui-btn-link">
+                <button class="ui-btn">
+                    <span> Buscar Curso </span>
+                </button>
+            </a>
+        </div>
 
         <table class="table table-striped">
             <thead>

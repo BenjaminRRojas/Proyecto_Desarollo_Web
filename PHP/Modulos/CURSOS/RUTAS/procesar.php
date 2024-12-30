@@ -12,6 +12,7 @@ if ($accion == 'agregar') {
     $fecha_creacion = $_POST['fecha_creacion'];
     $categoria = $_POST['categoria'];
     $descripcion = $_POST['descripcion'];
+    
 
     // Llamar al método para agregar curso
     $controlador->agregarCurso($titulo, $duracion, $fecha_creacion, $categoria, $descripcion);
