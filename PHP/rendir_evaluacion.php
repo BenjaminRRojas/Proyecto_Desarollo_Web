@@ -10,7 +10,7 @@ if (!isset($_SESSION['nombres']) || $_SESSION['tipo_usuario'] != 'ESTUDIANTE') {
     exit();
 }
 
-$usuario_id = $_SESSION['id_usuario']; 
+$id_usuario = $_SESSION['id_usuario']; 
 
 $id_evaluacion = $_GET['id_evaluacion'];
 $controlador = new EvaluacionesControlador();
@@ -93,8 +93,10 @@ $preguntas_respuestas = $controlador->obtenerPreguntasYRespuestas($id_evaluacion
 
         <div class="container my-5 w-50 p-5 rounded-3 shadow-lg">
             <h2 class="text-center fw-bold mb-4"><?= $evaluacion['titulo'] ?></h2>
-            <form action="Modulos/EVALUACIONES/RUTAS/procesar_nota.php?id_evaluacion=<?php echo $id_evaluacion; ?>" method="POST">
+            <form action="Modulos/EVALUACIONES/RUTAS/procesar_nota.php?accion=procesar" method="POST">
                 <input type="hidden" name="accion" value="agregar">
+                <input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>"> <!-- Enviar id_usuario -->
+                <input type="hidden" name="id_evaluacion" value="<?php echo $id_evaluacion; ?>"> <!-- Enviar id_evaluacion -->
                 <div class="mb-5">
                     <!-- Preguntas y respuestas -->
                     <p>Lea las siguientes preguntas y seleccione una opción.</p>
@@ -113,6 +115,7 @@ $preguntas_respuestas = $controlador->obtenerPreguntasYRespuestas($id_evaluacion
                 <button type="submit" class="btn btn-success w-100">Enviar Evaluación</button>
             </form>
         </div>
+
 
         <!-------------------------------------Pie de Pagina------------------------------------------------>
         <footer class="container-fluid footer-docentes py-4">
