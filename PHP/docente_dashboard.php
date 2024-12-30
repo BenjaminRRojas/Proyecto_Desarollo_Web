@@ -109,7 +109,7 @@ try {
                             <?php if (isset($_SESSION['nombres'])): ?>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Bienvenido, <?= htmlspecialchars($_SESSION['nombres']) ?> 
+                                        <?= htmlspecialchars($_SESSION['nombres']) ?> 
                                     </a>
                                     <ul class="dropdown-menu">
                                         <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
@@ -152,8 +152,11 @@ try {
                 <form action="Modulos/DOCENTES/RUTAS/actualizar_descripcion.php?" method="POST">
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Inserta una pequeña descripción personal</label>
-                        <textarea class="form-control w-50" id="exampleFormControlTextarea1" rows="3" name="descripcion"></textarea>
-                        <button type="submit" class="btn btn-success">Enviar</button>
+                        <textarea class="form-control w-50" id="exampleFormControlTextarea1" rows="3" name="descripcion" required></textarea>
+                        <!-- <button type="submit" class="btn btn-success">Enviar</button> -->
+                        <button type="submit" class="buttonpro">
+                            <span> Confirmar </span>
+                        </button>
                     </div>
                 </form>
             
