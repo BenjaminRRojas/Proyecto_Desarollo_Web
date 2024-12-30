@@ -2,8 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 30-12-2024 a las 00:26:50
+
+-- Servidor: 127.0.0.1:3307
+-- Tiempo de generación: 30-12-2024 a las 01:19:20
+
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -173,6 +175,7 @@ CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `nombres` varchar(100) NOT NULL,
   `apellidos` varchar(100) NOT NULL,
+  `descripcion` varchar(500) NOT NULL,
   `correo` varchar(100) NOT NULL,
   `contrasena` varchar(255) NOT NULL,
   `sexo` enum('MUJER','HOMBRE','OTRO') NOT NULL,
@@ -184,23 +187,17 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `nombres`, `apellidos`, `correo`, `contrasena`, `sexo`, `fecha_registro`, `tipo_usuario`) VALUES
-(2, 'aefsaafdsdaffdsa', 'adfsdfsfdafad', 'fadsdfdfasdfadfsasafds', 'adfssasfsdfs', 'HOMBRE', '2024-12-22 17:47:06', 'DOCENTE'),
-(3, 'adafsdfadsafs', 'adfsasdadfsadf', 'adfsasdfadfsadfs', 'adfsadfsfadsadf', 'MUJER', '2024-12-22 17:47:23', 'DOCENTE'),
-(6, 'Benjmain', 'Rojas Navea', 'trollmasterdeloshuevos@gmail.com', '$2y$10$wGFoJ9yKyJMVT29e7RtDluBtK9J61ny3qKOxhsvFhN3PBEEEDklU.', 'HOMBRE', '2024-12-27 06:52:02', 'ESTUDIANTE'),
-(7, 'Kin', 'Alvarado', 'kin.alvarado.m@gmail.com', '$2y$10$4lQTcEdo.RVr5bNPx0.qy.xCNd0NaDOF7reDkvkp7d2wRffTbsCgW', 'HOMBRE', '2024-12-27 07:25:12', 'ADMIN'),
-(9, 'Paulina', 'Rojo', 'paulinafernanda04@gmail.com', '$2y$10$tbEyfn2EpaqAwp4VWl9SOuVr6cy1KVrbnX9M7ms5fBoVRY6qUb1qW', 'MUJER', '2024-12-27 07:30:18', 'ESTUDIANTE'),
-(10, 'dsadas', 'dsadsa', 'dsadsadsa@gmail.com', '$2y$10$9EfgJ04VGRej5GZ.mt7ZSeiGDp.67JXuxPsAysgw5pNjjgf/zaEd2', 'HOMBRE', '2024-12-27 23:10:02', 'ESTUDIANTE'),
-(12, 'Alan', 'Cubillos', 'alanmonardesaraya@gmail.com', '$2y$10$v0l0YhBzQLwNjJdLh/sXlefbpV.9Br.kwxWCv2/4ANCAIWhvCybIW', 'HOMBRE', '2024-12-28 07:06:58', 'ESTUDIANTE'),
-(23, 'jose', 'jose2', 'jose@gmail.com', '$2y$10$gOyaWS.SWIXU/fB9AWovr.K83xnPKtff0BQmsVF6V/rDl2k/wMgY6', 'HOMBRE', '2024-12-29 02:16:13', 'ESTUDIANTE'),
-(24, 'aa', 'ROJAS nAVEA', 'aa@gmail.com', '$2y$10$N4Ec/MFIXRW9AEjunNn3xeEl.yz2kOOHiBBtt1lKUKYo27JF.ZJ66', 'MUJER', '2024-12-29 02:34:43', 'ESTUDIANTE'),
-(25, 'aaa', 'aa', 'aaa@gmail.com', '$2y$10$AQdj8PQuZYr7JzubSdz1DOtdiM5r7htz4ug6LsjGBc6ci7mdZ6g92', 'HOMBRE', '2024-12-29 02:36:18', 'ESTUDIANTE'),
-(27, 'dasdsa', 'dsadsad', 'sdadasd@gmail.com', '$2y$10$RXMiroCgh0Yt2uU0hl6IAe4I5G44iFbiGyxmMHy01ti.8yblSI3AG', 'HOMBRE', '2024-12-29 02:36:45', 'DOCENTE'),
-(28, '11', '11', '11@gmail.com', '$2y$10$xyX4iylcOeJhcmoehBS41exF4QFdGIMFS2PDGEaq1Sqqfvae3UwfC', 'HOMBRE', '2024-12-29 02:37:00', 'DOCENTE'),
-(31, 'abcd', 'abcd', 'abcd@gmail.com', '$2y$10$Mzs9qz2wKzoTB7fn9xgBEutBDhePtdK9bXWeZt7rJ2yeEemdvFhii', 'HOMBRE', '2024-12-29 20:58:00', 'ESTUDIANTE'),
-(32, 'ab', 'ab', 'ab@gmail.com', '$2y$10$VZ2yh7.HIkAD8Uvvu0rfWeWArcUrVvqejTGxyYg/OMPzMVUnERLRC', 'HOMBRE', '2024-12-29 23:06:17', 'DOCENTE'),
-(33, 'AA', 'Alvarado', 'benjaminrojasnavea@gmail.com', '$2y$10$yhZ9hzgZkWPypB4ECpLom.zDHK0aUuSCP1aY0FL6sroyLpR5hVtW2', 'HOMBRE', '2024-12-29 23:08:59', 'ESTUDIANTE'),
-(34, 'Benjamin', 'ROJAS nAVEA', '0@gmail.com', '$2y$10$A/5TTPNwO1UnCDgNyOUgRuetSiLwG.Oqdx.4FFFsVtEMEGADoekl2', 'HOMBRE', '2024-12-29 23:09:27', 'DOCENTE');
+
+INSERT INTO `usuarios` (`id_usuario`, `nombres`, `apellidos`, `descripcion`, `correo`, `contrasena`, `sexo`, `fecha_registro`, `tipo_usuario`) VALUES
+(2, 'aefsaafdsdaffdsa', 'adfsdfsfdafad', '', 'fadsdfdfasdfadfsasafds', 'adfssasfsdfs', 'HOMBRE', '2024-12-22 17:47:06', 'DOCENTE'),
+(3, 'adafsdfadsafs', 'adfsasdadfsadf', '', 'adfsasdfadfsadfs', 'adfsadfsfadsadf', 'MUJER', '2024-12-22 17:47:23', 'DOCENTE'),
+(4, 'Benjamin', 'Rojas Navea', '', 'benjaminrojasnavea@gmail.com', '$2y$10$bpMDl8gRkVbInBXyFROA5OZ.FNl/WVVL0HWggfA/HuoFxItNJGIPK', 'HOMBRE', '2024-12-27 06:48:59', ''),
+(6, 'Benjmain', 'Rojas Navea', '', 'trollmasterdeloshuevos@gmail.com', '$2y$10$wGFoJ9yKyJMVT29e7RtDluBtK9J61ny3qKOxhsvFhN3PBEEEDklU.', 'HOMBRE', '2024-12-27 06:52:02', 'ESTUDIANTE'),
+(7, 'Kin', 'Alvarado', '', 'kin.alvarado.m@gmail.com', '$2y$10$4lQTcEdo.RVr5bNPx0.qy.xCNd0NaDOF7reDkvkp7d2wRffTbsCgW', 'HOMBRE', '2024-12-27 07:25:12', 'ADMIN'),
+(9, 'Paulina', 'Rojo', '', 'paulinafernanda04@gmail.com', '$2y$10$tbEyfn2EpaqAwp4VWl9SOuVr6cy1KVrbnX9M7ms5fBoVRY6qUb1qW', 'MUJER', '2024-12-27 07:30:18', 'ESTUDIANTE'),
+(10, 'dsadas', 'dsadsa', '', 'dsadsadsa@gmail.com', '$2y$10$9EfgJ04VGRej5GZ.mt7ZSeiGDp.67JXuxPsAysgw5pNjjgf/zaEd2', 'HOMBRE', '2024-12-27 23:10:02', 'ESTUDIANTE'),
+(14, 'Benja', 'erkerkekeke', '', 'benjacevedo1@gmail.com', '$2y$10$J2rB5pjhAcjsaxPkI1tk8uDbIz48/hDrhpXfUQtROWZU6RkSWRbRy', 'HOMBRE', '2024-12-29 23:54:30', 'DOCENTE');
+
 
 --
 -- Índices para tablas volcadas
@@ -308,7 +305,8 @@ ALTER TABLE `password_resets`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+
 
 --
 -- Restricciones para tablas volcadas

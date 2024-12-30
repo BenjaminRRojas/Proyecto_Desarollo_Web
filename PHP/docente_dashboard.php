@@ -120,9 +120,33 @@ $usuario_id = $_SESSION['id_usuario'];
                 </div>
             </nav>
 
+            
+            
+
             <div class="container mt-5 dashboard-welcome">
                 <h1 class="dashboard-title">¡Bienvenido al Dashboard <?= htmlspecialchars($_SESSION['nombres']) ?>!</h1>
+
+
+                <form action="">
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Inserta una pequeña descripción personal</label>
+                        <textarea class="form-control w-50" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <button type="submit" class="btn btn-success">Enviar</button>
+                    </div>
+                </form>
+                
+
+
                 <p class="dashboard-description">A continuación, puedes ver los cursos que has creado:</p>
+
+
+                <div class="boton-crear">
+                    <a href="curso_formulario.php" class="ui-btn-link">
+                        <button class="ui-btn">
+                            <span> Crear Curso </span>
+                        </button>
+                    </a>
+                </div>
 
                 <table class="table table-striped">
                     <thead>
