@@ -1,6 +1,25 @@
 <section>
     <div class="container-fluid">
+        <p class="d-inline-flex gap-1">
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                + Agregar Publicación
+            </a>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                <form action="?c=comentario&a=Publicar" method="POST">
+                    <input type="hidden" name="id_foro" value="<?=$this->id_foro?>">
+
+                    <input class="mb-3" type="text" name="titulo" placeholder="Título" required>
+                    <textarea class="form-control mb-3" name="contenido" value="Título" rows="3" required></textarea>
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-success">Enviar respuesta</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <!-- Iteración de los Comentarios -->
+         
         <?php foreach ($comentarios as $comentario):?>
             <?php if (!isset($comentario->id_comentario_responde)): ?>
                 <?php
