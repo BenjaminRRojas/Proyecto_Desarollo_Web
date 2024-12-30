@@ -95,6 +95,7 @@ $preguntas_respuestas = $controlador->obtenerPreguntasYRespuestas($id_evaluacion
             <h2 class="text-center fw-bold mb-4"><?= $evaluacion['titulo'] ?></h2>
             <form action="Modulos/EVALUACIONES/RUTAS/procesar_nota.php?id_evaluacion=<?php echo $id_evaluacion; ?>" method="POST">
                 <input type="hidden" name="accion" value="agregar">
+                <input type="hidden" name="id_usuario" value="<?php echo $usuario_id; ?>"> <!-- Enviar id_usuario -->
                 <div class="mb-5">
                     <!-- Preguntas y respuestas -->
                     <p>Lea las siguientes preguntas y seleccione una opción.</p>
