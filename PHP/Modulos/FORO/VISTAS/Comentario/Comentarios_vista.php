@@ -39,13 +39,15 @@
                         <?php if (isset($respuesta->id_comentario_responde) && $comentario->id_comentario == $respuesta->id_comentario_responde): ?>
                                 <?php
                                     $id_respuesta = htmlspecialchars($respuesta->id_comentario);
+                                    $nombres = htmlspecialchars($respuesta->nombres);
+                                    $apellidos = htmlspecialchars($respuesta->apellidos);
                                     $fecha = htmlspecialchars($respuesta->fecha_comentario);
                                     $contenido = htmlspecialchars($respuesta->contenido); 
                                 ?>
                                 <div class="container-fluid bg-light my-3 p-3 border col-11">
                                     <div class="d-flex justify-content-between">
-                                        <h2>Usuario</h2>
-                                        <h6><?=$fecha?></h6>
+                                        <h2><?=$nombres?> <?= $apellidos?></h2>
+                                        <h6><?=$fecha ?></h6>
                                     </div>
                                     <p><?=$contenido?></p>
                                 </div>
