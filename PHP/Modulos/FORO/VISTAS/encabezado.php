@@ -12,6 +12,7 @@
     <?php if(!empty($css)){
             echo '<link rel="stylesheet" href="' . htmlspecialchars($css) . '">';
         }else{
+            echo '<link rel="stylesheet" href="../../../CSS/style_encabezado.css">';
             echo '<link rel="stylesheet" href="../../../CSS/style_form.css">';
         }
     ?>
@@ -61,6 +62,8 @@
                                                 <li><a class="dropdown-item" href="../../docente_dashboard.php">Gestionar Cursos</a></li>
                                             <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
                                                 <li><a class="dropdown-item" href="../../estudiante_dashboard.php">Cursos Inscritos</a></li>
+                                            <?php elseif ($_SESSION['tipo_usuario'] === 'ADMIN'): ?>
+                                                <li><a class="dropdown-item" href="dashboard.php">Dashboard</a></li>
                                             <?php endif; ?>
                                             <li><a class="dropdown-item text-danger" href="../../Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
                                         </ul>

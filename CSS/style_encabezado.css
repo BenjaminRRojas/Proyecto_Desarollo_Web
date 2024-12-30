@@ -1,65 +1,155 @@
-/* General */
-.container-fluid {
-    margin: 20px auto;
-    max-width: 1200px;
+/* Variables globales */
+:root {
+    --color-bg: #f9f9f9;
+    --color-text: #333;
+    --color-primary: #007bff;
+    --color-primary-hover: #0056b3;
+    --color-success: #28a745;
+    --color-success-hover: #218838;
+    --color-border: #ddd;
+    --color-light-bg: #f8f9fa;
+    --color-muted: #888;
+
+    --font-family: 'Arial', sans-serif;
+
+    --spacing-small: 10px;
+    --spacing-medium: 15px;
+    --spacing-large: 20px;
+
+    --border-radius: 10px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Botones */
 .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: var(--color-primary) !important;
+    border-color: var(--color-primary) !important;
     color: #fff;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #004085;
+    background-color: var(--color-primary-hover) !important;
+    transform: scale(1.05);
 }
 
+.btn-success {
+    background-color: var(--color-success) !important;
+    border-color: var(--color-success) !important;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: var(--color-success-hover) !important;
+    transform: scale(1.05);
+}
+
+.btn-close {
+    border: none;
+    color: var(--color-muted) !important;
+}
+
+.btn-close:hover {
+    color: var(--color-text) !important;
+}
+
+/* Tarjetas y contenedores */
 .card {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    background-color: #fff;
+    border-radius: var(--border-radius) ;
+    box-shadow: var(--box-shadow);
+    padding: var(--spacing-large);
 }
 
-/* Publicación */
-#collapseExample .card-body {
-    padding: 20px;
-    background-color: #f8f9fa;
+.card-body {
+    padding: var(--spacing-medium);
 }
 
 /* Comentarios */
-.comentario-container {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    padding: 15px;
+.bg-light {
+    background-color: var(--color-light-bg) !important;
+    border-radius: var(--border-radius);
 }
 
-.comentario-container h4 {
-    font-size: 18px;
-    font-weight: bold;
+.my-3 {
+    margin-top: var(--spacing-medium) !important;
+    margin-bottom: var(--spacing-medium) !important;
 }
 
-.comentario-container h6 {
-    font-size: 14px;
-    color: #888;
+.p-3 {
+    padding: var(--spacing-medium) !important;
 }
 
-.comentario-container p {
-    margin: 10px 0;
-    font-size: 16px;
-    line-height: 1.5;
+.border {
+    border: 1px solid var(--color-border) !important;
 }
 
 /* Respuestas */
-.respuesta-container {
-    margin-left: 30px;
-    background-color: #f0f8ff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 15px;
+.collapse {
+    margin-top: var(--spacing-small);
 }
 
-.respuesta-container h4 {
-    font-size: 16px;
+.col-11 {
+    margin-left: auto;
+    margin-right: auto;
+    padding: var(--spacing-small);
+    background-color: var(--color-light-bg);
+    border-radius: calc(var(--border-radius) - 2px);
+}
+
+/* Formularios */
+input[type="text"],
+textarea {
+    width: 100%;
+    border: 1px solid var(--color-border);
+    border-radius: calc(var(--border-radius) / 2);
+    padding: var(--spacing-small);
+    font-size: 1rem;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+button[type="submit"] {
+    padding: var(--spacing-small) var(--spacing-medium);
+}
+
+/* Modal */
+.modal-content {
+    border-radius: var(--border-radius);
+}
+
+.modal-header,
+.modal-footer {
+    background-color: var(--color-light-bg);
+    border-color: var(--color-border);
+}
+
+/* Títulos */
+h4, h6 {
+    margin: 0;
+}
+
+h4 {
+    color: var(--color-text);
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+h6 {
+    color: var(--color-muted);
+    font-size: 0.875rem;
+}
+
+/* Espaciado */
+.d-flex {
+    gap: var(--spacing-small);
+}
+
+.text-end {
+    margin-top: var(--spacing-small);
 }

@@ -259,7 +259,7 @@ $usuario = isset($usuario) ? $usuario : null;
                 <?php if (!isset($_SESSION['id_usuario'])): ?>
                   <div class="alert alert-warning" role="alert">
                     <p>Debes iniciar sesión para inscribirte en este curso.</p>
-                    <a href="login.php" class="btn btn-warning">Iniciar sesión</a>
+                    <!--<a href="login.php" class="btn btn-warning">Iniciar sesión</a>-->
                   </div>
                 <?php else: ?>
                   <!-- Formulario de Inscripción -->
