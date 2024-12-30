@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Foro</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <?php if(!empty($css)){
             echo '<link rel="stylesheet" href="' . htmlspecialchars($css) . '">';
         }else{
             echo '<link rel="stylesheet" href="../../../CSS/style_foro.css">';
         }
     ?>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 </head>
 <body>
 <video src="../../../imagenes/fondo.mp4" autoplay preload muted loop></video>

@@ -2,8 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
+
 -- Servidor: 127.0.0.1:3307
 -- Tiempo de generación: 30-12-2024 a las 01:19:20
+
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -66,7 +68,20 @@ CREATE TABLE `cursos` (
 --
 
 INSERT INTO `cursos` (`id_curso`, `titulo`, `duracion`, `fecha_creacion`, `categoria`, `id_usuario`, `id_media`, `descripcion`) VALUES
-(2, 'HTML', 20, '2024-12-22 17:49:23', 'Desarrollo Web', 2, 2, 'FAFSFDSASFDFS');
+(2, 'HTML', 20, '2024-12-22 17:49:23', 'Desarrollo Web', 2, 2, 'FAFSFDSASFDFS'),
+(3, 'Java', 3, '2024-12-29 09:41:00', 'Programacion', NULL, NULL, '');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `curso_estudiante`
+--
+
+CREATE TABLE `curso_estudiante` (
+  `id_curso` int(11) NOT NULL,
+  `id_estudiante` int(11) NOT NULL,
+  `fecha_inscripcion` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -82,6 +97,17 @@ CREATE TABLE `evaluaciones` (
   `fecha_limite` datetime NOT NULL,
   `id_curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `evaluaciones`
+--
+
+INSERT INTO `evaluaciones` (`id_evaluacion`, `titulo`, `descripcion`, `fecha_creacion`, `fecha_limite`, `id_curso`) VALUES
+(1, 'test1', '343', '2024-12-28 03:51:06', '2024-12-14 03:50:00', 2),
+(2, 'test3', 'test3', '2024-12-28 03:54:28', '2024-12-20 07:59:00', 2),
+(3, 'test3', 'test3', '2024-12-28 03:54:39', '2024-12-20 07:59:00', 2),
+(4, 'test4', 'test4', '2024-12-28 03:54:54', '2024-12-28 06:56:00', 2),
+(5, 'test5', 'test5', '2024-12-28 03:56:42', '2025-01-01 06:59:00', 2);
 
 -- --------------------------------------------------------
 
@@ -161,6 +187,7 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
+
 INSERT INTO `usuarios` (`id_usuario`, `nombres`, `apellidos`, `descripcion`, `correo`, `contrasena`, `sexo`, `fecha_registro`, `tipo_usuario`) VALUES
 (2, 'aefsaafdsdaffdsa', 'adfsdfsfdafad', '', 'fadsdfdfasdfadfsasafds', 'adfssasfsdfs', 'HOMBRE', '2024-12-22 17:47:06', 'DOCENTE'),
 (3, 'adafsdfadsafs', 'adfsasdadfsadf', '', 'adfsasdfadfsadfs', 'adfsadfsfadsadf', 'MUJER', '2024-12-22 17:47:23', 'DOCENTE'),
@@ -170,6 +197,7 @@ INSERT INTO `usuarios` (`id_usuario`, `nombres`, `apellidos`, `descripcion`, `co
 (9, 'Paulina', 'Rojo', '', 'paulinafernanda04@gmail.com', '$2y$10$tbEyfn2EpaqAwp4VWl9SOuVr6cy1KVrbnX9M7ms5fBoVRY6qUb1qW', 'MUJER', '2024-12-27 07:30:18', 'ESTUDIANTE'),
 (10, 'dsadas', 'dsadsa', '', 'dsadsadsa@gmail.com', '$2y$10$9EfgJ04VGRej5GZ.mt7ZSeiGDp.67JXuxPsAysgw5pNjjgf/zaEd2', 'HOMBRE', '2024-12-27 23:10:02', 'ESTUDIANTE'),
 (14, 'Benja', 'erkerkekeke', '', 'benjacevedo1@gmail.com', '$2y$10$J2rB5pjhAcjsaxPkI1tk8uDbIz48/hDrhpXfUQtROWZU6RkSWRbRy', 'HOMBRE', '2024-12-29 23:54:30', 'DOCENTE');
+
 
 --
 -- Índices para tablas volcadas
@@ -191,6 +219,13 @@ ALTER TABLE `cursos`
   ADD PRIMARY KEY (`id_curso`),
   ADD KEY `id_usuario` (`id_usuario`),
   ADD KEY `id_media` (`id_media`);
+
+--
+-- Indices de la tabla `curso_estudiante`
+--
+ALTER TABLE `curso_estudiante`
+  ADD PRIMARY KEY (`id_curso`,`id_estudiante`),
+  ADD KEY `fk_estudiante` (`id_estudiante`);
 
 --
 -- Indices de la tabla `evaluaciones`
@@ -240,13 +275,13 @@ ALTER TABLE `comentario`
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `evaluaciones`
 --
 ALTER TABLE `evaluaciones`
-  MODIFY `id_evaluacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_evaluacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `foro`
@@ -270,7 +305,8 @@ ALTER TABLE `password_resets`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
+
 
 --
 -- Restricciones para tablas volcadas
@@ -290,6 +326,13 @@ ALTER TABLE `comentario`
 ALTER TABLE `cursos`
   ADD CONSTRAINT `cursos_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE,
   ADD CONSTRAINT `cursos_ibfk_2` FOREIGN KEY (`id_media`) REFERENCES `media` (`id_media`) ON DELETE SET NULL;
+
+--
+-- Filtros para la tabla `curso_estudiante`
+--
+ALTER TABLE `curso_estudiante`
+  ADD CONSTRAINT `fk_curso` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_curso`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_estudiante` FOREIGN KEY (`id_estudiante`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `evaluaciones`

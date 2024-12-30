@@ -36,9 +36,6 @@ body>video {
 
 
 /*----------------------------------N A V--------------------------------*/
-
-
-
 .navbar-title {
 
     font-size: 50px;
@@ -148,15 +145,12 @@ body>video {
 
 }
 
-
 .offcanvas.offcanvas-end {
     width: var(--offcanvas-width);
     transform: translateX(100%);
     background-color: #000000a2;
     color: white;
 }
-
-
 
 
 .offcanvas-header .btn-close {
@@ -401,55 +395,6 @@ body>video {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-/* .container-texto2 {
-    background-image: linear-gradient(-225deg, #1605ffb2 0%, #27b4c1b8 48%, #45a0ceb9 100%);
-    border-radius: 20px;
-    padding: 35px;
-    margin-block: 55px;
-    transition: transform 0.5s ease, color 0.3s ease;
-}
-
-
-h4 {
-    font-family: 'VT323', monospace;
-}
-
-
-.card {
-    background-color: #06112b !important;
-    transition: transform 0.3s ease-in-out;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    border: 3px solid skyblue;
-    box-shadow: 10px -10px 25px 0 rgba(16, 226, 253, 0.5), -10px 10px 25px 0 rgba(183, 0, 255, 0.794);
-}
-
-.card-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 300px;
-}
-
-.card-image img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-}
- */
-
 /*------------------F O O T E R------------------*/
 
 
@@ -615,4 +560,86 @@ footer .col-md-3>a:hover {
 .iso-pro:hover span:nth-child(3) {
     opacity: 0.6;
     transform: translate(10px, -10px);
+}
+
+
+/*------------------------M O D A L----------------------------*/
+
+.modal-content {
+    background: rgba(4, 10, 21, 0.9) !important; 
+    border-radius: 15px;
+    color: #e0e0e0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+/* Título del modal */
+.modal-title {
+    font-family: 'VT323', monospace;
+    font-size: 28px;
+    color: rgb(17, 221, 215);
+    text-shadow: 0 0 8px rgba(17, 221, 215, 0.8);
+}
+
+/* Cuerpo del modal */
+.modal-body {
+    background: rgb(11, 18, 29) !important; 
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.modal-body a {
+    color: #17e2f1;
+}
+
+.modal-body .form-label {
+    color: #a0a0a0;
+    font-weight: bold;
+}
+
+.modal-body .form-control {
+    background: rgb(30, 33, 40);
+    border: 1px solid rgba(60, 180, 180, 0.5); 
+    color: #0f0b0b; 
+    border-radius: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.modal-body .form-control:focus {
+    border-color: rgb(17, 221, 215);
+    box-shadow: 0 0 12px rgba(17, 221, 215, 0.6);
+}
+
+
+.modal-body .btn {
+    background: linear-gradient(90deg, #0acffe 0%, #0c88a1 100%);
+    border: none;
+    font-family: 'IBM Plex Mono', monospace;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-body .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(3, 185, 165, 0.8);
+}
+
+/* Footer del modal */
+.modal-footer {
+    background: rgba(4, 10, 21, 1); 
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0 0 15px 15px;
+}
+
+.modal-footer .btn {
+    background: linear-gradient(90deg, #0acffe 0%, #0c88a1 100%);
+    border: none;
+    font-family: 'IBM Plex Mono', monospace;
+    color: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-footer .btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(3, 185, 165, 0.8);
 }

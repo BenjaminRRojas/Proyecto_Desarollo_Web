@@ -1,3 +1,14 @@
+<?php
+session_start(); // Inicia la sesión
+
+
+$accion = $_GET['accion'] ?? 'agregar';
+$usuario = isset($usuario) ? $usuario : null;
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,10 +16,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Infinity Code</title>
+    <link rel="stylesheet" href="../CSS/style-index.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="../CSS/style-index.css">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -16,11 +27,7 @@
 
 <body>
 
-
-
     <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>
-
-
 
     <!-------------------------Container Principal------------------------------>
 
@@ -30,11 +37,9 @@
         <!------------------------------NAV-------------------------------------->
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-
-                <a class="navbar-brand ms-3" href="index.html">
+                <a class="navbar-brand ms-3" href="index.php">
                     <img src="../imagenes/logo.svg" alt="logo" height="125">
                 </a>
-
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
@@ -44,7 +49,6 @@
                 <div class="d-none d-lg-block text-center ms-5">
                     <h1 class="navbar-title">Aprende a programar desde cero hasta el infinito</h1>
                 </div>
-
 
                 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">
@@ -57,24 +61,42 @@
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                                <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="cursos.php">Cursos</a>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle active" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">Perfil</a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <button type="button" class="dropdown-item btn btn-primary w-100 text-start"
-                                            data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                            Iniciar Sesión
-                                        </button>
-                                    </li>
-                                    <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
-                                </ul>
-                            </li>
+
+                            <?php if (isset($_SESSION['nombres'])): ?>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Bienvenido, <?= htmlspecialchars($_SESSION['nombres']) ?> 
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
+                                            <li><a class="dropdown-item" href="docente_dashboard.php">Gestionar Cursos</a></li>
+                                        <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
+                                            <li><a class="dropdown-item" href="estudiante_dashboard.php">Cursos Inscritos</a></li>
+                                        <?php endif; ?>
+                                        <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
+                                    </ul>
+                                </li>
+                            <?php else:?>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Perfil
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <button type="button" class="dropdown-item btn btn-primary w-100 text-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                Iniciar Sesión
+                                            </button>
+                                        </li>
+                                        <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
+                                    </ul>
+                                </li>
+                            <?php endif; ?>
+
                         </ul>
                     </div>
                 </div>
@@ -84,14 +106,9 @@
 
         <!------------------------------------BANNER------------------------------------------------>
 
-
         <div class="banner">
             <img src="../imagenes/banner.webp" alt="Banner" class="img-fluid">
         </div>
-
-
-
-
 
         <!-------------------------------------TEXTO------------------------------------------------>
 
@@ -223,7 +240,7 @@
         </div>
 
 
-        <!----------------------------------------------------MODAL------------------------------------------------------------------->
+        <!----------------------------------------------MODAL-------------------------------------------------------->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -258,10 +275,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
 
         <!-------------------------------------Pie de Pagina------------------------------------------------>
         <footer class="container-fluid footer-docentes py-4">
@@ -332,8 +345,6 @@
                         </ul>
                     </div>
                 </div>
-
-
             </div>
 
             <div class="text-center mt-4">
@@ -349,7 +360,6 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="../JS/docentes.js"></script>
-
 
 </body>
 
