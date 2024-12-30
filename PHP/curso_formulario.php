@@ -113,10 +113,6 @@ $curso = isset($curso) ? $curso : null;
                     <input type="text" class="form-control" id="duracion" name="duracion" value="<?= htmlspecialchars($curso['duracion'] ?? '') ?>" required>
                 </div>
                 <div class="mb-3">
-                    <label for="fecha_creacion" class="form-label">Fecha de creacion</label>
-                    <input type="date" class="form-control" id="fecha_creacion" name="fecha_creacion" value="<?= htmlspecialchars($curso['fecha_creacion'] ?? '') ?>" required>
-                </div>
-                <div class="mb-3">
                     <label for="categoria" class="form-label">Categoria</label>
                     <input type="text" class="form-control" id="categoria" name="categoria" required>
                 </div>

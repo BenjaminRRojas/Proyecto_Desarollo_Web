@@ -37,5 +37,9 @@ class CursosControlador {
     public function eliminarCurso($id){
         return $this->modelo->eliminar($id);
     }
+    // Inscribir alumno
+    public function Inscribir($id, $id_usuario ,$fecha_inscripcion){
+        return $this->modelo->inscribir($id, $id_usuario ,$fecha_inscripcion);
+    }
 }
 ?>

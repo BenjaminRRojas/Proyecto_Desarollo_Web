@@ -209,7 +209,7 @@ $usuario = isset($usuario) ? $usuario : null;
                 <div class="card-info card" style="width: 18rem;">
                   <div class="card-body-curso">
                     <h5 class="card-title"><?= htmlspecialchars($row['titulo']) ?></h5>
-                    <p class="card-text"><?= htmlspecialchars($row['descripcion']) ?></p>
+                    <p class="card-text"><?= htmlspecialchars($row['categoria']) ?></p>
                   </div>
                   <div class="card-footer-curso">
                     <!-- Botón para abrir el modal -->
@@ -259,9 +259,14 @@ $usuario = isset($usuario) ? $usuario : null;
                   </div>
                 <?php else: ?>
                   <!-- Formulario de Inscripción -->
-                  <form method="POST" action="inscripcion.php">
+                  <form method="POST" action="Modulos/CURSOS/RUTAS/inscripcion.php">
                     <input type="hidden" name="id_curso" value="<?= $row['id_curso'] ?>">
-                    <input type="hidden" name="id_usuario" value="<?= $_SESSION['id_usuario'] ?>"> <!-- Usar id_usuario en lugar de id_alumno -->
+                    <input type="hidden" name="id_usuario" value="<?= $_SESSION['id_usuario'] ?>"> 
+                    <input type="hidden" name="fecha_inscripcion" value="<?= date('Y-m-d H:i:s') ?>"> <!-- O lo que corresponda -->
+                    <?= $row['id_curso'] ?>
+                    <?= $_SESSION['id_usuario'] ?>
+                    <?= date('Y-m-d H:i:s') ?>
+                    <!-- Usar id_usuario en lugar de id_alumno -->
                     <div class="form-group">
                       <label for="confirmarInscripcion" class="form-label">¿Deseas inscribirte en este curso?</label>
                     </div>
