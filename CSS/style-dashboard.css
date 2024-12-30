@@ -265,12 +265,6 @@ body>video {
 
 /*--boton crear--*/
 
-/* .boton-crear>button {
-    justify-content: center;
-    align-content: center;
-} */
-
-
 
 .ui-btn {
     --btn-default-bg: #010314;
@@ -451,6 +445,103 @@ body>video {
         right: 0;
     }
 }
+
+
+/*--Text Area--*/
+
+
+:root {
+    --margin-bottom: 2rem;
+    --label-font-size: 1.2rem;
+    --label-color: #fffefe;
+    --label-font-weight: bold;
+    --label-margin-bottom: 0.5rem;
+    --textarea-padding: 0.75rem;
+    --textarea-border: 1px solid #000000;
+    --textarea-border-radius: 0.375rem;
+    --textarea-font-size: 1rem;
+    --textarea-color: #495057;
+    --textarea-bg-color: #1918188e;
+    --textarea-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    --textarea-focus-border-color: #80bdff;
+    --textarea-focus-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    --btn-bg-color: #28a745;
+    --btn-border-color: #28a745;
+    --btn-color: #fff;
+    --btn-font-size: 1rem;
+    --btn-font-weight: bold;
+    --btn-padding: 0.5rem 1rem;
+    --btn-border-radius: 0.375rem;
+    --btn-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    --btn-hover-bg-color: #218838;
+    --btn-hover-border-color: #1e7e34;
+    --btn-focus-box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+    --input-bg-color: #f8f9fa;
+    --input-text-color: #333;
+    --input-border: 1px solid #ced4da;
+    --input-padding: 10px;
+    --input-placeholder-color: #6c757d;
+    --d-none-display: none !important;
+}
+
+/* Estilos para el contenedor */
+.mb-3 {
+    margin-bottom: var(--margin-bottom);
+}
+
+/* Estilos para la etiqueta */
+.form-label {
+    font-size: var(--label-font-size);
+    color: var(--label-color);
+    font-weight: var(--label-font-weight);
+    margin-bottom: var(--label-margin-bottom);
+    display: block;
+}
+
+/* Estilos para el textarea */
+.form-control {
+    width: 100%;
+    padding: var(--textarea-padding);
+    border: var(--textarea-border);
+    border-radius: var(--textarea-border-radius);
+    font-size: var(--textarea-font-size);
+    color: var(--textarea-color);
+    background-color: var(--textarea-bg-color);
+    transition: var(--textarea-transition);
+    background-color: #000000;
+}
+
+.form-control:focus {
+    color: var(--textarea-color);
+    background-color: var(--textarea-bg-color);
+    border-color: var(--textarea-focus-border-color);
+    outline: 0;
+    box-shadow: var(--textarea-focus-box-shadow);
+}
+
+/* Estilos para el botón */
+.btn-success {
+    background-color: var(--btn-bg-color);
+    border-color: var(--btn-border-color);
+    color: var(--btn-color);
+    font-size: var(--btn-font-size);
+    font-weight: var(--btn-font-weight);
+    padding: var(--btn-padding);
+    border-radius: var(--btn-border-radius);
+    transition: var(--btn-transition);
+    display: block;
+    margin: 1rem auto 0;
+}
+
+.btn-success:hover {
+    background-color: var(--btn-hover-bg-color);
+    border-color: var(--btn-hover-border-color);
+}
+
+.btn-success:focus {
+    box-shadow: var(--btn-focus-box-shadow);
+}
+
 
 
 .dashboard-welcome {
