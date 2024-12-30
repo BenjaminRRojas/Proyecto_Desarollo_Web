@@ -10,20 +10,42 @@ if (!isset($_SESSION['nombres']) || $_SESSION['tipo_usuario'] != 'ESTUDIANTE') {
 
 $usuario_id = $_SESSION['id_usuario']; 
 
-// Conectar a la base de datos y obtener los cursos del estudiante
-/*try {
+//Conecta a la db
+try {
     $pdo = Database::getConnection();
     // Consulta para obtener los cursos inscritos
-    $stmt = $pdo->prepare("SELECT c.id_curso, c.titulo, c.duracion, c.categoria, c.descripcion, e.promedio
-                           FROM cursos c
-                           INNER JOIN evaluaciones e ON c.id_curso = e.id_curso
-                           WHERE e.id_usuario = :id_usuario");
-    $stmt->bindParam(':id_usuario', $usuario_id);
+    $stmt = $pdo->prepare("
+        SELECT 
+            c.id_curso,
+            c.titulo AS curso_titulo,
+            c.categoria,
+            c.duracion,
+            c.descripcion,
+            f.titulo AS foro_titulo,
+            AVG(r.nota) AS promedio,
+            GROUP_CONCAT(DISTINCT ev.titulo SEPARATOR ', ') AS evaluaciones
+            FROM 
+            cursos c
+            JOIN 
+            curso_estudiante ce ON c.id_curso = ce.id_curso
+            LEFT JOIN 
+            foro f ON c.id_curso = f.id_curso
+            LEFT JOIN 
+            evaluaciones ev ON c.id_curso = ev.id_curso
+            LEFT JOIN 
+            resultados r ON r.id_evaluacion = ev.id_evaluacion AND r.id_estudiante = ce.id_estudiante
+            WHERE 
+            ce.id_estudiante = :id_usuario
+            GROUP BY 
+            c.id_curso
+            ORDER BY 
+            c.titulo ASC");
+    $stmt->bindParam(':id_usuario', $usuario_id, PDO::PARAM_INT);
     $stmt->execute();
     $cursos_inscritos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     die("Error: " . $e->getMessage());
-}*/
+}
 ?>
 
 <!DOCTYPE html>
@@ -143,6 +165,8 @@ $usuario_id = $_SESSION['id_usuario'];
                     <th>Categoría</th>
                     <th>Duración (horas)</th>
                     <th>Promedio</th>
+                    <th>Foro Asociado</th>
+                    <th>Evaluaciones</th>
                     <th>Descripción</th>
                 </tr>
             </thead>
@@ -150,16 +174,18 @@ $usuario_id = $_SESSION['id_usuario'];
                 <?php if (count($cursos_inscritos) > 0): ?>
                     <?php foreach ($cursos_inscritos as $curso): ?>
                         <tr>
-                            <td><?= htmlspecialchars($curso['titulo']) ?></td>
+                            <td><?= htmlspecialchars($curso['curso_titulo']) ?></td>
                             <td><?= htmlspecialchars($curso['categoria']) ?></td>
                             <td><?= htmlspecialchars($curso['duracion']) ?></td>
-                            <td><?= htmlspecialchars($curso['promedio']) ?></td>
+                            <td><?= htmlspecialchars(round($curso['promedio'], 2) ?? 'N/A') ?></td>
+                            <td><?= htmlspecialchars($curso['foro_titulo'] ?? 'No disponible') ?></td>
+                            <td><?= htmlspecialchars($curso['evaluaciones'] ?? 'Ninguna') ?></td>
                             <td><?= htmlspecialchars($curso['descripcion']) ?></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="6">No tienes cursos inscritos actualmente.</td>
+                        <td colspan="7">No tienes cursos inscritos actualmente.</td>
                     </tr>
                 <?php endif; ?>
             </tbody>
