@@ -18,9 +18,24 @@ class EvaluacionesControlador{
         include 'C:\xampp\htdocs\Proyecto_Desarollo_Web\PHP\formulario-evaluaciones.php';
     }
 
-    // Agregar una nueva evaluación
-    public function agregarEvaluacion($titulo, $descripcion, $fecha_limite, $id_curso) {
-        return $this->modelo->insertar($titulo, $descripcion, $fecha_limite, $id_curso);
+    // Agregar una nueva evaluación, junto con sus preguntas y respuestas
+    public function agregarEvaluacion($titulo, $descripcion, $fecha_limite, $id_curso, $preguntas) {
+        $id_evaluacion = $this->modelo->insertar($titulo, $descripcion, $fecha_limite, $id_curso);
+        
+        if ($id_evaluacion) {
+            // Insertar las preguntas y respuestas asociadas a la evaluación
+            foreach ($preguntas as $pregunta) {
+                // Insertar la pregunta
+                $id_pregunta = $this->modelo->insertarPregunta($pregunta['enunciado'], $id_evaluacion);
+                
+                // Insertar las respuestas de la pregunta
+                foreach ($pregunta['respuestas'] as $respuesta) {
+                    $this->modelo->insertarRespuesta($respuesta['texto_respuesta'], $respuesta['es_correcta'], $id_pregunta);
+                }
+            }
+            return true; 
+        }
+        return false;
     }
 
     // Mostrar los detalles de la evaluación
