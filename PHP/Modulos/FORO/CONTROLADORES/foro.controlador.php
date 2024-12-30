@@ -31,12 +31,13 @@ class ForoControlador{
 
     //Método para cambiar la vista si tiene id o no
     public function Editar(){
-        $titulo = "Agregar";
+        $titulo="Agregar";
         $css="../../../CSS/style_form.css";
-        $usuario = new Foro();
-        if(isset($_GET['id'])){
-            $usuario = $this->modelo->Obtener($_GET['id']);
-            $titulo = "Modificar";
+        $cursos=$this->modelo->ListarCursos(); 
+        $usuario=new Foro();
+        if(isset($_GET['id_foro'])){
+            $usuario=$this->modelo->Obtener($_GET['id_foro']);
+            $titulo="Modificar";
         }
 
         require_once "VISTAS/encabezado.php";
@@ -48,6 +49,7 @@ class ForoControlador{
     public function Guardar(){
         $foro=new Foro();
         $foro->setid_foro(intval($_POST['id_foro']));
+        $foro->setid_curso($_POST['id_curso']);
         $foro->settitulo($_POST['titulo']);
         $foro->setdescripcion($_POST['descripcion']);
         $foro->setfecha($_POST['fecha_creacion']);

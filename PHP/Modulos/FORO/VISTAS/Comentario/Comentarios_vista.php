@@ -17,9 +17,11 @@
                         <h6><?=$fecha?></h6>
                     </div>
                     <p><?=$contenido?></p>
-                    <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRespuesta<?=$id_comentario?>" aria-expanded="false" aria-controls="collapseRespuesta<?=$id_comentario?>">
-                        Responder
-                    </button>
+                    <div class="text-end me-2">
+                        <button class="btn btn-primary btn-sm text-end" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRespuesta<?=$id_comentario?>" aria-expanded="false" aria-controls="collapseRespuesta<?=$id_comentario?>">
+                            Responder
+                        </button>
+                    </div>
                     <!--Collapse Respuesta-->
                     <div class="collapse mt-3" id="collapseRespuesta<?=$id_comentario?>">
                         <form class="card card-body" action="?c=comentario&a=Responder" method="POST">
@@ -28,7 +30,7 @@
                             
                             <textarea class="form-control mb-3" id="respuesta<?=$id_comentario?>" name="contenido" rows="3" required></textarea>
                             <div class="text-end">
-                                <button type="submit" class="btn btn-success col-6">Enviar respuesta</button>
+                                <button type="submit" class="btn btn-success">Enviar respuesta</button>
                             </div>
                         </form>
                     </div>
