@@ -22,9 +22,9 @@ class CursosModelo {
     }
 
     // Insertar un nuevo curso
-    public function insertar($titulo, $duracion,$fecha_creacion, $categoria , $descripcion){
-        $query = $this->db->prepare("INSERT INTO cursos (titulo,duracion,fecha_creacion,categoria,descripcion) VALUES (?,?,?,?,?)");
-        return $query->execute([$titulo, $duracion,$fecha_creacion, $categoria , $descripcion]);
+    public function insertar($titulo, $duracion,$fecha_creacion, $categoria , $id_profesor , $descripcion){
+        $query = $this->db->prepare("INSERT INTO cursos (titulo,duracion,fecha_creacion,categoria,id_usuario,descripcion) VALUES (?,?,?,?,?,?)");
+        return $query->execute([$titulo, $duracion,$fecha_creacion, $categoria , $id_profesor , $descripcion]);
     }
 
     // Actualizar un curso

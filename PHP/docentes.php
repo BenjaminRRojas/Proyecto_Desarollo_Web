@@ -157,6 +157,7 @@ session_start(); // Inicia la sesión
                     <div class="card__content">
                         <div class="swiper-wrapper">
                             <?php foreach ($docentes as $docente): ?>
+                                <?php if($docente['tipo_usuario'] == 'DOCENTE'): ?>
                                 <article class="card__article swiper-slide">
                                     <div class="card__image">
                                         <img src="../imagenes/docentepython.webp" alt="docentepython" class="card__img">
@@ -168,97 +169,7 @@ session_start(); // Inicia la sesión
                                         <p class="card__description"><?php echo htmlspecialchars($docente['descripcion']); ?></p>
                                     </div>
                                 </article>
-                            
-                                <!-- <article class="card__article swiper-slide">
-                                    <div class="card__image">
-                                        <img src="../imagenes/docentehtml.webp" alt="docentehtml" class="card__img">
-                                        <div class="card__shadow"></div>
-                                    </div>
-
-                                    <div class="card__data">
-                                        <h3 class="card__name">Prof. Alejandro Torres Guzmán</h3>
-                                        <p class="card__description">El Prof. Alejandro Torres Guzmán es un docente con
-                                            amplia experiencia en el diseño y desarrollo de interfaces web. Especializado en
-                                            HTML5, CSS3 y JavaScript, ha dedicado más de 10 años a formar futuros
-                                            desarrolladores en el ámbito del frontend.</p>
-                                    </div>
-                                </article> -->
-
-                                <!-- <article class="card__article swiper-slide">
-                                    <div class="card__image">
-                                        <img src="../imagenes/docentephp.webp" alt="docentephp" class="card__img">
-                                        <div class="card__shadow"></div>
-                                    </div>
-
-                                    <div class="card__data">
-                                        <h3 class="card__name">Ing. Javier Molina Ríos</h3>
-                                        <p class="card__description">El Ing. Javier Molina Ríos es un docente con más de 12
-                                            años de experiencia en el desarrollo de aplicaciones web robustas utilizando
-                                            PHP, MySQL y frameworks modernos como Laravel y Symfony. Es ingeniero en
-                                            Sistemas con una maestría en Desarrollo de Software Empresarial.</p>
-                                    </div>
-                                </article> -->
-
-                                <!-- <article class="card__article swiper-slide">
-                                    <div class="card__image">
-                                        <img src="../imagenes/docentejavascript.webp" alt="docentejavascript"
-                                            class="card__img">
-                                        <div class="card__shadow"></div>
-                                    </div>
-
-                                    <div class="card__data">
-                                        <h3 class="card__name">Prof. Marcos Herrera Alarcón</h3>
-                                        <p class="card__description">El Prof. Marcos Herrera Alarcón es un docente con más
-                                            de 10 años de experiencia en desarrollo web, especializado en JavaScript, React,
-                                            Angular y Node.js. Es graduado en Ingeniería en Computación.</p>
-                                    </div>
-                                </article> -->
-
-                                <!-- <article class="card__article swiper-slide">
-                                    <div class="card__image">
-                                        <img src="../imagenes/docentecss.webp" alt="docentecss" class="card__img">
-                                        <div class="card__shadow"></div>
-                                    </div>
-
-                                    <div class="card__data">
-                                        <h3 class="card__name">Prof. Daniela López García</h3>
-                                        <p class="card__description">La Prof. Daniela López García es una docente destacada
-                                            en el campo del diseño web, con más de 8 años de experiencia en el uso avanzado
-                                            de CSS, incluyendo técnicas de diseño responsivo, animaciones, y frameworks como
-                                            Bootstrap y Tailwind CSS.</p>
-                                    </div>
-                                </article> -->
-
-                                <!-- <article class="card__article swiper-slide">
-                                    <div class="card__image">
-                                        <img src="../imagenes/docentec++.webp" alt="docentec" class="card__img">
-                                        <div class="card__shadow"></div>
-                                    </div>
-
-                                    <div class="card__data">
-                                        <h3 class="card__name">Dr. Luis Fernández Ruiz</h3>
-                                        <p class="card__description">El Dr. Luis Fernández Ruiz es un docente con más de 15
-                                            años de experiencia en desarrollo de software, especializado en programación
-                                            avanzada con C++. Es doctor en Ciencias de la Computación por la Universidad
-                                            Tecnológica del Sur y cuenta con certificaciones en diseño de sistemas embebidos
-                                            y optimización de algoritmos.</p>
-                                    </div>
-                                </article> -->
-
-                                <!-- <article class="card__article swiper-slide">
-                                    <div class="card__image">
-                                        <img src="../imagenes/MySql.webp" alt="MySql" class="card__img">
-                                        <div class="card__shadow"></div>
-                                    </div>
-
-                                    <div class="card__data">
-                                        <h3 class="card__name">Ing. Valeria Martínez Fuentes</h3>
-                                        <p class="card__description">La Ing. Valeria Martínez Fuentes es una docente con más
-                                            de 10 años de experiencia en diseño, optimización y administración de bases de
-                                            datos, especializada en MySQL. Graduada en Ingeniería en Sistemas de la
-                                            Información y con una maestría en Gestión de Datos.</p>
-                                    </div>
-                                </article> -->
+                                <?php endif; ?>
                             <?php endforeach; ?>
                         </div>
                     </div>

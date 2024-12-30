@@ -49,7 +49,8 @@ class UsuariosModelo {
 
 
     public function obtenerInformacion() {
-        $query = $this->db->prepare("SELECT nombres, descripcion FROM usuarios");
+        $query = $this->db->prepare("SELECT nombres, descripcion,tipo_usuario FROM usuarios");
+        $query->execute(); 
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
 }

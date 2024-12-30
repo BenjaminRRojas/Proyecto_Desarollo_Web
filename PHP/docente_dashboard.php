@@ -2,7 +2,7 @@
 session_start();
 require_once 'Modulos/CORE/conexion.php'; 
 
-// Verificar si el usuario está logueado y es un estudiante
+// Verificar si el usuario está logueado y es un docente
 if (!isset($_SESSION['nombres']) || $_SESSION['tipo_usuario'] != 'DOCENTE') {
     header("Location: formulario.php"); 
     exit();
@@ -10,20 +10,33 @@ if (!isset($_SESSION['nombres']) || $_SESSION['tipo_usuario'] != 'DOCENTE') {
 
 $usuario_id = $_SESSION['id_usuario']; 
 
-// Conectar a la base de datos y obtener los cursos del estudiante
-// try {
-//     $pdo = Database::getConnection();
+
+// Conectar a la base de datos y obtener los cursos del docente con la cantidad de estudiantes inscritos
+try {
+    $pdo = Database::getConnection();
+
     
-//     $stmt = $pdo->prepare("SELECT c.id_curso, c.titulo, c.duracion, c.categoria, c.descripcion, e.promedio
-//                            FROM cursos c
-//                            INNER JOIN evaluaciones e ON c.id_curso = e.id_curso
-//                            WHERE e.id_usuario = :id_usuario");
-//     $stmt->bindParam(':id_usuario', $usuario_id);
-//     $stmt->execute();
-//     $cursos_inscritos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-// } catch (PDOException $e) {
-//     die("Error: " . $e->getMessage());
-// }
+    $stmt = $pdo->prepare("SELECT 
+                               c.id_curso, 
+                               c.titulo, 
+                               c.duracion, 
+                               c.categoria, 
+                               c.descripcion, 
+                               COUNT(ce.id_estudiante) AS cantidad_estudiantes
+                           FROM 
+                               cursos c
+                           LEFT JOIN 
+                               curso_estudiante ce ON c.id_curso = ce.id_curso
+                           WHERE 
+                               c.id_usuario = :id_usuario
+                           GROUP BY 
+                               c.id_curso");
+    $stmt->bindParam(':id_usuario', $usuario_id);
+    $stmt->execute();
+    $cursos_inscritos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    die("Error: " . $e->getMessage());
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,14 +44,13 @@ $usuario_id = $_SESSION['id_usuario'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Estudiante</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Docente</title>
     <link rel="stylesheet" href="../CSS/style-dashboard.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -58,12 +70,10 @@ $usuario_id = $_SESSION['id_usuario'];
     <?php endif; ?>
     <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>
 
-    <!-------------------------Container Principal------------------------------>
 
+    <!-------------------------Container Principal------------------------------>
     <div class="container-fluid">
 
-
-        <!------------------NAV--------------------->
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand ms-3" href="index.php">
@@ -148,53 +158,51 @@ $usuario_id = $_SESSION['id_usuario'];
                 </form>
             
 
-                <p class="dashboard-description">A continuación, puedes ver los cursos que has creado:</p>
 
+            <p class="dashboard-description">A continuación, puedes ver los cursos que has creado:</p>
 
-                <div class="boton-crear">
-                    <a href="curso_formulario.php" class="ui-btn-link">
-                        <button class="ui-btn">
-                            <span> Crear Curso </span>
-                        </button>
-                    </a>
-                </div>
-
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Título del Curso</th>
-                            <th>Categoría</th>
-                            <th>Duración (horas)</th>
-                            <th>Promedio</th>
-                            <th>Descripción</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if (count($cursos_inscritos) > 0): ?>
-                            <?php foreach ($cursos_inscritos as $curso): ?>
-                                <tr>
-                                    <td><?= htmlspecialchars($curso['titulo']) ?></td>
-                                    <td><?= htmlspecialchars($curso['categoria']) ?></td>
-                                    <td><?= htmlspecialchars($curso['duracion']) ?></td>
-                                    <td><?= htmlspecialchars($curso['promedio']) ?></td>
-                                    <td><?= htmlspecialchars($curso['descripcion']) ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php else: ?>
-                            <tr>
-                                <td colspan="6">No tienes cursos creados actualmente.</td>
-                            </tr>
-                        <?php endif; ?>
-                    </tbody>
-                </table>
+            <div class="boton-crear">
+                <a href="curso_formulario.php" class="ui-btn-link">
+                    <button class="ui-btn">
+                        <span> Crear Curso </span>
+                    </button>
+                </a>
             </div>
-        </div>  
-        
-        
 
-    </div>      
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Título del Curso</th>
+                        <th>Categoría</th>
+                        <th>Duración (horas)</th>
+                        <th>Cantidad de Estudiantes</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (count($cursos_inscritos) > 0): ?>
+                        <?php foreach ($cursos_inscritos as $curso): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($curso['titulo']) ?></td>
+                                <td><?= htmlspecialchars($curso['categoria']) ?></td>
+                                <td><?= htmlspecialchars($curso['duracion']) ?></td>
+                                <td><?= htmlspecialchars($curso['cantidad_estudiantes']) ?></td>
+                                <td><?= htmlspecialchars($curso['descripcion']) ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="5">No tienes cursos creados actualmente.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
+
 </body>
 </html>

@@ -19,8 +19,8 @@ class CursosControlador {
     }
 
     // Agregar un nuevo curso
-    public function agregarCurso($titulo, $duracion,$fecha_creacion, $categoria, $descripcion){
-        return $this->modelo->insertar($titulo, $duracion,$fecha_creacion, $categoria, $descripcion);
+    public function agregarCurso($titulo, $duracion,$fecha_creacion, $categoria,$id_profesor, $descripcion){
+        return $this->modelo->insertar($titulo, $duracion,$fecha_creacion, $categoria,$id_profesor, $descripcion);
     }
 
     // Mostrar los detalles del curso
