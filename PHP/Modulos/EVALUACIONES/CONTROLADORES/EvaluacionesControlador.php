@@ -80,6 +80,14 @@ class EvaluacionesControlador{
 
     // Procesar respuestas de una evaluación
     public function procesarEvaluacion($id_usuario, $id_evaluacion, $respuestas_seleccionadas) {
+        
+        if ($this->modelo->verificarEvaluacionRendida($id_usuario, $id_evaluacion)) {
+            echo '<script type="text/javascript">
+            alert("Ya has rendido esta evaluación.");
+            window.location.href = "../../../estudiante_dashboard.php";
+          </script>';
+            exit();
+        }
         $contador_respuestas_correctas = 0;
 
         // Iterar sobre las respuestas seleccionadas
