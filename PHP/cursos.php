@@ -5,9 +5,11 @@ $controlador = new CursosControlador();
 $cursos = $controlador->listarCursos();
 
 session_start(); // Inicia la sesión
+require_once 'Modulos/CORE/conexion.php';
 
 $accion = $_GET['accion'] ?? 'agregar';
-$usuario = isset($usuario) ? $usuario : null;
+
+$usuario = isset($usuario) ? $usuario : null; 
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +23,12 @@ $usuario = isset($usuario) ? $usuario : null;
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pixel+Operator&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="../CSS/style-cursos.css">
 </head>
 
@@ -30,8 +38,7 @@ $usuario = isset($usuario) ? $usuario : null;
   <div class="container-fluid">
 
     <!------------------------------NAV-------------------------------------->
-
-        <nav class="navbar navbar-expand-lg">
+      <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand ms-3" href="index.php">
                     <img src="../imagenes/logo.svg" alt="logo" height="125">
@@ -98,6 +105,45 @@ $usuario = isset($usuario) ? $usuario : null;
                 </div>
             </div>
         </nav>
+    <!------------------------------CARUSEL-------------------------------------->
+    <div class="carusel">
+      <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../imagenes/img-3.webp" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>No esperes mas Inscribite</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="../imagenes/img-2.webp" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div>
+          </div>
+      
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
     <!------------------------------MODAL-------------------------------------->
         <!-- Login Modal -->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -167,9 +213,7 @@ $usuario = isset($usuario) ? $usuario : null;
                   </div>
                   <div class="card-footer-curso">
                     <!-- Botón para abrir el modal -->
-                    <button type="button" class="btn btn-primary"
-                            data-bs-toggle="modal"
-                            data-bs-target="#INFOModal-<?= $row['id_curso'] ?>"> 
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#INFOModal-<?= $row['id_curso'] ?>"> 
                       Saber más
                     </button>
                   </div>
@@ -206,10 +250,29 @@ $usuario = isset($usuario) ? $usuario : null;
                     </div>
                   </div>
                 </div>
+
+                <!-- Verificar si la sesión está iniciada -->
+                <?php if (!isset($_SESSION['id_usuario'])): ?>
+                  <div class="alert alert-warning" role="alert">
+                    <p>Debes iniciar sesión para inscribirte en este curso.</p>
+                    <a href="login.php" class="btn btn-warning">Iniciar sesión</a>
+                  </div>
+                <?php else: ?>
+                  <!-- Formulario de Inscripción -->
+                  <form method="POST" action="inscripcion.php">
+                    <input type="hidden" name="id_curso" value="<?= $row['id_curso'] ?>">
+                    <input type="hidden" name="id_usuario" value="<?= $_SESSION['id_usuario'] ?>"> <!-- Usar id_usuario en lugar de id_alumno -->
+                    <div class="form-group">
+                      <label for="confirmarInscripcion" class="form-label">¿Deseas inscribirte en este curso?</label>
+                    </div>
+                <?php endif; ?>
               </div>
               <div class="modal-footer">
-                
+                <?php if (isset($_SESSION['id_usuario'])): ?>
+                  <button type="submit" class="btn btn-primary">Inscribirse</button>
+                <?php endif; ?>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </form>
               </div>
             </div>
           </div>

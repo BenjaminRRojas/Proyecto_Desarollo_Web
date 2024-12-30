@@ -260,12 +260,16 @@ body>video {
 }
 /*----------CARUSEL------------*/
 .carusel {
-    border-radius: 10px;
+    border-radius: 20px;
+}
+.carousel-item{
+    border-radius: 20px;
+}
+.carusel img {
+    border-radius: 20px;
+    height: auto;
 }
 
-.carusel img {
-    border-radius: 10px;
-}
 
 /*----------CURSOS------------*/
 section {

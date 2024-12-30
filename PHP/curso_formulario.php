@@ -117,10 +117,6 @@ $curso = isset($curso) ? $curso : null;
                     <input type="date" class="form-control" id="fecha_creacion" name="fecha_creacion" value="<?= htmlspecialchars($curso['fecha_creacion'] ?? '') ?>" required>
                 </div>
                 <div class="mb-3">
-                    <label for="formFileSm" class="form-label">imagen del curso</label>
-                    <input class="form-control form-control-sm" id="formFileSm" type="file">
-                </div>
-                <div class="mb-3">
                     <label for="categoria" class="form-label">Categoria</label>
                     <input type="text" class="form-control" id="categoria" name="categoria" required>
                 </div>
