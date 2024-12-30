@@ -145,10 +145,7 @@ $usuario = isset($usuario) ? $usuario : null;
       </div>
     </div>
     <!------------------------------MODAL-------------------------------------->
-<<<<<<< HEAD
-=======
         <!-- Login Modal -->
->>>>>>> c75d7e189c76192b9beab32284efe315e9cbc69a
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -173,11 +170,7 @@ $usuario = isset($usuario) ? $usuario : null;
                                 <div>
                                     <p>¿No tienes una cuenta? <a href="formulario.php">Regístrate</a></p>
                                 </div>
-<<<<<<< HEAD
-                                <a type="submit" class="btn w-100" href="cursos.php">Iniciar sesión</a>
-=======
                                 <button type="submit" class="btn w-100">Iniciar sesión</button>
->>>>>>> c75d7e189c76192b9beab32284efe315e9cbc69a
                             </form>
                         </div>
                     </div>
