@@ -39,6 +39,11 @@ class UsuariosControlador {
         return $this->modelo->actualizar($id, $nombres, $apellidos, $correo, $contrasena, $sexo, $tipo_usuario);
     }
 
+    // Actualizar descripcion
+    public function actualizarUsuarioDescripcion($id, $descripcion) {
+        return $this->modelo->actualizar_descripcion($id,$descripcion);
+    }
+
     // Eliminar un usuario
     public function eliminarUsuario($id) {
         return $this->modelo->eliminar($id);

@@ -95,7 +95,7 @@ $usuario_id = $_SESSION['id_usuario'];
                                             <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
                                                 <li><a class="dropdown-item" href="Modulos/ESTUDIANTES/cursos_inscritos.php">Cursos Inscritos</a></li>
                                             <?php endif; ?>
-                                            <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> <!-- Opción para cerrar sesión -->
+                                            <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
                                         </ul>
                                     </li>
                                 <?php else: // Si el usuario no está logueado ?>

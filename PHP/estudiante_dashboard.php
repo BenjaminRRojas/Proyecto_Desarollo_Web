@@ -88,7 +88,7 @@ $usuario_id = $_SESSION['id_usuario'];
                                         <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
                                             <li><a class="dropdown-item" href="Modulos/ESTUDIANTES/cursos_inscritos.php">Cursos Inscritos</a></li>
                                         <?php endif; ?>
-                                        <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> <!-- Opción para cerrar sesión -->
+                                        <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
                                     </ul>
                                 </li>
                             <?php else: // Si el usuario no está logueado ?>
@@ -116,6 +116,15 @@ $usuario_id = $_SESSION['id_usuario'];
     <div class="container mt-5">
         <h1>Bienvenido al Dashboard, <?= htmlspecialchars($_SESSION['nombres']) ?>!</h1>
         <p>A continuación, puedes ver los cursos en los que estás inscrito:</p>
+
+
+        <form action="Modulos/ESTUDIANTES/RUTAS/actualizar_descripcion.php?" method="POST">
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Inserta una pequeña descripción personal</label>
+                    <textarea class="form-control w-50" id="exampleFormControlTextarea1" rows="3" name="descripcion" ></textarea>
+                <button type="submit" class="btn btn-success">Enviar</button>
+            </div>
+        </form>
 
         <table class="table table-striped">
             <thead>
