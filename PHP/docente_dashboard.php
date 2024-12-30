@@ -65,72 +65,72 @@ $usuario_id = $_SESSION['id_usuario'];
 
         <!------------------NAV--------------------->
         <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-                    <a class="navbar-brand ms-3" href="index.php">
-                        <img src="../imagenes/logo.svg" alt="logo" height="125">
-                    </a>
+            <div class="container-fluid">
+                <a class="navbar-brand ms-3" href="index.php">
+                    <img src="../imagenes/logo.svg" alt="logo" height="125">
+                </a>
 
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <div class="d-none d-lg-block text-center ms-5">
-                        <h1 class="navbar-title">Aprende a programar desde cero hasta el infinito</h1>
+                <div class="d-none d-lg-block text-center ms-5">
+                    <h1 class="navbar-title">Aprende a programar desde cero hasta el infinito</h1>
+                </div>
+
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
+                        <button type="button" class="btn-close bg-light" data-bs-dismiss="offcanvas"
+                            aria-label="Close"></button>
+                        <hr>
                     </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="cursos.php">Cursos</a>
+                            </li>
 
-                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
-                        aria-labelledby="offcanvasNavbarLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menú</h5>
-                            <button type="button" class="btn-close bg-light" data-bs-dismiss="offcanvas"
-                                aria-label="Close"></button>
-                            <hr>
-                        </div>
-                        <div class="offcanvas-body">
-                            <ul class="navbar-nav justify-content-end">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="index.php">Inicio</a>
+                            <?php if (isset($_SESSION['nombres'])): ?>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Bienvenido, <?= htmlspecialchars($_SESSION['nombres']) ?> 
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
+                                            <li><a class="dropdown-item" href="docente_dashboard.php">Gestionar Cursos</a></li>
+                                        <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
+                                            <li><a class="dropdown-item" href="estudiante_dashboard.php">Cursos Inscritos</a></li>
+                                        <?php endif; ?>
+                                        <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
+                                    </ul>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="cursos.php">Cursos</a>
+                            <?php else:?>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Perfil
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <button type="button" class="dropdown-item btn btn-primary w-100 text-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                Iniciar Sesión
+                                            </button>
+                                        </li>
+                                        <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
+                                    </ul>
                                 </li>
+                            <?php endif; ?>
 
-                                <?php if (isset($_SESSION['nombres'])): // Si el usuario está logueado ?>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            ¡Bienvenido <?= htmlspecialchars($_SESSION['nombres']) ?>! <!-- Muestra el nombre del usuario -->
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <?php if ($_SESSION['tipo_usuario'] === 'DOCENTE'): ?>
-                                                <li><a class="dropdown-item" href="Modulos/DOCENTES/gestionar_curso.php">Gestionar Cursos</a></li>
-                                            <?php elseif ($_SESSION['tipo_usuario'] === 'ESTUDIANTE'): ?>
-                                                <li><a class="dropdown-item" href="Modulos/ESTUDIANTES/cursos_inscritos.php">Cursos Inscritos</a></li>
-                                            <?php endif; ?>
-                                            <li><a class="dropdown-item text-danger" href="Modulos/AUTH/logout.php?logout=true">Cerrar Sesión</a></li> 
-                                        </ul>
-                                    </li>
-                                <?php else: // Si el usuario no está logueado ?>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Perfil
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li>
-                                                <button type="button" class="dropdown-item btn btn-primary w-100 text-start" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                    Iniciar Sesión
-                                                </button>
-                                            </li>
-                                            <li><a class="dropdown-item" href="formulario.php">Registrarse</a></li>
-                                        </ul>
-                                    </li>
-                                <?php endif; ?>
-
-                            </ul>
-                        </div>
+                        </ul>
                     </div>
                 </div>
-            </nav>
+            </div>
+        </nav>
 
             
             

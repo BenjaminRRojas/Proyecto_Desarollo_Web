@@ -28,8 +28,17 @@ $usuario = isset($usuario) ? $usuario : null;
 
 <body>
     
-    
-    
+    <?php if (isset($_SESSION['logout_success'])): ?> 
+        <script> 
+            Swal.fire({ 
+                title: '¡Hasta pronto!', 
+                text: '<?php echo $_SESSION['logout_success']; ?>', 
+                icon: 'info', 
+                confirmButtonText: 'Aceptar' 
+            }); 
+        </script> 
+        <?php unset($_SESSION['logout_success']);?> 
+    <?php endif; ?>
 
 
     <video src="../imagenes/fondo.mp4" autoplay preload muted loop></video>
