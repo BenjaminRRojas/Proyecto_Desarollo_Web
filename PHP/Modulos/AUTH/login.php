@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['sexo'] = $user['sexo'];
 
 
+
             // Redirige al usuario según su tipo
             if ($user['tipo_usuario'] === 'DOCENTE') {
                 header('Location: ../../docente_dashboard.php');
