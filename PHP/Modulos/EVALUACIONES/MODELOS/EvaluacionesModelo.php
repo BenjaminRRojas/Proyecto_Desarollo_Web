@@ -160,15 +160,10 @@ class EvaluacionesModelo {
 
 
     public function verificarEvaluacionRendida($id_estudiante, $id_evaluacion) {
-        // Conexión a la base de datos (asegúrate de tenerla configurada correctamente)
-        global $db;  // Si usas una variable global para la conexión, o usa tu método de conexión
-
-        // Preparar la consulta
         $query = $this->db->prepare("SELECT COUNT(*) FROM resultados WHERE id_estudiante = ? AND id_evaluacion = ?");
         $query->execute([$id_estudiante, $id_evaluacion]);
         $resultado = $query->fetchColumn();
 
-        // Retorna verdadero si ya existe un resultado
         return $resultado > 0;
     }
         
