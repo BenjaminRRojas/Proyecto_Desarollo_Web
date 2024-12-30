@@ -73,6 +73,26 @@ class EvaluacionesControlador{
         return $this->modelo->eliminar($id_evaluacion);
     }
 
+    // Agregar resultado a una evaluación
+    public function insertarResultado($id_estudiante, $id_evaluacion, $nota) {
+        return $this->modelo->insertarResultado($id_estudiante, $id_evaluacion, $nota);
+    }
+
+    // Procesar respuestas de una evaluación
+    public function procesarEvaluacion($id_usuario, $id_evaluacion, $respuestas_seleccionadas) {
+        $contador_respuestas_correctas = 0;
+
+        // Iterar sobre las respuestas seleccionadas
+        foreach ($respuestas_seleccionadas as $id_respuesta) {
+            // Verificar si la respuesta es correcta
+            if ($this->modelo->esRespuestaCorrecta($id_respuesta)) {
+                $contador_respuestas_correctas++;
+            }
+        }
+        // El puntaje equivale al número de respuestas correctas
+        $puntaje = $contador_respuestas_correctas;
+        return $puntaje;
+    }
 
 
 }

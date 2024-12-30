@@ -67,16 +67,16 @@ class EvaluacionesModelo {
         return $query->execute([$id_evaluacion]);
     }
 
-    // Método para obtener las preguntas asociadas a una evaluación
+    // Obtener las preguntas relacionadas a una evaluación por ID de le evaluación
     public function obtenerPreguntas($id_evaluacion) {
         $query = "SELECT * FROM preguntas WHERE id_evaluacion = :id_evaluacion";
-        $stmt = $this->db->prepare($query); // Usar la conexión correcta
+        $stmt = $this->db->prepare($query); 
         $stmt->bindParam(':id_evaluacion', $id_evaluacion, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Método para obtener las respuestas de una pregunta
+    // Obtener las respuestas relacionadas a una pregunta por ID de la pregunta
     public function obtenerRespuestas($id_pregunta) {
 
         $query = "SELECT * FROM respuestas WHERE id_pregunta = :id_pregunta";
@@ -87,7 +87,7 @@ class EvaluacionesModelo {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Método para obtener preguntas y respuestas de una evaluación
+    // Obtener tanto las preguntas como las respuestas de las preguntas de una evaluación
     public function obtenerPreguntasYRespuestas($id_evaluacion) {
         // Obtener las preguntas
         $preguntas = $this->obtenerPreguntas($id_evaluacion);
@@ -101,11 +101,63 @@ class EvaluacionesModelo {
                 'respuestas' => $respuestas
             ];
         }
-        
         return $preguntas_respuestas;
     }
 
-} 
+    // Insertar un resultado
+    public function insertarResultado($id_estudiante, $id_evaluacion, $nota) {
+        $query = $this->db->prepare("INSERT INTO resultados (id_estudiante, id_evaluacion, nota) VALUES (?, ?, ?)");
+        return $query->execute([$id_estudiante, $id_evaluacion, $nota]);
+    }
 
+    // Obtener las respuestas correctas de una evaluación
+    public function obtenerRespuestasCorrectas($id_evaluacion) {
+        $sql = "SELECT r.id_respuesta, r.es_correcta 
+                FROM respuestas r
+                JOIN preguntas p ON r.id_pregunta = p.id_pregunta
+                WHERE p.id_evaluacion = ?";
+        
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bind_param('i', $id_evaluacion);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+        
+        $respuestas = [];
+        while ($row = $resultado->fetch_assoc()) {
+            $respuestas[] = $row;
+        }
+        // Retorna las respuestas correctas
+        return $respuestas;
+    }
 
+    // Calcular el puntaje de la evaluación
+    public function calcularPuntaje($respuestas_seleccionadas, $id_evaluacion) {
+        $respuestas_correctas = $this->obtenerRespuestasCorrectas($id_evaluacion);
+        $puntaje = 0;
+
+        foreach ($respuestas_seleccionadas as $id_respuesta) {
+            foreach ($respuestas_correctas as $respuesta) {
+                if ($id_respuesta == $respuesta['id_respuesta'] && $respuesta['es_correcta'] == 1) {
+                    $puntaje++; // Si la respuesta es correcta, el contador de puntaje aumenta en 1
+                }
+            }
+        }
+
+        return $puntaje;
+    }
+
+    public function esRespuestaCorrecta($id_respuesta) {
+        $consulta = "SELECT es_correcta FROM respuestas WHERE id_respuesta = ?";
+        $stmt = $this->db->prepare($consulta);
+        $stmt->execute([$id_respuesta]);
+        $respuesta = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($respuesta) {
+            return $respuesta['es_correcta'] == 1; 
+        }
+        return false; 
+    }
+        
+
+}
 ?>  
