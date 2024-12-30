@@ -21,10 +21,23 @@ class ComentarioControlador{
         require_once "VISTAS/pie.php";
     }
 
+    //Método para mostrar la tabla 
     public function Tabla(){
         $comentarios=$this->modelo->Listar(NULL);
         require_once "VISTAS/encabezadotabla.php";
         require_once "VISTAS/Comentario/Tabla_Comentario.php";
+    }
+
+    public function Publicar(){
+        $id=$_POST['id_foro'];
+        $comentario=new Comentario();
+        $comentario->setid_foro($id);
+        $comentario->setid_usuario($_SESSION['id_usuario']);
+        $comentario->settitulo($_POST['titulo']);
+        $comentario->setcontenido($_POST['contenido']);
+        $this->modelo->Publicar($comentario);
+
+        header("location:?c=comentario&id=$id");
     }
 
     //Método que recibe los atributos de una respuesta a un comentario y las ingresa
@@ -41,6 +54,7 @@ class ComentarioControlador{
         header("Location:?c=comentario&id=$id_foro");
     }
 
+    //Método para cambiar título del modal y cambiar inputs
     public function Editar(){
         $titulo = "Agregar";
         $css="../../../CSS/style_form.css";
